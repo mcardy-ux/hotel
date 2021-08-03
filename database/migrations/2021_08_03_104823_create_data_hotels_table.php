@@ -15,17 +15,6 @@ class CreateDataHotelsTable extends Migration
     {
         Schema::create('data_hotels', function (Blueprint $table) {
             $table->id();
-            $table->string('razon_social');
-            $table->string('razon_comercial');
-            $table->integer('nit');
-            $table->integer('nit_digito_verificacion');
-            $table->enum('tipo_regimen',['Persona Natural','Persona Juridica']);
-            $table->string('regimen_contributivo');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('telefono_alterno');
-            $table->string('CIIU_Actividad_economica');
-            $table->string('Logo');
             $table->timestamps();
         });
     }

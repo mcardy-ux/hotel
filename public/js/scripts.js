@@ -104,7 +104,6 @@ function loadStyle(href, callback) {
   var theme = "dore.light.bluenavy.min.css";
   var direction = "ltr";
   var radius = "rounded";
-
   if (typeof Storage !== "undefined") {
     if (localStorage.getItem("dore-theme-color")) {
       theme = localStorage.getItem("dore-theme-color");
@@ -128,7 +127,8 @@ function loadStyle(href, callback) {
   $(".radius-radio[data-radius='" + radius + "']").attr("checked", true);
   $("#switchDark").attr("checked", theme.indexOf("dark") > 0 ? true : false);
 
-  loadStyle("css/" + theme, onStyleComplete);
+  
+  loadStyle("../css/" + theme, onStyleComplete);
   function onStyleComplete() {
     setTimeout(onStyleCompleteDelayed, 300);
   }

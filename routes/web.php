@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DataHotelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/parameters', function () {
-    return view('parameters.index');
-})->name('parameters');
+
+
+Route::resource('data_hotel', DataHotelController::class);
 
 
 Route::get('/dashboard', function () {

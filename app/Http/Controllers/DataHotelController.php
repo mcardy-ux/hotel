@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\parameters;
+namespace App\Http\Controllers;
 
 use App\Models\parameters\data_hotel;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class DataHotelController extends Controller
      */
     public function index()
     {
-        //
+        return view("parameters.data_hotel.index");
     }
 
     /**
@@ -24,7 +24,7 @@ class DataHotelController extends Controller
      */
     public function create()
     {
-        //
+        return view("parameters.data_hotel.create");
     }
 
     /**
@@ -41,7 +41,7 @@ class DataHotelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\data_hotel  $data_hotel
+     * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
     public function show(data_hotel $data_hotel)
@@ -52,7 +52,7 @@ class DataHotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\data_hotel  $data_hotel
+     * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
     public function edit(data_hotel $data_hotel)
@@ -64,7 +64,7 @@ class DataHotelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\data_hotel  $data_hotel
+     * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, data_hotel $data_hotel)
@@ -75,7 +75,7 @@ class DataHotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\data_hotel  $data_hotel
+     * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
     public function destroy(data_hotel $data_hotel)
