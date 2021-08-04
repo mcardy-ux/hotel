@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataHotelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +18,8 @@ Route::get('/', function () {
 
 
 
-Route::resource('data_hotel', DataHotelController::class);
+Route::resource('data_hotel', App\Http\Controllers\DataHotelController::class);
+Route::resource('locations', App\Http\Controllers\LocationController::class);
 
 
 Route::get('/dashboard', function () {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataHotelsTable extends Migration
+class CreateBillingResolutionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateDataHotelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_hotels', function (Blueprint $table) {
+        Schema::create('billing_resolutions', function (Blueprint $table) {
             $table->id();
+            $table->string('numResolucion');
+            $table->date('fechaResolucion');
+            $table->date('desde');
+            $table->date('hasta');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateDataHotelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_hotels');
+        Schema::dropIfExists('billing_resolutions');
     }
 }

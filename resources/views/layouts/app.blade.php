@@ -140,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="Pages.Auth.Register.html">
+                                    <a href="{{route('locations.index')}}">
                                         <i class="simple-icon-user-follow"></i> <span
                                             class="d-inline-block">Ubicaciones</span>
                                     </a>

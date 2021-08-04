@@ -140,14 +140,14 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="Pages.Auth.Register.html">
-                                        <i class="simple-icon-user-follow"></i> <span
+                                    <a href="{{route('locations.index')}}">
+                                        <i class="simple-icon-location-pin"></i> <span
                                             class="d-inline-block">Ubicaciones</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="Pages.Auth.ForgotPassword.html">
-                                        <i class="simple-icon-user-unfollow"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
+                                    <a href="">
+                                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
                                     </a>
                                 </li>
                             </ul>
