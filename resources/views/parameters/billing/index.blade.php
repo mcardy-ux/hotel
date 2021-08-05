@@ -14,23 +14,21 @@
                             <li class="breadcrumb-item active" aria-current="page">Listado</li>
                         </ol>
                     </nav>
+                    <div class="top-right-button-container">
+                        <div class="btn-group">
+                            <a href="{{url('billing/create')}}" >
+                                    <button type="button" class="btn btn-primary mb-1">Agregar una nueva Resolución</button>
+                            </a>
+                        </div>
+                    </div>
                     <div class="separator mb-5"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-lg-6 mb-5">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="mb-4">Puedes agregar una nueva Resolución</h5>
-                            <a href="{{url('locations/create')}}" class="btn btn-primary rounded active mb-1" role="button" aria-pressed="true">Agregar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <br>
+            
+                    
             <div class="row mb-12">
-                <div class="col-lg-12 col-md-12 mb-4">
+                <div class="col-lg-12 col-md-12 mb-4">         
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Listado</h5>
@@ -44,6 +42,7 @@
                                         <th scope="col">Fecha de Resolución</th>
                                         <th scope="col">Desde</th>
                                         <th scope="col">Hasta</th>
+                                        <th scope="col">Accion</th> 
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -62,8 +61,30 @@
 $(document).ready(function(){
 
     $('#ResolucionDate').DataTable({
-        "processing": true,
-        "serverSide": true,
+        "language": {
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar:",
+          "zeroRecords": "Sin resultados encontrados",
+          
+          "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }},
+          "order": [[ 2, "desc" ]],
+          "processing": true,
+          "responsive": true,
+          "serverSide": true,
         "ajax": "{{ route('ajax.request.billing') }}",
         "columns":[
         {"data":"id"},
@@ -71,7 +92,8 @@ $(document).ready(function(){
         {"data":"fechaResolucion"},
         {"data":"desde"},
         {"data":"hasta"},
-    ],
+        { "data": "actions",orderable:false, searchable:false },
+        ],
     });
 });
 </script>

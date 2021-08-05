@@ -146,7 +146,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{route('billing.index')}}">
                                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
                                     </a>
                                 </li>
@@ -176,7 +176,8 @@
     <script src="{{asset('js/vendor/Sortable.js')}}"></script>
     <script src="{{asset('js/vendor/mousetrap.min.js')}}"></script>
     <script src="{{asset('js/dore.script.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script>
+    <script src="{{asset('js/scriptsdouble.js')}}"></script>
+    @stack('scripts')
 </body>
 
 </html>

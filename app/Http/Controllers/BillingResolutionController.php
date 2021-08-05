@@ -25,7 +25,7 @@ class BillingResolutionController extends Controller
      */
     public function create()
     {
-        //
+        return view("parameters.billing.create");
     }
 
     /**
@@ -36,7 +36,19 @@ class BillingResolutionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $isDuplicate=billingResolution::getBillingDuplicado($request->numResolucion);
+        if ($isDuplicate) {
+            return json_encode(['success' => false, 'data' => 'Ya se encuentra esta resolucion']);
+        }else {
+            $reg = new billingResolution();
+            $reg->numResolucion=$request->numResolucion;
+            $reg->fechaResolucion=$request->fechaResolucion;
+            $reg->desde=$request->desde;
+            $reg->hasta=$request->hasta;
+            $reg->created_by=$request->id_user_create;
+            $reg->save();
+            return json_encode(['success' => true]);
+        }
     }
 
     /**
@@ -56,9 +68,10 @@ class BillingResolutionController extends Controller
      * @param  \App\Models\parameters\billingResolution  $billingResolution
      * @return \Illuminate\Http\Response
      */
-    public function edit(billingResolution $billingResolution)
+    public function edit($id)
     {
-        //
+        $billing = billingResolution::find(\Hashids::decode($id)[0]);
+        return view('parameters.billing.edit', ['billing' => $billing]);
     }
 
     /**
@@ -89,6 +102,21 @@ class BillingResolutionController extends Controller
     public function ajaxRequestBilling(){
         $query = billingResolution::select('id','numResolucion','fechaResolucion','desde','hasta');
         return datatables($query)
+        ->addColumn('actions', function ($query) {
+            return '<div class="dropdown d-inline-block">
+                <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBilling" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Opciones
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBilling" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                    <a class="dropdown-item" href="'. url('billing', [$query->encode_id,'edit']) .'">Editar</a>
+                    <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
+                </div>
+            </div>';
+            //Aquí $usuario es una instancia del modelo User
+            // podremos acceder a sus atributos y relaciones
+            return '<p>'. $query->id.'</p>'; //mostramos el nombre del usuario
+        })
+        ->rawColumns(['actions'])
         ->make(true);
     }
 }
