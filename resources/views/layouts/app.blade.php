@@ -141,7 +141,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('locations.index')}}">
-                                        <i class="simple-icon-user-follow"></i> <span
+                                        <i class="simple-icon-location-pin"></i> <span
                                             class="d-inline-block">Ubicaciones</span>
                                     </a>
                                 </li>
@@ -177,6 +177,7 @@
     <script src="{{asset('js/vendor/mousetrap.min.js')}}"></script>
     <script src="{{asset('js/dore.script.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
+    @stack('scripts')
 </body>
 
 </html>

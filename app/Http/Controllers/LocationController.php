@@ -14,7 +14,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        return view("parameters.locations.index");
+        $departamentos=location::getDepartaments();
+        return view("parameters.locations.index",['departamentos'=>$departamentos]);
     }
 
     /**
@@ -82,4 +83,11 @@ class LocationController extends Controller
     {
         //
     }
+
+
+    public function ajaxRequestCities(Request $request){
+        $data = location::getListCitiesByDepartament($request->valor);
+        return $data;
+    }
+
 }

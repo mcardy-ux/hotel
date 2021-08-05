@@ -18,8 +18,11 @@ Route::get('/', function () {
 
 
 
-Route::resource('data_hotel', App\Http\Controllers\DataHotelController::class);
-Route::resource('locations', App\Http\Controllers\LocationController::class);
+Route::resource('data_hotel', App\Http\Controllers\DataHotelController::class)->middleware(['auth']);
+Route::resource('locations', App\Http\Controllers\LocationController::class)->middleware(['auth']);
+
+Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
+
 
 
 Route::get('/dashboard', function () {
