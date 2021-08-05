@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\parameters\billingResolution;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BillingResolutionController extends Controller
 {
@@ -14,7 +15,7 @@ class BillingResolutionController extends Controller
      */
     public function index()
     {
-        //
+        return view("parameters.billing.index");
     }
 
     /**
@@ -81,5 +82,13 @@ class BillingResolutionController extends Controller
     public function destroy(billingResolution $billingResolution)
     {
         //
+    }
+
+    //Seccion de Datatables
+
+    public function ajaxRequestBilling(){
+        $query = billingResolution::select('id','numResolucion','fechaResolucion','desde','hasta');
+        return datatables($query)
+        ->make(true);
     }
 }

@@ -146,7 +146,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="Pages.Auth.ForgotPassword.html">
+                                    <a href="{{route('billing.index')}}">
                                         <i class="simple-icon-user-unfollow"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
                                     </a>
                                 </li>
