@@ -45,6 +45,7 @@ class BillingResolutionController extends Controller
             $reg->fechaResolucion=$request->fechaResolucion;
             $reg->desde=$request->desde;
             $reg->hasta=$request->hasta;
+            $reg->activa=true;
             $reg->created_by=$request->id_user_create;
             $reg->save();
             return json_encode(['success' => true]);
@@ -114,8 +115,21 @@ class BillingResolutionController extends Controller
     //Seccion de Datatables
 
     public function ajaxRequestBilling(){
-        $query = billingResolution::select('id','numResolucion','fechaResolucion','desde','hasta');
+        $query = billingResolution::select('id','numResolucion','fechaResolucion','desde','hasta','activa');
         return datatables($query)
+        ->addColumn('status', function ($query) {
+            if($query->activa){
+                return '<div class="w-15 w-xs-100">
+                <span class="badge badge-pill badge-success">Activo</span>
+            </div>';
+            }else{
+                return '<div class="w-15 w-xs-100">
+                <span class="badge badge-pill badge-warning">Vencido</span>
+            </div>';
+            }
+            
+           
+        })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
                 <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBilling" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,7 +142,7 @@ class BillingResolutionController extends Controller
             </div>';
            
         })
-        ->rawColumns(['actions'])
+        ->rawColumns(['actions','status'])
         ->make(true);
     }
 }

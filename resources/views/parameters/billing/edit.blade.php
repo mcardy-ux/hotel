@@ -47,12 +47,12 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="desde">Desde:</label>
-                                        <input type="date" class="form-control" id="desde" name="desde" value="{{$billing->desde}}">
+                                        <input type="number" class="form-control" id="desde" name="desde" value="{{$billing->desde}}">
                                     </div>
                                     
                                     <div class="form-group col-md-6">
                                         <label for="hasta">Hasta:</label>
-                                        <input type="date" class="form-control" id="hasta" name="hasta" value="{{$billing->hasta}}" >
+                                        <input type="number" class="form-control" id="hasta" name="hasta" value="{{$billing->hasta}}" >
                                     </div>
                                 </div>  
                                 <button type="submit" class="btn btn-primary mb-0">Editar</button>

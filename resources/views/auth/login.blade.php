@@ -37,15 +37,23 @@
                                         </div>
 
                                         <!-- Password -->
-                                        <div class="mt-4">
-                                            <x-label for="password" :value="__('Contraseña')" />
+                                        <div class="row mb-12">
 
-                                            <x-input id="password" class="form-control"
-                                                            type="password"
-                                                            name="password"
-                                                            required autocomplete="current-password" />
+                                            <div class="mt-4 col-md-11">
+                                                <x-label for="password" :value="__('Contraseña')" />
+
+                                                <x-input id="password" class="form-control"
+                                                                type="password"
+                                                                name="password"
+                                                                required autocomplete="current-password" />
+                                                                
+                                            </div>
+                                            <div class="mt-12 col-md-1">
+                                                               
+                                                <button id="show_password" class="btn btn-outline-primary mb-0" type="button" onclick="mostrarPassword()"> <span class="glyph-icon simple-icon-eye"></span> </button>
+                                                               
+                                            </div>
                                         </div>
-
                                         <!-- Remember Me -->
                                         <div class="d-flex justify-content-between align-items-center">
                                             <label for="remember_me" class="inline-flex items-center">

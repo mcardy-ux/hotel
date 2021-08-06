@@ -45,7 +45,9 @@
                                         <th scope="col">Fecha de Resolución</th>
                                         <th scope="col">Desde</th>
                                         <th scope="col">Hasta</th>
+                                        <th scope="col">Estado</th> 
                                         <th scope="col">Accion</th> 
+                                        
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -96,6 +98,7 @@ $(document).ready(function(){
         {"data":"fechaResolucion"},
         {"data":"desde"},
         {"data":"hasta"},
+        { "data": "status",orderable:false, searchable:false },
         { "data": "actions",orderable:false, searchable:false },
         ],
     });
