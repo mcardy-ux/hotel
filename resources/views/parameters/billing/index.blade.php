@@ -22,6 +22,10 @@
                         </div>
                     </div>
                     <div class="separator mb-5"></div>
+                    <form>
+                        <input type="hidden" id="_url" value="{{ url('') }}">
+                        <input type="hidden" id="_token" value="{{ csrf_token() }}">
+                    </form>
                 </div>
             </div>
 
@@ -37,7 +41,6 @@
                              
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">id</th>
                                         <th scope="col">Numero de Resolución</th>
                                         <th scope="col">Fecha de Resolución</th>
                                         <th scope="col">Desde</th>
@@ -57,6 +60,8 @@
     </main>
 @endsection
 @push('scripts')
+<script src="{{ asset('js/parameters/billing/index.js') }}"></script>
+
 <script>
 $(document).ready(function(){
 
@@ -87,7 +92,6 @@ $(document).ready(function(){
           "serverSide": true,
         "ajax": "{{ route('ajax.request.billing') }}",
         "columns":[
-        {"data":"id"},
         {"data":"numResolucion"},
         {"data":"fechaResolucion"},
         {"data":"desde"},

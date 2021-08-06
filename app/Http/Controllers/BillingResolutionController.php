@@ -101,9 +101,14 @@ class BillingResolutionController extends Controller
      * @param  \App\Models\parameters\billingResolution  $billingResolution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(billingResolution $billingResolution)
+    public function destroy($id)
     {
-        //
+        $reg = billingResolution::find(\Hashids::decode($id)[0])->delete();
+        if($reg){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
+        }
     }
 
     //Seccion de Datatables
