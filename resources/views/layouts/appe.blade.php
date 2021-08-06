@@ -152,7 +152,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('billing.index')}}">
-                                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Cuentas Bancarias</span>
+                                        <i class="iconsminds-bank"></i> <span class="d-inline-block">Cuentas Bancarias</span>
                                     </a>
                                 </li>
                             </ul>
