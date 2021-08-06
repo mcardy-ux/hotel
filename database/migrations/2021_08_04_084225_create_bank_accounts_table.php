@@ -19,6 +19,10 @@ class CreateBankAccountsTable extends Migration
             $table->string('tipoCuenta');
             $table->string('numeroCuenta');
             $table->string('titular');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->unsignedBigInteger('modified_by')->nullable();
+            $table->foreign('modified_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

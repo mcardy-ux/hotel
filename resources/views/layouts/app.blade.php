@@ -151,7 +151,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('billing.index')}}">
+                                    <a href="{{route('bank_account.index')}}">
                                         <i class="iconsminds-bank"></i> <span class="d-inline-block">Cuentas Bancarias</span>
                                     </a>
                                 </li>

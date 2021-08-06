@@ -126,9 +126,7 @@ class BillingResolutionController extends Controller
                     <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
                 </div>
             </div>';
-            //Aquí $usuario es una instancia del modelo User
-            // podremos acceder a sus atributos y relaciones
-            return '<p>'. $query->id.'</p>'; //mostramos el nombre del usuario
+           
         })
         ->rawColumns(['actions'])
         ->make(true);
