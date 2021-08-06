@@ -147,7 +147,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('billing.index')}}">
-                                        <i class="simple-icon-user-unfollow"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
+                                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
                                     </a>
                                 </li>
                             </ul>

@@ -11,7 +11,7 @@
                             <div>
                                 <i class="iconsminds-clock mr-2 text-white align-text-bottom d-inline-block"></i>
                                 <div>
-                                    <p class="lead text-white">5 Posts</p>
+                                    <p class="lead text-white">5 Hoteles</p>
                                     <p class="text-small text-white">Pending for publish</p>
                                 </div>
                             </div>
@@ -32,8 +32,8 @@
                             <div>
                                 <i class="iconsminds-male mr-2 text-white align-text-bottom d-inline-block"></i>
                                 <div>
-                                    <p class="lead text-white">4 Users</p>
-                                    <p class="text-small text-white">On approval process</p>
+                                    <p class="lead text-white">4 Usuarios</p>
+                                    <p class="text-small text-white">Nuevos</p>
                                 </div>
                             </div>
                             <div>
@@ -52,8 +52,8 @@
                             <div>
                                 <i class="iconsminds-bell mr-2 text-white align-text-bottom d-inline-block"></i>
                                 <div>
-                                    <p class="lead text-white">8 Alerts</p>
-                                    <p class="text-small text-white">Waiting for notice</p>
+                                    <p class="lead text-white">8 Alertas</p>
+                                    <p class="text-small text-white">Nuevas Alertas</p>
                                 </div>
                             </div>
                             <div>
