@@ -86,7 +86,7 @@ $(document).ready(function(){
               "next": "Siguiente",
               "previous": "Anterior"
           }},
-          "order": [[ 2, "desc" ]],
+          "order": [[ 1, "desc" ]],
           "processing": true,
           "responsive": true,
           "serverSide": true,
