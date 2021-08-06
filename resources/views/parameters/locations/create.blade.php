@@ -55,7 +55,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="telefono">Municipio:</label>
                                         <select id="ciiu" class="form-control">
-                                            <option selected="">Seleccionar</option>
+                                            <option selected="" disabled="disabled">Seleccionar</option>
                                             <option>...</option>
                                         </select>
                                     </div>

@@ -68,9 +68,10 @@ class BankAccountController extends Controller
      * @param  \App\Models\parameters\bankAccount  $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit(bankAccount $bankAccount)
+    public function edit($id)
     {
-        //
+        $bank_account = bankAccount::find(\Hashids::decode($id)[0]);
+        return view('parameters.bank_account.edit', ['bank_account' => $bank_account]);
     }
 
     /**
@@ -80,9 +81,18 @@ class BankAccountController extends Controller
      * @param  \App\Models\parameters\bankAccount  $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
-       
+        $reg = bankAccount::findOrFail(\Hashids::decode($id)[0]);
+     
+        $reg->banco=$request->input('banco');
+        $reg->tipoCuenta=$request->input('tipoCuenta');
+        $reg->numeroCuenta=$request->input('numeroCuenta');
+        $reg->titular=$request->input('titular');
+        $reg->modified_by=$request->input('id_user_modify');
+        $reg->save();
+   
+        return json_encode(['success' => true]);
     }
 
     /**
