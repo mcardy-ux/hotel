@@ -81,9 +81,18 @@ class BillingResolutionController extends Controller
      * @param  \App\Models\parameters\billingResolution  $billingResolution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, billingResolution $billingResolution)
+    public function update(Request $request,$id)
     {
-        //
+        $reg = billingResolution::findOrFail(\Hashids::decode($id)[0]);
+     
+        $reg->numResolucion=$request->input('numResolucion');
+        $reg->fechaResolucion=$request->input('fechaResolucion');
+        $reg->desde=$request->input('desde');
+        $reg->hasta=$request->input('hasta');
+        $reg->modified_by=$request->input('id_user_modify');
+        $reg->save();
+   
+        return json_encode(['success' => true]);
     }
 
     /**

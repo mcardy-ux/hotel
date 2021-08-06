@@ -57,7 +57,7 @@
                                 </div>  
                                 <button type="submit" class="btn btn-primary mb-0">Editar</button>
                                 <a href="{{ route('billing.index') }}"> 
-                                <button type="button" class="btn btn-light mb-1">Volver</button>
+                                <button type="button" class="btn btn-light mb-0">Volver</button>
                                 </a>
                             </form>
                         </div>
@@ -69,5 +69,5 @@
     </main>
     @endsection
     @push('scripts')
-    
+    <script src="{{ asset('js/parameters/billing/edit.js') }}"></script>
     @endpush
