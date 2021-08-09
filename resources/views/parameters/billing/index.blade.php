@@ -43,6 +43,7 @@
                                     <tr>
                                         <th scope="col">Numero de Resolución</th>
                                         <th scope="col">Fecha de Resolución</th>
+                                        <th scope="col">Dias Restantes</th>
                                         <th scope="col">Desde</th>
                                         <th scope="col">Hasta</th>
                                         <th scope="col">Estado</th> 
@@ -96,6 +97,7 @@ $(document).ready(function(){
         "columns":[
         {"data":"numResolucion"},
         {"data":"fechaResolucion"},
+        {"data":"diasRestantes"},
         {"data":"desde"},
         {"data":"hasta"},
         { "data": "status",orderable:false, searchable:false },

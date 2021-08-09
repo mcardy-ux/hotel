@@ -120,15 +120,16 @@ class BillingResolutionController extends Controller
         ->addColumn('status', function ($query) {
             if($query->activa){
                 return '<div class="w-15 w-xs-100">
-                <span class="badge badge-pill badge-success">Activo</span>
+                <span class="badge badge-pill badge-info">Disponible</span>
             </div>';
             }else{
                 return '<div class="w-15 w-xs-100">
                 <span class="badge badge-pill badge-warning">Vencido</span>
             </div>';
             }
-            
-           
+        })
+        ->addColumn('diasRestantes', function ($query) {
+            return billingResolution::getDaysRamining($query->id);
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -142,7 +143,7 @@ class BillingResolutionController extends Controller
             </div>';
            
         })
-        ->rawColumns(['actions','status'])
+        ->rawColumns(['actions','status','diasRestantes'])
         ->make(true);
     }
 }

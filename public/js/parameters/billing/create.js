@@ -24,6 +24,13 @@ $(document).ready(function(){
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;
           }
+          let fechaResolucion=new Date(document.getElementById('fechaResolucion').value);
+          let AnioVencResolucion=fechaResolucion.getFullYear()+2;
+          fechaResolucion.setFullYear(AnioVencResolucion);
+          if (new Date(fechaResolucion)<=Date.now()) {
+            alert('La fecha de resolucion ya esta vencida, Es de dos años el vencimiento!');
+            return false;
+          }
 
           let confirmacion=confirm("¿Esta seguro de agregar esta información?");
           if(confirmacion){
