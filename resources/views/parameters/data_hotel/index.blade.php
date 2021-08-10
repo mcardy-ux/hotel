@@ -14,6 +14,13 @@
                             <li class="breadcrumb-item active" aria-current="page">Listado</li>
                         </ol>
                     </nav>
+                    <div class="top-right-button-container">
+                        <div class="btn-group">
+                            <a href="{{url('data_hotel/create')}}" >
+                                    <button type="button" class="btn btn-primary mb-1">Agregar una nuevo Hotel</button>
+                            </a>
+                        </div>
+                    </div>
                     <div class="separator mb-5"></div>
                 </div>
             </div>

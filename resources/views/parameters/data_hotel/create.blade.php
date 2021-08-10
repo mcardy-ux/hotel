@@ -1,4 +1,4 @@
-@extends('layouts.appe')
+@extends('layouts.appHotel')
 
 @section('content')
 <main>
@@ -29,7 +29,11 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="mb-4">Ingresa la información necesaria.</h5>
-                            <form>
+                            <form role="form" id="add_data_hotel" name="add_data_hotel" >
+                            <input type="hidden" id="_url" value="{{ url('data_hotel') }}">
+                                <input type="hidden" id="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" id="id_user_create" name="id_user_create" value="{{ Auth::user()->id }}">
+                               
                                 <div class="form-group">
                                     <label for="razon_social">Razón Social:
                                     </label>
@@ -61,11 +65,25 @@
                                 </div>
                                 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
+                                        <label for="regimen">Regimen Tributario:</label>
+                                        <select id="regimen" name="regimen" class="form-control">
+                                            <option selected="">Seleccionar</option>
+                                            <option value="persona_natural">Persona Natural</option>
+                                            <option value="persona_juridica">Persona Jurídica</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="tipo_regimen">Tipo de Regimen Tributario:</label>
+                                        <select id="tipo_regimen" name="tipo_regimen" class="form-control">
+                                            <option selected="" >Seleccionar</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
                                         <label for="telefono">Telefono:</label>
                                         <input type="number" class="form-control" id="telefono">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-3">
                                         <label for="telefono_alt">Telefono Alterno:</label>
                                         <input type="number" class="form-control" id="telefono_alt" >
                                     </div>
@@ -75,53 +93,49 @@
                                     <div class="form-group col-md-4">
                                         <label for="pais">Pais:</label>
                                         <select id="pais" class="form-control">
-                                            <option selected="">Seleccionar</option>
-                                            <option>...</option>
+                                            <option value="colombia" selected disabled="disabled">Colombia</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="municipio">Municipio:</label>
-                                        <select id="municipio" class="form-control">
-                                            <option selected="">Seleccionar</option>
-                                            <option>...</option>
+                                        <select id="municipio" name="municipio" class="form-control">
+                                            <option selected >Seleccionar</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="ciudad">Ciudad:</label>
-                                        <select id="ciudad" class="form-control">
-                                            <option selected="">Seleccionar</option>
-                                            <option>...</option>
+                                        <select id="ciudad" name="ciudad" class="form-control">
+                                            <option selected="" >Seleccionar</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="resolucion_facturacion">Resolución Facturación:</label>
-                                        <select id="resolucion_facturacion" class="form-control">
-                                            <option selected="">Seleccionar</option>
-                                            <option>...</option>
+                                        <select id="resolucion_facturacion" name="resolucion_facturacion" class="form-control">
+                                            <option selected="" >Seleccionar</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="ciiu">CIIU Actividad Economica:</label>
                                         <select id="ciiu" class="form-control">
-                                            <option selected="">Seleccionar</option>
+                                            <option selected="" disabled="disabled">Seleccionar</option>
                                             <option>...</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="cuenta_bancaria">Cuenta Bancaria:</label>
-                                        <select id="cuenta_bancaria" class="form-control">
-                                            <option selected="">Seleccionar</option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3">
+                                    
+                                    <div class="form-group col-md-4">
                                         <label for="logo">Logo:</label>
                                         <input type="file" class="form-control" id="logo" >
                                     </div>
                                 </div>
-
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="cuenta_bancaria">Cuenta(s) Bancaria(s):</label>
+                                        <select class="js-bank-account-multiple" multiple="multiple" style="width: 90%" id="cuenta_bancaria" name="cuenta_bancaria" >
+                                        </select>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary mb-0">Agregar</button>
                             </form>
                         </div>
@@ -132,3 +146,44 @@
         </div>
     </main>
     @endsection
+    @push('scripts')
+    <script src="{{ asset('js/parameters/data_hotel/create.js') }}"></script>
+    <script>
+        window.addEventListener("load", function() {
+            cargarDepartamentos(event);
+            cargarResoluciones(event);
+            cargarCuentaBancaria(event);
+    }, false);
+ 
+    //Funcion para cargar los departamentos al campo "select".
+    function cargarDepartamentos() {
+    
+        //Inicializamos el array.
+        var array = @json($deptos);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("municipio", array);
+    }
+     //Funcion para cargar las resoluciones de facturacion.
+     function cargarResoluciones() {
+        //Inicializamos el array.
+        var array = @json($resoluciones);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("resolucion_facturacion", array);
+    }
+    //Funcion para cargar las resoluciones de facturacion.
+    function cargarCuentaBancaria() {
+        //Inicializamos el array.
+        var array = @json($cuenta_banc);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptionsConcat("cuenta_bancaria", array);
+    }
+    
+
+   </script>
+    @endpush

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\parameters\data_hotel;
+use App\Models\parameters\location;
 use Illuminate\Http\Request;
 
 class DataHotelController extends Controller
@@ -24,7 +25,10 @@ class DataHotelController extends Controller
      */
     public function create()
     {
-        return view("parameters.data_hotel.create");
+        $deptos=location::getDepartaments();
+        $resoluciones=data_hotel::getResolutions();
+        $cuenta_banc=data_hotel::getAccountBank();
+        return view("parameters.data_hotel.create",["deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc]);
     }
 
     /**
@@ -81,5 +85,5 @@ class DataHotelController extends Controller
     public function destroy(data_hotel $data_hotel)
     {
         //
-    }
+    }    
 }

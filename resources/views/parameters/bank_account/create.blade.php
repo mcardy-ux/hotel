@@ -41,7 +41,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="tipoCuenta">Tipo de  de Resolución:</label>
                                         <select id="tipoCuenta" name="tipoCuenta" class="form-control">
-                                            <option selected="">Seleccionar</option>
+                                            <option selected="" disabled="disabled">Seleccionar</option>
                                             <option value="Corriente">Corriente</option>
                                             <option value="Ahorros">Ahorros</option>
                                         </select>

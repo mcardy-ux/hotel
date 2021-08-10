@@ -90,4 +90,11 @@ class LocationController extends Controller
         return $data;
     }
 
+
+    //Inicio Metodos Personalizados
+    public function ajaxRequestDepartaments($id)
+    {  
+        $data=location::getListCitiesByDepartament($id);
+        return json_encode(['success' => true,'data'=>$data]);
+    }
 }

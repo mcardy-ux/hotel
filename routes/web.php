@@ -23,13 +23,14 @@ Route::resource('locations', App\Http\Controllers\LocationController::class)->mi
 Route::resource('billing', App\Http\Controllers\BillingResolutionController::class)->middleware(['auth']);
 Route::resource('bank_account', App\Http\Controllers\BankAccountController::class)->middleware(['auth']);
 
-
+//Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
 Route::get('ajax/request/billing', [App\Http\Controllers\BillingResolutionController::class, 'ajaxRequestBilling'])->name('ajax.request.billing')->middleware(['auth']);
 Route::get('ajax/request/bank', [App\Http\Controllers\BankAccountController::class, 'ajaxRequestBank'])->name('ajax.request.bank_account')->middleware(['auth']);
 
 
-
+//Ajax para listar los depratamentos y ciudades
+Route::get('data_hotel/request/departaments/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestDepartaments'])->name('ajax.request.departaments')->middleware(['auth']);
 
 
 Route::get('/dashboard', function () {

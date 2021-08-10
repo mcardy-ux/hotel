@@ -17,7 +17,7 @@
                     <div class="separator mb-5"></div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-12 col-lg-6 mb-5">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -34,14 +34,14 @@
                         </div>
                     </div>
                 </div>      
-            </div>
+            </div> -->
 
             <br>
             <div class="row mb-12">
                 <div class="col-lg-12 col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Listado</h5>
+                            <h5 class="card-title">Listado de ubicaciones de colombia.</h5>
                             <div class="col-lg-4 col-md-6 mb-2">
                                 <select id="select_departamento" name="select_departamento" class="form-control">
                                     <option selected="">Seleccionar Departamento</option>
@@ -85,7 +85,7 @@
         for (var i=0;i<array.length;i++) {
             var opcion = document.createElement("option");
             opcion.value = array[i].id;
-            opcion.text = array[i].departamento;
+            opcion.text = array[i].value;
             selector.add(opcion);
         }
     }
@@ -118,7 +118,7 @@
         for(var i=0; i<data.length; i++){
             var tr = `<tr>
             <td>`+data[i].id+`</td>
-            <td>`+data[i].municipio+`</td>
+            <td>`+data[i].value+`</td>
             </tr>`; 
             impreso=impreso+tr;
         }

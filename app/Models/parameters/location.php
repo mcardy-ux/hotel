@@ -12,13 +12,13 @@ class location extends Model
 
     public static function getDepartaments(){
         $data=DB::table('departament')
-        ->select('id','departamento')
+        ->select('id','departamento as value')
         ->get();
         return $data;
     }
     public static function getListCitiesByDepartament($id){
         $data=DB::table('city')
-        ->select('id','municipio')
+        ->select('id','municipio as value')
         ->where('departamento_id','=',$id)
         ->get();
         return $data;
