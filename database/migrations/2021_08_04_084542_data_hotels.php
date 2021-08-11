@@ -26,16 +26,18 @@ class DataHotels extends Migration
             $table->string('telefonoAlterno');
             $table->string('ciiuActividad');
             $table->string('logo');
-
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('relUbicacion');
             $table->foreign('relUbicacion')->references('id')->on('city');
-
-            $table->unsignedBigInteger('relBankAcc');
-            $table->foreign('relBankAcc')->references('id')->on('bank_accounts');
 
             $table->unsignedBigInteger('relBillingResolution');
             $table->foreign('relBillingResolution')->references('id')->on('billing_resolutions');
             $table->timestamps();
+        });
+        Schema::create('hotel_has_bank_accounts', function (Blueprint $table) {
+            $table->integer('bank_account_id');
+            $table->integer('data_hotels_id');
         });
     }
 
@@ -47,5 +49,6 @@ class DataHotels extends Migration
     public function down()
     {
         Schema::dropIfExists('data_hotels');
+        Schema::dropIfExists('hotel_has_bank_accounts');
     }
 }

@@ -105,4 +105,11 @@ class data_hotel extends Model
         ->get();
         return $data;
     }
+
+    //Relacion de muchos a muchos
+
+    public function bankAccount(): BelongsToMany
+    {
+        return $this->belongsToMany(bankAccount::class,'hotel_has_bank_accounts','bank_account_id','data_hotels_id');
+    }
 }

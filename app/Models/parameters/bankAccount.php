@@ -27,4 +27,15 @@ class bankAccount extends Model
            return false;
         }
     }
+
+    //RELACION DE MUCHOS A MUCHOS
+    /**
+     * The roles that belong to the bankAccount
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function data_hotel(): BelongsToMany
+    {
+        return $this->belongsToMany(data_hotel::class);
+    }
 }
