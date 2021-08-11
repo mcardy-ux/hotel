@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nit">Nit:</label>
-                                        <input type="number" class="form-control" id="nit" name="nit">
+                                        <input type="number" class="form-control" id="nit" name="nit" min="1" max="9999999999">
                                     </div>
                                     
                                     <div class="form-group col-md-2">

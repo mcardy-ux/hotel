@@ -123,6 +123,17 @@ $(document).ready(function(){
     // Fin de Funciones para el codigo ciiu
     //******** */   
     
+    var input=  document.getElementById('nit');
+    input.addEventListener('input',function(){
+        if (this.value.length > 10) 
+           this.value = this.value.slice(0,10); 
+      })
+      var input=  document.getElementById('digito_nit');
+    input.addEventListener('input',function(){
+        if (this.value.length > 1) 
+           this.value = this.value.slice(0,1); 
+      })
+
     //******** */
     // Inicio de Funcion para validar logo
     // 
