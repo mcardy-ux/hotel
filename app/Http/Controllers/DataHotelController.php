@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\parameters\data_hotel;
+use App\Models\parameters\hotel_has_bank_accounts;
 use App\Models\parameters\location;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,7 @@ class DataHotelController extends Controller
      */
     public function store(Request $request)
     {
+        
        $reg = new data_hotel();
        $reg->razonSocial=$request->razon_social;
        $reg->razonComercial=$request->razon_comercial;
@@ -52,7 +54,6 @@ class DataHotelController extends Controller
        $reg->telefonoAlterno=$request->telefono_alt;
        $reg->ciiuActividad=$request->ciiu;
        $reg->relUbicacion=$request->ciudad;
-    //    $reg->relBankAcc=$request->;
        $reg->relBillingResolution=$request->resolucion_facturacion;
        $reg->created_by=$request->id_user_create;
        $fileUp=$request->file('logo');
@@ -69,6 +70,18 @@ class DataHotelController extends Controller
             $registro->path_file = 'NO';
         }
        $reg->save();
+
+        //Creacion de Cuentas Bancarias
+        $bank_accounts=$request->bank_accounts;
+        $array = explode(',', $bank_accounts);
+        foreach($array as $bank_id){
+
+            $hotel_cuenta_bancaria = new hotel_has_bank_accounts();
+            $hotel_cuenta_bancaria->bank_account_id=$bank_id;
+            $hotel_cuenta_bancaria->data_hotels_id=$reg->id;
+            $hotel_cuenta_bancaria->save();
+        }
+    //    $reg->relBankAcc=$request->;
        return json_encode(['success' => true]);
     }
 
