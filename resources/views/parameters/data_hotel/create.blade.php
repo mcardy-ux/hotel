@@ -38,14 +38,14 @@
                                     <label for="razon_social">Razón Social:
                                     </label>
                                     <input type="text" class="form-control" id="razon_social" name="razon_social" 
-                                        aria-describedby="razonHelp" >
+                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
                                
                                 <div class="form-row">
                                     <div class="form-group col-md-7">
                                         <label for="razon_comercial">Razón Comercial:</label>
                                         <input type="text" class="form-control" id="razon_comercial" name="razon_comercial"
-                                            aria-describedby="razonHelp" >
+                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nit">Nit:</label>
@@ -61,7 +61,7 @@
                                     <label for="direccion">Dirección:
                                     </label>
                                     <input type="text" class="form-control" id="direccion" name="direccion"
-                                        aria-describedby="razonHelp" >
+                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
                                 
                                 <div class="form-row">
@@ -81,11 +81,11 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="telefono">Telefono:</label>
-                                        <input type="number" class="form-control" id="telefono" name="telefono">
+                                        <input type="number" class="form-control" min="1" id="telefono" name="telefono">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="telefono_alt">Telefono Alterno:</label>
-                                        <input type="number" class="form-control" id="telefono_alt" name="telefono_alt">
+                                        <input type="number" class="form-control" min="1"  id="telefono_alt" name="telefono_alt">
                                     </div>
                                 </div>
 

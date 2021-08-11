@@ -6,6 +6,7 @@ use App\Models\parameters\data_hotel;
 use App\Models\parameters\hotel_has_bank_accounts;
 use App\Models\parameters\location;
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 
 class DataHotelController extends Controller
 {

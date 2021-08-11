@@ -30,9 +30,9 @@
                 <div class="col-12 list" data-check-all="checkAll">
                     @foreach($data as $value)
                     <div class="card d-flex flex-row mb-3">
-                        <a class="d-flex" href="Pages.Product.Detail.html">
-                            <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0 card-img-left">
-                        </a>
+                            <a class="d-flex"  href="Pages.Product.Detail.html">
+                                <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:75px;height:75px; object-fit: cover;">
+                            </a>
                         <div class="pl-2 d-flex flex-grow-1 min-width-zero">
                             <div class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
                                 <a href="Pages.Product.Detail.html" class="w-40 w-sm-100">
@@ -44,6 +44,15 @@
                                 <p class="mb-0 text-muted text-small w-15 w-sm-100">{{$value->direccion}}</p>
                                 <div class="w-15 w-sm-100">
                                     <span class="badge badge-pill badge-primary">Disponible</span>
+                                </div>
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBank" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Opciones
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBank" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                                        <a class="dropdown-item" href="{{url('data_hotel', [$value->id,'edit']) }}">Editar</a>
+                                        <a class="dropdown-item" onclick="show(this)" id="{{$value->id}}">Eliminar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

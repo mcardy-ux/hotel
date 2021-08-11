@@ -120,7 +120,7 @@ class BillingResolutionController extends Controller
         ->addColumn('status', function ($query) {
             if($query->activa){
                 return '<div class="w-15 w-xs-100">
-                <span class="badge badge-pill badge-info">Disponible</span>
+                <span class="badge badge-pill badge-info">Vigente</span>
             </div>';
             }else{
                 return '<div class="w-15 w-xs-100">
