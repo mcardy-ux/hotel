@@ -36,7 +36,7 @@ return [
         ],
         'logos' => [
             'driver' => 'local',
-            'root' => storage_path('app/logos'),
+            'root' => storage_path('app/public/logos')
         ],
 
         'public' => [

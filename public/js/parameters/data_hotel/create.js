@@ -136,6 +136,7 @@ $(document).ready(function(){
           return true;
         }
       }
+      
     $("#logo").change(function(){
         var filename = $(this).val();
        
