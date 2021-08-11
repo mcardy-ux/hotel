@@ -31,6 +31,8 @@ Route::get('ajax/request/bank', [App\Http\Controllers\BankAccountController::cla
 
 //Ajax para listar los depratamentos y ciudades
 Route::get('data_hotel/request/departaments/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestDepartaments'])->name('ajax.request.departaments')->middleware(['auth']);
+//Ajax para listar los codigos ciiu
+Route::get('data_hotel/request/ciiu/{id}', [App\Http\Controllers\DataHotelController::class, 'ajaxRequestCiiu'])->name('ajax.request.ciiu')->middleware(['auth']);
 
 
 Route::get('/dashboard', function () {

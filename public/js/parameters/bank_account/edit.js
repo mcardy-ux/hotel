@@ -7,7 +7,7 @@ $(document).ready(function(){
             $('#banco').focus();
             return false;
         }
-        if ($('#tipoCuenta').val() === '') {
+        if ($('#tipoCuenta').val() === null) {
             alert('Debe seleccionar el tipo de cuenta!');
             $('#tipoCuenta').focus();
             return false;

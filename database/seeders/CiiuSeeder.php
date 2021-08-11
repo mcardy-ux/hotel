@@ -11,511 +11,503 @@ class CiiuSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
-        */
-        public function run()
-        {
-            DB::table('ciiu')->insert([
-                "id"=> 1,
-                "data" =>'{
-                    "data":[
-                        { "codigo" : "0111", "descripcion" :"Cultivo de cereales (excepto arroz), legumbres y semillas oleaginosas "},
-                        { "codigo" : "0112", "descripcion" :"Cultivo de arroz "},
-                        { "codigo" : "0113", "descripcion" :"Cultivo de hortalizas, raíces y tubérculos "},
-                        { "codigo" : "0114", "descripcion" :"Cultivo de tabaco "},
-                        { "codigo" : "0115", "descripcion" :"Cultivo de plantas textiles "},
-                        { "codigo" : "0119", "descripcion" :"Otros cultivos transitorios n.c.p."},
-                        { "codigo" : "0121", "descripcion" :"Cultivo de frutas tropicales y subtropicales"},
-                        { "codigo" : "0122", "descripcion" :"Cultivo de plátano y banano"},
-                        { "codigo" : "0123", "descripcion" :"Cultivo de café"},
-                        { "codigo" : "0124", "descripcion" :"Cultivo de caña de azúcar"},
-                        { "codigo" : "0125", "descripcion" :"Cultivo de flor de corte"},
-                        { "codigo" : "0126", "descripcion" :"Cultivo de palma para aceite (palma africana) y otros frutos oleaginosos"},
-                        { "codigo" : "0127", "descripcion" :"Cultivo de plantas con las que se preparan bebidas"},
-                        { "codigo" : "0128", "descripcion" :"Cultivo de especias y de plantas aromáticas y medicinales "},
-                        { "codigo" : "0129", "descripcion" :"Otros cultivos permanentes n.c.p."},
-                        { "codigo" : "0130", "descripcion" :"Propagación de plantas (actividades de los viveros, excepto viveros forestales) "},
-                        { "codigo" : "0141", "descripcion" :"Cría de ganado bovino y bufalino"},
-                        { "codigo" : "0142", "descripcion" :"Cría de caballos y otros equinos "},
-                        { "codigo" : "0143", "descripcion" :"Cría de ovejas y cabras "},
-                        { "codigo" : "0144", "descripcion" :"Cría de ganado porcino"},
-                        { "codigo" : "0145", "descripcion" :"Cría de aves de corral"},
-                        { "codigo" : "0149", "descripcion" :"Cría de otros animales n.c.p."},
-                        { "codigo" : "0150", "descripcion" :"Explotación mixta (agrícola y pecuaria) "},
-                        { "codigo" : "0161", "descripcion" :"Actividades de apoyo a la agricultura "},
-                        { "codigo" : "0162", "descripcion" :"Actividades de apoyo a la ganadería"},
-                        { "codigo" : "0163", "descripcion" :"Actividades posteriores a la cosecha "},
-                        { "codigo" : "0164", "descripcion" :"Tratamiento de semillas para propagación "},
-                        { "codigo" : "0170", "descripcion" :"Caza ordinaria y mediante trampas y actividades de servicios conexas "},
-                        { "codigo" : "0210", "descripcion" :"Silvicultura y otras actividades forestales"},
-                        { "codigo" : "0220", "descripcion" :"Extracción de madera "},
-                        { "codigo" : "0230", "descripcion" :"Recolección de productos forestales diferentes a la madera"},
-                        { "codigo" : "0240", "descripcion" :"Servicios de apoyo a la silvicultura "},
-                        { "codigo" : "0311", "descripcion" :"Pesca marítima "},
-                        { "codigo" : "0312", "descripcion" :"Pesca de agua dulce "},
-                        { "codigo" : "0321", "descripcion" :"Acuicultura marítima "},
-                        { "codigo" : "0322", "descripcion" :"Acuicultura de agua dulce"},
-                        { "codigo" : "0510", "descripcion" :"Extracción de hulla (carbón de piedra)"},
-                        { "codigo" : "0520", "descripcion" :"Extracción de carbón lignito"},
-                        { "codigo" : "0610", "descripcion" :"Extracción de petróleo crudo"},
-                        { "codigo" : "0620", "descripcion" :"Extracción de gas natural"},
-                        { "codigo" : "0710", "descripcion" :"Extracción de minerales de hierro"},
-                        { "codigo" : "0721", "descripcion" :"Extracción de minerales de uranio y de torio"},
-                        { "codigo" : "0722", "descripcion" :"Extracción de oro y otros metales preciosos"},
-                        { "codigo" : "0723", "descripcion" :"Extracción de minerales de níquel"},
-                        { "codigo" : "0729", "descripcion" :"Extracción de otros minerales metalíferos no ferrosos n.c.p."},
-                        { "codigo" : "0811", "descripcion" :"Extracción de piedra, arena, arcillas comunes, yeso y anhidrita"},
-                        { "codigo" : "0812", "descripcion" :"Extracción de arcillas de uso industrial, caliza, caolín y bentonitas"},
-                        { "codigo" : "0820", "descripcion" :"Extracción de esmeraldas, piedras preciosas y semipreciosas"},
-                        { "codigo" : "0891", "descripcion" :"Extracción de minerales para la fabricación de abonos y productos químicos"},
-                        { "codigo" : "0892", "descripcion" :"Extracción de halita (sal)"},
-                        { "codigo" : "0899", "descripcion" :"Extracción de otros minerales no metálicos n.c.p."},
-                        { "codigo" : "0910", "descripcion" :"Actividades de apoyo para la extracción de petróleo y de gas natural"},
-                        { "codigo" : "0990", "descripcion" :"Actividades de apoyo para otras actividades de explotación de minas y canteras"},
-                        { "codigo" : "1011", "descripcion" :"Procesamiento y conservación de carne y productos cárnicos"},
-                        { "codigo" : "1012", "descripcion" :"Procesamiento y conservación de pescados, crustáceos y moluscos"},
-                        { "codigo" : "1020", "descripcion" :"Procesamiento y conservación de frutas, legumbres, hortalizas y tubérculos"},
-                        { "codigo" : "1030", "descripcion" :"Elaboración de aceites y grasas de origen vegetal y animal"},
-                        { "codigo" : "1040", "descripcion" :"Elaboración de productos lácteos"},
-                        { "codigo" : "1051", "descripcion" :"Elaboración de productos de molinería"},
-                        { "codigo" : "1052", "descripcion" :"Elaboración de almidones y productos derivados del almidón"},
-                        { "codigo" : "1061", "descripcion" :"Trilla de café"},
-                        { "codigo" : "1062", "descripcion" :"Descafeinado, tostión y molienda del café"},
-                        { "codigo" : "1063", "descripcion" :"Otros derivados del café"},
-                        { "codigo" : "1071", "descripcion" :"Elaboración y refinación de azúcar"},
-                        { "codigo" : "1072", "descripcion" :"Elaboración de panela"},
-                        { "codigo" : "1081", "descripcion" :"Elaboración de productos de panadería"},
-                        { "codigo" : "1082", "descripcion" :"Elaboración de cacao, chocolate y productos de confitería"},
-                        { "codigo" : "1083", "descripcion" :"Elaboración de macarrones, fideos, alcuzcuz y productos farináceos similares"},
-                        { "codigo" : "1084", "descripcion" :"Elaboración de comidas y platos preparados"},
-                        { "codigo" : "1089", "descripcion" :"Elaboración de otros productos alimenticios n.c.p."},
-                        { "codigo" : "1090", "descripcion" :"Elaboración de alimentos preparados para animales"},
-                        { "codigo" : "1101", "descripcion" :"Destilación, rectificación y mezcla de bebidas alcohólicas"},
-                        { "codigo" : "1102", "descripcion" :"Elaboración de bebidas fermentadas no destiladas"},
-                        { "codigo" : "1103", "descripcion" :"Producción de malta, elaboración de cervezas y otras bebidas malteadas"},
-                        { "codigo" : "1104", "descripcion" :"Elaboración de bebidas no alcohólicas, producción de aguas minerales y de otras aguas embotelladas"},
-                        { "codigo" : "1200", "descripcion" :"Elaboración de productos de tabaco"},
-                        { "codigo" : "1311", "descripcion" :"Preparación e hilatura de fibras textiles"},
-                        { "codigo" : "1312", "descripcion" :"Tejeduría de productos textiles"},
-                        { "codigo" : "1313", "descripcion" :"Acabado de productos textiles"},
-                        { "codigo" : "1391", "descripcion" :"Fabricación de tejidos de punto y ganchillo"},
-                        { "codigo" : "1392", "descripcion" :"Confección de artículos con materiales textiles, excepto prendas de vestir"},
-                        { "codigo" : "1393", "descripcion" :"Fabricación de tapetes y alfombras para pisos"},
-                        { "codigo" : "1394", "descripcion" :"Fabricación de cuerdas, cordeles, cables, bramantes y redes"},
-                        { "codigo" : "1399", "descripcion" :"Fabricación de otros artículos textiles n.c.p."},
-                        { "codigo" : "1410", "descripcion" :"Confección de prendas de vestir, excepto prendas de piel"},
-                        { "codigo" : "1420", "descripcion" :"Fabricación de artículos de piel"},
-                        { "codigo" : "1430", "descripcion" :"Fabricación de artículos de punto y ganchillo"},
-                        { "codigo" : "1511", "descripcion" :"Curtido y recurtido de cueros; recurtido y teñido de pieles"},
-                        { "codigo" : "1512", "descripcion" :"Fabricación de artículos de viaje, bolsos de mano y artículos similares elaborados en cuero, y fabricación de artículos de talabartería y guarnicionería"},
-                        { "codigo" : "1513", "descripcion" :"Fabricación de artículos de viaje, bolsos de mano y artículos similares; artículos de talabartería y guarnicionería elaborados en otros materiales"},
-                        { "codigo" : "1521", "descripcion" :"Fabricación de calzado de cuero y piel, con cualquier tipo de suela"},
-                        { "codigo" : "1522", "descripcion" :"Fabricación de otros tipos de calzado, excepto calzado de cuero y piel"},
-                        { "codigo" : "1523", "descripcion" :"Fabricación de partes del calzado"},
-                        { "codigo" : "1610", "descripcion" :"Aserrado, acepillado e impregnación de la madera"},
-                        { "codigo" : "1620", "descripcion" :"Fabricación de hojas de madera para enchapado; fabricación de tableros contrachapados, tableros laminados, tableros de partículas y otros tableros y paneles"},
-                        { "codigo" : "1630", "descripcion" :"Fabricación de partes y piezas de madera, de carpintería y ebanistería para la construcción"},
-                        { "codigo" : "1640", "descripcion" :"Fabricación de recipientes de madera"},
-                        { "codigo" : "1690", "descripcion" :"Fabricación de otros productos de madera; fabricación de artículos de corcho, cestería y espartería"},
-                        { "codigo" : "1701", "descripcion" :"Fabricación de pulpas (pastas) celulósicas; papel y cartón"},
-                        { "codigo" : "1702", "descripcion" :"Fabricación de papel y cartón ondulado (corrugado); fabricación de envases, empaques y de embalajes de papel y cartón."},
-                        { "codigo" : "1709", "descripcion" :"Fabricación de otros artículos de papel y cartón"},
-                        { "codigo" : "1811", "descripcion" :"Actividades de impresión"},
-                        { "codigo" : "1812", "descripcion" :"Actividades de servicios relacionados con la impresión"},
-                        { "codigo" : "1820", "descripcion" :"Producción de copias a partir de grabaciones originales "},
-                        { "codigo" : "1910", "descripcion" :"Fabricación de productos de hornos de coque"},
-                        { "codigo" : "1921", "descripcion" :"Fabricación de productos de la refinación del petróleo"},
-                        { "codigo" : "1922", "descripcion" :"Actividad de mezcla de combustibles"},
-                        { "codigo" : "2011", "descripcion" :"Fabricación de sustancias y productos químicos básicos"},
-                        { "codigo" : "2012", "descripcion" :"Fabricación de abonos y compuestos inorgánicos nitrogenados"},
-                        { "codigo" : "2013", "descripcion" :"Fabricación de plásticos en formas primarias"},
-                        { "codigo" : "2014", "descripcion" :"Fabricación de caucho sintético en formas primarias"},
-                        { "codigo" : "2021", "descripcion" :"Fabricación de plaguicidas y otros productos químicos de uso agropecuario"},
-                        { "codigo" : "2022", "descripcion" :"Fabricación de pinturas, barnices y revestimientos similares, tintas para impresión y masillas"},
-                        { "codigo" : "2023", "descripcion" :"Fabricación de jabones y detergentes, preparados para limpiar y pulir; perfumes y preparados de tocador"},
-                        { "codigo" : "2029", "descripcion" :"Fabricación de otros productos químicos n.c.p."},
-                        { "codigo" : "2030", "descripcion" :"Fabricación de fibras sintéticas y artificiales"},
-                        { "codigo" : "2100", "descripcion" :"Fabricación de productos farmacéuticos, sustancias químicas medicinales y productos botánicos de uso farmacéutico"},
-                        { "codigo" : "2211", "descripcion" :"Fabricación de llantas y neumáticos de caucho"},
-                        { "codigo" : "2212", "descripcion" :"Reencauche de llantas usadas"},
-                        { "codigo" : "2219", "descripcion" :"Fabricación de formas básicas de caucho y otros productos de caucho n.c.p."},
-                        { "codigo" : "2221", "descripcion" :"Fabricación de formas básicas de plástico"},
-                        { "codigo" : "2229", "descripcion" :"Fabricación de artículos de plástico n.c.p."},
-                        { "codigo" : "2310", "descripcion" :"Fabricación de vidrio y productos de vidrio"},
-                        { "codigo" : "2391", "descripcion" :"Fabricación de productos refractarios"},
-                        { "codigo" : "2392", "descripcion" :"Fabricación de materiales de arcilla para la construcción"},
-                        { "codigo" : "2393", "descripcion" :"Fabricación de otros productos de cerámica y porcelana"},
-                        { "codigo" : "2394", "descripcion" :"Fabricación de cemento, cal y yeso"},
-                        { "codigo" : "2395", "descripcion" :"Fabricación de artículos de hormigón, cemento y yeso"},
-                        { "codigo" : "2396", "descripcion" :"Corte, tallado y acabado de la piedra"},
-                        { "codigo" : "2399", "descripcion" :"Fabricación de otros productos minerales no metálicos n.c.p."},
-                        { "codigo" : "2410", "descripcion" :"Industrias básicas de hierro y de acero"},
-                        { "codigo" : "2421", "descripcion" :"Industrias básicas de metales preciosos"},
-                        { "codigo" : "2429", "descripcion" :"Industrias básicas de otros metales no ferrosos"},
-                        { "codigo" : "2431", "descripcion" :"Fundición de hierro y de acero"},
-                        { "codigo" : "2432", "descripcion" :"Fundición de metales no ferrosos "},
-                        { "codigo" : "2511", "descripcion" :"Fabricación de productos metálicos para uso estructural"},
-                        { "codigo" : "2512", "descripcion" :"Fabricación de tanques, depósitos y recipientes de metal, excepto los utilizados para el envase o transporte de mercancías"},
-                        { "codigo" : "2513", "descripcion" :"Fabricación de generadores de vapor, excepto calderas de agua caliente para calefacción central"},
-                        { "codigo" : "2520", "descripcion" :"Fabricación de armas y municiones"},
-                        { "codigo" : "2591", "descripcion" :"Forja, prensado, estampado y laminado de metal; pulvimetalurgia"},
-                        { "codigo" : "2592", "descripcion" :"Tratamiento y revestimiento de metales; mecanizado"},
-                        { "codigo" : "2593", "descripcion" :"Fabricación de artículos de cuchillería, herramientas de mano y artículos de ferretería"},
-                        { "codigo" : "2599", "descripcion" :"Fabricación de otros productos elaborados de metal n.c.p."},
-                        { "codigo" : "2610", "descripcion" :"Fabricación de componentes y tableros electrónicos"},
-                        { "codigo" : "2620", "descripcion" :"Fabricación de computadoras y de equipo periférico"},
-                        { "codigo" : "2630", "descripcion" :"Fabricación de equipos de comunicación"},
-                        { "codigo" : "2640", "descripcion" :"Fabricación de aparatos electrónicos de consumo"},
-                        { "codigo" : "2651", "descripcion" :"Fabricación de equipo de medición, prueba, navegación y control"},
-                        { "codigo" : "2652", "descripcion" :"Fabricación de relojes"},
-                        { "codigo" : "2660", "descripcion" :"Fabricación de equipo de irradiación y equipo electrónico de uso médico y terapéutico"},
-                        { "codigo" : "2670", "descripcion" :"Fabricación de instrumentos ópticos y equipo fotográfico"},
-                        { "codigo" : "2680", "descripcion" :"Fabricación de medios magnéticos y ópticos para almacenamiento de datos"},
-                        { "codigo" : "2711", "descripcion" :"Fabricación de motores, generadores y transformadores eléctricos"},
-                        { "codigo" : "2712", "descripcion" :"Fabricación de aparatos de distribución y control de la energía eléctrica"},
-                        { "codigo" : "2720", "descripcion" :"Fabricación de pilas, baterías y acumuladores eléctricos"},
-                        { "codigo" : "2731", "descripcion" :"Fabricación de hilos y cables eléctricos y de fibra óptica"},
-                        { "codigo" : "2732", "descripcion" :"Fabricación de dispositivos de cableado"},
-                        { "codigo" : "2740", "descripcion" :"Fabricación de equipos eléctricos de iluminación"},
-                        { "codigo" : "2750", "descripcion" :"Fabricación de aparatos de uso doméstico"},
-                        { "codigo" : "2790", "descripcion" :"Fabricación de otros tipos de equipo eléctrico n.c.p."},
-                        { "codigo" : "2811", "descripcion" :"Fabricación de motores, turbinas, y partes para motores de combustión interna"},
-                        { "codigo" : "2812", "descripcion" :"Fabricación de equipos de potencia hidráulica y neumática"},
-                        { "codigo" : "2813", "descripcion" :"Fabricación de otras bombas, compresores, grifos y válvulas"},
-                        { "codigo" : "2814", "descripcion" :"Fabricación de cojinetes, engranajes, trenes de engranajes y piezas de transmisión"},
-                        { "codigo" : "2815", "descripcion" :"Fabricación de hornos, hogares y quemadores industriales"},
-                        { "codigo" : "2816", "descripcion" :"Fabricación de equipo de elevación y manipulación"},
-                        { "codigo" : "2817", "descripcion" :"Fabricación de maquinaria y equipo de oficina (excepto computadoras y equipo periférico)"},
-                        { "codigo" : "2818", "descripcion" :"Fabricación de herramientas manuales con motor"},
-                        { "codigo" : "2819", "descripcion" :"Fabricación de otros tipos de maquinaria y equipo de uso general n.c.p."},
-                        { "codigo" : "2821", "descripcion" :"Fabricación de maquinaria agropecuaria y forestal"},
-                        { "codigo" : "2822", "descripcion" :"Fabricación de máquinas formadoras de metal y de máquinas herramienta"},
-                        { "codigo" : "2823", "descripcion" :"Fabricación de maquinaria para la metalurgia"},
-                        { "codigo" : "2824", "descripcion" :"Fabricación de maquinaria para explotación de minas y canteras y para obras de construcción"},
-                        { "codigo" : "2825", "descripcion" :"Fabricación de maquinaria para la elaboración de alimentos, bebidas y tabaco"},
-                        { "codigo" : "2826", "descripcion" :"Fabricación de maquinaria para la elaboración de productos textiles, prendas de vestir y cueros"},
-                        { "codigo" : "2829", "descripcion" :"Fabricación de otros tipos de maquinaria y equipo de uso especial n.c.p."},
-                        { "codigo" : "2910", "descripcion" :"Fabricación de vehículos automotores y sus motores"},
-                        { "codigo" : "2920", "descripcion" :"Fabricación de carrocerías para vehículos automotores; fabricación de remolques y semirremolques "},
-                        { "codigo" : "2930", "descripcion" :"Fabricación de partes, piezas (autopartes) y accesorios (lujos) para vehículos automotores"},
-                        { "codigo" : "3011", "descripcion" :"Construcción de barcos y de estructuras flotantes"},
-                        { "codigo" : "3012", "descripcion" :"Construcción de embarcaciones de recreo y deporte"},
-                        { "codigo" : "3020", "descripcion" :"Fabricación de locomotoras y de material rodante para ferrocarriles"},
-                        { "codigo" : "3030", "descripcion" :"Fabricación de aeronaves, naves espaciales y de maquinaria conexa"},
-                        { "codigo" : "3040", "descripcion" :"Fabricación de vehículos militares de combate"},
-                        { "codigo" : "3091", "descripcion" :"Fabricación de motocicletas"},
-                        { "codigo" : "3092", "descripcion" :"Fabricación de bicicletas y de sillas de ruedas para personas con discapacidad"},
-                        { "codigo" : "3099", "descripcion" :"Fabricación de otros tipos de equipo de transporte n.c.p."},
-                        { "codigo" : "3110", "descripcion" :"Fabricación de muebles "},
-                        { "codigo" : "3120", "descripcion" :"Fabricación de colchones y somieres"},
-                        { "codigo" : "3210", "descripcion" :"Fabricación de joyas, bisutería y artículos conexos"},
-                        { "codigo" : "3220", "descripcion" :"Fabricación de instrumentos musicales"},
-                        { "codigo" : "3230", "descripcion" :"Fabricación de artículos y equipo para la práctica del deporte"},
-                        { "codigo" : "3240", "descripcion" :"Fabricación de juegos, juguetes y rompecabezas"},
-                        { "codigo" : "3250", "descripcion" :"Fabricación de instrumentos, aparatos y materiales médicos y odontológicos (incluido mobiliario)"},
-                        { "codigo" : "3290", "descripcion" :"Otras industrias manufactureras n.c.p."},
-                        { "codigo" : "3311", "descripcion" :"Mantenimiento y reparación especializado de productos elaborados en metal"},
-                        { "codigo" : "3312", "descripcion" :"Mantenimiento y reparación especializado de maquinaria y equipo"},
-                        { "codigo" : "3313", "descripcion" :"Mantenimiento y reparación especializado de equipo electrónico y óptico"},
-                        { "codigo" : "3314", "descripcion" :"Mantenimiento y reparación especializado de equipo eléctrico"},
-                        { "codigo" : "3315", "descripcion" :"Mantenimiento y reparación especializado de equipo de transporte, excepto los vehículos automotores, motocicletas y bicicletas"},
-                        { "codigo" : "3319", "descripcion" :"Mantenimiento y reparación de otros tipos de equipos y sus componentes n.c.p."},
-                        { "codigo" : "3320", "descripcion" :"Instalación especializada de maquinaria y equipo industrial "},
-                        { "codigo" : "3511", "descripcion" :"Generación de energía eléctrica"},
-                        { "codigo" : "3512", "descripcion" :"Transmisión de energía eléctrica"},
-                        { "codigo" : "3513", "descripcion" :"Distribución de energía eléctrica"},
-                        { "codigo" : "3514", "descripcion" :"Comercialización de energía eléctrica"},
-                        { "codigo" : "3520", "descripcion" :"Producción de gas; distribución de combustibles gaseosos por tuberías"},
-                        { "codigo" : "3530", "descripcion" :"Suministro de vapor y aire acondicionado"},
-                        { "codigo" : "3600", "descripcion" :"Captación, tratamiento y distribución de agua"},
-                        { "codigo" : "3700", "descripcion" :"Evacuación y tratamiento de aguas residuales"},
-                        { "codigo" : "3811", "descripcion" :"Recolección de desechos no peligrosos"},
-                        { "codigo" : "3812", "descripcion" :"Recolección de desechos peligrosos"},
-                        { "codigo" : "3821", "descripcion" :"Tratamiento y disposición de desechos no peligrosos"},
-                        { "codigo" : "3822", "descripcion" :"Tratamiento y disposición de desechos peligrosos"},
-                        { "codigo" : "3830", "descripcion" :"Recuperación de materiales"},
-                        { "codigo" : "3900", "descripcion" :"Actividades de saneamiento ambiental y otros servicios de gestión de desechos"},
-                        { "codigo" : "4111", "descripcion" :"Construcción de edificios residenciales"},
-                        { "codigo" : "4112", "descripcion" :"Construcción de edificios no residenciales"},
-                        { "codigo" : "4210", "descripcion" :"Construcción de carreteras y vías de ferrocarril"},
-                        { "codigo" : "4220", "descripcion" :"Construcción de proyectos de servicio público"},
-                        { "codigo" : "4290", "descripcion" :"Construcción de otras obras de ingeniería civil"},
-                        { "codigo" : "4311", "descripcion" :"Demolición"},
-                        { "codigo" : "4312", "descripcion" :"Preparación del terreno"},
-                        { "codigo" : "4321", "descripcion" :"Instalaciones eléctricas"},
-                        { "codigo" : "4322", "descripcion" :"Instalaciones de fontanería, calefacción y aire acondicionado"},
-                        { "codigo" : "4329", "descripcion" :"Otras instalaciones especializadas"},
-                        { "codigo" : "4330", "descripcion" :"Terminación y acabado de edificios y obras de ingeniería civil"},
-                        { "codigo" : "4390", "descripcion" :"Otras actividades especializadas para la construcción de edificios y obras de ingeniería civil"},
-                        { "codigo" : "4511", "descripcion" :"Comercio de vehículos automotores nuevos"},
-                        { "codigo" : "4512", "descripcion" :"Comercio de vehículos automotores usados"},
-                        { "codigo" : "4520", "descripcion" :"Mantenimiento y reparación de vehículos automotores"},
-                        { "codigo" : "4530", "descripcion" :"Comercio de partes, piezas (autopartes) y accesorios (lujos) para vehículos automotores"},
-                        { "codigo" : "4541", "descripcion" :"Comercio de motocicletas y de sus partes, piezas y accesorios"},
-                        { "codigo" : "4542", "descripcion" :"Mantenimiento y reparación de motocicletas y de sus partes y piezas"},
-                        { "codigo" : "4610", "descripcion" :"Comercio al por mayor a cambio de una retribución o por contrata"},
-                        { "codigo" : "4620", "descripcion" :"Comercio al por mayor de materias primas agropecuarias; animales vivos"},
-                        { "codigo" : "4631", "descripcion" :"Comercio al por mayor de productos alimenticios"},
-                        { "codigo" : "4632", "descripcion" :"Comercio al por mayor de bebidas y tabaco"},
-                        { "codigo" : "4641", "descripcion" :"Comercio al por mayor de productos textiles, productos confeccionados para uso doméstico"},
-                        { "codigo" : "4642", "descripcion" :"Comercio al por mayor de prendas de vestir"},
-                        { "codigo" : "4643", "descripcion" :"Comercio al por mayor de calzado"},
-                        { "codigo" : "4644", "descripcion" :"Comercio al por mayor de aparatos y equipo de uso doméstico"},
-                        { "codigo" : "4645", "descripcion" :"Comercio al por mayor de productos farmacéuticos, medicinales, cosméticos y de tocador"},
-                        { "codigo" : "4649", "descripcion" :"Comercio al por mayor de otros utensilios domésticos n.c.p."},
-                        { "codigo" : "4651", "descripcion" :"Comercio al por mayor de computadores, equipo periférico y programas de informática"},
-                        { "codigo" : "4652", "descripcion" :"Comercio al por mayor de equipo, partes y piezas electrónicos y de telecomunicaciones"},
-                        { "codigo" : "4653", "descripcion" :"Comercio al por mayor de maquinaria y equipo agropecuarios"},
-                        { "codigo" : "4659", "descripcion" :"Comercio al por mayor de otros tipos de maquinaria y equipo n.c.p."},
-                        { "codigo" : "4661", "descripcion" :"Comercio al por mayor de combustibles sólidos, líquidos, gaseosos y productos conexos"},
-                        { "codigo" : "4662", "descripcion" :"Comercio al por mayor de metales y productos metalíferos"},
-                        { "codigo" : "4663", "descripcion" :"Comercio al por mayor de materiales de construcción, artículos de ferretería, pinturas, productos de vidrio, equipo y materiales de fontanería y calefacción"},
-                        { "codigo" : "4664", "descripcion" :"Comercio al por mayor de productos químicos básicos, cauchos y plásticos en formas primarias y productos químicos de uso agropecuario"},
-                        { "codigo" : "4665", "descripcion" :"Comercio al por mayor de desperdicios, desechos y chatarra"},
-                        { "codigo" : "4669", "descripcion" :"Comercio al por mayor de otros productos n.c.p."},
-                        { "codigo" : "4690", "descripcion" :"Comercio al por mayor no especializado"},
-                        { "codigo" : "4711", "descripcion" :"Comercio al por menor en establecimientos no especializados con surtido compuesto principalmente por alimentos, bebidas o tabaco"},
-                        { "codigo" : "4719", "descripcion" :"Comercio al por menor en establecimientos no especializados, con surtido compuesto principalmente por productos diferentes de alimentos (víveres en general), bebidas y tabaco"},
-                        { "codigo" : "4721", "descripcion" :"Comercio al por menor de productos agrícolas para el consumo en establecimientos especializados"},
-                        { "codigo" : "4722", "descripcion" :"Comercio al por menor de leche, productos lácteos y huevos, en establecimientos especializados"},
-                        { "codigo" : "4723", "descripcion" :"Comercio al por menor de carnes (incluye aves de corral), productos cárnicos, pescados y productos de mar, en establecimientos especializados"},
-                        { "codigo" : "4724", "descripcion" :"Comercio al por menor de bebidas y productos del tabaco, en establecimientos especializados"},
-                        { "codigo" : "4729", "descripcion" :"Comercio al por menor de otros productos alimenticios n.c.p., en establecimientos especializados"},
-                        { "codigo" : "4731", "descripcion" :"Comercio al por menor de combustible para automotores"},
-                        { "codigo" : "4732", "descripcion" :"Comercio al por menor de lubricantes (aceites, grasas), aditivos y productos de limpieza para vehículos automotores"},
-                        { "codigo" : "4741", "descripcion" :"Comercio al por menor de computadores, equipos periféricos, programas de informática y equipos de telecomunicaciones en establecimientos especializados"},
-                        { "codigo" : "4742", "descripcion" :"Comercio al por menor de equipos y aparatos de sonido y de video, en establecimientos especializados"},
-                        { "codigo" : "4751", "descripcion" :"Comercio al por menor de productos textiles en establecimientos especializados"},
-                        { "codigo" : "4752", "descripcion" :"Comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados"},
-                        { "codigo" : "4753", "descripcion" :"Comercio al por menor de tapices, alfombras y cubrimientos para paredes y pisos en establecimientos especializados"},
-                        { "codigo" : "4754", "descripcion" :"Comercio al por menor de electrodomésticos y gasodomésticos de uso doméstico, muebles y equipos de iluminación"},
-                        { "codigo" : "4755", "descripcion" :"Comercio al por menor de artículos y utensilios de uso doméstico"},
-                        { "codigo" : "4759", "descripcion" :"Comercio al por menor de otros artículos domésticos en establecimientos especializados"},
-                        { "codigo" : "4761", "descripcion" :"Comercio al por menor de libros, periódicos, materiales y artículos de papelería y escritorio, en establecimientos especializados"},
-                        { "codigo" : "4762", "descripcion" :"Comercio al por menor de artículos deportivos, en establecimientos especializados "},
-                        { "codigo" : "4769", "descripcion" :"Comercio al por menor de otros artículos culturales y de entretenimiento n.c.p. en establecimientos especializados"},
-                        { "codigo" : "4771", "descripcion" :"Comercio al por menor de prendas de vestir y sus accesorios (incluye artículos de piel) en establecimientos especializados"},
-                        { "codigo" : "4772", "descripcion" :"Comercio al por menor de todo tipo de calzado y artículos de cuero y sucedáneos del cuero en establecimientos especializados."},
-                        { "codigo" : "4773", "descripcion" :"Comercio al por menor de productos farmacéuticos y medicinales, cosméticos y artículos de tocador en establecimientos especializados"},
-                        { "codigo" : "4774", "descripcion" :"Comercio al por menor de otros productos nuevos en establecimientos especializados"},
-                        { "codigo" : "4775", "descripcion" :"Comercio al por menor de artículos de segunda mano"},
-                        { "codigo" : "4781", "descripcion" :"Comercio al por menor de alimentos, bebidas y tabaco, en puestos de venta móviles"},
-                        { "codigo" : "4782", "descripcion" :"Comercio al por menor de productos textiles, prendas de vestir y calzado, en puestos de venta móviles"},
-                        { "codigo" : "4789", "descripcion" :"Comercio al por menor de otros productos en puestos de venta móviles"},
-                        { "codigo" : "4791", "descripcion" :"Comercio al por menor realizado a través de Internet"},
-                        { "codigo" : "4792", "descripcion" :"Comercio al por menor realizado a través de casas de venta o por correo"},
-                        { "codigo" : "4799", "descripcion" :"Otros tipos de comercio al por menor no realizado en establecimientos, puestos de venta o mercados."},
-                        { "codigo" : "4911", "descripcion" :"Transporte férreo de pasajeros"},
-                        { "codigo" : "4912", "descripcion" :"Transporte férreo de carga "},
-                        { "codigo" : "4921", "descripcion" :"Transporte de pasajeros"},
-                        { "codigo" : "4922", "descripcion" :"Transporte mixto"},
-                        { "codigo" : "4923", "descripcion" :"Transporte de carga por carretera"},
-                        { "codigo" : "4930", "descripcion" :"Transporte por tuberías"},
-                        { "codigo" : "5011", "descripcion" :"Transporte de pasajeros marítimo y de cabotaje "},
-                        { "codigo" : "5012", "descripcion" :"Transporte de carga marítimo y de cabotaje "},
-                        { "codigo" : "5021", "descripcion" :"Transporte fluvial de pasajeros"},
-                        { "codigo" : "5022", "descripcion" :"Transporte fluvial de carga"},
-                        { "codigo" : "5111", "descripcion" :"Transporte aéreo nacional de pasajeros "},
-                        { "codigo" : "5112", "descripcion" :"Transporte aéreo internacional de pasajeros "},
-                        { "codigo" : "5121", "descripcion" :"Transporte aéreo nacional de carga "},
-                        { "codigo" : "5122", "descripcion" :"Transporte aéreo internacional de carga "},
-                        { "codigo" : "5210", "descripcion" :"Almacenamiento y depósito"},
-                        { "codigo" : "5221", "descripcion" :"Actividades de estaciones, vías y servicios complementarios para el transporte terrestre"},
-                        { "codigo" : "5222", "descripcion" :"Actividades de puertos y servicios complementarios para el transporte acuático"},
-                        { "codigo" : "5223", "descripcion" :"Actividades de aeropuertos, servicios de navegación aérea y demás actividades conexas al transporte aéreo"},
-                        { "codigo" : "5224", "descripcion" :"Manipulación de carga"},
-                        { "codigo" : "5229", "descripcion" :"Otras actividades complementarias al transporte"},
-                        { "codigo" : "5310", "descripcion" :"Actividades postales nacionales"},
-                        { "codigo" : "5320", "descripcion" :"Actividades de mensajería"},
-                        { "codigo" : "5511", "descripcion" :"Alojamiento en hoteles "},
-                        { "codigo" : "5512", "descripcion" :"Alojamiento en apartahoteles"},
-                        { "codigo" : "5513", "descripcion" :"Alojamiento en centros vacacionales "},
-                        { "codigo" : "5514", "descripcion" :"Alojamiento rural"},
-                        { "codigo" : "5519", "descripcion" :"Otros tipos de alojamientos para visitantes"},
-                        { "codigo" : "5520", "descripcion" :"Actividades de zonas de camping y parques para vehículos recreacionales"},
-                        { "codigo" : "5530", "descripcion" :"Servicio por horas "},
-                        { "codigo" : "5590", "descripcion" :"Otros tipos de alojamiento n.c.p."},
-                        { "codigo" : "5611", "descripcion" :"Expendio a la mesa de comidas preparadas"},
-                        { "codigo" : "5612", "descripcion" :"Expendio por autoservicio de comidas preparadas"},
-                        { "codigo" : "5613", "descripcion" :"Expendio de comidas preparadas en cafeterías"},
-                        { "codigo" : "5619", "descripcion" :"Otros tipos de expendio de comidas preparadas n.c.p."},
-                        { "codigo" : "5621", "descripcion" :"Catering para eventos"},
-                        { "codigo" : "5629", "descripcion" :"Actividades de otros servicios de comidas"},
-                        { "codigo" : "5630", "descripcion" :"Expendio de bebidas alcohólicas para el consumo dentro del establecimiento"},
-                        { "codigo" : "5811", "descripcion" :"Edición de libros"},
-                        { "codigo" : "5812", "descripcion" :"Edición de directorios y listas de correo"},
-                        { "codigo" : "5813", "descripcion" :"Edición de periódicos, revistas y otras publicaciones periódicas"},
-                        { "codigo" : "5819", "descripcion" :"Otros trabajos de edición"},
-                        { "codigo" : "5820", "descripcion" :"Edición de programas de informática (software)"},
-                        { "codigo" : "5911", "descripcion" :"Actividades de producción de películas cinematográficas, videos, programas, anuncios y comerciales de televisión"},
-                        { "codigo" : "5912", "descripcion" :"Actividades de posproducción de películas cinematográficas, videos, programas, anuncios y comerciales de televisión"},
-                        { "codigo" : "5913", "descripcion" :"Actividades de distribución de películas cinematográficas, videos, programas, anuncios y comerciales de televisión"},
-                        { "codigo" : "5914", "descripcion" :"Actividades de exhibición de películas cinematográficas y videos"},
-                        { "codigo" : "5920", "descripcion" :"Actividades de grabación de sonido y edición de música"},
-                        { "codigo" : "6010", "descripcion" :"Actividades de programación y transmisión en el servicio de radiodifusión sonora"},
-                        { "codigo" : "6020", "descripcion" :"Actividades de programación y transmisión de televisión"},
-                        { "codigo" : "6110", "descripcion" :"Actividades de telecomunicaciones alámbricas"},
-                        { "codigo" : "6120", "descripcion" :"Actividades de telecomunicaciones inalámbricas"},
-                        { "codigo" : "6130", "descripcion" :"Actividades de telecomunicación satelital"},
-                        { "codigo" : "6190", "descripcion" :"Otras actividades de telecomunicaciones"},
-                        { "codigo" : "6201", "descripcion" :"Actividades de desarrollo de sistemas informáticos (planificación, análisis, diseño, programación, pruebas)"},
-                        { "codigo" : "6202", "descripcion" :"Actividades de consultoría informática y actividades de administración de instalaciones informáticas"},
-                        { "codigo" : "6209", "descripcion" :"Otras actividades de tecnologías de información y actividades de servicios informáticos"},
-                        { "codigo" : "6311", "descripcion" :"Procesamiento de datos, alojamiento (hosting) y actividades relacionadas"},
-                        { "codigo" : "6312", "descripcion" :"Portales web"},
-                        { "codigo" : "6391", "descripcion" :"Actividades de agencias de noticias"},
-                        { "codigo" : "6399", "descripcion" :"Otras actividades de servicio de información n.c.p."},
-                        { "codigo" : "6411", "descripcion" :"Banco Central"},
-                        { "codigo" : "6412", "descripcion" :"Bancos comerciales"},
-                        { "codigo" : "6421", "descripcion" :"Actividades de las corporaciones financieras"},
-                        { "codigo" : "6422", "descripcion" :"Actividades de las compañías de financiamiento"},
-                        { "codigo" : "6423", "descripcion" :"Banca de segundo piso"},
-                        { "codigo" : "6424", "descripcion" :"Actividades de las cooperativas financieras"},
-                        { "codigo" : "6431", "descripcion" :"Fideicomisos, fondos y entidades financieras similares"},
-                        { "codigo" : "6432", "descripcion" :"Fondos de cesantías"},
-                        { "codigo" : "6491", "descripcion" :"Leasing financiero (arrendamiento financiero)"},
-                        { "codigo" : "6492", "descripcion" :"Actividades financieras de fondos de empleados y otras formas asociativas del sector solidario"},
-                        { "codigo" : "6493", "descripcion" :"Actividades de compra de cartera o factoring"},
-                        { "codigo" : "6494", "descripcion" :"Otras actividades de distribución de fondos"},
-                        { "codigo" : "6495", "descripcion" :"Instituciones especiales oficiales"},
-                        { "codigo" : "6499", "descripcion" :"Otras actividades de servicio financiero, excepto las de seguros y pensiones n.c.p."},
-                        { "codigo" : "6511", "descripcion" :"Seguros generales "},
-                        { "codigo" : "6512", "descripcion" :"Seguros de vida"},
-                        { "codigo" : "6513", "descripcion" :"Reaseguros"},
-                        { "codigo" : "6514", "descripcion" :"Capitalización"},
-                        { "codigo" : "6521", "descripcion" :"Servicios de seguros sociales de salud"},
-                        { "codigo" : "6522", "descripcion" :"Servicios de seguros sociales de riesgos profesionales"},
-                        { "codigo" : "6531", "descripcion" :"Régimen de prima media con prestación definida (RPM)"},
-                        { "codigo" : "6532", "descripcion" :"Régimen de ahorro individual (RAI)"},
-                        { "codigo" : "6611", "descripcion" :"Administración de mercados financieros"},
-                        { "codigo" : "6612", "descripcion" :"Corretaje de valores y de contratos de productos básicos"},
-                        { "codigo" : "6613", "descripcion" :"Otras actividades relacionadas con el mercado de valores"},
-                        { "codigo" : "6614", "descripcion" :"Actividades de las casas de cambio"},
-                        { "codigo" : "6615", "descripcion" :"Actividades de los profesionales de compra y venta de divisas"},
-                        { "codigo" : "6619", "descripcion" :"Otras actividades auxiliares de las actividades de servicios financieros n.c.p."},
-                        { "codigo" : "6621", "descripcion" :"Actividades de agentes y corredores de seguros"},
-                        { "codigo" : "6629", "descripcion" :"Evaluación de riesgos y daños, y otras actividades de servicios auxiliares"},
-                        { "codigo" : "6630", "descripcion" :"Actividades de administración de fondos"},
-                        { "codigo" : "6810", "descripcion" :"Actividades inmobiliarias realizadas con bienes propios o arrendados"},
-                        { "codigo" : "6820", "descripcion" :"Actividades inmobiliarias realizadas a cambio de una retribución o por contrata "},
-                        { "codigo" : "6910", "descripcion" :"Actividades jurídicas"},
-                        { "codigo" : "6920", "descripcion" :"Actividades de contabilidad, teneduría de libros, auditoría financiera y asesoría tributaria"},
-                        { "codigo" : "7010", "descripcion" :"Actividades de administración empresarial"},
-                        { "codigo" : "7020", "descripcion" :"Actividades de consultaría de gestión"},
-                        { "codigo" : "7110", "descripcion" :"Actividades de arquitectura e ingeniería y otras actividades conexas de consultoría técnica"},
-                        { "codigo" : "7120", "descripcion" :"Ensayos y análisis técnicos"},
-                        { "codigo" : "7210", "descripcion" :"Investigaciones y desarrollo experimental en el campo de las ciencias naturales y la ingeniería "},
-                        { "codigo" : "7220", "descripcion" :"Investigaciones y desarrollo experimental en el campo de las ciencias sociales y las humanidades"},
-                        { "codigo" : "7310", "descripcion" :"Publicidad"},
-                        { "codigo" : "7320", "descripcion" :"Estudios de mercado y realización de encuestas de opinión pública"},
-                        { "codigo" : "7410", "descripcion" :"Actividades especializadas de diseño "},
-                        { "codigo" : "7420", "descripcion" :"Actividades de fotografía"},
-                        { "codigo" : "7490", "descripcion" :"Otras actividades profesionales, científicas y técnicas n.c.p."},
-                        { "codigo" : "7500", "descripcion" :"Actividades veterinarias"},
-                        { "codigo" : "7710", "descripcion" :"Alquiler y arrendamiento de vehículos automotores"},
-                        { "codigo" : "7721", "descripcion" :"Alquiler y arrendamiento de equipo recreativo y deportivo"},
-                        { "codigo" : "7722", "descripcion" :"Alquiler de videos y discos "},
-                        { "codigo" : "7729", "descripcion" :"Alquiler y arrendamiento de otros efectos personales y enseres domésticos n.c.p."},
-                        { "codigo" : "7730", "descripcion" :"Alquiler y arrendamiento de otros tipos de maquinaria, equipo y bienes tangibles n.c.p."},
-                        { "codigo" : "7740", "descripcion" :"Arrendamiento de propiedad intelectual y productos similares, excepto obras protegidas por derechos de autor"},
-                        { "codigo" : "7810", "descripcion" :"Actividades de agencias de empleo"},
-                        { "codigo" : "7820", "descripcion" :"Actividades de agencias de empleo temporal"},
-                        { "codigo" : "7830", "descripcion" :"Otras actividades de suministro de recurso humano"},
-                        { "codigo" : "7911", "descripcion" :"Actividades de las agencias de viaje"},
-                        { "codigo" : "7912", "descripcion" :"Actividades de operadores turísticos"},
-                        { "codigo" : "7990", "descripcion" :"Otros servicios de reserva y actividades relacionadas"},
-                        { "codigo" : "8010", "descripcion" :"Actividades de seguridad privada"},
-                        { "codigo" : "8020", "descripcion" :"Actividades de servicios de sistemas de seguridad"},
-                        { "codigo" : "8030", "descripcion" :"Actividades de detectives e investigadores privados"},
-                        { "codigo" : "8110", "descripcion" :"Actividades combinadas de apoyo a instalaciones"},
-                        { "codigo" : "8121", "descripcion" :"Limpieza general interior de edificios"},
-                        { "codigo" : "8129", "descripcion" :"Otras actividades de limpieza de edificios e instalaciones industriales"},
-                        { "codigo" : "8130", "descripcion" :"Actividades de paisajismo y servicios de mantenimiento conexos"},
-                        { "codigo" : "8211", "descripcion" :"Actividades combinadas de servicios administrativos de oficina"},
-                        { "codigo" : "8219", "descripcion" :"Fotocopiado, preparación de documentos y otras actividades especializadas de apoyo a oficina"},
-                        { "codigo" : "8220", "descripcion" :"Actividades de centros de llamadas (Call center)"},
-                        { "codigo" : "8230", "descripcion" :"Organización de convenciones y eventos comerciales"},
-                        { "codigo" : "8291", "descripcion" :"Actividades de agencias de cobranza y oficinas de calificación crediticia"},
-                        { "codigo" : "8292", "descripcion" :"Actividades de envase y empaque"},
-                        { "codigo" : "8299", "descripcion" :"Otras actividades de servicio de apoyo a las empresas n.c.p."},
-                        { "codigo" : "8411", "descripcion" :"Actividades legislativas de la administración pública"},
-                        { "codigo" : "8412", "descripcion" :"Actividades ejecutivas de la administración pública"},
-                        { "codigo" : "8413", "descripcion" :"Regulación de las actividades de organismos que prestan servicios de salud, educativos, culturales y otros servicios sociales, excepto servicios de seguridad social "},
-                        { "codigo" : "8414", "descripcion" :"Actividades reguladoras y facilitadoras de la actividad económica"},
-                        { "codigo" : "8415", "descripcion" :"Actividades de los otros órganos de control"},
-                        { "codigo" : "8421", "descripcion" :"Relaciones exteriores "},
-                        { "codigo" : "8422", "descripcion" :"Actividades de defensa"},
-                        { "codigo" : "8423", "descripcion" :"Orden público y actividades de seguridad"},
-                        { "codigo" : "8424", "descripcion" :"Administración de justicia"},
-                        { "codigo" : "8430", "descripcion" :"Actividades de planes de seguridad social de afiliación obligatoria"},
-                        { "codigo" : "8511", "descripcion" :"Educación de la primera infancia"},
-                        { "codigo" : "8512", "descripcion" :"Educación preescolar"},
-                        { "codigo" : "8513", "descripcion" :"Educación básica primaria"},
-                        { "codigo" : "8521", "descripcion" :"Educación básica secundaria "},
-                        { "codigo" : "8522", "descripcion" :"Educación media académica"},
-                        { "codigo" : "8523", "descripcion" :"Educación media técnica y de formación laboral"},
-                        { "codigo" : "8530", "descripcion" :"Establecimientos que combinan diferentes niveles de educación "},
-                        { "codigo" : "8541", "descripcion" :"Educación técnica profesional"},
-                        { "codigo" : "8542", "descripcion" :"Educación tecnológica"},
-                        { "codigo" : "8543", "descripcion" :"Educación de instituciones universitarias o de escuelas tecnológicas"},
-                        { "codigo" : "8544", "descripcion" :"Educación de universidades"},
-                        { "codigo" : "8551", "descripcion" :"Formación académica no formal "},
-                        { "codigo" : "8552", "descripcion" :"Enseñanza deportiva y recreativa"},
-                        { "codigo" : "8553", "descripcion" :"Enseñanza cultural"},
-                        { "codigo" : "8559", "descripcion" :"Otros tipos de educación n.c.p."},
-                        { "codigo" : "8560", "descripcion" :"Actividades de apoyo a la educación"},
-                        { "codigo" : "8610", "descripcion" :"Actividades de hospitales y clínicas, con internación"},
-                        { "codigo" : "8621", "descripcion" :"Actividades de la práctica médica, sin internación"},
-                        { "codigo" : "8622", "descripcion" :"Actividades de la práctica odontológica"},
-                        { "codigo" : "8691", "descripcion" :"Actividades de apoyo diagnóstico"},
-                        { "codigo" : "8692", "descripcion" :"Actividades de apoyo terapéutico"},
-                        { "codigo" : "8699", "descripcion" :"Otras actividades de atención de la salud humana"},
-                        { "codigo" : "8710", "descripcion" :"Actividades de atención residencial medicalizada de tipo general"},
-                        { "codigo" : "8720", "descripcion" :"Actividades de atención residencial, para el cuidado de pacientes con retardo mental, enfermedad mental y consumo de sustancias psicoactivas"},
-                        { "codigo" : "8730", "descripcion" :"Actividades de atención en instituciones para el cuidado de personas mayores y/o discapacitadas"},
-                        { "codigo" : "8790", "descripcion" :"Otras actividades de atención en instituciones con alojamiento"},
-                        { "codigo" : "8810", "descripcion" :"Actividades de asistencia social sin alojamiento para personas mayores y discapacitadas"},
-                        { "codigo" : "8890", "descripcion" :"Otras actividades de asistencia social sin alojamiento"},
-                        { "codigo" : "9001", "descripcion" :"Creación literaria"},
-                        { "codigo" : "9002", "descripcion" :"Creación musical"},
-                        { "codigo" : "9003", "descripcion" :"Creación teatral"},
-                        { "codigo" : "9004", "descripcion" :"Creación audiovisual"},
-                        { "codigo" : "9005", "descripcion" :"Artes plásticas y visuales"},
-                        { "codigo" : "9006", "descripcion" :"Actividades teatrales"},
-                        { "codigo" : "9007", "descripcion" :"Actividades de espectáculos musicales en vivo"},
-                        { "codigo" : "9008", "descripcion" :"Otras actividades de espectáculos en vivo"},
-                        { "codigo" : "9101", "descripcion" :"Actividades de bibliotecas y archivos"},
-                        { "codigo" : "9102", "descripcion" :"Actividades y funcionamiento de museos, conservación de edificios y sitios históricos"},
-                        { "codigo" : "9103", "descripcion" :"Actividades de jardines botánicos, zoológicos y reservas naturales"},
-                        { "codigo" : "9200", "descripcion" :"Actividades de juegos de azar y apuestas"},
-                        { "codigo" : "9311", "descripcion" :"Gestión de instalaciones deportivas"},
-                        { "codigo" : "9312", "descripcion" :"Actividades de clubes deportivos"},
-                        { "codigo" : "9319", "descripcion" :"Otras actividades deportivas"},
-                        { "codigo" : "9321", "descripcion" :"Actividades de parques de atracciones y parques temáticos"},
-                        { "codigo" : "9329", "descripcion" :"Otras actividades recreativas y de esparcimiento n.c.p."},
-                        { "codigo" : "9411", "descripcion" :"Actividades de asociaciones empresariales y de empleadores"},
-                        { "codigo" : "9412", "descripcion" :"Actividades de asociaciones profesionales"},
-                        { "codigo" : "9420", "descripcion" :"Actividades de sindicatos de empleados"},
-                        { "codigo" : "9491", "descripcion" :"Actividades de asociaciones religiosas"},
-                        { "codigo" : "9492", "descripcion" :"Actividades de asociaciones políticas"},
-                        { "codigo" : "9499", "descripcion" :"Actividades de otras asociaciones n.c.p."},
-                        { "codigo" : "9511", "descripcion" :"Mantenimiento y reparación de computadores y de equipo periférico"},
-                        { "codigo" : "9512", "descripcion" :"Mantenimiento y reparación de equipos de comunicación"},
-                        { "codigo" : "9521", "descripcion" :"Mantenimiento y reparación de aparatos electrónicos de consumo"},
-                        { "codigo" : "9522", "descripcion" :"Mantenimiento y reparación de aparatos y equipos domésticos y de jardinería "},
-                        { "codigo" : "9523", "descripcion" :"Reparación de calzado y artículos de cuero"},
-                        { "codigo" : "9524", "descripcion" :"Reparación de muebles y accesorios para el hogar"},
-                        { "codigo" : "9529", "descripcion" :"Mantenimiento y reparación de otros efectos personales y enseres domésticos"},
-                        { "codigo" : "9601", "descripcion" :"Lavado y limpieza, incluso la limpieza en seco, de productos textiles y de piel"},
-                        { "codigo" : "9602", "descripcion" :"Peluquería y otros tratamientos de belleza"},
-                        { "codigo" : "9603", "descripcion" :"Pompas fúnebres y actividades relacionadas"},
-                        { "codigo" : "9609", "descripcion" :"Otras actividades de servicios personales n.c.p."},
-                        { "codigo" : "9700", "descripcion" :"Actividades de los hogares individuales como empleadores de personal doméstico"},
-                        { "codigo" : "9810", "descripcion" :"Actividades no diferenciadas de los hogares individuales como productores de bienes para uso propio"},
-                        { "codigo" : "9820", "descripcion" :"Actividades no diferenciadas de los hogares individuales como productores de servicios para uso propio"},
-                        { "codigo" : "9900", "descripcion" :"Actividades de organizaciones y entidades extraterritoriales"}
-                
-                    ]
-                    }'
-            ]);
-        }
+     */
+    public function run()
+    {
+        DB::table('ciiu')->insert([  'codigo' =>'0111', 'descripcion' => 'Cultivo de cereales (excepto arroz), legumbres y semillas oleaginosas ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0112', 'descripcion' => 'Cultivo de arroz ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0113', 'descripcion' => 'Cultivo de hortalizas, raíces y tubérculos ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0114', 'descripcion' => 'Cultivo de tabaco ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0115', 'descripcion' => 'Cultivo de plantas textiles ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0119', 'descripcion' => 'Otros cultivos transitorios n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'0121', 'descripcion' => 'Cultivo de frutas tropicales y subtropicales']);
+        DB::table('ciiu')->insert([  'codigo' =>'0122', 'descripcion' => 'Cultivo de plátano y banano']);
+        DB::table('ciiu')->insert([  'codigo' =>'0123', 'descripcion' => 'Cultivo de café']);
+        DB::table('ciiu')->insert([  'codigo' =>'0124', 'descripcion' => 'Cultivo de caña de azúcar']);
+        DB::table('ciiu')->insert([  'codigo' =>'0125', 'descripcion' => 'Cultivo de flor de corte']);
+        DB::table('ciiu')->insert([  'codigo' =>'0126', 'descripcion' => 'Cultivo de palma para aceite (palma africana) y otros frutos oleaginosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'0127', 'descripcion' => 'Cultivo de plantas con las que se preparan bebidas']);
+        DB::table('ciiu')->insert([  'codigo' =>'0128', 'descripcion' => 'Cultivo de especias y de plantas aromáticas y medicinales ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0129', 'descripcion' => 'Otros cultivos permanentes n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'0130', 'descripcion' => 'Propagación de plantas (actividades de los viveros, excepto viveros forestales) ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0141', 'descripcion' => 'Cría de ganado bovino y bufalino']);
+        DB::table('ciiu')->insert([  'codigo' =>'0142', 'descripcion' => 'Cría de caballos y otros equinos ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0143', 'descripcion' => 'Cría de ovejas y cabras ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0144', 'descripcion' => 'Cría de ganado porcino']);
+        DB::table('ciiu')->insert([  'codigo' =>'0145', 'descripcion' => 'Cría de aves de corral']);
+        DB::table('ciiu')->insert([  'codigo' =>'0149', 'descripcion' => 'Cría de otros animales n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'0150', 'descripcion' => 'Explotación mixta (agrícola y pecuaria) ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0161', 'descripcion' => 'Actividades de apoyo a la agricultura ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0162', 'descripcion' => 'Actividades de apoyo a la ganadería']);
+        DB::table('ciiu')->insert([  'codigo' =>'0163', 'descripcion' => 'Actividades posteriores a la cosecha ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0164', 'descripcion' => 'Tratamiento de semillas para propagación ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0170', 'descripcion' => 'Caza ordinaria y mediante trampas y actividades de servicios conexas ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0210', 'descripcion' => 'Silvicultura y otras actividades forestales']);
+        DB::table('ciiu')->insert([  'codigo' =>'0220', 'descripcion' => 'Extracción de madera ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0230', 'descripcion' => 'Recolección de productos forestales diferentes a la madera']);
+        DB::table('ciiu')->insert([  'codigo' =>'0240', 'descripcion' => 'Servicios de apoyo a la silvicultura ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0311', 'descripcion' => 'Pesca marítima ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0312', 'descripcion' => 'Pesca de agua dulce ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0321', 'descripcion' => 'Acuicultura marítima ']);
+        DB::table('ciiu')->insert([  'codigo' =>'0322', 'descripcion' => 'Acuicultura de agua dulce']);
+        DB::table('ciiu')->insert([  'codigo' =>'0510', 'descripcion' => 'Extracción de hulla (carbón de piedra)']);
+        DB::table('ciiu')->insert([  'codigo' =>'0520', 'descripcion' => 'Extracción de carbón lignito']);
+        DB::table('ciiu')->insert([  'codigo' =>'0610', 'descripcion' => 'Extracción de petróleo crudo']);
+        DB::table('ciiu')->insert([  'codigo' =>'0620', 'descripcion' => 'Extracción de gas natural']);
+        DB::table('ciiu')->insert([  'codigo' =>'0710', 'descripcion' => 'Extracción de minerales de hierro']);
+        DB::table('ciiu')->insert([  'codigo' =>'0721', 'descripcion' => 'Extracción de minerales de uranio y de torio']);
+        DB::table('ciiu')->insert([  'codigo' =>'0722', 'descripcion' => 'Extracción de oro y otros metales preciosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'0723', 'descripcion' => 'Extracción de minerales de níquel']);
+        DB::table('ciiu')->insert([  'codigo' =>'0729', 'descripcion' => 'Extracción de otros minerales metalíferos no ferrosos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'0811', 'descripcion' => 'Extracción de piedra, arena, arcillas comunes, yeso y anhidrita']);
+        DB::table('ciiu')->insert([  'codigo' =>'0812', 'descripcion' => 'Extracción de arcillas de uso industrial, caliza, caolín y bentonitas']);
+        DB::table('ciiu')->insert([  'codigo' =>'0820', 'descripcion' => 'Extracción de esmeraldas, piedras preciosas y semipreciosas']);
+        DB::table('ciiu')->insert([  'codigo' =>'0891', 'descripcion' => 'Extracción de minerales para la fabricación de abonos y productos químicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'0892', 'descripcion' => 'Extracción de halita (sal)']);
+        DB::table('ciiu')->insert([  'codigo' =>'0899', 'descripcion' => 'Extracción de otros minerales no metálicos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'0910', 'descripcion' => 'Actividades de apoyo para la extracción de petróleo y de gas natural']);
+        DB::table('ciiu')->insert([  'codigo' =>'0990', 'descripcion' => 'Actividades de apoyo para otras actividades de explotación de minas y canteras']);
+        DB::table('ciiu')->insert([  'codigo' =>'1011', 'descripcion' => 'Procesamiento y conservación de carne y productos cárnicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'1012', 'descripcion' => 'Procesamiento y conservación de pescados, crustáceos y moluscos']);
+        DB::table('ciiu')->insert([  'codigo' =>'1020', 'descripcion' => 'Procesamiento y conservación de frutas, legumbres, hortalizas y tubérculos']);
+        DB::table('ciiu')->insert([  'codigo' =>'1030', 'descripcion' => 'Elaboración de aceites y grasas de origen vegetal y animal']);
+        DB::table('ciiu')->insert([  'codigo' =>'1040', 'descripcion' => 'Elaboración de productos lácteos']);
+        DB::table('ciiu')->insert([  'codigo' =>'1051', 'descripcion' => 'Elaboración de productos de molinería']);
+        DB::table('ciiu')->insert([  'codigo' =>'1052', 'descripcion' => 'Elaboración de almidones y productos derivados del almidón']);
+        DB::table('ciiu')->insert([  'codigo' =>'1061', 'descripcion' => 'Trilla de café']);
+        DB::table('ciiu')->insert([  'codigo' =>'1062', 'descripcion' => 'Descafeinado, tostión y molienda del café']);
+        DB::table('ciiu')->insert([  'codigo' =>'1063', 'descripcion' => 'Otros derivados del café']);
+        DB::table('ciiu')->insert([  'codigo' =>'1071', 'descripcion' => 'Elaboración y refinación de azúcar']);
+        DB::table('ciiu')->insert([  'codigo' =>'1072', 'descripcion' => 'Elaboración de panela']);
+        DB::table('ciiu')->insert([  'codigo' =>'1081', 'descripcion' => 'Elaboración de productos de panadería']);
+        DB::table('ciiu')->insert([  'codigo' =>'1082', 'descripcion' => 'Elaboración de cacao, chocolate y productos de confitería']);
+        DB::table('ciiu')->insert([  'codigo' =>'1083', 'descripcion' => 'Elaboración de macarrones, fideos, alcuzcuz y productos farináceos similares']);
+        DB::table('ciiu')->insert([  'codigo' =>'1084', 'descripcion' => 'Elaboración de comidas y platos preparados']);
+        DB::table('ciiu')->insert([  'codigo' =>'1089', 'descripcion' => 'Elaboración de otros productos alimenticios n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'1090', 'descripcion' => 'Elaboración de alimentos preparados para animales']);
+        DB::table('ciiu')->insert([  'codigo' =>'1101', 'descripcion' => 'Destilación, rectificación y mezcla de bebidas alcohólicas']);
+        DB::table('ciiu')->insert([  'codigo' =>'1102', 'descripcion' => 'Elaboración de bebidas fermentadas no destiladas']);
+        DB::table('ciiu')->insert([  'codigo' =>'1103', 'descripcion' => 'Producción de malta, elaboración de cervezas y otras bebidas malteadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'1104', 'descripcion' => 'Elaboración de bebidas no alcohólicas, producción de aguas minerales y de otras aguas embotelladas']);
+        DB::table('ciiu')->insert([  'codigo' =>'1200', 'descripcion' => 'Elaboración de productos de tabaco']);
+        DB::table('ciiu')->insert([  'codigo' =>'1311', 'descripcion' => 'Preparación e hilatura de fibras textiles']);
+        DB::table('ciiu')->insert([  'codigo' =>'1312', 'descripcion' => 'Tejeduría de productos textiles']);
+        DB::table('ciiu')->insert([  'codigo' =>'1313', 'descripcion' => 'Acabado de productos textiles']);
+        DB::table('ciiu')->insert([  'codigo' =>'1391', 'descripcion' => 'Fabricación de tejidos de punto y ganchillo']);
+        DB::table('ciiu')->insert([  'codigo' =>'1392', 'descripcion' => 'Confección de artículos con materiales textiles, excepto prendas de vestir']);
+        DB::table('ciiu')->insert([  'codigo' =>'1393', 'descripcion' => 'Fabricación de tapetes y alfombras para pisos']);
+        DB::table('ciiu')->insert([  'codigo' =>'1394', 'descripcion' => 'Fabricación de cuerdas, cordeles, cables, bramantes y redes']);
+        DB::table('ciiu')->insert([  'codigo' =>'1399', 'descripcion' => 'Fabricación de otros artículos textiles n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'1410', 'descripcion' => 'Confección de prendas de vestir, excepto prendas de piel']);
+        DB::table('ciiu')->insert([  'codigo' =>'1420', 'descripcion' => 'Fabricación de artículos de piel']);
+        DB::table('ciiu')->insert([  'codigo' =>'1430', 'descripcion' => 'Fabricación de artículos de punto y ganchillo']);
+        DB::table('ciiu')->insert([  'codigo' =>'1511', 'descripcion' => 'Curtido y recurtido de cueros; recurtido y teñido de pieles']);
+        DB::table('ciiu')->insert([  'codigo' =>'1512', 'descripcion' => 'Fabricación de artículos de viaje, bolsos de mano y artículos similares elaborados en cuero, y fabricación de artículos de talabartería y guarnicionería']);
+        DB::table('ciiu')->insert([  'codigo' =>'1513', 'descripcion' => 'Fabricación de artículos de viaje, bolsos de mano y artículos similares; artículos de talabartería y guarnicionería elaborados en otros materiales']);
+        DB::table('ciiu')->insert([  'codigo' =>'1521', 'descripcion' => 'Fabricación de calzado de cuero y piel, con cualquier tipo de suela']);
+        DB::table('ciiu')->insert([  'codigo' =>'1522', 'descripcion' => 'Fabricación de otros tipos de calzado, excepto calzado de cuero y piel']);
+        DB::table('ciiu')->insert([  'codigo' =>'1523', 'descripcion' => 'Fabricación de partes del calzado']);
+        DB::table('ciiu')->insert([  'codigo' =>'1610', 'descripcion' => 'Aserrado, acepillado e impregnación de la madera']);
+        DB::table('ciiu')->insert([  'codigo' =>'1620', 'descripcion' => 'Fabricación de hojas de madera para enchapado; fabricación de tableros contrachapados, tableros laminados, tableros de partículas y otros tableros y paneles']);
+        DB::table('ciiu')->insert([  'codigo' =>'1630', 'descripcion' => 'Fabricación de partes y piezas de madera, de carpintería y ebanistería para la construcción']);
+        DB::table('ciiu')->insert([  'codigo' =>'1640', 'descripcion' => 'Fabricación de recipientes de madera']);
+        DB::table('ciiu')->insert([  'codigo' =>'1690', 'descripcion' => 'Fabricación de otros productos de madera; fabricación de artículos de corcho, cestería y espartería']);
+        DB::table('ciiu')->insert([  'codigo' =>'1701', 'descripcion' => 'Fabricación de pulpas (pastas) celulósicas; papel y cartón']);
+        DB::table('ciiu')->insert([  'codigo' =>'1702', 'descripcion' => 'Fabricación de papel y cartón ondulado (corrugado); fabricación de envases, empaques y de embalajes de papel y cartón.']);
+        DB::table('ciiu')->insert([  'codigo' =>'1709', 'descripcion' => 'Fabricación de otros artículos de papel y cartón']);
+        DB::table('ciiu')->insert([  'codigo' =>'1811', 'descripcion' => 'Actividades de impresión']);
+        DB::table('ciiu')->insert([  'codigo' =>'1812', 'descripcion' => 'Actividades de servicios relacionados con la impresión']);
+        DB::table('ciiu')->insert([  'codigo' =>'1820', 'descripcion' => 'Producción de copias a partir de grabaciones originales ']);
+        DB::table('ciiu')->insert([  'codigo' =>'1910', 'descripcion' => 'Fabricación de productos de hornos de coque']);
+        DB::table('ciiu')->insert([  'codigo' =>'1921', 'descripcion' => 'Fabricación de productos de la refinación del petróleo']);
+        DB::table('ciiu')->insert([  'codigo' =>'1922', 'descripcion' => 'Actividad de mezcla de combustibles']);
+        DB::table('ciiu')->insert([  'codigo' =>'2011', 'descripcion' => 'Fabricación de sustancias y productos químicos básicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2012', 'descripcion' => 'Fabricación de abonos y compuestos inorgánicos nitrogenados']);
+        DB::table('ciiu')->insert([  'codigo' =>'2013', 'descripcion' => 'Fabricación de plásticos en formas primarias']);
+        DB::table('ciiu')->insert([  'codigo' =>'2014', 'descripcion' => 'Fabricación de caucho sintético en formas primarias']);
+        DB::table('ciiu')->insert([  'codigo' =>'2021', 'descripcion' => 'Fabricación de plaguicidas y otros productos químicos de uso agropecuario']);
+        DB::table('ciiu')->insert([  'codigo' =>'2022', 'descripcion' => 'Fabricación de pinturas, barnices y revestimientos similares, tintas para impresión y masillas']);
+        DB::table('ciiu')->insert([  'codigo' =>'2023', 'descripcion' => 'Fabricación de jabones y detergentes, preparados para limpiar y pulir; perfumes y preparados de tocador']);
+        DB::table('ciiu')->insert([  'codigo' =>'2029', 'descripcion' => 'Fabricación de otros productos químicos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2030', 'descripcion' => 'Fabricación de fibras sintéticas y artificiales']);
+        DB::table('ciiu')->insert([  'codigo' =>'2100', 'descripcion' => 'Fabricación de productos farmacéuticos, sustancias químicas medicinales y productos botánicos de uso farmacéutico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2211', 'descripcion' => 'Fabricación de llantas y neumáticos de caucho']);
+        DB::table('ciiu')->insert([  'codigo' =>'2212', 'descripcion' => 'Reencauche de llantas usadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'2219', 'descripcion' => 'Fabricación de formas básicas de caucho y otros productos de caucho n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2221', 'descripcion' => 'Fabricación de formas básicas de plástico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2229', 'descripcion' => 'Fabricación de artículos de plástico n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2310', 'descripcion' => 'Fabricación de vidrio y productos de vidrio']);
+        DB::table('ciiu')->insert([  'codigo' =>'2391', 'descripcion' => 'Fabricación de productos refractarios']);
+        DB::table('ciiu')->insert([  'codigo' =>'2392', 'descripcion' => 'Fabricación de materiales de arcilla para la construcción']);
+        DB::table('ciiu')->insert([  'codigo' =>'2393', 'descripcion' => 'Fabricación de otros productos de cerámica y porcelana']);
+        DB::table('ciiu')->insert([  'codigo' =>'2394', 'descripcion' => 'Fabricación de cemento, cal y yeso']);
+        DB::table('ciiu')->insert([  'codigo' =>'2395', 'descripcion' => 'Fabricación de artículos de hormigón, cemento y yeso']);
+        DB::table('ciiu')->insert([  'codigo' =>'2396', 'descripcion' => 'Corte, tallado y acabado de la piedra']);
+        DB::table('ciiu')->insert([  'codigo' =>'2399', 'descripcion' => 'Fabricación de otros productos minerales no metálicos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2410', 'descripcion' => 'Industrias básicas de hierro y de acero']);
+        DB::table('ciiu')->insert([  'codigo' =>'2421', 'descripcion' => 'Industrias básicas de metales preciosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2429', 'descripcion' => 'Industrias básicas de otros metales no ferrosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2431', 'descripcion' => 'Fundición de hierro y de acero']);
+        DB::table('ciiu')->insert([  'codigo' =>'2432', 'descripcion' => 'Fundición de metales no ferrosos ']);
+        DB::table('ciiu')->insert([  'codigo' =>'2511', 'descripcion' => 'Fabricación de productos metálicos para uso estructural']);
+        DB::table('ciiu')->insert([  'codigo' =>'2512', 'descripcion' => 'Fabricación de tanques, depósitos y recipientes de metal, excepto los utilizados para el envase o transporte de mercancías']);
+        DB::table('ciiu')->insert([  'codigo' =>'2513', 'descripcion' => 'Fabricación de generadores de vapor, excepto calderas de agua caliente para calefacción central']);
+        DB::table('ciiu')->insert([  'codigo' =>'2520', 'descripcion' => 'Fabricación de armas y municiones']);
+        DB::table('ciiu')->insert([  'codigo' =>'2591', 'descripcion' => 'Forja, prensado, estampado y laminado de metal; pulvimetalurgia']);
+        DB::table('ciiu')->insert([  'codigo' =>'2592', 'descripcion' => 'Tratamiento y revestimiento de metales; mecanizado']);
+        DB::table('ciiu')->insert([  'codigo' =>'2593', 'descripcion' => 'Fabricación de artículos de cuchillería, herramientas de mano y artículos de ferretería']);
+        DB::table('ciiu')->insert([  'codigo' =>'2599', 'descripcion' => 'Fabricación de otros productos elaborados de metal n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2610', 'descripcion' => 'Fabricación de componentes y tableros electrónicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2620', 'descripcion' => 'Fabricación de computadoras y de equipo periférico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2630', 'descripcion' => 'Fabricación de equipos de comunicación']);
+        DB::table('ciiu')->insert([  'codigo' =>'2640', 'descripcion' => 'Fabricación de aparatos electrónicos de consumo']);
+        DB::table('ciiu')->insert([  'codigo' =>'2651', 'descripcion' => 'Fabricación de equipo de medición, prueba, navegación y control']);
+        DB::table('ciiu')->insert([  'codigo' =>'2652', 'descripcion' => 'Fabricación de relojes']);
+        DB::table('ciiu')->insert([  'codigo' =>'2660', 'descripcion' => 'Fabricación de equipo de irradiación y equipo electrónico de uso médico y terapéutico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2670', 'descripcion' => 'Fabricación de instrumentos ópticos y equipo fotográfico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2680', 'descripcion' => 'Fabricación de medios magnéticos y ópticos para almacenamiento de datos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2711', 'descripcion' => 'Fabricación de motores, generadores y transformadores eléctricos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2712', 'descripcion' => 'Fabricación de aparatos de distribución y control de la energía eléctrica']);
+        DB::table('ciiu')->insert([  'codigo' =>'2720', 'descripcion' => 'Fabricación de pilas, baterías y acumuladores eléctricos']);
+        DB::table('ciiu')->insert([  'codigo' =>'2731', 'descripcion' => 'Fabricación de hilos y cables eléctricos y de fibra óptica']);
+        DB::table('ciiu')->insert([  'codigo' =>'2732', 'descripcion' => 'Fabricación de dispositivos de cableado']);
+        DB::table('ciiu')->insert([  'codigo' =>'2740', 'descripcion' => 'Fabricación de equipos eléctricos de iluminación']);
+        DB::table('ciiu')->insert([  'codigo' =>'2750', 'descripcion' => 'Fabricación de aparatos de uso doméstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'2790', 'descripcion' => 'Fabricación de otros tipos de equipo eléctrico n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2811', 'descripcion' => 'Fabricación de motores, turbinas, y partes para motores de combustión interna']);
+        DB::table('ciiu')->insert([  'codigo' =>'2812', 'descripcion' => 'Fabricación de equipos de potencia hidráulica y neumática']);
+        DB::table('ciiu')->insert([  'codigo' =>'2813', 'descripcion' => 'Fabricación de otras bombas, compresores, grifos y válvulas']);
+        DB::table('ciiu')->insert([  'codigo' =>'2814', 'descripcion' => 'Fabricación de cojinetes, engranajes, trenes de engranajes y piezas de transmisión']);
+        DB::table('ciiu')->insert([  'codigo' =>'2815', 'descripcion' => 'Fabricación de hornos, hogares y quemadores industriales']);
+        DB::table('ciiu')->insert([  'codigo' =>'2816', 'descripcion' => 'Fabricación de equipo de elevación y manipulación']);
+        DB::table('ciiu')->insert([  'codigo' =>'2817', 'descripcion' => 'Fabricación de maquinaria y equipo de oficina (excepto computadoras y equipo periférico)']);
+        DB::table('ciiu')->insert([  'codigo' =>'2818', 'descripcion' => 'Fabricación de herramientas manuales con motor']);
+        DB::table('ciiu')->insert([  'codigo' =>'2819', 'descripcion' => 'Fabricación de otros tipos de maquinaria y equipo de uso general n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2821', 'descripcion' => 'Fabricación de maquinaria agropecuaria y forestal']);
+        DB::table('ciiu')->insert([  'codigo' =>'2822', 'descripcion' => 'Fabricación de máquinas formadoras de metal y de máquinas herramienta']);
+        DB::table('ciiu')->insert([  'codigo' =>'2823', 'descripcion' => 'Fabricación de maquinaria para la metalurgia']);
+        DB::table('ciiu')->insert([  'codigo' =>'2824', 'descripcion' => 'Fabricación de maquinaria para explotación de minas y canteras y para obras de construcción']);
+        DB::table('ciiu')->insert([  'codigo' =>'2825', 'descripcion' => 'Fabricación de maquinaria para la elaboración de alimentos, bebidas y tabaco']);
+        DB::table('ciiu')->insert([  'codigo' =>'2826', 'descripcion' => 'Fabricación de maquinaria para la elaboración de productos textiles, prendas de vestir y cueros']);
+        DB::table('ciiu')->insert([  'codigo' =>'2829', 'descripcion' => 'Fabricación de otros tipos de maquinaria y equipo de uso especial n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'2910', 'descripcion' => 'Fabricación de vehículos automotores y sus motores']);
+        DB::table('ciiu')->insert([  'codigo' =>'2920', 'descripcion' => 'Fabricación de carrocerías para vehículos automotores; fabricación de remolques y semirremolques ']);
+        DB::table('ciiu')->insert([  'codigo' =>'2930', 'descripcion' => 'Fabricación de partes, piezas (autopartes) y accesorios (lujos) para vehículos automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'3011', 'descripcion' => 'Construcción de barcos y de estructuras flotantes']);
+        DB::table('ciiu')->insert([  'codigo' =>'3012', 'descripcion' => 'Construcción de embarcaciones de recreo y deporte']);
+        DB::table('ciiu')->insert([  'codigo' =>'3020', 'descripcion' => 'Fabricación de locomotoras y de material rodante para ferrocarriles']);
+        DB::table('ciiu')->insert([  'codigo' =>'3030', 'descripcion' => 'Fabricación de aeronaves, naves espaciales y de maquinaria conexa']);
+        DB::table('ciiu')->insert([  'codigo' =>'3040', 'descripcion' => 'Fabricación de vehículos militares de combate']);
+        DB::table('ciiu')->insert([  'codigo' =>'3091', 'descripcion' => 'Fabricación de motocicletas']);
+        DB::table('ciiu')->insert([  'codigo' =>'3092', 'descripcion' => 'Fabricación de bicicletas y de sillas de ruedas para personas con discapacidad']);
+        DB::table('ciiu')->insert([  'codigo' =>'3099', 'descripcion' => 'Fabricación de otros tipos de equipo de transporte n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'3110', 'descripcion' => 'Fabricación de muebles ']);
+        DB::table('ciiu')->insert([  'codigo' =>'3120', 'descripcion' => 'Fabricación de colchones y somieres']);
+        DB::table('ciiu')->insert([  'codigo' =>'3210', 'descripcion' => 'Fabricación de joyas, bisutería y artículos conexos']);
+        DB::table('ciiu')->insert([  'codigo' =>'3220', 'descripcion' => 'Fabricación de instrumentos musicales']);
+        DB::table('ciiu')->insert([  'codigo' =>'3230', 'descripcion' => 'Fabricación de artículos y equipo para la práctica del deporte']);
+        DB::table('ciiu')->insert([  'codigo' =>'3240', 'descripcion' => 'Fabricación de juegos, juguetes y rompecabezas']);
+        DB::table('ciiu')->insert([  'codigo' =>'3250', 'descripcion' => 'Fabricación de instrumentos, aparatos y materiales médicos y odontológicos (incluido mobiliario)']);
+        DB::table('ciiu')->insert([  'codigo' =>'3290', 'descripcion' => 'Otras industrias manufactureras n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'3311', 'descripcion' => 'Mantenimiento y reparación especializado de productos elaborados en metal']);
+        DB::table('ciiu')->insert([  'codigo' =>'3312', 'descripcion' => 'Mantenimiento y reparación especializado de maquinaria y equipo']);
+        DB::table('ciiu')->insert([  'codigo' =>'3313', 'descripcion' => 'Mantenimiento y reparación especializado de equipo electrónico y óptico']);
+        DB::table('ciiu')->insert([  'codigo' =>'3314', 'descripcion' => 'Mantenimiento y reparación especializado de equipo eléctrico']);
+        DB::table('ciiu')->insert([  'codigo' =>'3315', 'descripcion' => 'Mantenimiento y reparación especializado de equipo de transporte, excepto los vehículos automotores, motocicletas y bicicletas']);
+        DB::table('ciiu')->insert([  'codigo' =>'3319', 'descripcion' => 'Mantenimiento y reparación de otros tipos de equipos y sus componentes n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'3320', 'descripcion' => 'Instalación especializada de maquinaria y equipo industrial ']);
+        DB::table('ciiu')->insert([  'codigo' =>'3511', 'descripcion' => 'Generación de energía eléctrica']);
+        DB::table('ciiu')->insert([  'codigo' =>'3512', 'descripcion' => 'Transmisión de energía eléctrica']);
+        DB::table('ciiu')->insert([  'codigo' =>'3513', 'descripcion' => 'Distribución de energía eléctrica']);
+        DB::table('ciiu')->insert([  'codigo' =>'3514', 'descripcion' => 'Comercialización de energía eléctrica']);
+        DB::table('ciiu')->insert([  'codigo' =>'3520', 'descripcion' => 'Producción de gas; distribución de combustibles gaseosos por tuberías']);
+        DB::table('ciiu')->insert([  'codigo' =>'3530', 'descripcion' => 'Suministro de vapor y aire acondicionado']);
+        DB::table('ciiu')->insert([  'codigo' =>'3600', 'descripcion' => 'Captación, tratamiento y distribución de agua']);
+        DB::table('ciiu')->insert([  'codigo' =>'3700', 'descripcion' => 'Evacuación y tratamiento de aguas residuales']);
+        DB::table('ciiu')->insert([  'codigo' =>'3811', 'descripcion' => 'Recolección de desechos no peligrosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'3812', 'descripcion' => 'Recolección de desechos peligrosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'3821', 'descripcion' => 'Tratamiento y disposición de desechos no peligrosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'3822', 'descripcion' => 'Tratamiento y disposición de desechos peligrosos']);
+        DB::table('ciiu')->insert([  'codigo' =>'3830', 'descripcion' => 'Recuperación de materiales']);
+        DB::table('ciiu')->insert([  'codigo' =>'3900', 'descripcion' => 'Actividades de saneamiento ambiental y otros servicios de gestión de desechos']);
+        DB::table('ciiu')->insert([  'codigo' =>'4111', 'descripcion' => 'Construcción de edificios residenciales']);
+        DB::table('ciiu')->insert([  'codigo' =>'4112', 'descripcion' => 'Construcción de edificios no residenciales']);
+        DB::table('ciiu')->insert([  'codigo' =>'4210', 'descripcion' => 'Construcción de carreteras y vías de ferrocarril']);
+        DB::table('ciiu')->insert([  'codigo' =>'4220', 'descripcion' => 'Construcción de proyectos de servicio público']);
+        DB::table('ciiu')->insert([  'codigo' =>'4290', 'descripcion' => 'Construcción de otras obras de ingeniería civil']);
+        DB::table('ciiu')->insert([  'codigo' =>'4311', 'descripcion' => 'Demolición']);
+        DB::table('ciiu')->insert([  'codigo' =>'4312', 'descripcion' => 'Preparación del terreno']);
+        DB::table('ciiu')->insert([  'codigo' =>'4321', 'descripcion' => 'Instalaciones eléctricas']);
+        DB::table('ciiu')->insert([  'codigo' =>'4322', 'descripcion' => 'Instalaciones de fontanería, calefacción y aire acondicionado']);
+        DB::table('ciiu')->insert([  'codigo' =>'4329', 'descripcion' => 'Otras instalaciones especializadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'4330', 'descripcion' => 'Terminación y acabado de edificios y obras de ingeniería civil']);
+        DB::table('ciiu')->insert([  'codigo' =>'4390', 'descripcion' => 'Otras actividades especializadas para la construcción de edificios y obras de ingeniería civil']);
+        DB::table('ciiu')->insert([  'codigo' =>'4511', 'descripcion' => 'Comercio de vehículos automotores nuevos']);
+        DB::table('ciiu')->insert([  'codigo' =>'4512', 'descripcion' => 'Comercio de vehículos automotores usados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4520', 'descripcion' => 'Mantenimiento y reparación de vehículos automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'4530', 'descripcion' => 'Comercio de partes, piezas (autopartes) y accesorios (lujos) para vehículos automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'4541', 'descripcion' => 'Comercio de motocicletas y de sus partes, piezas y accesorios']);
+        DB::table('ciiu')->insert([  'codigo' =>'4542', 'descripcion' => 'Mantenimiento y reparación de motocicletas y de sus partes y piezas']);
+        DB::table('ciiu')->insert([  'codigo' =>'4610', 'descripcion' => 'Comercio al por mayor a cambio de una retribución o por contrata']);
+        DB::table('ciiu')->insert([  'codigo' =>'4620', 'descripcion' => 'Comercio al por mayor de materias primas agropecuarias; animales vivos']);
+        DB::table('ciiu')->insert([  'codigo' =>'4631', 'descripcion' => 'Comercio al por mayor de productos alimenticios']);
+        DB::table('ciiu')->insert([  'codigo' =>'4632', 'descripcion' => 'Comercio al por mayor de bebidas y tabaco']);
+        DB::table('ciiu')->insert([  'codigo' =>'4641', 'descripcion' => 'Comercio al por mayor de productos textiles, productos confeccionados para uso doméstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'4642', 'descripcion' => 'Comercio al por mayor de prendas de vestir']);
+        DB::table('ciiu')->insert([  'codigo' =>'4643', 'descripcion' => 'Comercio al por mayor de calzado']);
+        DB::table('ciiu')->insert([  'codigo' =>'4644', 'descripcion' => 'Comercio al por mayor de aparatos y equipo de uso doméstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'4645', 'descripcion' => 'Comercio al por mayor de productos farmacéuticos, medicinales, cosméticos y de tocador']);
+        DB::table('ciiu')->insert([  'codigo' =>'4649', 'descripcion' => 'Comercio al por mayor de otros utensilios domésticos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'4651', 'descripcion' => 'Comercio al por mayor de computadores, equipo periférico y programas de informática']);
+        DB::table('ciiu')->insert([  'codigo' =>'4652', 'descripcion' => 'Comercio al por mayor de equipo, partes y piezas electrónicos y de telecomunicaciones']);
+        DB::table('ciiu')->insert([  'codigo' =>'4653', 'descripcion' => 'Comercio al por mayor de maquinaria y equipo agropecuarios']);
+        DB::table('ciiu')->insert([  'codigo' =>'4659', 'descripcion' => 'Comercio al por mayor de otros tipos de maquinaria y equipo n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'4661', 'descripcion' => 'Comercio al por mayor de combustibles sólidos, líquidos, gaseosos y productos conexos']);
+        DB::table('ciiu')->insert([  'codigo' =>'4662', 'descripcion' => 'Comercio al por mayor de metales y productos metalíferos']);
+        DB::table('ciiu')->insert([  'codigo' =>'4663', 'descripcion' => 'Comercio al por mayor de materiales de construcción, artículos de ferretería, pinturas, productos de vidrio, equipo y materiales de fontanería y calefacción']);
+        DB::table('ciiu')->insert([  'codigo' =>'4664', 'descripcion' => 'Comercio al por mayor de productos químicos básicos, cauchos y plásticos en formas primarias y productos químicos de uso agropecuario']);
+        DB::table('ciiu')->insert([  'codigo' =>'4665', 'descripcion' => 'Comercio al por mayor de desperdicios, desechos y chatarra']);
+        DB::table('ciiu')->insert([  'codigo' =>'4669', 'descripcion' => 'Comercio al por mayor de otros productos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'4690', 'descripcion' => 'Comercio al por mayor no especializado']);
+        DB::table('ciiu')->insert([  'codigo' =>'4711', 'descripcion' => 'Comercio al por menor en establecimientos no especializados con surtido compuesto principalmente por alimentos, bebidas o tabaco']);
+        DB::table('ciiu')->insert([  'codigo' =>'4719', 'descripcion' => 'Comercio al por menor en establecimientos no especializados, con surtido compuesto principalmente por productos diferentes de alimentos (víveres en general), bebidas y tabaco']);
+        DB::table('ciiu')->insert([  'codigo' =>'4721', 'descripcion' => 'Comercio al por menor de productos agrícolas para el consumo en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4722', 'descripcion' => 'Comercio al por menor de leche, productos lácteos y huevos, en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4723', 'descripcion' => 'Comercio al por menor de carnes (incluye aves de corral), productos cárnicos, pescados y productos de mar, en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4724', 'descripcion' => 'Comercio al por menor de bebidas y productos del tabaco, en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4729', 'descripcion' => 'Comercio al por menor de otros productos alimenticios n.c.p., en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4731', 'descripcion' => 'Comercio al por menor de combustible para automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'4732', 'descripcion' => 'Comercio al por menor de lubricantes (aceites, grasas), aditivos y productos de limpieza para vehículos automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'4741', 'descripcion' => 'Comercio al por menor de computadores, equipos periféricos, programas de informática y equipos de telecomunicaciones en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4742', 'descripcion' => 'Comercio al por menor de equipos y aparatos de sonido y de video, en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4751', 'descripcion' => 'Comercio al por menor de productos textiles en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4752', 'descripcion' => 'Comercio al por menor de artículos de ferretería, pinturas y productos de vidrio en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4753', 'descripcion' => 'Comercio al por menor de tapices, alfombras y cubrimientos para paredes y pisos en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4754', 'descripcion' => 'Comercio al por menor de electrodomésticos y gasodomésticos de uso doméstico, muebles y equipos de iluminación']);
+        DB::table('ciiu')->insert([  'codigo' =>'4755', 'descripcion' => 'Comercio al por menor de artículos y utensilios de uso doméstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'4759', 'descripcion' => 'Comercio al por menor de otros artículos domésticos en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4761', 'descripcion' => 'Comercio al por menor de libros, periódicos, materiales y artículos de papelería y escritorio, en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4762', 'descripcion' => 'Comercio al por menor de artículos deportivos, en establecimientos especializados ']);
+        DB::table('ciiu')->insert([  'codigo' =>'4769', 'descripcion' => 'Comercio al por menor de otros artículos culturales y de entretenimiento n.c.p. en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4771', 'descripcion' => 'Comercio al por menor de prendas de vestir y sus accesorios (incluye artículos de piel) en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4772', 'descripcion' => 'Comercio al por menor de todo tipo de calzado y artículos de cuero y sucedáneos del cuero en establecimientos especializados.']);
+        DB::table('ciiu')->insert([  'codigo' =>'4773', 'descripcion' => 'Comercio al por menor de productos farmacéuticos y medicinales, cosméticos y artículos de tocador en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4774', 'descripcion' => 'Comercio al por menor de otros productos nuevos en establecimientos especializados']);
+        DB::table('ciiu')->insert([  'codigo' =>'4775', 'descripcion' => 'Comercio al por menor de artículos de segunda mano']);
+        DB::table('ciiu')->insert([  'codigo' =>'4781', 'descripcion' => 'Comercio al por menor de alimentos, bebidas y tabaco, en puestos de venta móviles']);
+        DB::table('ciiu')->insert([  'codigo' =>'4782', 'descripcion' => 'Comercio al por menor de productos textiles, prendas de vestir y calzado, en puestos de venta móviles']);
+        DB::table('ciiu')->insert([  'codigo' =>'4789', 'descripcion' => 'Comercio al por menor de otros productos en puestos de venta móviles']);
+        DB::table('ciiu')->insert([  'codigo' =>'4791', 'descripcion' => 'Comercio al por menor realizado a través de Internet']);
+        DB::table('ciiu')->insert([  'codigo' =>'4792', 'descripcion' => 'Comercio al por menor realizado a través de casas de venta o por correo']);
+        DB::table('ciiu')->insert([  'codigo' =>'4799', 'descripcion' => 'Otros tipos de comercio al por menor no realizado en establecimientos, puestos de venta o mercados.']);
+        DB::table('ciiu')->insert([  'codigo' =>'4911', 'descripcion' => 'Transporte férreo de pasajeros']);
+        DB::table('ciiu')->insert([  'codigo' =>'4912', 'descripcion' => 'Transporte férreo de carga ']);
+        DB::table('ciiu')->insert([  'codigo' =>'4921', 'descripcion' => 'Transporte de pasajeros']);
+        DB::table('ciiu')->insert([  'codigo' =>'4922', 'descripcion' => 'Transporte mixto']);
+        DB::table('ciiu')->insert([  'codigo' =>'4923', 'descripcion' => 'Transporte de carga por carretera']);
+        DB::table('ciiu')->insert([  'codigo' =>'4930', 'descripcion' => 'Transporte por tuberías']);
+        DB::table('ciiu')->insert([  'codigo' =>'5011', 'descripcion' => 'Transporte de pasajeros marítimo y de cabotaje ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5012', 'descripcion' => 'Transporte de carga marítimo y de cabotaje ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5021', 'descripcion' => 'Transporte fluvial de pasajeros']);
+        DB::table('ciiu')->insert([  'codigo' =>'5022', 'descripcion' => 'Transporte fluvial de carga']);
+        DB::table('ciiu')->insert([  'codigo' =>'5111', 'descripcion' => 'Transporte aéreo nacional de pasajeros ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5112', 'descripcion' => 'Transporte aéreo internacional de pasajeros ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5121', 'descripcion' => 'Transporte aéreo nacional de carga ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5122', 'descripcion' => 'Transporte aéreo internacional de carga ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5210', 'descripcion' => 'Almacenamiento y depósito']);
+        DB::table('ciiu')->insert([  'codigo' =>'5221', 'descripcion' => 'Actividades de estaciones, vías y servicios complementarios para el transporte terrestre']);
+        DB::table('ciiu')->insert([  'codigo' =>'5222', 'descripcion' => 'Actividades de puertos y servicios complementarios para el transporte acuático']);
+        DB::table('ciiu')->insert([  'codigo' =>'5223', 'descripcion' => 'Actividades de aeropuertos, servicios de navegación aérea y demás actividades conexas al transporte aéreo']);
+        DB::table('ciiu')->insert([  'codigo' =>'5224', 'descripcion' => 'Manipulación de carga']);
+        DB::table('ciiu')->insert([  'codigo' =>'5229', 'descripcion' => 'Otras actividades complementarias al transporte']);
+        DB::table('ciiu')->insert([  'codigo' =>'5310', 'descripcion' => 'Actividades postales nacionales']);
+        DB::table('ciiu')->insert([  'codigo' =>'5320', 'descripcion' => 'Actividades de mensajería']);
+        DB::table('ciiu')->insert([  'codigo' =>'5511', 'descripcion' => 'Alojamiento en hoteles ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5512', 'descripcion' => 'Alojamiento en apartahoteles']);
+        DB::table('ciiu')->insert([  'codigo' =>'5513', 'descripcion' => 'Alojamiento en centros vacacionales ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5514', 'descripcion' => 'Alojamiento rural']);
+        DB::table('ciiu')->insert([  'codigo' =>'5519', 'descripcion' => 'Otros tipos de alojamientos para visitantes']);
+        DB::table('ciiu')->insert([  'codigo' =>'5520', 'descripcion' => 'Actividades de zonas de camping y parques para vehículos recreacionales']);
+        DB::table('ciiu')->insert([  'codigo' =>'5530', 'descripcion' => 'Servicio por horas ']);
+        DB::table('ciiu')->insert([  'codigo' =>'5590', 'descripcion' => 'Otros tipos de alojamiento n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'5611', 'descripcion' => 'Expendio a la mesa de comidas preparadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'5612', 'descripcion' => 'Expendio por autoservicio de comidas preparadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'5613', 'descripcion' => 'Expendio de comidas preparadas en cafeterías']);
+        DB::table('ciiu')->insert([  'codigo' =>'5619', 'descripcion' => 'Otros tipos de expendio de comidas preparadas n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'5621', 'descripcion' => 'Catering para eventos']);
+        DB::table('ciiu')->insert([  'codigo' =>'5629', 'descripcion' => 'Actividades de otros servicios de comidas']);
+        DB::table('ciiu')->insert([  'codigo' =>'5630', 'descripcion' => 'Expendio de bebidas alcohólicas para el consumo dentro del establecimiento']);
+        DB::table('ciiu')->insert([  'codigo' =>'5811', 'descripcion' => 'Edición de libros']);
+        DB::table('ciiu')->insert([  'codigo' =>'5812', 'descripcion' => 'Edición de directorios y listas de correo']);
+        DB::table('ciiu')->insert([  'codigo' =>'5813', 'descripcion' => 'Edición de periódicos, revistas y otras publicaciones periódicas']);
+        DB::table('ciiu')->insert([  'codigo' =>'5819', 'descripcion' => 'Otros trabajos de edición']);
+        DB::table('ciiu')->insert([  'codigo' =>'5820', 'descripcion' => 'Edición de programas de informática (software)']);
+        DB::table('ciiu')->insert([  'codigo' =>'5911', 'descripcion' => 'Actividades de producción de películas cinematográficas, videos, programas, anuncios y comerciales de televisión']);
+        DB::table('ciiu')->insert([  'codigo' =>'5912', 'descripcion' => 'Actividades de posproducción de películas cinematográficas, videos, programas, anuncios y comerciales de televisión']);
+        DB::table('ciiu')->insert([  'codigo' =>'5913', 'descripcion' => 'Actividades de distribución de películas cinematográficas, videos, programas, anuncios y comerciales de televisión']);
+        DB::table('ciiu')->insert([  'codigo' =>'5914', 'descripcion' => 'Actividades de exhibición de películas cinematográficas y videos']);
+        DB::table('ciiu')->insert([  'codigo' =>'5920', 'descripcion' => 'Actividades de grabación de sonido y edición de música']);
+        DB::table('ciiu')->insert([  'codigo' =>'6010', 'descripcion' => 'Actividades de programación y transmisión en el servicio de radiodifusión sonora']);
+        DB::table('ciiu')->insert([  'codigo' =>'6020', 'descripcion' => 'Actividades de programación y transmisión de televisión']);
+        DB::table('ciiu')->insert([  'codigo' =>'6110', 'descripcion' => 'Actividades de telecomunicaciones alámbricas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6120', 'descripcion' => 'Actividades de telecomunicaciones inalámbricas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6130', 'descripcion' => 'Actividades de telecomunicación satelital']);
+        DB::table('ciiu')->insert([  'codigo' =>'6190', 'descripcion' => 'Otras actividades de telecomunicaciones']);
+        DB::table('ciiu')->insert([  'codigo' =>'6201', 'descripcion' => 'Actividades de desarrollo de sistemas informáticos (planificación, análisis, diseño, programación, pruebas)']);
+        DB::table('ciiu')->insert([  'codigo' =>'6202', 'descripcion' => 'Actividades de consultoría informática y actividades de administración de instalaciones informáticas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6209', 'descripcion' => 'Otras actividades de tecnologías de información y actividades de servicios informáticos']);
+        DB::table('ciiu')->insert([  'codigo' =>'6311', 'descripcion' => 'Procesamiento de datos, alojamiento (hosting) y actividades relacionadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6312', 'descripcion' => 'Portales web']);
+        DB::table('ciiu')->insert([  'codigo' =>'6391', 'descripcion' => 'Actividades de agencias de noticias']);
+        DB::table('ciiu')->insert([  'codigo' =>'6399', 'descripcion' => 'Otras actividades de servicio de información n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'6411', 'descripcion' => 'Banco Central']);
+        DB::table('ciiu')->insert([  'codigo' =>'6412', 'descripcion' => 'Bancos comerciales']);
+        DB::table('ciiu')->insert([  'codigo' =>'6421', 'descripcion' => 'Actividades de las corporaciones financieras']);
+        DB::table('ciiu')->insert([  'codigo' =>'6422', 'descripcion' => 'Actividades de las compañías de financiamiento']);
+        DB::table('ciiu')->insert([  'codigo' =>'6423', 'descripcion' => 'Banca de segundo piso']);
+        DB::table('ciiu')->insert([  'codigo' =>'6424', 'descripcion' => 'Actividades de las cooperativas financieras']);
+        DB::table('ciiu')->insert([  'codigo' =>'6431', 'descripcion' => 'Fideicomisos, fondos y entidades financieras similares']);
+        DB::table('ciiu')->insert([  'codigo' =>'6432', 'descripcion' => 'Fondos de cesantías']);
+        DB::table('ciiu')->insert([  'codigo' =>'6491', 'descripcion' => 'Leasing financiero (arrendamiento financiero)']);
+        DB::table('ciiu')->insert([  'codigo' =>'6492', 'descripcion' => 'Actividades financieras de fondos de empleados y otras formas asociativas del sector solidario']);
+        DB::table('ciiu')->insert([  'codigo' =>'6493', 'descripcion' => 'Actividades de compra de cartera o factoring']);
+        DB::table('ciiu')->insert([  'codigo' =>'6494', 'descripcion' => 'Otras actividades de distribución de fondos']);
+        DB::table('ciiu')->insert([  'codigo' =>'6495', 'descripcion' => 'Instituciones especiales oficiales']);
+        DB::table('ciiu')->insert([  'codigo' =>'6499', 'descripcion' => 'Otras actividades de servicio financiero, excepto las de seguros y pensiones n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'6511', 'descripcion' => 'Seguros generales ']);
+        DB::table('ciiu')->insert([  'codigo' =>'6512', 'descripcion' => 'Seguros de vida']);
+        DB::table('ciiu')->insert([  'codigo' =>'6513', 'descripcion' => 'Reaseguros']);
+        DB::table('ciiu')->insert([  'codigo' =>'6514', 'descripcion' => 'Capitalización']);
+        DB::table('ciiu')->insert([  'codigo' =>'6521', 'descripcion' => 'Servicios de seguros sociales de salud']);
+        DB::table('ciiu')->insert([  'codigo' =>'6522', 'descripcion' => 'Servicios de seguros sociales de riesgos profesionales']);
+        DB::table('ciiu')->insert([  'codigo' =>'6531', 'descripcion' => 'Régimen de prima media con prestación definida (RPM)']);
+        DB::table('ciiu')->insert([  'codigo' =>'6532', 'descripcion' => 'Régimen de ahorro individual (RAI)']);
+        DB::table('ciiu')->insert([  'codigo' =>'6611', 'descripcion' => 'Administración de mercados financieros']);
+        DB::table('ciiu')->insert([  'codigo' =>'6612', 'descripcion' => 'Corretaje de valores y de contratos de productos básicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'6613', 'descripcion' => 'Otras actividades relacionadas con el mercado de valores']);
+        DB::table('ciiu')->insert([  'codigo' =>'6614', 'descripcion' => 'Actividades de las casas de cambio']);
+        DB::table('ciiu')->insert([  'codigo' =>'6615', 'descripcion' => 'Actividades de los profesionales de compra y venta de divisas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6619', 'descripcion' => 'Otras actividades auxiliares de las actividades de servicios financieros n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'6621', 'descripcion' => 'Actividades de agentes y corredores de seguros']);
+        DB::table('ciiu')->insert([  'codigo' =>'6629', 'descripcion' => 'Evaluación de riesgos y daños, y otras actividades de servicios auxiliares']);
+        DB::table('ciiu')->insert([  'codigo' =>'6630', 'descripcion' => 'Actividades de administración de fondos']);
+        DB::table('ciiu')->insert([  'codigo' =>'6810', 'descripcion' => 'Actividades inmobiliarias realizadas con bienes propios o arrendados']);
+        DB::table('ciiu')->insert([  'codigo' =>'6820', 'descripcion' => 'Actividades inmobiliarias realizadas a cambio de una retribución o por contrata ']);
+        DB::table('ciiu')->insert([  'codigo' =>'6910', 'descripcion' => 'Actividades jurídicas']);
+        DB::table('ciiu')->insert([  'codigo' =>'6920', 'descripcion' => 'Actividades de contabilidad, teneduría de libros, auditoría financiera y asesoría tributaria']);
+        DB::table('ciiu')->insert([  'codigo' =>'7010', 'descripcion' => 'Actividades de administración empresarial']);
+        DB::table('ciiu')->insert([  'codigo' =>'7020', 'descripcion' => 'Actividades de consultaría de gestión']);
+        DB::table('ciiu')->insert([  'codigo' =>'7110', 'descripcion' => 'Actividades de arquitectura e ingeniería y otras actividades conexas de consultoría técnica']);
+        DB::table('ciiu')->insert([  'codigo' =>'7120', 'descripcion' => 'Ensayos y análisis técnicos']);
+        DB::table('ciiu')->insert([  'codigo' =>'7210', 'descripcion' => 'Investigaciones y desarrollo experimental en el campo de las ciencias naturales y la ingeniería ']);
+        DB::table('ciiu')->insert([  'codigo' =>'7220', 'descripcion' => 'Investigaciones y desarrollo experimental en el campo de las ciencias sociales y las humanidades']);
+        DB::table('ciiu')->insert([  'codigo' =>'7310', 'descripcion' => 'Publicidad']);
+        DB::table('ciiu')->insert([  'codigo' =>'7320', 'descripcion' => 'Estudios de mercado y realización de encuestas de opinión pública']);
+        DB::table('ciiu')->insert([  'codigo' =>'7410', 'descripcion' => 'Actividades especializadas de diseño ']);
+        DB::table('ciiu')->insert([  'codigo' =>'7420', 'descripcion' => 'Actividades de fotografía']);
+        DB::table('ciiu')->insert([  'codigo' =>'7490', 'descripcion' => 'Otras actividades profesionales, científicas y técnicas n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'7500', 'descripcion' => 'Actividades veterinarias']);
+        DB::table('ciiu')->insert([  'codigo' =>'7710', 'descripcion' => 'Alquiler y arrendamiento de vehículos automotores']);
+        DB::table('ciiu')->insert([  'codigo' =>'7721', 'descripcion' => 'Alquiler y arrendamiento de equipo recreativo y deportivo']);
+        DB::table('ciiu')->insert([  'codigo' =>'7722', 'descripcion' => 'Alquiler de videos y discos ']);
+        DB::table('ciiu')->insert([  'codigo' =>'7729', 'descripcion' => 'Alquiler y arrendamiento de otros efectos personales y enseres domésticos n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'7730', 'descripcion' => 'Alquiler y arrendamiento de otros tipos de maquinaria, equipo y bienes tangibles n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'7740', 'descripcion' => 'Arrendamiento de propiedad intelectual y productos similares, excepto obras protegidas por derechos de autor']);
+        DB::table('ciiu')->insert([  'codigo' =>'7810', 'descripcion' => 'Actividades de agencias de empleo']);
+        DB::table('ciiu')->insert([  'codigo' =>'7820', 'descripcion' => 'Actividades de agencias de empleo temporal']);
+        DB::table('ciiu')->insert([  'codigo' =>'7830', 'descripcion' => 'Otras actividades de suministro de recurso humano']);
+        DB::table('ciiu')->insert([  'codigo' =>'7911', 'descripcion' => 'Actividades de las agencias de viaje']);
+        DB::table('ciiu')->insert([  'codigo' =>'7912', 'descripcion' => 'Actividades de operadores turísticos']);
+        DB::table('ciiu')->insert([  'codigo' =>'7990', 'descripcion' => 'Otros servicios de reserva y actividades relacionadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'8010', 'descripcion' => 'Actividades de seguridad privada']);
+        DB::table('ciiu')->insert([  'codigo' =>'8020', 'descripcion' => 'Actividades de servicios de sistemas de seguridad']);
+        DB::table('ciiu')->insert([  'codigo' =>'8030', 'descripcion' => 'Actividades de detectives e investigadores privados']);
+        DB::table('ciiu')->insert([  'codigo' =>'8110', 'descripcion' => 'Actividades combinadas de apoyo a instalaciones']);
+        DB::table('ciiu')->insert([  'codigo' =>'8121', 'descripcion' => 'Limpieza general interior de edificios']);
+        DB::table('ciiu')->insert([  'codigo' =>'8129', 'descripcion' => 'Otras actividades de limpieza de edificios e instalaciones industriales']);
+        DB::table('ciiu')->insert([  'codigo' =>'8130', 'descripcion' => 'Actividades de paisajismo y servicios de mantenimiento conexos']);
+        DB::table('ciiu')->insert([  'codigo' =>'8211', 'descripcion' => 'Actividades combinadas de servicios administrativos de oficina']);
+        DB::table('ciiu')->insert([  'codigo' =>'8219', 'descripcion' => 'Fotocopiado, preparación de documentos y otras actividades especializadas de apoyo a oficina']);
+        DB::table('ciiu')->insert([  'codigo' =>'8220', 'descripcion' => 'Actividades de centros de llamadas (Call center)']);
+        DB::table('ciiu')->insert([  'codigo' =>'8230', 'descripcion' => 'Organización de convenciones y eventos comerciales']);
+        DB::table('ciiu')->insert([  'codigo' =>'8291', 'descripcion' => 'Actividades de agencias de cobranza y oficinas de calificación crediticia']);
+        DB::table('ciiu')->insert([  'codigo' =>'8292', 'descripcion' => 'Actividades de envase y empaque']);
+        DB::table('ciiu')->insert([  'codigo' =>'8299', 'descripcion' => 'Otras actividades de servicio de apoyo a las empresas n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'8411', 'descripcion' => 'Actividades legislativas de la administración pública']);
+        DB::table('ciiu')->insert([  'codigo' =>'8412', 'descripcion' => 'Actividades ejecutivas de la administración pública']);
+        DB::table('ciiu')->insert([  'codigo' =>'8413', 'descripcion' => 'Regulación de las actividades de organismos que prestan servicios de salud, educativos, culturales y otros servicios sociales, excepto servicios de seguridad social ']);
+        DB::table('ciiu')->insert([  'codigo' =>'8414', 'descripcion' => 'Actividades reguladoras y facilitadoras de la actividad económica']);
+        DB::table('ciiu')->insert([  'codigo' =>'8415', 'descripcion' => 'Actividades de los otros órganos de control']);
+        DB::table('ciiu')->insert([  'codigo' =>'8421', 'descripcion' => 'Relaciones exteriores ']);
+        DB::table('ciiu')->insert([  'codigo' =>'8422', 'descripcion' => 'Actividades de defensa']);
+        DB::table('ciiu')->insert([  'codigo' =>'8423', 'descripcion' => 'Orden público y actividades de seguridad']);
+        DB::table('ciiu')->insert([  'codigo' =>'8424', 'descripcion' => 'Administración de justicia']);
+        DB::table('ciiu')->insert([  'codigo' =>'8430', 'descripcion' => 'Actividades de planes de seguridad social de afiliación obligatoria']);
+        DB::table('ciiu')->insert([  'codigo' =>'8511', 'descripcion' => 'Educación de la primera infancia']);
+        DB::table('ciiu')->insert([  'codigo' =>'8512', 'descripcion' => 'Educación preescolar']);
+        DB::table('ciiu')->insert([  'codigo' =>'8513', 'descripcion' => 'Educación básica primaria']);
+        DB::table('ciiu')->insert([  'codigo' =>'8521', 'descripcion' => 'Educación básica secundaria ']);
+        DB::table('ciiu')->insert([  'codigo' =>'8522', 'descripcion' => 'Educación media académica']);
+        DB::table('ciiu')->insert([  'codigo' =>'8523', 'descripcion' => 'Educación media técnica y de formación laboral']);
+        DB::table('ciiu')->insert([  'codigo' =>'8530', 'descripcion' => 'Establecimientos que combinan diferentes niveles de educación ']);
+        DB::table('ciiu')->insert([  'codigo' =>'8541', 'descripcion' => 'Educación técnica profesional']);
+        DB::table('ciiu')->insert([  'codigo' =>'8542', 'descripcion' => 'Educación tecnológica']);
+        DB::table('ciiu')->insert([  'codigo' =>'8543', 'descripcion' => 'Educación de instituciones universitarias o de escuelas tecnológicas']);
+        DB::table('ciiu')->insert([  'codigo' =>'8544', 'descripcion' => 'Educación de universidades']);
+        DB::table('ciiu')->insert([  'codigo' =>'8551', 'descripcion' => 'Formación académica no formal ']);
+        DB::table('ciiu')->insert([  'codigo' =>'8552', 'descripcion' => 'Enseñanza deportiva y recreativa']);
+        DB::table('ciiu')->insert([  'codigo' =>'8553', 'descripcion' => 'Enseñanza cultural']);
+        DB::table('ciiu')->insert([  'codigo' =>'8559', 'descripcion' => 'Otros tipos de educación n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'8560', 'descripcion' => 'Actividades de apoyo a la educación']);
+        DB::table('ciiu')->insert([  'codigo' =>'8610', 'descripcion' => 'Actividades de hospitales y clínicas, con internación']);
+        DB::table('ciiu')->insert([  'codigo' =>'8621', 'descripcion' => 'Actividades de la práctica médica, sin internación']);
+        DB::table('ciiu')->insert([  'codigo' =>'8622', 'descripcion' => 'Actividades de la práctica odontológica']);
+        DB::table('ciiu')->insert([  'codigo' =>'8691', 'descripcion' => 'Actividades de apoyo diagnóstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'8692', 'descripcion' => 'Actividades de apoyo terapéutico']);
+        DB::table('ciiu')->insert([  'codigo' =>'8699', 'descripcion' => 'Otras actividades de atención de la salud humana']);
+        DB::table('ciiu')->insert([  'codigo' =>'8710', 'descripcion' => 'Actividades de atención residencial medicalizada de tipo general']);
+        DB::table('ciiu')->insert([  'codigo' =>'8720', 'descripcion' => 'Actividades de atención residencial, para el cuidado de pacientes con retardo mental, enfermedad mental y consumo de sustancias psicoactivas']);
+        DB::table('ciiu')->insert([  'codigo' =>'8730', 'descripcion' => 'Actividades de atención en instituciones para el cuidado de personas mayores y/o discapacitadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'8790', 'descripcion' => 'Otras actividades de atención en instituciones con alojamiento']);
+        DB::table('ciiu')->insert([  'codigo' =>'8810', 'descripcion' => 'Actividades de asistencia social sin alojamiento para personas mayores y discapacitadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'8890', 'descripcion' => 'Otras actividades de asistencia social sin alojamiento']);
+        DB::table('ciiu')->insert([  'codigo' =>'9001', 'descripcion' => 'Creación literaria']);
+        DB::table('ciiu')->insert([  'codigo' =>'9002', 'descripcion' => 'Creación musical']);
+        DB::table('ciiu')->insert([  'codigo' =>'9003', 'descripcion' => 'Creación teatral']);
+        DB::table('ciiu')->insert([  'codigo' =>'9004', 'descripcion' => 'Creación audiovisual']);
+        DB::table('ciiu')->insert([  'codigo' =>'9005', 'descripcion' => 'Artes plásticas y visuales']);
+        DB::table('ciiu')->insert([  'codigo' =>'9006', 'descripcion' => 'Actividades teatrales']);
+        DB::table('ciiu')->insert([  'codigo' =>'9007', 'descripcion' => 'Actividades de espectáculos musicales en vivo']);
+        DB::table('ciiu')->insert([  'codigo' =>'9008', 'descripcion' => 'Otras actividades de espectáculos en vivo']);
+        DB::table('ciiu')->insert([  'codigo' =>'9101', 'descripcion' => 'Actividades de bibliotecas y archivos']);
+        DB::table('ciiu')->insert([  'codigo' =>'9102', 'descripcion' => 'Actividades y funcionamiento de museos, conservación de edificios y sitios históricos']);
+        DB::table('ciiu')->insert([  'codigo' =>'9103', 'descripcion' => 'Actividades de jardines botánicos, zoológicos y reservas naturales']);
+        DB::table('ciiu')->insert([  'codigo' =>'9200', 'descripcion' => 'Actividades de juegos de azar y apuestas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9311', 'descripcion' => 'Gestión de instalaciones deportivas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9312', 'descripcion' => 'Actividades de clubes deportivos']);
+        DB::table('ciiu')->insert([  'codigo' =>'9319', 'descripcion' => 'Otras actividades deportivas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9321', 'descripcion' => 'Actividades de parques de atracciones y parques temáticos']);
+        DB::table('ciiu')->insert([  'codigo' =>'9329', 'descripcion' => 'Otras actividades recreativas y de esparcimiento n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'9411', 'descripcion' => 'Actividades de asociaciones empresariales y de empleadores']);
+        DB::table('ciiu')->insert([  'codigo' =>'9412', 'descripcion' => 'Actividades de asociaciones profesionales']);
+        DB::table('ciiu')->insert([  'codigo' =>'9420', 'descripcion' => 'Actividades de sindicatos de empleados']);
+        DB::table('ciiu')->insert([  'codigo' =>'9491', 'descripcion' => 'Actividades de asociaciones religiosas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9492', 'descripcion' => 'Actividades de asociaciones políticas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9499', 'descripcion' => 'Actividades de otras asociaciones n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'9511', 'descripcion' => 'Mantenimiento y reparación de computadores y de equipo periférico']);
+        DB::table('ciiu')->insert([  'codigo' =>'9512', 'descripcion' => 'Mantenimiento y reparación de equipos de comunicación']);
+        DB::table('ciiu')->insert([  'codigo' =>'9521', 'descripcion' => 'Mantenimiento y reparación de aparatos electrónicos de consumo']);
+        DB::table('ciiu')->insert([  'codigo' =>'9522', 'descripcion' => 'Mantenimiento y reparación de aparatos y equipos domésticos y de jardinería ']);
+        DB::table('ciiu')->insert([  'codigo' =>'9523', 'descripcion' => 'Reparación de calzado y artículos de cuero']);
+        DB::table('ciiu')->insert([  'codigo' =>'9524', 'descripcion' => 'Reparación de muebles y accesorios para el hogar']);
+        DB::table('ciiu')->insert([  'codigo' =>'9529', 'descripcion' => 'Mantenimiento y reparación de otros efectos personales y enseres domésticos']);
+        DB::table('ciiu')->insert([  'codigo' =>'9601', 'descripcion' => 'Lavado y limpieza, incluso la limpieza en seco, de productos textiles y de piel']);
+        DB::table('ciiu')->insert([  'codigo' =>'9602', 'descripcion' => 'Peluquería y otros tratamientos de belleza']);
+        DB::table('ciiu')->insert([  'codigo' =>'9603', 'descripcion' => 'Pompas fúnebres y actividades relacionadas']);
+        DB::table('ciiu')->insert([  'codigo' =>'9609', 'descripcion' => 'Otras actividades de servicios personales n.c.p.']);
+        DB::table('ciiu')->insert([  'codigo' =>'9700', 'descripcion' => 'Actividades de los hogares individuales como empleadores de personal doméstico']);
+        DB::table('ciiu')->insert([  'codigo' =>'9810', 'descripcion' => 'Actividades no diferenciadas de los hogares individuales como productores de bienes para uso propio']);
+        DB::table('ciiu')->insert([  'codigo' =>'9820', 'descripcion' => 'Actividades no diferenciadas de los hogares individuales como productores de servicios para uso propio']);
+        DB::table('ciiu')->insert([  'codigo' =>'9900', 'descripcion' => 'Actividades de organizaciones y entidades extraterritoriales']);
+    }
 }

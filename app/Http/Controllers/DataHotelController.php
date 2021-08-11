@@ -15,7 +15,8 @@ class DataHotelController extends Controller
      */
     public function index()
     {
-        return view("parameters.data_hotel.index");
+        $data=data_hotel::getDataHotel();
+        return view("parameters.data_hotel.index",['data'=>$data]);
     }
 
     /**
@@ -39,7 +40,36 @@ class DataHotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $reg = new data_hotel();
+       $reg->razonSocial=$request->razon_social;
+       $reg->razonComercial=$request->razon_comercial;
+       $reg->nit=$request->nit;
+       $reg->digitoVerificacion=$request->digito_nit;
+       $reg->tipoRegimen=$request->regimen;
+       $reg->regimenTributario=$request->tipo_regimen;
+       $reg->direccion=$request->direccion;
+       $reg->telefono=$request->telefono;
+       $reg->telefonoAlterno=$request->telefono_alt;
+       $reg->ciiuActividad=$request->ciiu;
+       $reg->relUbicacion=$request->ciudad;
+    //    $reg->relBankAcc=$request->;
+       $reg->relBillingResolution=$request->resolucion_facturacion;
+       $reg->created_by=$request->id_user_create;
+       $fileUp=$request->file('logo');
+       if ($request->hasFile('logo')) {
+        
+            $signos = array("/", "&", "%", "!", "=", "(", ")");
+            $filename = "logo_".$request->nit."_".rand();
+            $filename=str_replace($signos, "_", $filename);
+            $filename=str_replace(" ", "", $filename);
+            \Storage::disk('logos')->put($filename,  \File::get($fileUp));
+            $reg->logo=$filename;
+        } 
+        else {
+            $registro->path_file = 'NO';
+        }
+       $reg->save();
+       return json_encode(['success' => true]);
     }
 
     /**
@@ -86,4 +116,10 @@ class DataHotelController extends Controller
     {
         //
     }    
+    //Inicio Metodos Personalizados
+    public function ajaxRequestCiiu($id)
+    {  
+        $data=data_hotel::getCiiu($id);
+        return json_encode(['success' => true,'data'=>$data]);
+    }
 }

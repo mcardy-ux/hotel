@@ -14,8 +14,8 @@ class Ciiu extends Migration
     public function up()
     {
         Schema::create('ciiu', function (Blueprint $table) {
-            $table->id();
-            $table->json('data');
+            $table->integer('codigo');
+            $table->string('descripcion');
         });
     }
 

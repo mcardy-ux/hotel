@@ -39,7 +39,7 @@
                                         <input type="text" class="form-control" id="banco" name="banco">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="tipoCuenta">Tipo de  de Resolución:</label>
+                                        <label for="tipoCuenta">Tipo de  de Cuenta:</label>
                                         <select id="tipoCuenta" name="tipoCuenta" class="form-control">
                                             <option selected="" disabled="disabled">Seleccionar</option>
                                             <option value="Corriente">Corriente</option>
