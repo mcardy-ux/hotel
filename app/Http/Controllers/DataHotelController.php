@@ -79,7 +79,7 @@ class DataHotelController extends Controller
 
             $hotel_cuenta_bancaria = new hotel_has_bank_accounts();
             $hotel_cuenta_bancaria->bank_account_id=$bank_id;
-            $hotel_cuenta_bancaria->data_hotels_id=$reg->id;
+            $hotel_cuenta_bancaria->data_hotel_id=$reg->id;
             $hotel_cuenta_bancaria->save();
         }
     //    $reg->relBankAcc=$request->;
@@ -103,9 +103,14 @@ class DataHotelController extends Controller
      * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(data_hotel $data_hotel)
+    public function edit($id)
     {
-        //
+        $data=data_hotel::find($id);
+        
+            // foreach ($data->bankAccount as $bank) {
+            //     echo $bank->pivot->bank_account_id;
+            // }
+            return view("parameters.data_hotel.edit");
     }
 
     /**

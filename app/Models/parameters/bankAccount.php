@@ -34,8 +34,8 @@ class bankAccount extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function data_hotel(): BelongsToMany
+    public function data_hotel()
     {
-        return $this->belongsToMany(data_hotel::class);
+        return $this->belongsToMany(data_hotel::class,'hotel_has_bank_accounts');
     }
 }

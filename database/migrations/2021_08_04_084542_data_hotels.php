@@ -17,7 +17,7 @@ class DataHotels extends Migration
             $table->id();
             $table->string('razonSocial');
             $table->string('razonComercial');
-            $table->integer('nit');
+            $table->bigInteger('nit');
             $table->char('digitoVerificacion');
             $table->string('tipoRegimen');
             $table->string('regimenTributario');
@@ -36,8 +36,11 @@ class DataHotels extends Migration
             $table->timestamps();
         });
         Schema::create('hotel_has_bank_accounts', function (Blueprint $table) {
-            $table->integer('bank_account_id');
-            $table->integer('data_hotels_id');
+            $table->id();
+            $table->unsignedBigInteger('bank_account_id')->nullable();
+            $table->foreign('bank_account_id')->references('id')->on('bank_accounts')->onDelete('cascade');
+            $table->unsignedBigInteger('data_hotel_id')->nullable();
+            $table->foreign('data_hotel_id')->references('id')->on('data_hotels')->onDelete('cascade');
         });
     }
 

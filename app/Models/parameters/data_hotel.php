@@ -108,8 +108,8 @@ class data_hotel extends Model
 
     //Relacion de muchos a muchos
 
-    public function bankAccount(): BelongsToMany
+    public function bankAccount()
     {
-        return $this->belongsToMany(bankAccount::class,'hotel_has_bank_accounts','bank_account_id','data_hotels_id');
+        return $this->belongsToMany(bankAccount::class,'hotel_has_bank_accounts');
     }
 }
