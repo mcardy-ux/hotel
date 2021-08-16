@@ -23,107 +23,98 @@
 
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="mb-4">Ingresa la información necesaria.</h5>
-                            <form role="form" id="add_data_hotel" name="add_data_hotel" accept-charset="UTF-8" enctype="multipart/form-data">
-                            <input type="hidden" id="_url" value="{{ url('data_hotel') }}">
-                                <input type="hidden" id="_token" value="{{ csrf_token() }}">
-                                <input type="hidden" id="id_user_create" name="id_user_create" value="{{ Auth::user()->id }}" >
-                               
+                            <form role="form" id="edit_data_hotel"  name="edit_data_hotel" >
+                            <input type="hidden" id="_url"  value="{{ url('data_hotel') }}">
+                            <input type="hidden" id="_urlSubmit"  value="{{ url('data_hotel', [$data->id])}}">
+                                
+                                <input type="hidden" id="_token" name="_token"  value="{{ csrf_token() }}">
+                                <input type="hidden" id="id_user_modify" name="id_user_modify" value="{{ Auth::user()->id }}">
+                             
                                 <div class="form-group">
-                                    <label for="razon_social">Razón Social:
+                                    <label for="edit_razon_social">Razón Social:
                                     </label>
-                                    <input type="text" class="form-control" id="razon_social" name="razon_social" 
+                                    <input type="text" class="form-control" id="edit_razon_social" name="edit_razon_social"  value="{{$data->razonSocial}}"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
-                               
                                 <div class="form-row">
                                     <div class="form-group col-md-7">
-                                        <label for="razon_comercial">Razón Comercial:</label>
-                                        <input type="text" class="form-control" id="razon_comercial" name="razon_comercial"
+                                        <label for="edit_razon_comercial">Razón Comercial:</label>
+                                        <input type="text" class="form-control" id="edit_razon_comercial" name="edit_razon_comercial" value="{{$data->razonComercial}}"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="nit">Nit:</label>
-                                        <input type="number" class="form-control" id="nit" name="nit" min="1" max="9999999999">
+                                        <label for="edit_nit">Nit:</label>
+                                        <input type="number" class="form-control" id="edit_nit" name="edit_nit" min="1" max="9999999999" value="{{$data->nit}}">
                                     </div>
                                     
                                     <div class="form-group col-md-2">
-                                        <label for="digito_nit">Digito:</label>
-                                        <input type="number" max="10" min="1" class="form-control" id="digito_nit" name="digito_nit" >
+                                        <label for="edit_digito_nit">Digito:</label>
+                                        <input type="number" max="10" min="1" class="form-control" id="edit_digito_nit" name="edit_digito_nit" value="{{$data->digitoVerificacion}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="direccion">Dirección:
+                                    <label for="edit_direccion">Dirección:
                                     </label>
-                                    <input type="text" class="form-control" id="direccion" name="direccion"
+                                    <input type="text" class="form-control" id="edit_direccion" name="edit_direccion" value="{{$data->direccion}}"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
                                 
                                 <div class="form-row">
                                 <div class="form-group col-md-3">
-                                        <label for="regimen">Regimen Tributario:</label>
-                                        <select id="regimen" name="regimen" class="form-control">
-                                            <option value="" selected="">Seleccionar</option>
+                                        <label for="edit_regimen">Regimen Tributario:</label>
+                                        <select id="edit_regimen" name="edit_regimen" class="form-control" >
                                             <option value="persona_natural">Persona Natural</option>
                                             <option value="persona_juridica">Persona Jurídica</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="tipo_regimen">Tipo de Regimen Tributario:</label>
-                                        <select id="tipo_regimen" name="tipo_regimen" class="form-control">
-                                            <option value="" selected="" >Seleccionar</option>
+                                        <label for="edit_tipo_regimen">Tipo de Regimen Tributario:</label>
+                                        <select id="edit_tipo_regimen" name="edit_tipo_regimen" class="form-control">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="telefono">Telefono:</label>
-                                        <input type="number" class="form-control" min="1" id="telefono" name="telefono">
+                                        <label for="edit_telefono">Telefono:</label>
+                                        <input type="number" class="form-control" min="1" id="edit_telefono" name="edit_telefono" value="{{$data->telefono}}" >
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="telefono_alt">Telefono Alterno:</label>
-                                        <input type="number" class="form-control" min="1"  id="telefono_alt" name="telefono_alt">
+                                        <label for="edit_telefono_alt">Telefono Alterno:</label>
+                                        <input type="number" class="form-control" min="1"  id="edit_telefono_alt" name="edit_telefono_alt" value="{{$data->telefonoAlterno}}" >
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="pais">Pais:</label>
-                                        <select id="pais" name="pais" class="form-control">
+                                        <label for="edit_pais">Pais:</label>
+                                        <select id="edit_pais" name="edit_pais" class="form-control">
                                             <option value="colombia" selected disabled="disabled">Colombia</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="municipio">Municipio:</label>
-                                        <select id="municipio" name="municipio" class="form-control">
-                                            <option value="" selected >Seleccionar</option>
+                                        <label for="edit_municipio">Municipio:</label>
+                                        <select id="edit_municipio" name="edit_municipio" class="form-control">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="ciudad">Ciudad:</label>
-                                        <select id="ciudad" name="ciudad" class="form-control">
-                                            <option value="" selected="" >Seleccionar</option>
+                                        <label for="edit_ciudad">Ciudad:</label>
+                                        <select id="edit_ciudad" name="edit_ciudad" class="form-control">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="logo">Logo:</label>
-                                        <input type="file" class="form-control" id="logo" name="logo">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="resolucion_facturacion">Resolución Facturación:</label>
-                                        <select id="resolucion_facturacion" name="resolucion_facturacion" class="form-control">
-                                            <option value="" selected="" >Seleccionar</option>
+                                    <div class="form-group col-md-6">
+                                        <label for="edit_resolucion_facturacion">Resolución Facturación:</label>
+                                        <select id="edit_resolucion_facturacion" name="edit_resolucion_facturacion" class="form-control">
                                         </select>
                                     </div>
                                     
-                                    <div class="form-group col-md-5">
-                                        <label for="tipo_ciiu">Categoria CIIU:</label>
-                                        <select id="tipo_ciiu" name="tipo_ciiu" class="form-control">
+                                    <div class="form-group col-md-6">
+                                        <label for="edit_tipo_ciiu">Categoria CIIU:</label>
+                                        <select id="edit_tipo_ciiu" name="edit_tipo_ciiu" class="form-control">
                                             <option value="" selected="" >Seleccionar</option>
                                             <option value="1">Categoria 100 - 500</option>
                                             <option value="2">Categoria 500 - 1000</option>
@@ -141,21 +132,22 @@
                                 <div class="form-row">
                                     
                                     <div class="form-group col-md-12">
-                                        <label for="ciiu">CIIU Actividad Economica:</label>
-                                        <select id="ciiu" name="ciiu" class="form-control">
+                                        <label for="edit_ciiu">CIIU Actividad Economica:</label>
+                                        <select id="edit_ciiu" name="edit_ciiu" class="form-control">
                                             
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="cuenta_bancaria">Cuenta(s) Bancaria(s):</label>
-                                        <select class="js-bank-account-multiple" multiple="multiple" style="width: 90%" id="cuenta_bancaria" name="cuenta_bancaria" >
+                                        <label for="edit_cuenta_bancaria">Cuenta(s) Bancaria(s):</label>
+                                        <select class="js-bank-account-multiple" multiple="multiple" style="width: 90%" id="edit_cuenta_bancaria" name="edit_cuenta_bancaria" >
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <hr>
-                                <button type="submit" class="btn btn-primary mb-0">Agregar</button>
+                                <button type="submit" class="btn btn-primary mb-0">Editar</button>
                                 <a href="{{ route('data_hotel.index') }}"> 
                                 <button type="button" class="btn btn-light mb-0">Volver</button>
                                 </a>
@@ -169,4 +161,113 @@
     </main>
     @endsection
     @push('scripts')
-    @endpush
+
+    <script src="{{ asset('js/parameters/data_hotel/edit.js') }}"></script>
+    <!-- Carga Inicial de Select -->
+    <script> 
+    //Funcion para cargar los departamentos al campo "select".
+    function cargarDepartamentos() {
+    
+        //Inicializamos el array.
+        var array = @json($deptos);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("edit_municipio", array);
+    }
+     //Funcion para cargar las resoluciones de facturacion.
+     function cargarResoluciones() {
+        //Inicializamos el array.
+        var array = @json($resoluciones);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("edit_resolucion_facturacion", array);
+    }
+    //Funcion para cargar las resoluciones de facturacion.
+    function cargarCuentaBancaria() {
+        //Inicializamos el array.
+        var array = @json($cuenta_banc);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptionsConcat("edit_cuenta_bancaria", array);
+    }
+   </script>
+
+    <!-- Llenado de inputs y select con info -->
+<script>
+    $(document).ready(function(){
+        cargarDepartamentos(event);
+        cargarResoluciones(event);
+        cargarCuentaBancaria(event);
+
+        let regimen=@json($data->tipoRegimen);
+        $("#edit_regimen").val(regimen);
+
+        let tipo_regimen=@json($data->regimenTributario);
+            $("#edit_tipo_regimen").val(tipo_regimen);
+
+        //Campo para la ubicacion
+        let resolucion_facturacion=@json($data->relBillingResolution);
+            $("#edit_resolucion_facturacion").val(resolucion_facturacion);
+
+        //Campo para la categoria de ciiu
+        let tipo_ciiu=@json($ciiu["id_categoria"]);
+        $("#edit_tipo_ciiu").val(tipo_ciiu);
+        let ciiu=@json($ciiu["data"]);
+        RemoveOptions("edit_ciiu");
+        $.ajax({
+            url: $('#edit_data_hotel #_url').val()+"/request/ciiu/"+tipo_ciiu,
+            headers: {'X-CSRF-TOKEN': $('#edit_data_hotel #_token').val()},
+            type: 'GET',
+            cache: false,
+            success: function (response) {
+                var json = $.parseJSON(response);
+                if(json.success){
+                    addOptionsConcat("edit_ciiu",json.data);
+                    $("#edit_ciiu").val(ciiu);
+                }
+            }
+        });
+        var municipio=@json($location->departament_id);
+
+        //   Precarga de listado de ciudad
+            
+            $.ajax({
+                url: $('#edit_data_hotel #_url').val()+"/request/departaments/"+municipio,
+                headers: {'X-CSRF-TOKEN': $('#edit_data_hotel #_token').val()},
+                type: 'GET',
+                cache: false,
+                success: function (response) {
+                var json = $.parseJSON(response);
+                if(json.success){
+                    cargarCiudades(json.data);
+                }
+                }
+            });
+
+            let ciudad=@json($location->city_id);
+            $("#edit_ciudad").val(ciudad);
+            $("#edit_municipio").val(municipio);
+
+            var data_persona_natural =  new Array(); 
+            var data_persona_juridica =  new Array(); 
+            data_persona_natural=["Régimen simplificado","Régimen común"];
+            data_persona_juridica=["Gran Contribuyente","Régimen común"];
+
+            var id = $("#edit_regimen").val();
+
+            if(id=="persona_natural"){
+                addRegimenes("edit_tipo_regimen",data_persona_natural);
+            }
+            if(id=="persona_juridica"){
+                addRegimenes("edit_tipo_regimen",data_persona_juridica);
+            }
+            
+            let cuentas_bancarias=@json($cuentas_selec);
+            $("#edit_cuenta_bancaria").val(cuentas_bancarias);
+            
+    });
+</script>
+@endpush

@@ -98,6 +98,47 @@ class data_hotel extends Model
 
         
     }
+    public static function getCiiuWithId($condicion){
+        if ($condicion<=500) {
+            return ['data'=>$condicion,'id_categoria'=>1];
+        }
+        if ($condicion>500 && $condicion<=1000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>2];
+        }
+        if ($condicion>1000 && $condicion<=2000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>3];
+        }
+        if ($condicion>2000 && $condicion<=3000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>4];
+        }
+        if ($condicion>3000 && $condicion<=4000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>5];
+        }
+        if ($condicion>4000 && $condicion<=5000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>6];
+        }
+        if ($condicion>5000 && $condicion<=6000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>7];
+        }
+        if ($condicion>6000 && $condicion<=7000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>8];
+        }
+        if ($condicion>7000 && $condicion<=8000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>9];
+        }
+        if ($condicion>8000 && $condicion<=10000) {
+            
+            return ['data'=>$condicion,'id_categoria'=>10];
+        }
+    }
 
     public static function getDataHotel(){
         $data=DB::table('data_hotels')

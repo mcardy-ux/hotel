@@ -23,4 +23,11 @@ class location extends Model
         ->get();
         return $data;
     }
+    public static function getLocationByCity($id){
+        $data=DB::table('city')
+        ->select('id as city_id','departamento_id as departament_id')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
 }

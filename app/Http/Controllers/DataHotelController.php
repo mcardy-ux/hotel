@@ -105,12 +105,26 @@ class DataHotelController extends Controller
      */
     public function edit($id)
     {
-        $data=data_hotel::find($id);
-        
-            // foreach ($data->bankAccount as $bank) {
-            //     echo $bank->pivot->bank_account_id;
-            // }
-            return view("parameters.data_hotel.edit");
+        $data=data_hotel::where('id',$id)->first();
+        $ciiu=data_hotel::getCiiuWithId($data->ciiuActividad);
+        $deptos=location::getDepartaments();
+        $location=location::getLocationByCity($data->relUbicacion);
+        $resoluciones=data_hotel::getResolutions();
+        $cuenta_banc=data_hotel::getAccountBank();
+        $cant_banks=count($data->bankAccount);
+        $account=array();
+
+        for ($i=0; $i < $cant_banks; $i++) { 
+            
+            if($cant_banks==1){
+                $data_reg=$data->bankAccount[$i]->pivot->bank_account_id;
+                array_push($account,$data_reg);
+            }elseif($cant_banks>1){
+                $data_reg=$data->bankAccount[$i]->pivot->bank_account_id;
+                array_push($account,$data_reg);
+            }
+        }
+        return view("parameters.data_hotel.edit",['data'=>$data,'ciiu'=>$ciiu,'banke'=>$data->bankAccount,"deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc,"cuentas_selec"=>$account,"location"=>$location]);
     }
 
     /**
@@ -120,9 +134,40 @@ class DataHotelController extends Controller
      * @param  \App\Models\parameters\data_hotel  $data_hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, data_hotel $data_hotel)
+    public function update(Request $request, $id)
     {
-        //
+        $reg = data_hotel::findOrFail($id);
+        
+        
+        $reg->razonSocial=$request->data[2]['value'];
+        $reg->razonComercial=$request->data[3]['value'];
+        $reg->nit=$request->data[4]['value'];
+        $reg->digitoVerificacion=$request->data[5]['value'];
+        $reg->tipoRegimen=$request->data[7]['value'];
+        $reg->regimenTributario=$request->data[8]['value'];
+        $reg->direccion=$request->data[6]['value'];
+        $reg->telefono=$request->data[9]['value'];
+        $reg->telefonoAlterno=$request->data[10]['value'];
+        $reg->ciiuActividad=$request->data[15]['value'];
+        $reg->modified_by=$request->data[1]['value'];
+        $reg->relUbicacion=$request->data[12]['value'];
+        $reg->relBillingResolution=$request->data[13]['value'];
+        
+        //Edicion de Cuentas Bancarias
+        $EliminarCuentas=hotel_has_bank_accounts::DropByHotel($id);
+        if ($EliminarCuentas) {
+            foreach($request->array as $bank_id){
+
+                $hotel_cuenta_bancaria = new hotel_has_bank_accounts();
+                $hotel_cuenta_bancaria->bank_account_id=$bank_id;
+                $hotel_cuenta_bancaria->data_hotel_id=$id;
+                $hotel_cuenta_bancaria->save();
+            }
+            $reg->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false]);
+       
     }
 
     /**

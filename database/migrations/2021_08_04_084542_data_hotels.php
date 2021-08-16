@@ -28,6 +28,8 @@ class DataHotels extends Migration
             $table->string('logo');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
+            $table->unsignedBigInteger('modified_by')->nullable();
+            $table->foreign('modified_by')->references('id')->on('users');
             $table->unsignedBigInteger('relUbicacion');
             $table->foreign('relUbicacion')->references('id')->on('city');
 
@@ -51,7 +53,8 @@ class DataHotels extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_hotels');
+
         Schema::dropIfExists('hotel_has_bank_accounts');
+        Schema::dropIfExists('data_hotels');
     }
 }

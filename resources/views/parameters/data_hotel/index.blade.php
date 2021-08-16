@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-12 list" data-check-all="checkAll">
                             @php
-                                if($data->empty()){
+                                if($data->isEmpty()){
                             @endphp
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 mb-4">
@@ -75,7 +75,6 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBank" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
                                                 <a class="dropdown-item" href="{{url('data_hotel', [$value->id,'edit']) }}">Editar</a>
-                                                <a class="dropdown-item" onclick="show(this)" id="{{$value->id}}">Eliminar</a>
                                             </div>
                                         </div>
                                     </div>
