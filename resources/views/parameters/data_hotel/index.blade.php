@@ -14,6 +14,9 @@
                             <li class="breadcrumb-item active" aria-current="page">Listado</li>
                         </ol>
                     </nav>
+                    @php 
+                    if($has_hotel){
+                    @endphp
                     <div class="top-right-button-container">
                         <div class="btn-group">
                             <a href="{{url('data_hotel/create')}}" >
@@ -21,6 +24,9 @@
                             </a>
                         </div>
                     </div>
+                    @php 
+                    }
+                    @endphp
                     <div class="separator mb-5"></div>
                     
                     <div class="container-fluid disable-text-selection">

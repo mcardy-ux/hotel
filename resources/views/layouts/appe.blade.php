@@ -134,12 +134,6 @@
                         <div id="collapseAuthorization" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
                                 <li>
-                                    <a href="{{route('data_hotel.index')}}">
-                                        <i class="iconsminds-hotel"></i> <span
-                                            class="d-inline-block">Hoteles</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="{{route('locations.index')}}">
                                         <i class="simple-icon-location-pin"></i> <span
                                             class="d-inline-block">Ubicaciones</span>
@@ -153,6 +147,13 @@
                                 <li>
                                     <a href="{{route('bank_account.index')}}">
                                         <i class="iconsminds-bank"></i> <span class="d-inline-block">Cuentas Bancarias</span>
+                                    </a>
+                                </li>
+                                <li>
+                                <li>
+                                    <a href="{{route('data_hotel.index')}}">
+                                        <i class="iconsminds-hotel"></i> <span
+                                            class="d-inline-block">Hotel</span>
                                     </a>
                                 </li>
                             </ul>

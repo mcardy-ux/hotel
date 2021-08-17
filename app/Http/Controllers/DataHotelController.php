@@ -19,14 +19,16 @@ class DataHotelController extends Controller
      */
     public function index()
     {
+        $has_hotel=data_hotel::HasHotel();
         $billing=billingResolution::all()->where("activa",1)->count();
         $banks=bankAccount::all()->count();
         if ($billing>=1 && $banks >=1) {
             $data=data_hotel::getDataHotel();
-            return view("parameters.data_hotel.index",['data'=>$data]);
+            return view("parameters.data_hotel.index",['data'=>$data,'has_hotel' => $has_hotel]);
         }
         else{
-            return view("parameters.data_hotel.index",['message'=>'No se ha parametrizado los campos necesarios.']);
+            return redirect()->back()->withErrors('No se ha parametrizado los campos necesarios.')->withInput();
+
         }
         
     }
@@ -38,10 +40,18 @@ class DataHotelController extends Controller
      */
     public function create()
     {
-        $deptos=location::getDepartaments();
-        $resoluciones=data_hotel::getResolutions();
-        $cuenta_banc=data_hotel::getAccountBank();
-        return view("parameters.data_hotel.create",["deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc]);
+        if (data_hotel::HasHotel()) {
+            $deptos=location::getDepartaments();
+            $resoluciones=data_hotel::getResolutions();
+            $cuenta_banc=data_hotel::getAccountBank();
+            return view("parameters.data_hotel.create",["deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc]);
+        }else {
+            $validator->errors()->add(
+                'field', 'Ya existe un hotel registrado!'
+            );
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
     }
 
     /**

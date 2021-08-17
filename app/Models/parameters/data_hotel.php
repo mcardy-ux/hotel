@@ -153,4 +153,17 @@ class data_hotel extends Model
     {
         return $this->belongsToMany(bankAccount::class,'hotel_has_bank_accounts');
     }
+
+    public static function HasHotel()
+    {
+        $reg = DB::table('data_hotels')
+        ->select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return true;
+        }else {
+           return false;
+        }
+    }
 }
