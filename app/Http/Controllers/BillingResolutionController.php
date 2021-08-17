@@ -37,9 +37,13 @@ class BillingResolutionController extends Controller
     public function store(Request $request)
     {
         $isDuplicate=billingResolution::getBillingDuplicado($request->numResolucion);
+        $venc=date("Y-m-d",strtotime($request->fechaResolucion."+ 2 year"));
+        $dias=billingResolution::DiffDaysToToday($venc);
         if ($isDuplicate) {
             return json_encode(['success' => false, 'data' => 'Ya se encuentra esta resolucion']);
-        }else {
+        }elseif ($dias<=1) {
+            return json_encode(['success' => false, 'data' => 'La fecha esta vencida']);
+        }else{
             $reg = new billingResolution();
             $reg->numResolucion=$request->numResolucion;
             $reg->fechaResolucion=$request->fechaResolucion;
@@ -118,13 +122,19 @@ class BillingResolutionController extends Controller
         $query = billingResolution::select('id','numResolucion','fechaResolucion','desde','hasta','activa');
         return datatables($query)
         ->addColumn('status', function ($query) {
-            if($query->activa){
+            $venc=date("Y-m-d",strtotime($query->fechaResolucion."+ 2 year"));
+            $dias=billingResolution::DiffDaysToToday($venc);
+            if($dias>25){
                 return '<div class="w-15 w-xs-100">
                 <span class="badge badge-pill badge-info">Vigente</span>
+                    </div>';
+            }elseif($dias>1 && $dias<=25){
+                return '<div class="w-15 w-xs-100">
+                <span class="badge badge-pill badge-warning">Pronto a Vencer</span>
             </div>';
             }else{
                 return '<div class="w-15 w-xs-100">
-                <span class="badge badge-pill badge-warning">Vencido</span>
+                <span class="badge badge-pill badge-danger">Vencido</span>
             </div>';
             }
         })

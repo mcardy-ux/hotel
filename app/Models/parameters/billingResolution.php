@@ -27,26 +27,25 @@ class billingResolution extends Model
            return false;
         }
     }
+    public static function DiffDaysToToday($vencimiento){
+        $actual=date("Y-m-d");
+        $fecha1 = date_create($vencimiento);
+        $fecha2 = date_create($actual);
+        $dias = date_diff($fecha2,$fecha1)->format('%R%a');
+        return $dias;
+    }
     public static function getDaysRamining($num){
         $reg = DB::table('billing_resolutions')->select('fechaResolucion')->where('id','=',$num)->first();
-        $venc=date("Y-m-d",strtotime($reg->fechaResolucion."+ 2 year"));
-        $actual=date("Y-m-d");
-        $dateDifference=abs(strtotime($venc) - strtotime($actual));
-
-        $years  = floor($dateDifference / (365 * 60 * 60 * 24));
-        $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-        $days       = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
-        if ($years>0) {
-            return "<span class='badge badge-light mb-1'>".$years." año,  ".$months." Meses y ".$days." dias </span>";
-        }elseif ($months>0) {
-            return "<span class='badge badge-light mb-1'>".$months." Meses y ".$days." dias </span>";
-        }else{
-            if ($days<20) {
-                return "<span class='badge badge-danger mb-1'>".$days." dias </span>";
-            }else {
-                return "<span class='badge badge-light mb-1'>".$days." dias </span>";
-            } 
-        }
         
+        $venc=date("Y-m-d",strtotime($reg->fechaResolucion."+ 2 year"));
+        
+        $dias=billingResolution::DiffDaysToToday($venc);
+         if ($dias>25) {
+            return "<span class='badge badge-light mb-1'>".($dias+0)." días restantes </span>";
+        }elseif($dias>1 && $dias<=25){
+            return "<span class='badge badge-warning mb-1'>".($dias+0)." días pronto a vencer </span>";
+        }elseif($dias<=1){
+            return "<span class='badge badge-danger mb-1'>".($dias+0)." días vencidos </span>";
+        }  
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\parameters\data_hotel;
 use App\Models\parameters\hotel_has_bank_accounts;
+use App\Models\parameters\billingResolution;
+use App\Models\parameters\bankAccount;
 use App\Models\parameters\location;
 use Illuminate\Http\Request;
 use Vinkla\Hashids\Facades\Hashids;
@@ -17,8 +19,16 @@ class DataHotelController extends Controller
      */
     public function index()
     {
-        $data=data_hotel::getDataHotel();
-        return view("parameters.data_hotel.index",['data'=>$data]);
+        $billing=billingResolution::all()->where("activa",1)->count();
+        $banks=bankAccount::all()->count();
+        if ($billing>=1 && $banks >=1) {
+            $data=data_hotel::getDataHotel();
+            return view("parameters.data_hotel.index",['data'=>$data]);
+        }
+        else{
+            return view("parameters.data_hotel.index",['message'=>'No se ha parametrizado los campos necesarios.']);
+        }
+        
     }
 
     /**
