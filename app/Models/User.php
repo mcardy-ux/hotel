@@ -10,7 +10,11 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    
+    public function getEncodeIDAttribute()
+    {
+        return \Hashids::encode($this->id);
+    }
     /**
      * The attributes that are mass assignable.
      *

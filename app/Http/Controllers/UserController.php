@@ -64,7 +64,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=User::find(\Hashids::decode($id)[0]);
+        return view("parameters.user.edit",['data'=>$data]);
+        
     }
 
     /**
@@ -76,7 +78,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find(\Hashids::decode($id)[0]);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->status=$request->acceso;
+        $user->save();
+
+        return json_encode(['success' => true]);
     }
 
     /**
@@ -87,7 +96,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reg = User::find(\Hashids::decode($id)[0])->delete();
+        if($reg){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
+        }
     }
 
     //Seccion de Datatables
@@ -96,7 +110,7 @@ class UserController extends Controller
         $query = User::all();
         return datatables($query)
         ->addColumn('acceso', function ($query) {
-            if($query->status=1){
+            if($query->status==1){
                 return '<span class="badge badge-pill badge-success mb-1">Activo</span>';
             }else{
                 return '<span class="badge badge-pill badge-warning mb-1">Inactivo</span>';

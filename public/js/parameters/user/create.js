@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    $('#password').change(function(event){
+        if ($('#password').length <=6) {
+            $('#add_user #password_alert').text('Debe tener mas de seis digitos').show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    });
     $('#add_user').submit(function(event){
         if ($('#add_user #name').val() === '') {
             $('#add_user #name_alert').text('Ingrese un nombre').show();

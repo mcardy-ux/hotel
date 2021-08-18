@@ -61,6 +61,8 @@
     </main>
 @endsection
 @push('scripts')
+<script src="{{ asset('js/parameters/user/index.js') }}"></script>
+
 <script>
 $(document).ready(function(){
 

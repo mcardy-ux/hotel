@@ -226,7 +226,7 @@ $(document).ready(function(){
         }
         
 
-        let confirmacion=confirm("¿Esta seguro de agregar esta información?");
+        let confirmacion=confirm("¿Esta seguro de editar esta información?");
           if(confirmacion){
 
            
