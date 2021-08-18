@@ -141,6 +141,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="{{route('user.index')}}">
+                                        <i class="simple-icon-people"></i> <span
+                                            class="d-inline-block">Usuarios</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{route('billing.index')}}">
                                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
                                     </a>

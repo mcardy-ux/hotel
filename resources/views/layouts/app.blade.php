@@ -133,10 +133,16 @@
                         </a>
                         <div id="collapseAuthorization" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
-                            <li>
+                                <li>
                                     <a href="{{route('locations.index')}}">
                                         <i class="simple-icon-location-pin"></i> <span
                                             class="d-inline-block">Ubicaciones</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('user.index')}}">
+                                        <i class="simple-icon-people"></i> <span
+                                            class="d-inline-block">Usuarios</span>
                                     </a>
                                 </li>
                                 <li>
