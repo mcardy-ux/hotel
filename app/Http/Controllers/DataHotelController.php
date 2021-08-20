@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\parameters\data_hotel;
 use App\Models\parameters\hotel_has_bank_accounts;
 use App\Models\parameters\billingResolution;
+use App\Models\parameters\organization;
 use App\Models\parameters\bankAccount;
 use App\Models\parameters\location;
 use Illuminate\Http\Request;
@@ -21,10 +22,11 @@ class DataHotelController extends Controller
     {
         $has_hotel=data_hotel::HasHotel();
         $billing=billingResolution::all()->where("activa",1)->count();
+        $is_Ind=organization::select('Is_independiente')->first();
         $banks=bankAccount::all()->count();
         if ($billing>=1 && $banks >=1) {
             $data=data_hotel::getDataHotel();
-            return view("parameters.data_hotel.index",['data'=>$data,'has_hotel' => $has_hotel]);
+            return view("parameters.data_hotel.index",['data'=>$data,'has_hotel' => $has_hotel,'is_Ind' =>$is_Ind]);
         }
         else{
             return redirect()->back()->withErrors('No se ha parametrizado los campos necesarios.')->withInput();
@@ -40,7 +42,8 @@ class DataHotelController extends Controller
      */
     public function create()
     {
-        if (data_hotel::HasHotel()) {
+        $is_Ind=organization::select('Is_independiente')->first();
+        if ($is_Ind->Is_independiente==0) {
             $deptos=location::getDepartaments();
             $resoluciones=data_hotel::getResolutions();
             $cuenta_banc=data_hotel::getAccountBank();
@@ -62,12 +65,10 @@ class DataHotelController extends Controller
      */
     public function store(Request $request)
     {
+        $organization=organization::select('id')->first();
         
        $reg = new data_hotel();
-       $reg->razonSocial=$request->razon_social;
        $reg->razonComercial=$request->razon_comercial;
-       $reg->nit=$request->nit;
-       $reg->digitoVerificacion=$request->digito_nit;
        $reg->tipoRegimen=$request->regimen;
        $reg->regimenTributario=$request->tipo_regimen;
        $reg->direccion=$request->direccion;
@@ -76,7 +77,9 @@ class DataHotelController extends Controller
        $reg->ciiuActividad=$request->ciiu;
        $reg->relUbicacion=$request->ciudad;
        $reg->relBillingResolution=$request->resolucion_facturacion;
+       $reg->rnt=$request->rnt;
        $reg->created_by=$request->id_user_create;
+       $reg->relOrganizacion=$organization->id;
        $fileUp=$request->file('logo');
        if ($request->hasFile('logo')) {
         
@@ -158,21 +161,17 @@ class DataHotelController extends Controller
     {
         $reg = data_hotel::findOrFail($id);
         
-        
-        $reg->razonSocial=$request->data[2]['value'];
-        $reg->razonComercial=$request->data[3]['value'];
-        $reg->nit=$request->data[4]['value'];
-        $reg->digitoVerificacion=$request->data[5]['value'];
-        $reg->tipoRegimen=$request->data[7]['value'];
-        $reg->regimenTributario=$request->data[8]['value'];
-        $reg->direccion=$request->data[6]['value'];
-        $reg->telefono=$request->data[9]['value'];
-        $reg->telefonoAlterno=$request->data[10]['value'];
-        $reg->ciiuActividad=$request->data[15]['value'];
+        $reg->razonComercial=$request->data[2]['value'];
+        $reg->direccion=$request->data[3]['value'];
+        $reg->tipoRegimen=$request->data[4]['value'];
+        $reg->regimenTributario=$request->data[5]['value'];
+        $reg->telefono=$request->data[6]['value'];
+        $reg->telefonoAlterno=$request->data[7]['value'];
+        $reg->ciiuActividad=$request->data[14]['value'];
         $reg->modified_by=$request->data[1]['value'];
-        $reg->relUbicacion=$request->data[12]['value'];
-        $reg->relBillingResolution=$request->data[13]['value'];
-        
+        $reg->relUbicacion=$request->data[10]['value'];
+        $reg->relBillingResolution=$request->data[11]['value'];
+        $reg->rnt=$request->data[12]['value'];
         //Edicion de Cuentas Bancarias
         $EliminarCuentas=hotel_has_bank_accounts::DropByHotel($id);
         if ($EliminarCuentas) {

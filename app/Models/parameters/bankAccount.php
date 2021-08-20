@@ -38,4 +38,9 @@ class bankAccount extends Model
     {
         return $this->belongsToMany(data_hotel::class,'hotel_has_bank_accounts');
     }
+
+    public static function Existe_Bank(){
+        $reg=bankAccount::all()->count();
+        return $reg;
+    }
 }

@@ -16,13 +16,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
+Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth']);
+Route::resource('organization', App\Http\Controllers\OrganizationController::class)->middleware(['auth']);
 Route::resource('data_hotel', App\Http\Controllers\DataHotelController::class)->middleware(['auth']);
 Route::resource('locations', App\Http\Controllers\LocationController::class)->middleware(['auth']);
 Route::resource('billing', App\Http\Controllers\BillingResolutionController::class)->middleware(['auth']);
 Route::resource('bank_account', App\Http\Controllers\BankAccountController::class)->middleware(['auth']);
-Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth']);
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
@@ -38,7 +37,11 @@ Route::get('data_hotel/request/ciiu/{id}', [App\Http\Controllers\DataHotelContro
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    
+$isNew=App\Http\Controllers\OrganizationController::ExistenDatos();
+$hasBilling=App\Http\Controllers\BillingResolutionController::ExistenDatos();
+$hasAccount=App\Http\Controllers\BankAccountController::ExistenDatos();
+    return view('dashboard',['isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

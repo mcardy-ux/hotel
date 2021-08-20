@@ -15,16 +15,14 @@ class DataHotels extends Migration
     {
         Schema::create('data_hotels', function (Blueprint $table) {
             $table->id();
-            $table->string('razonSocial');
             $table->string('razonComercial');
-            $table->bigInteger('nit');
-            $table->char('digitoVerificacion');
             $table->string('tipoRegimen');
             $table->string('regimenTributario');
             $table->string('direccion');
             $table->string('telefono');
             $table->string('telefonoAlterno');
             $table->string('ciiuActividad');
+            $table->string('rnt');
             $table->string('logo');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
@@ -32,9 +30,10 @@ class DataHotels extends Migration
             $table->foreign('modified_by')->references('id')->on('users');
             $table->unsignedBigInteger('relUbicacion');
             $table->foreign('relUbicacion')->references('id')->on('city');
-
             $table->unsignedBigInteger('relBillingResolution');
             $table->foreign('relBillingResolution')->references('id')->on('billing_resolutions');
+            $table->unsignedBigInteger('relOrganizacion');
+            $table->foreign('relOrganizacion')->references('id')->on('organizations');
             $table->timestamps();
         });
         Schema::create('hotel_has_bank_accounts', function (Blueprint $table) {

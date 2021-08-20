@@ -142,8 +142,9 @@ class data_hotel extends Model
 
     public static function getDataHotel(){
         $data=DB::table('data_hotels')
-        ->select('id','razonSocial','nit','digitoVerificacion','direccion','telefono','telefonoAlterno','logo')
+        ->select('id','razonComercial','tipoRegimen','regimenTributario','direccion','telefono','telefonoAlterno','ciiuActividad','rnt','logo','relUbicacion')
         ->get();
+        
         return $data;
     }
 

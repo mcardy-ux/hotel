@@ -123,16 +123,6 @@ $(document).ready(function(){
     // Fin de Funciones para el codigo ciiu
     //******** */   
     
-    var input=  document.getElementById('nit');
-    input.addEventListener('input',function(){
-        if (this.value.length > 10) 
-           this.value = this.value.slice(0,10); 
-      })
-      var input=  document.getElementById('digito_nit');
-    input.addEventListener('input',function(){
-        if (this.value.length > 1) 
-           this.value = this.value.slice(0,1); 
-      })
 
     //******** */
     // Inicio de Funcion para validar logo
@@ -168,24 +158,10 @@ $(document).ready(function(){
     //******** */   
 
     $('#add_data_hotel').submit(function(event){
-        if ($('#razon_social').val() === '') {
-            alert('Debe ingresar la razon social','Atencion!');
-            $('#razon_social').focus();
-            return false;
-        }
+     
         if ($('#razon_comercial').val() === '') {
             alert('Debe ingresar la razon comercial','Atencion!');
             $('#razon_comercial').focus();
-            return false;
-        }
-        if ($('#nit').val() === '') {
-            alert('Debe ingresar el nit','Atencion!');
-            $('#nit').focus();
-            return false;
-        }
-        if ($('#digito_nit').val() === '') {
-            alert('Debe ingresar el digito de verificacion','Atencion!');
-            $('#digito_nit').focus();
             return false;
         }
         if ($('#direccion').val() === '') {
@@ -233,6 +209,13 @@ $(document).ready(function(){
             $('#resolucion_facturacion').focus();
             return false;
         }
+        if ( $('#rnt').val() === "") {
+            alert('Debe ingresar el campo RNT','Atencion!');
+            $('#rnt').focus();
+            return false;
+        }
+
+        
         if ($('#tipo_ciiu').val() === "") {
             alert('Debe seleccionar la categoria de ciiu','Atencion!');
             $('#tipo_ciiu').focus();

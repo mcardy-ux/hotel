@@ -34,34 +34,18 @@
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="id_user_create" name="id_user_create" value="{{ Auth::user()->id }}" >
                                
-                                <div class="form-group">
-                                    <label for="razon_social">Razón Social:
-                                    </label>
-                                    <input type="text" class="form-control" id="razon_social" name="razon_social" 
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                </div>
                                
                                 <div class="form-row">
-                                    <div class="form-group col-md-7">
+                                    <div class="form-group col-md-6">
                                         <label for="razon_comercial">Razón Comercial:</label>
                                         <input type="text" class="form-control" id="razon_comercial" name="razon_comercial"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nit">Nit:</label>
-                                        <input type="number" class="form-control" id="nit" name="nit" min="1" max="9999999999">
-                                    </div>
-                                    
-                                    <div class="form-group col-md-2">
-                                        <label for="digito_nit">Digito:</label>
-                                        <input type="number" max="10" min="1" class="form-control" id="digito_nit" name="digito_nit" >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="direccion">Dirección:
-                                    </label>
-                                    <input type="text" class="form-control" id="direccion" name="direccion"
+                                    <div class="form-group col-md-6">
+                                        <label for="direccion">Dirección:</label>
+                                        <input type="text" class="form-control" id="direccion" name="direccion"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                    </div>
                                 </div>
                                 
                                 <div class="form-row">
@@ -110,18 +94,23 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-6">
                                         <label for="logo">Logo:</label>
                                         <input type="file" class="form-control" id="logo" name="logo">
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="resolucion_facturacion">Resolución Facturación:</label>
                                         <select id="resolucion_facturacion" name="resolucion_facturacion" class="form-control">
                                             <option value="" selected="" >Seleccionar</option>
                                         </select>
                                     </div>
                                     
-                                    <div class="form-group col-md-5">
+                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="rnt">RNT:</label>
+                                        <input type="text" class="form-control" id="rnt" name="rnt">
+                                    </div>
+                                    <div class="form-group col-md-6">
                                         <label for="tipo_ciiu">Categoria CIIU:</label>
                                         <select id="tipo_ciiu" name="tipo_ciiu" class="form-control">
                                             <option value="" selected="" >Seleccionar</option>

@@ -132,16 +132,7 @@ $(document).ready(function(){
     //
     // Fin de Funciones para el codigo ciiu
     //******** */  
-    var input=  document.getElementById('edit_nit');
-    input.addEventListener('input',function(){
-        if (this.value.length > 10) 
-           this.value = this.value.slice(0,10); 
-      })
-      var input=  document.getElementById('edit_digito_nit');
-    input.addEventListener('input',function(){
-        if (this.value.length > 1) 
-           this.value = this.value.slice(0,1); 
-      })
+    
 
       //
       // Inicio de submit
@@ -149,26 +140,13 @@ $(document).ready(function(){
 
 
     $('#edit_data_hotel').submit(function(event){
-        if ($('#edit_razon_social').val() === '') {
-            alert('Debe ingresar la razon social','Atencion!');
-            $('#edit_razon_social').focus();
-            return false;
-        }
+        
         if ($('#edit_razon_comercial').val() === '') {
             alert('Debe ingresar la razon comercial','Atencion!');
             $('#edit_razon_comercial').focus();
             return false;
         }
-        if ($('#edit_nit').val() === '') {
-            alert('Debe ingresar el nit','Atencion!');
-            $('#edit_nit').focus();
-            return false;
-        }
-        if ($('#edit_digito_nit').val() === '') {
-            alert('Debe ingresar el digito de verificacion','Atencion!');
-            $('#edit_digito_nit').focus();
-            return false;
-        }
+        
         if ($('#edit_direccion').val() === '') {
             alert('Debe ingresar la direccion','Atencion!');
             $('#edit_direccion').focus();

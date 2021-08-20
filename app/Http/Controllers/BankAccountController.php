@@ -128,5 +128,12 @@ class BankAccountController extends Controller
         ->rawColumns(['actions'])
         ->make(true);
     }
-    
+    public static function ExistenDatos(){
+        $reg=bankAccount::Existe_Bank();
+        if ($reg==0) {
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

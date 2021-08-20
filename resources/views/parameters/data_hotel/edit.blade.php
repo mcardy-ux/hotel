@@ -35,33 +35,19 @@
                                 <input type="hidden" id="_token" name="_token"  value="{{ csrf_token() }}">
                                 <input type="hidden" id="id_user_modify" name="id_user_modify" value="{{ Auth::user()->id }}">
                              
-                                <div class="form-group">
-                                    <label for="edit_razon_social">Razón Social:
-                                    </label>
-                                    <input type="text" class="form-control" id="edit_razon_social" name="edit_razon_social"  value="{{$data->razonSocial}}"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                </div>
+                                
                                 <div class="form-row">
-                                    <div class="form-group col-md-7">
+                                    <div class="form-group col-md-6">
                                         <label for="edit_razon_comercial">Razón Comercial:</label>
                                         <input type="text" class="form-control" id="edit_razon_comercial" name="edit_razon_comercial" value="{{$data->razonComercial}}"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="edit_nit">Nit:</label>
-                                        <input type="number" class="form-control" id="edit_nit" name="edit_nit" min="1" max="9999999999" value="{{$data->nit}}">
+                                    <div class="form-group col-md-6">
+                                        <label for="edit_direccion">Dirección:
+                                        </label>
+                                        <input type="text" class="form-control" id="edit_direccion" name="edit_direccion" value="{{$data->direccion}}"
+                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
-                                    
-                                    <div class="form-group col-md-2">
-                                        <label for="edit_digito_nit">Digito:</label>
-                                        <input type="number" max="10" min="1" class="form-control" id="edit_digito_nit" name="edit_digito_nit" value="{{$data->digitoVerificacion}}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="edit_direccion">Dirección:
-                                    </label>
-                                    <input type="text" class="form-control" id="edit_direccion" name="edit_direccion" value="{{$data->direccion}}"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
                                 
                                 <div class="form-row">
@@ -91,7 +77,7 @@
                                     <div class="form-group col-md-4">
                                         <label for="edit_pais">Pais:</label>
                                         <select id="edit_pais" name="edit_pais" class="form-control">
-                                            <option value="colombia" selected disabled="disabled">Colombia</option>
+                                            <option value="colombia" selected >Colombia</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -111,8 +97,14 @@
                                         <select id="edit_resolucion_facturacion" name="edit_resolucion_facturacion" class="form-control">
                                         </select>
                                     </div>
-                                    
                                     <div class="form-group col-md-6">
+                                        <label for="rnt">RNT:</label>
+                                        <input type="text" class="form-control" id="rnt" name="rnt">
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-row">
+                                <div class="form-group col-md-6">
                                         <label for="edit_tipo_ciiu">Categoria CIIU:</label>
                                         <select id="edit_tipo_ciiu" name="edit_tipo_ciiu" class="form-control">
                                             <option value="" selected="" >Seleccionar</option>
@@ -128,10 +120,7 @@
                                             <option value="10">Categoria 8001 - 10000</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         <label for="edit_ciiu">CIIU Actividad Economica:</label>
                                         <select id="edit_ciiu" name="edit_ciiu" class="form-control">
                                             
@@ -211,6 +200,8 @@
         //Campo para la ubicacion
         let resolucion_facturacion=@json($data->relBillingResolution);
             $("#edit_resolucion_facturacion").val(resolucion_facturacion);
+            let rnt=@json($data->rnt);
+            $("#rnt").val(rnt);
 
         //Campo para la categoria de ciiu
         let tipo_ciiu=@json($ciiu["id_categoria"]);

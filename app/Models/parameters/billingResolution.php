@@ -48,4 +48,8 @@ class billingResolution extends Model
             return "<span class='badge badge-danger mb-1'>".($dias+0)." días vencidos </span>";
         }  
     }
+    public static function Existe_Billing(){
+        $reg=billingResolution::all()->count();
+        return $reg;
+    }
 }

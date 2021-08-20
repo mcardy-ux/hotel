@@ -156,4 +156,12 @@ class BillingResolutionController extends Controller
         ->rawColumns(['actions','status','diasRestantes'])
         ->make(true);
     }
+    public static function ExistenDatos(){
+        $reg=billingResolution::Existe_Billing();
+        if ($reg==0) {
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datepicker3.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-tagsinput.css')}}" />
     <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}" />
+    
+    <link rel="stylesheet" href="{{asset('css/vendor/smart_wizard.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/dore.light.blueyale.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
 </head>
 
@@ -121,74 +124,36 @@
                 </ul>
             </div>
         </div>
-
-        <div class="sub-menu">
-            <div class="scroll">
-                
-                <ul class="list-unstyled" data-link="layouts" id="layouts">
-                    <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseAuthorization" aria-expanded="true"
-                            aria-controls="collapseAuthorization" class="rotate-arrow-icon opacity-50">
-                            <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Administrar Datos</span>
-                        </a>
-                        <div id="collapseAuthorization" class="collapse show">
-                            <ul class="list-unstyled inner-level-menu">
-                                <li>
-                                    <a href="{{route('locations.index')}}">
-                                        <i class="simple-icon-location-pin"></i> <span
-                                            class="d-inline-block">Ubicaciones</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('user.index')}}">
-                                        <i class="simple-icon-people"></i> <span
-                                            class="d-inline-block">Usuarios</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('billing.index')}}">
-                                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Resoluciones de <br>Facturación</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('bank_account.index')}}">
-                                        <i class="iconsminds-bank"></i> <span class="d-inline-block">Cuentas Bancarias</span>
-                                    </a>
-                                </li>
-                                <li>
-                                <li>
-                                    <a href="{{route('data_hotel.index')}}">
-                                        <i class="iconsminds-hotel"></i> <span
-                                            class="d-inline-block">Hotel</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                </ul>
-            </div>
-        </div>
+        @include('layouts.leftmenu_organization')
     </div>
 
     @yield('content')
 
-    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/vendor/Chart.bundle.min.js')}}"></script>
-    <script src="{{asset('js/vendor/chartjs-plugin-datalabels.js')}}"></script>
-    <script src="{{asset('js/vendor/moment.min.js')}}"></script>
-    <script src="{{asset('js/vendor/fullcalendar.min.js')}}"></script>
-    <script src="{{asset('js/vendor/datatables.min.js')}}"></script>
-    <script src="{{asset('js/vendor/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('js/vendor/glide.min.js')}}"></script>
-    <script src="{{asset('js/vendor/progressbar.min.js')}}"></script>
-    <script src="{{asset('js/vendor/jquery.barrating.min.js')}}"></script>
-    <script src="{{asset('js/vendor/select2.full.js')}}"></script>
-    <script src="{{asset('js/vendor/nouislider.min.js')}}"></script>
-    <script src="{{asset('js/vendor/bootstrap-datepicker.js')}}"></script>
-    <script src="{{asset('js/vendor/Sortable.js')}}"></script>
-    <script src="{{asset('js/vendor/mousetrap.min.js')}}"></script>
-    <script src="{{asset('js/dore.script.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script>
+    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/Chart.bundle.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/chartjs-plugin-datalabels.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/moment.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/fullcalendar.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/datatables.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/perfect-scrollbar.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/glide.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/progressbar.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/jquery.barrating.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/select2.full.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/nouislider.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/bootstrap-datepicker.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/Sortable.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/mousetrap.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/jquery.validate/jquery.validate.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/jquery.validate/additional-methods.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/bootstrap-tagsinput.min.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/vendor/jquery.smartWizard.min.js')}}" style="opacity: 1;"></script>
+    
+    
+
+    <script src="{{asset('js/dore.script.js')}}" style="opacity: 1;"></script>
+    <script src="{{asset('js/scripts.js')}}" style="opacity: 1;"></script>
     @stack('scripts')
 </body>
 
