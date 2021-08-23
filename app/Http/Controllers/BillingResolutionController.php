@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\parameters\billingResolution;
+use App\Models\parameters\organization;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -15,7 +16,14 @@ class BillingResolutionController extends Controller
      */
     public function index()
     {
-        return view("parameters.billing.index");
+        $isNew=OrganizationController::ExistenDatos();
+        $hasBilling=BillingResolutionController::ExistenDatos();
+        $hasAccount=BankAccountController::ExistenDatos();
+
+        $reg=organization::Existe_Organizacion();
+        if ($reg==1) {
+            return view("parameters.billing.index",['isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
+        }
     }
 
     /**
@@ -25,7 +33,14 @@ class BillingResolutionController extends Controller
      */
     public function create()
     {
-        return view("parameters.billing.create");
+        $isNew=OrganizationController::ExistenDatos();
+        $hasBilling=BillingResolutionController::ExistenDatos();
+        $hasAccount=BankAccountController::ExistenDatos();
+
+        $reg=organization::Existe_Organizacion();
+        if ($reg==1) {
+            return view("parameters.billing.create",['isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
+        }
     }
 
     /**
@@ -75,8 +90,15 @@ class BillingResolutionController extends Controller
      */
     public function edit($id)
     {
-        $billing = billingResolution::find(\Hashids::decode($id)[0]);
-        return view('parameters.billing.edit', ['billing' => $billing]);
+        $isNew=OrganizationController::ExistenDatos();
+        $hasBilling=BillingResolutionController::ExistenDatos();
+        $hasAccount=BankAccountController::ExistenDatos();
+
+        $reg=organization::Existe_Organizacion();
+        if ($reg==1) {
+            $billing = billingResolution::find(\Hashids::decode($id)[0]);
+            return view('parameters.billing.edit', ['billing' => $billing,'isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
+        }
     }
 
     /**

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class data_hotel extends Model
 {
     use HasFactory;
+
+    public function departament(){
+        return $this->hasMany(departament::class);
+    }
+
     public static function getResolutions(){
         $data=DB::table('billing_resolutions')
         ->select('id','numResolucion as value','fechaResolucion as secvalue')
@@ -167,4 +172,5 @@ class data_hotel extends Model
            return false;
         }
     }
+    
 }

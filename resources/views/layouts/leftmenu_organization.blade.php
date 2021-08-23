@@ -17,16 +17,11 @@
                                     </a>
                                 </li>
                             @elseif($hasBilling==0 || $hasAccount==0)
-                               <!--  <li>
-                                    <a href="{{route('locations.index')}}">
-                                        <i class="simple-icon-location-pin"></i> <span
-                                            class="d-inline-block">Ubicaciones</span>
-                                    </a>
-                                </li> -->
+                          
                                 <li>
-                                    <a href="{{route('user.index')}}">
-                                        <i class="simple-icon-people"></i> <span
-                                            class="d-inline-block">Usuarios</span>
+                                    <a href="{{route('organization.index')}}">
+                                        <i class="simple-icon-globe"></i> <span
+                                            class="d-inline-block">Organización</span>
                                     </a>
                                 </li>
                                 <li>
@@ -41,7 +36,7 @@
                                 </li>
                                @elseif($hasBilling==1 || $hasAccount==1 || $isNew==1)
                                <li>
-                                    <a href="{{route('organization.create')}}">
+                                    <a href="{{route('organization.index')}}">
                                         <i class="simple-icon-globe"></i> <span
                                             class="d-inline-block">Organización</span>
                                     </a>
@@ -66,6 +61,12 @@
                                     <a href="{{route('data_hotel.index')}}">
                                         <i class="iconsminds-hotel"></i> <span
                                             class="d-inline-block">Hotel</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('departament.index')}}">
+                                        <i class="iconsminds-server-2"></i> <span
+                                            class="d-inline-block">Departamentos</span>
                                     </a>
                                 </li>
                                 @endif

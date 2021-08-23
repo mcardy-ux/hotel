@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1>Cuentas Bancarias</h1>
+                    <h1>Departamentos</h1>
                     <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
                         <ol class="breadcrumb pt-0">
                             <li class="breadcrumb-item">
@@ -16,8 +16,8 @@
                     </nav>
                     <div class="top-right-button-container">
                         <div class="btn-group">
-                            <a href="{{url('bank_account/create')}}" >
-                                    <button type="button" class="btn btn-primary mb-1">Agregar una nueva cuenta bancaria</button>
+                            <a href="{{url('departament/create')}}" >
+                                    <button type="button" class="btn btn-primary mb-1">Agregar un nuevo departamento</button>
                             </a>
                         </div>
                     </div>
@@ -37,14 +37,13 @@
                         <div class="card-body">
                             <h5 class="card-title">Listado</h5>
                             
-                            <table id=BankAccount class=”display”>
+                            <table id=DepartamentDate class=”display”>
                              
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Banco</th>
-                                        <th scope="col">Tipo de Cuenta</th>
-                                        <th scope="col">Numero de Cuenta</th>
-                                        <th scope="col">Titular</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Responsable</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -60,12 +59,11 @@
     </main>
 @endsection
 @push('scripts')
-<script src="{{ asset('js/parameters/bank_account/index.js') }}"></script>
 
 <script>
 $(document).ready(function(){
 
-    $('#BankAccount').DataTable({
+    $('#DepartamentDate').DataTable({
         "language": {
           "decimal": "",
           "emptyTable": "No hay información",
@@ -86,16 +84,15 @@ $(document).ready(function(){
               "next": "Siguiente",
               "previous": "Anterior"
           }},
-          "order": [[ 0, "asc" ]],
+          "order": [[ 1, "desc" ]],
           "processing": true,
           "responsive": true,
           "serverSide": true,
-        "ajax": "{{ route('ajax.request.bank_account') }}",
+        "ajax": "{{ route('ajax.request.depto') }}",
         "columns":[
-        {"data":"banco"},
-        {"data":"tipoCuenta"},
-        {"data":"numeroCuenta"},
-        {"data":"titular"},
+        {"data":"nombre"},
+        {"data":"responsable"},
+        {"data":"email_responsable"},
         { "data": "actions",orderable:false, searchable:false },
         ],
     });

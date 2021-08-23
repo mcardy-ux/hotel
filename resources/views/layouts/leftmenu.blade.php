@@ -45,6 +45,12 @@
                                             class="d-inline-block">Hotel</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{route('departament.index')}}">
+                                        <i class="iconsminds-server-2"></i> <span
+                                            class="d-inline-block">Departamentos</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                 </ul>
