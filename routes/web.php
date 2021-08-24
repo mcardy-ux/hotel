@@ -37,6 +37,8 @@ Route::get('ajax/request/depto', [App\Http\Controllers\DepartamentController::cl
 Route::get('data_hotel/request/departaments/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestDepartaments'])->name('ajax.request.departaments')->middleware(['auth']);
 //Ajax para listar los codigos ciiu
 Route::get('data_hotel/request/ciiu/{id}', [App\Http\Controllers\DataHotelController::class, 'ajaxRequestCiiu'])->name('ajax.request.ciiu')->middleware(['auth']);
+//Ajax para listar los codigos ciiu
+Route::get('departament/request/depto_hotel/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDptos'])->name('ajax.request.dptos')->middleware(['auth']);
 
 
 Route::get('/dashboard', function () {
