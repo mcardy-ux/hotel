@@ -24,7 +24,9 @@ class DepartamentController extends Controller
      */
     public function create()
     {
-        //
+        $users=departament::getDataUsersActive();
+        $hotels=departament::getHotels();
+        return view("parameters.departaments.create",['users'=>$users,'hotels'=>$hotels]);
     }
 
     /**
@@ -35,7 +37,14 @@ class DepartamentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reg=new departament();
+        $reg->nombre=$request->nombre;
+        $reg->responsable=$request->responsable;
+        $reg->email_responsable=$request->email;
+        $reg->rel_hotel=$request->hotel;
+        $reg->created_by=$request->id_user_create;
+        $reg->save();
+        return json_encode(['success' => true]);
     }
 
     /**
@@ -99,5 +108,11 @@ class DepartamentController extends Controller
         })
         ->rawColumns(['actions','status','diasRestantes'])
         ->make(true);
+    }
+    //Inicio Metodos Personalizados
+    public function ajaxRequestDptos($id)
+    {  
+        $data=departament::getEmail($id);
+        return json_encode(['success' => true,'data'=>$data]);
     }
 }
