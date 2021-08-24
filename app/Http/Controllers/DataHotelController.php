@@ -128,6 +128,9 @@ class DataHotelController extends Controller
      */
     public function edit($id)
     {
+        $isNew=OrganizationController::ExistenDatos();
+        $hasBilling=BillingResolutionController::ExistenDatos();
+        $hasAccount=BankAccountController::ExistenDatos();
         $data=data_hotel::where('id',$id)->first();
         $ciiu=data_hotel::getCiiuWithId($data->ciiuActividad);
         $deptos=location::getDepartaments();
@@ -147,7 +150,8 @@ class DataHotelController extends Controller
                 array_push($account,$data_reg);
             }
         }
-        return view("parameters.data_hotel.edit",['data'=>$data,'ciiu'=>$ciiu,'banke'=>$data->bankAccount,"deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc,"cuentas_selec"=>$account,"location"=>$location]);
+            return view("parameters.organization.create",['isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
+            return view("parameters.data_hotel.edit",['data'=>$data,'ciiu'=>$ciiu,'banke'=>$data->bankAccount,"deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc,"cuentas_selec"=>$account,"location"=>$location]);
     }
 
     /**
