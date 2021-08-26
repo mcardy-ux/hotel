@@ -91,7 +91,7 @@ $(document).ready(function(){
         "ajax": "{{ route('ajax.request.depto') }}",
         "columns":[
         {"data":"nombre"},
-        {"data":"responsable"},
+        {"data":"nombre_responsable"},
         {"data":"email_responsable"},
         { "data": "actions",orderable:false, searchable:false },
         ],

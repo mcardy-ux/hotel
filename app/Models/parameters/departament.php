@@ -10,7 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class departament extends Model
 {
     use HasFactory;
-
+    public function getEncodeIDAttribute()
+    {
+        return \Hashids::encode($this->id);
+    }
     public function data_hotel(){
         return $this->belongsTo(data_hotel::class, 'rel_hotel');
     }

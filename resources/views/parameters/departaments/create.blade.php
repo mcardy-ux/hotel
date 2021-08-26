@@ -33,15 +33,12 @@
                             <input type="hidden" id="_url" value="{{ url('departament') }}">
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="id_user_create" name="id_user_create" value="{{ Auth::user()->id }}" >
-                               
-                            
-                                
                                 <div class="form-row">
                                 
                                     
                                     <div class="form-group col-md-6">
                                         <label for="nombre">Nombre del departamento:</label>
-                                        <input type="text" class="form-control"  id="nombre" name="nombre">
+                                        <input type="text" class="form-control"  id="nombre" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="responsable">Responsable:</label>

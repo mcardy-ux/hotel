@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\parameters\departament;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DepartamentController extends Controller
@@ -64,9 +65,12 @@ class DepartamentController extends Controller
      * @param  \App\Models\parameters\departament  $departament
      * @return \Illuminate\Http\Response
      */
-    public function edit(departament $departament)
+    public function edit($id)
     {
-        //
+        $data=departament::findOrFail(\Hashids::decode($id)[0]);
+        $users=departament::getDataUsersActive();
+        $hotels=departament::getHotels();
+        return view("parameters.departaments.edit",['users'=>$users,'hotels'=>$hotels,'data'=>$data]);
     }
 
     /**
@@ -76,9 +80,16 @@ class DepartamentController extends Controller
      * @param  \App\Models\parameters\departament  $departament
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, departament $departament)
+    public function update(Request $request, $id)
     {
-        //
+        $depto=departament::findOrFail($id);
+        $depto->nombre=$request->edit_nombre;
+        $depto->responsable=$request->edit_responsable;
+        $depto->email_responsable=$request->email;
+        $depto->rel_hotel=$request->edit_hotel;
+        $depto->modified_by=$request->id_user_modify;
+        $depto->save();
+        return json_encode(['success' => true]);
     }
 
     /**
@@ -106,7 +117,11 @@ class DepartamentController extends Controller
             </div>';
            
         })
-        ->rawColumns(['actions','status','diasRestantes'])
+        ->addColumn('nombre_responsable', function ($query) {
+            $user=User::select('name')->where('id',$query->responsable)->first();
+            return $user->name;
+        })
+        ->rawColumns(['actions','nombre_responsable'])
         ->make(true);
     }
     //Inicio Metodos Personalizados

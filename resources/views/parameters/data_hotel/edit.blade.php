@@ -1,4 +1,4 @@
-@extends('layouts.appHotel')
+@extends('layouts.appIniEdit')
 
 @section('content')
 <main>
