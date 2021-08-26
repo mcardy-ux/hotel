@@ -55,6 +55,7 @@
                                             </ul>
                                             <div class="text-center">
                                                 <a href="{{url('data_hotel', [$value->id,'edit']) }}" class="btn btn-link btn-empty btn-lg">Editar <i class="simple-icon-arrow-right"></i></a>
+                                                <a href="{{url('dashboard')}}" class="btn btn-link btn-empty btn-lg">Volver <i class="simple-icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,3 +70,4 @@
         </div>
     </main>
 @endsection
+
