@@ -44,6 +44,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Responsable</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Hotel</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -59,7 +60,7 @@
     </main>
 @endsection
 @push('scripts')
-
+<script src="{{ asset('js/parameters/departament/index.js') }}"></script>
 <script>
 $(document).ready(function(){
 
@@ -93,6 +94,7 @@ $(document).ready(function(){
         {"data":"nombre"},
         {"data":"nombre_responsable"},
         {"data":"email_responsable"},
+        {"data":"hotel"},
         { "data": "actions",orderable:false, searchable:false },
         ],
     });

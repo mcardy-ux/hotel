@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\parameters\departament;
+use App\Models\parameters\data_hotel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -88,8 +89,13 @@ class DepartamentController extends Controller
         $depto->email_responsable=$request->email;
         $depto->rel_hotel=$request->edit_hotel;
         $depto->modified_by=$request->id_user_modify;
-        $depto->save();
-        return json_encode(['success' => true]);
+        $stat=$depto->save();
+        if($stat){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede editar, Recargue por favor la pagina.']);
+        }
+        
     }
 
     /**
@@ -98,12 +104,19 @@ class DepartamentController extends Controller
      * @param  \App\Models\parameters\departament  $departament
      * @return \Illuminate\Http\Response
      */
-    public function destroy(departament $departament)
+    public function destroy($id)
     {
-        //
+        
+        $reg = departament::find(\Hashids::decode($id)[0])->delete();
+
+        if($reg){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
+        }
     }
     public function ajaxRequestDepto(){
-        $query = departament::select('id','nombre','responsable','email_responsable');
+        $query = departament::select('id','nombre','responsable','email_responsable','rel_hotel');
         return datatables($query)
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -121,7 +134,11 @@ class DepartamentController extends Controller
             $user=User::select('name')->where('id',$query->responsable)->first();
             return $user->name;
         })
-        ->rawColumns(['actions','nombre_responsable'])
+        ->addColumn('hotel', function ($query) {
+            $bank=data_hotel::select('razonComercial')->where('id',$query->rel_hotel)->first();
+            return $bank->razonComercial;
+        })
+        ->rawColumns(['actions','nombre_responsable','hotel'])
         ->make(true);
     }
     //Inicio Metodos Personalizados
