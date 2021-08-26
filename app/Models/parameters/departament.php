@@ -33,4 +33,10 @@ class departament extends Model
         ->where('id',$id)->first();
         return $email;
     }
+    public static function getDeptosWithUsers(){
+        $data=departament::select('departaments.id','nombre','responsable','email_responsable','rel_hotel','created_by','departaments.created_at','users.name')
+        ->leftJoin('users','users.id','=','departaments.responsable')
+        ->get();
+        return $data;
+    }
 }

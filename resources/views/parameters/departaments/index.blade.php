@@ -29,75 +29,86 @@
                 </div>
             </div>
 
-            
+            @foreach($hotels as $value)
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+
+                                <div class=" d-flex flex-row mb-3">
+                                    <a class="d-flex"  href="#">
+                                        <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:75px;height:75px; object-fit: cover;">
+                                    </a>
+                                    <div class="pl-2 d-flex flex-grow-1 min-width-zero">
+                                        <div class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
+                                            <p class="list-item-heading mb-0 truncate">{{$value->razonComercial}}</p>                                                  
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row">
                     
-            <div class="row mb-12">
-                <div class="col-lg-12 col-md-12 mb-4">         
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Listado</h5>
-                            
-                            <table id=DepartamentDate class=”display”>
-                             
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Responsable</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Hotel</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                   
-                                </tbody>
-                            </table>
+                                    <div class="col-md-12 col-lg-6 mb-4">
+                                        <h5 class="card-title">Departamentos</h5>
+                                        
+                                            <div class="scroll dashboard-list-with-user ps ps--active-y">
+                                            
+                                                @foreach($deptos as $data_depto)
+                                                @if($value->id==$data_depto->rel_hotel)
+                                                <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                                    <div class="pl-3">
+                                                        <a href="#">
+                                                            <p class="font-weight-medium mb-0">{{$data_depto->nombre}}</p><br>
+                                                            <p class="text-muted mb-0 text-small"><strong>Encargado:</strong>  {{$data_depto->name}} | <strong>Correo:</strong>  {{$data_depto->email_responsable}} | <strong>Creado en:</strong> {{$data_depto->created_at}}</p>
+                                                        </a>
+                                                    </div>
+                                                    <div class="pl-3">
+
+                                                        <div class="dropdown d-inline-block">
+                                                            <button class="btn btn-outline-primary dropdown-toggle mb-0" type="button" id="dropdownMenuButtonBilling" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Opciones
+                                                            </button>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBilling" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                                                                <a class="dropdown-item" href="{{url('departament', [$data_depto->encode_id,'edit'])}}">Editar</a>
+                                                                <a class="dropdown-item" onclick="show(this)" id="{{$data_depto->encode_id}}">Eliminar</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @endforeach
+                                            
+                                        <div class="ps__rail-x" style="left: 0px; bottom: -79px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 79px; height: 270px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 48px; height: 166px;"></div></div></div>
+                                        
+                                    </div>
+                                    <div class="col-md-12 col-lg-6 mb-4">
+                                        <div class="card dashboard-link-list">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Integrantes</h5>
+                                                <div class="d-flex flex-row">
+                                                    <div class="w-50">
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li class="mb-1">
+                                                                <a href="#">Marble Cake</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </main>
 @endsection
 @push('scripts')
 <script src="{{ asset('js/parameters/departament/index.js') }}"></script>
 <script>
-$(document).ready(function(){
-
-    $('#DepartamentDate').DataTable({
-        "language": {
-          "decimal": "",
-          "emptyTable": "No hay información",
-          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-          "infoPostFix": "",
-          "thousands": ",",
-          "lengthMenu": "Mostrar _MENU_ Entradas",
-          "loadingRecords": "Cargando...",
-          "processing": "Procesando...",
-          "search": "Buscar:",
-          "zeroRecords": "Sin resultados encontrados",
-          
-          "paginate": {
-              "first": "Primero",
-              "last": "Ultimo",
-              "next": "Siguiente",
-              "previous": "Anterior"
-          }},
-          "order": [[ 1, "desc" ]],
-          "processing": true,
-          "responsive": true,
-          "serverSide": true,
-        "ajax": "{{ route('ajax.request.depto') }}",
-        "columns":[
-        {"data":"nombre"},
-        {"data":"nombre_responsable"},
-        {"data":"email_responsable"},
-        {"data":"hotel"},
-        { "data": "actions",orderable:false, searchable:false },
-        ],
-    });
-});
 </script>
 @endpush

@@ -16,7 +16,9 @@ class DepartamentController extends Controller
      */
     public function index()
     {
-        return view("parameters.departaments.index");
+        $hotels=data_hotel::select('id','razonComercial','logo')->get();
+        $deptos=departament::getDeptosWithUsers();
+        return view("parameters.departaments.index",['hotels'=>$hotels,'deptos'=>$deptos]);
     }
 
     /**
@@ -115,32 +117,32 @@ class DepartamentController extends Controller
             return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
         }
     }
-    public function ajaxRequestDepto(){
-        $query = departament::select('id','nombre','responsable','email_responsable','rel_hotel');
-        return datatables($query)
-        ->addColumn('actions', function ($query) {
-            return '<div class="dropdown d-inline-block">
-                <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBilling" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Opciones
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBilling" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                    <a class="dropdown-item" href="'. url('departament', [$query->encode_id,'edit']) .'">Editar</a>
-                    <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
-                </div>
-            </div>';
+    // public function ajaxRequestDepto(){
+    //     $query = departament::select('id','nombre','responsable','email_responsable','rel_hotel');
+    //     return datatables($query)
+    //     ->addColumn('actions', function ($query) {
+    //         return '<div class="dropdown d-inline-block">
+    //             <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBilling" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    //                 Opciones
+    //             </button>
+    //             <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBilling" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+    //                 <a class="dropdown-item" href="'. url('departament', [$query->encode_id,'edit']) .'">Editar</a>
+    //                 <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
+    //             </div>
+    //         </div>';
            
-        })
-        ->addColumn('nombre_responsable', function ($query) {
-            $user=User::select('name')->where('id',$query->responsable)->first();
-            return $user->name;
-        })
-        ->addColumn('hotel', function ($query) {
-            $bank=data_hotel::select('razonComercial')->where('id',$query->rel_hotel)->first();
-            return $bank->razonComercial;
-        })
-        ->rawColumns(['actions','nombre_responsable','hotel'])
-        ->make(true);
-    }
+    //     })
+    //     ->addColumn('nombre_responsable', function ($query) {
+    //         $user=User::select('name')->where('id',$query->responsable)->first();
+    //         return $user->name;
+    //     })
+    //     ->addColumn('hotel', function ($query) {
+    //         $bank=data_hotel::select('razonComercial')->where('id',$query->rel_hotel)->first();
+    //         return $bank->razonComercial;
+    //     })
+    //     ->rawColumns(['actions','nombre_responsable','hotel'])
+    //     ->make(true);
+    // }
     //Inicio Metodos Personalizados
     public function ajaxRequestDptos($id)
     {  
