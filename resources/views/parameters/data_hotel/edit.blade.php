@@ -1,5 +1,4 @@
 @extends('layouts.appIniEdit')
-
 @section('content')
 <main>
         <div class="container-fluid">
