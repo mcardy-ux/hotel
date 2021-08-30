@@ -41,20 +41,6 @@
                                         <input type="text" class="form-control"  id="nombre" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="responsable">Responsable:</label>
-                                        <select id="responsable" name="responsable" class="form-control">
-                                            <option value="" selected="" >Seleccionar</option>
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="email">Correo Responsable:</label>
-                                        <input type="email" class="form-control" readonly id="email" name="email">
-                                    </div>
-                                    <div class="form-group col-md-6">
                                         <label for="hotel">Hotel:</label>
                                         <select id="hotel" name="hotel" class="form-control">
                                             <option value="" selected="" >Seleccionar</option>
@@ -79,20 +65,9 @@
     <script src="{{ asset('js/parameters/departament/create.js') }}"></script>
     <script>
         window.addEventListener("load", function() {
-            cargarUsuarios(event);
             cargarHoteles(event);
     }, false);
  
-    //Funcion para cargar los departamentos al campo "select".
-    function cargarUsuarios() {
-        //Inicializamos el array.
-        var array = @json($users);
-        //Ordena el array alfabeticamente.
-        array.sort();
-        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("responsable", array);
-    }
-
     //Funcion para cargar los departamentos al campo "select".
     function cargarHoteles() {
         //Inicializamos el array.

@@ -43,8 +43,6 @@ class DepartamentController extends Controller
     {
         $reg=new departament();
         $reg->nombre=$request->nombre;
-        $reg->responsable=$request->responsable;
-        $reg->email_responsable=$request->email;
         $reg->rel_hotel=$request->hotel;
         $reg->created_by=$request->id_user_create;
         $reg->save();
@@ -147,6 +145,11 @@ class DepartamentController extends Controller
     public function ajaxRequestDptos($id)
     {  
         $data=departament::getEmail($id);
+        return json_encode(['success' => true,'data'=>$data]);
+    }
+    public function ajaxRequestDptosByHotel($hotel)
+    {  
+        $data=departament::getByHotel($hotel);
         return json_encode(['success' => true,'data'=>$data]);
     }
 }

@@ -31,39 +31,13 @@ $(document).ready(function(){
 
     // Evento que ocurre cuando es cambiado el usuario
     //y se rellena el correo electronico en el campo
-    $("#responsable").change(function(){
-        var id = $(this).val();
-        $.ajax({
-            url: $('#add_data_depto #_url').val()+"/request/depto_hotel/"+id,
-            headers: {'X-CSRF-TOKEN': $('#add_data_depto #_token').val()},
-            type: 'GET',
-            cache: false,
-            success: function (response) {
-            var json = $.parseJSON(response);
-            if(json.success){
-                document.getElementById("email").value="";
-                document.getElementById("email").value=json.data.email;
-
-            }
-            }
-        });
-    });
+    
 
     $('#add_data_depto').submit(function(event){
 
         if ($('#nombre').val() === "") {
             alert('Debe ingresar el nombre del departamento','Atencion!');
             $('#nombre').focus();
-            return false;
-        }
-        if ($('#responsable').val() === "") {
-            alert('Debe seleccionar el responsable','Atencion!');
-            $('#responsable').focus();
-            return false;
-        }
-        if ($('#email').val() === "") {
-            alert('Debe ingresar el responable para obtener el email','Atencion!');
-            $('#email').focus();
             return false;
         }
         if ($('#hotel').val() === "") {

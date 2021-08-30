@@ -16,9 +16,6 @@ class CreateDepartamentsTable extends Migration
         Schema::create('departaments', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->unsignedBigInteger('responsable');
-            $table->foreign('responsable')->references('id')->on('users');
-            $table->string('email_responsable');
             $table->unsignedBigInteger('rel_hotel');
             $table->foreign('rel_hotel')->references('id')->on('data_hotels');
             $table->unsignedBigInteger('created_by')->nullable();
