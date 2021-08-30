@@ -28,9 +28,8 @@ function RemoveOptions(name) {
 
 
 $(document).ready(function(){
-    $(document).ready(function() {
-        $('#deptos').select2();
-    });
+    $('#deptos').select2();
+   
     $("#hotel").change(function(){
         var id = $(this).val();
         $.ajax({
@@ -83,7 +82,6 @@ $(document).ready(function(){
 
             var data = new FormData();
             var array_deptos= $('#deptos').val();
-            console.log(array_deptos);
             data.append('deptos_sel', array_deptos);
 
             var other_data = $('#add_user').serializeArray();

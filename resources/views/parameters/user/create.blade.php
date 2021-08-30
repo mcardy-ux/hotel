@@ -35,8 +35,8 @@
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Nombre Completo</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name">
-                                        <small id="name_alert" name="name_alert" class="form-text text-muted"></small>
+                                        <input type="text" class="form-control" id="name" name="name" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <small id="name_alert" name="name_alert" class="form-text text-muted" ></small>
                                     </div>
                                 </div>
                                 <div class="form-group row">

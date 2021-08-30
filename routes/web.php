@@ -31,6 +31,7 @@ Route::get('ajax/request/billing', [App\Http\Controllers\BillingResolutionContro
 Route::get('ajax/request/bank', [App\Http\Controllers\BankAccountController::class, 'ajaxRequestBank'])->name('ajax.request.bank_account')->middleware(['auth']);
 Route::get('ajax/request/user', [App\Http\Controllers\UserController::class, 'ajaxRequestUser'])->name('ajax.request.user')->middleware(['auth']);
 Route::get('ajax/request/depto', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDepto'])->name('ajax.request.depto')->middleware(['auth']);
+Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
 
 
 //Ajax para listar los depratamentos y ciudades

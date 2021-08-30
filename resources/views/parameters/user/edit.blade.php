@@ -1,4 +1,4 @@
-@extends('layouts.appIni')
+@extends('layouts.appIniEdit')
 
 @section('content')
 <main>
@@ -69,6 +69,13 @@
                                                 </div>
                                             </div>
                                         </fieldset>
+                                        <div class="form-group row">
+                                            <label for="edit_deptos" class="col-sm-2 col-form-label">Departamentos</label>
+                                            <div class="col-sm-10">
+                                                <select  class="js-bank-account-multiple" style="width: 90%" id="edit_deptos" name="edit_deptos" multiple="multiple">
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-sm-10">
                                                 <button type="submit" class="btn btn-primary mb-0">Editar</button>
@@ -90,4 +97,29 @@
     @endsection
     @push('scripts')
     <script src="{{ asset('js/parameters/user/edit.js') }}"></script>
+    <script>
+        window.addEventListener("load", function() {
+            cargarDeptos(event);
+            let departamentos=@json($deptos_sel);
+        console.log(departamentos);
+        $("#edit_deptos").val(departamentos);
+            // cargarUsuarios(event);
+    }, false);
+ 
+    //Funcion para cargar los departamentos al campo "select".
+    function cargarDeptos() {
+        //Inicializamos el array.
+        var array = @json($deptos);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptionsConcat("edit_deptos", array);
+
+        
+          
+    }
+
+   
+ 
+   </script>
     @endpush

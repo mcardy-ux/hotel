@@ -80,8 +80,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $deptos=departament::getDepartamentsWithHotel();
         $data=User::find(\Hashids::decode($id)[0]);
-        return view("parameters.user.edit",['data'=>$data]);
+        
+        $deptos_sel=departaments_has_users::GetDepartamentsByUser(\Hashids::decode($id)[0]);
+        $cant_dptos=count($deptos_sel);
+        $deptos_sel_final=array();
+        for ($i=0; $i < $cant_dptos; $i++) { 
+            $data_reg=$deptos_sel[$i]->id;
+            array_push($deptos_sel_final,$data_reg);
+        }
+        return view("parameters.user.edit",['data'=>$data,'deptos'=>$deptos,'deptos_sel'=>$deptos_sel_final]);
         
     }
 
@@ -94,14 +103,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find(\Hashids::decode($id)[0]);
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=Hash::make($request->password);
-        $user->status=$request->acceso;
-        $user->save();
+        $id=\Hashids::decode($id)[0];
+        $user=User::find($id);
+        $user->name=$request->data[0]['value'];
+        $user->email=$request->data[1]['value'];
+        $user->password=Hash::make($request->data[2]['value']);
+        $user->status=$request->data[3]['value'];
 
-        return json_encode(['success' => true]);
+        $EliminarDeptos=departaments_has_users::DropDepartamentsByUser($id);
+        if ($EliminarDeptos) {
+            foreach($request->array as $depto_id){
+                $departaments_users = new departaments_has_users();
+                $departaments_users->departament_id=$depto_id;
+                $departaments_users->user_id=$id;
+                $departaments_users->save();
+            }
+            $user->save();
+            return json_encode(['success' => true]);
+        }
+
+        return json_encode(['success' => false]);
     }
 
     /**
@@ -112,8 +133,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $dependencias=departaments_has_users::DropDepartamentsByUser(\Hashids::decode($id)[0]);
         $reg = User::find(\Hashids::decode($id)[0])->delete();
-        if($reg){
+        if($reg && $dependencias){
             return json_encode(['success' => true]);
         }else{
             return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);

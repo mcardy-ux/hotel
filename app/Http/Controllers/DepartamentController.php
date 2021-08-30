@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\parameters\departament;
 use App\Models\parameters\data_hotel;
+use App\Models\parameters\departaments_has_users;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -151,4 +152,10 @@ class DepartamentController extends Controller
         $data=departament::getByHotel($hotel);
         return json_encode(['success' => true,'data'=>$data]);
     }
+    public function ajaxRequestIntegrantes($id)
+    {  
+        $data=departaments_has_users::GetIntegrantesByDpto($id);
+        return json_encode(['success' => true,'data'=>$data]);
+    }
+    
 }
