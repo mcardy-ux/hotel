@@ -43,16 +43,19 @@ class DataHotelController extends Controller
     public function create()
     {
         $is_Ind=organization::select('Is_independiente')->first();
+        $has_hotel=data_hotel::HasHotel();
         if ($is_Ind->Is_independiente==0) {
             $deptos=location::getDepartaments();
             $resoluciones=data_hotel::getResolutions();
             $cuenta_banc=data_hotel::getAccountBank();
             return view("parameters.data_hotel.create",["deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc]);
+        }elseif ($is_Ind->Is_independiente==1 && $has_hotel ==false) {
+            $deptos=location::getDepartaments();
+            $resoluciones=data_hotel::getResolutions();
+            $cuenta_banc=data_hotel::getAccountBank();
+            return view("parameters.data_hotel.create",["deptos"=>$deptos,"resoluciones"=>$resoluciones,"cuenta_banc"=>$cuenta_banc]);
         }else {
-            $validator->errors()->add(
-                'field', 'Ya existe un hotel registrado!'
-            );
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back();
         }
         
     }

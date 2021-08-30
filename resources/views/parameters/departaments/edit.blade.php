@@ -40,20 +40,6 @@
                                     <input type="text" class="form-control"  id="edit_nombre" name="edit_nombre" value="{{$data->nombre}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="edit_responsable">Responsable:</label>
-                                    <select id="edit_responsable" name="edit_responsable" class="form-control">
-                                        <option value="" selected="" >Seleccionar</option>
-                                    </select>
-                                </div>
-                                
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="edit_email">Correo Responsable:</label>
-                                    <input type="edit_email" class="form-control" readonly id="edit_email" name="email" value="{{$data->email_responsable}}">
-                                </div>
-                                <div class="form-group col-md-6">
                                     <label for="edit_hotel">Hotel:</label>
                                     <select id="edit_hotel" name="edit_hotel" class="form-control" >
                                         <option value="" selected="" >Seleccionar</option>
@@ -78,23 +64,12 @@
     <script src="{{ asset('js/parameters/departament/edit.js') }}"></script>
     <script>
         window.addEventListener("load", function() {
-            cargarUsuarios(event);
+          
             cargarHoteles(event);
-            let responsable=@json($data->responsable);
-            $("#edit_responsable").val(responsable);
             let rel_hotel=@json($data->rel_hotel);
             $("#edit_hotel").val(rel_hotel);
     }, false);
  
-    //Funcion para cargar los departamentos al campo "select".
-    function cargarUsuarios() {
-        //Inicializamos el array.
-        var array = @json($users);
-        //Ordena el array alfabeticamente.
-        array.sort();
-        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("edit_responsable", array);
-    }
 
     //Funcion para cargar los departamentos al campo "select".
     function cargarHoteles() {

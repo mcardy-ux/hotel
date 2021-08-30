@@ -58,7 +58,7 @@
                                                     <div class="pl-3">
                                                         <a href="#">
                                                             <p class="font-weight-medium mb-0">{{$data_depto->nombre}}</p><br>
-                                                            <p class="text-muted mb-0 text-small"><strong>Encargado:</strong>  {{$data_depto->name}} | <strong>Correo:</strong>  {{$data_depto->email_responsable}} | <strong>Creado en:</strong> {{$data_depto->created_at}}</p>
+                                                            <p class="text-muted mb-0 text-small"><strong>Creado en:</strong> {{$data_depto->created_at}}</p>
                                                         </a>
                                                     </div>
                                                     <div class="pl-3">

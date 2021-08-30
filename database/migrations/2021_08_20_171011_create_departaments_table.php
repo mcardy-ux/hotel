@@ -24,6 +24,13 @@ class CreateDepartamentsTable extends Migration
             $table->foreign('modified_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::create('departaments_has_users', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('departament_id')->nullable();
+            $table->foreign('departament_id')->references('id')->on('departaments')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
@@ -33,6 +40,7 @@ class CreateDepartamentsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('departaments_has_users');
         Schema::dropIfExists('departaments');
     }
 }

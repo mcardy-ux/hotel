@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\parameters\departaments_has_users;
+use App\Models\parameters\departament;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -25,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("parameters.user.create");
+        $deptos=departament::getDepartamentsWithHotel();
+        return view("parameters.user.create",['deptos'=>$deptos]);
     }
 
     /**
@@ -42,6 +45,19 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'status' => $request->acceso,
         ]);
+
+
+        //Creacion de Cuentas Bancarias
+        $user_hasDeptos=$request->deptos_sel;
+        $array = explode(',', $user_hasDeptos);
+        foreach($array as $depto_id){
+
+            $user_has_depto = new departaments_has_users();
+            $user_has_depto->departament_id=$depto_id;
+            $user_has_depto->user_id=$user->id;
+            $user_has_depto->save();
+        }
+
         return json_encode(['success' => true]);
     }
 

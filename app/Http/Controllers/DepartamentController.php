@@ -83,10 +83,9 @@ class DepartamentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request);
         $depto=departament::findOrFail($id);
         $depto->nombre=$request->edit_nombre;
-        $depto->responsable=$request->edit_responsable;
-        $depto->email_responsable=$request->email;
         $depto->rel_hotel=$request->edit_hotel;
         $depto->modified_by=$request->id_user_modify;
         $stat=$depto->save();

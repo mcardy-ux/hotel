@@ -13,7 +13,12 @@ class data_hotel extends Model
     public function departament(){
         return $this->hasMany(departament::class);
     }
-
+    public static function getHotels(){
+        $data=DB::table('data_hotels')
+        ->select('id','razonComercial as value')
+        ->get();
+        return $data;
+    }
     public static function getResolutions(){
         $data=DB::table('billing_resolutions')
         ->select('id','numResolucion as value','fechaResolucion as secvalue')
@@ -167,9 +172,9 @@ class data_hotel extends Model
         ->count();
         
         if ($reg==0) {
-           return true;
-        }else {
            return false;
+        }else {
+           return true;
         }
     }
     

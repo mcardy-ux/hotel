@@ -27,41 +27,12 @@ function RemoveOptions(name) {
 }
 
 $(document).ready(function(){
-    // Evento que ocurre cuando es cambiado el usuario
-    //y se rellena el correo electronico en el campo
-    $("#edit_responsable").change(function(){
-        var id = $(this).val();
-        $.ajax({
-            url: $('#edit_departament #_url').val()+"/request/depto_hotel/"+id,
-            headers: {'X-CSRF-TOKEN': $('#add_data_depto #_token').val()},
-            type: 'GET',
-            cache: false,
-            success: function (response) {
-            var json = $.parseJSON(response);
-            if(json.success){
-                document.getElementById("edit_email").value="";
-                document.getElementById("edit_email").value=json.data.email;
-
-            }
-            }
-        });
-    });
 
     $('#edit_departament').submit(function(event){
 
         if ($('#edit_nombre').val() === "") {
             alert('Debe ingresar el nombre del departamento','Atencion!');
             $('#nombre').focus();
-            return false;
-        }
-        if ($('#edit_responsable').val() === "") {
-            alert('Debe seleccionar el responsable','Atencion!');
-            $('#responsable').focus();
-            return false;
-        }
-        if ($('#edit_email').val() === "") {
-            alert('Debe ingresar el responable para obtener el email','Atencion!');
-            $('#email').focus();
             return false;
         }
         if ($('#edit_hotel').val() === "") {

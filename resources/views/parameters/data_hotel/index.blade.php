@@ -24,6 +24,17 @@
                         </div>
                     </div>
                     @endif
+                    @if($is_Ind->Is_independiente==1)
+                        @if($has_hotel==false)
+                            <div class="top-right-button-container">
+                                <div class="btn-group">
+                                    <a href="{{url('data_hotel/create')}}" >
+                                            <button type="button" class="btn btn-primary mb-1">Agregar una nuevo Hotel</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                     <div class="separator mb-5"></div>
                     
                     <div class="container-fluid disable-text-selection">

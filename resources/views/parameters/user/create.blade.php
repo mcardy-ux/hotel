@@ -1,4 +1,4 @@
-@extends('layouts.appe')
+@extends('layouts.appIni')
 
 @section('content')
 <main>
@@ -72,6 +72,15 @@
                                         </div>
                                     </div>
                                 </fieldset>
+                                <div class="form-group row">
+                                    <label for="deptos" class="col-sm-2 col-form-label">Departamentos</label>
+                                    <div class="col-sm-10">
+                                        <select  class="form-control" id="deptos" name="deptos" multiple="multiple">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary mb-0">Agregar</button>
@@ -91,4 +100,22 @@
     @endsection
     @push('scripts')
     <script src="{{ asset('js/parameters/user/create.js') }}"></script>
+    <script>
+        window.addEventListener("load", function() {
+            cargarDeptos(event);
+            // cargarUsuarios(event);
+    }, false);
+ 
+    //Funcion para cargar los departamentos al campo "select".
+    function cargarDeptos() {
+        //Inicializamos el array.
+        var array = @json($deptos);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptionsConcat("deptos", array);
+    }
+ 
+   </script>
     @endpush
+
