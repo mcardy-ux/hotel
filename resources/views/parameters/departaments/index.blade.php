@@ -33,10 +33,10 @@
             @endphp
             @foreach($hotels as $value)
        
-                <div class="row">
+                <div class="row" id="card_lista_integrantes_{{$value->id}}" name="card_lista_integrantes_{{$value->id}}">
                     <div class="col-12 col-md-12 col-xl-12">
                         <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="card-body" >
 
                                 <div class=" d-flex flex-row mb-3">
                                     <a class="d-flex"  href="#">
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="col-md-12 col-lg-6 mb-4">
                                         <div class="card dashboard-link-list">
-                                            <div class="card-body" id="card_lista_integrantes_{{$value->id}}" name="card_lista_integrantes_{{$value->id}}">
+                                            <div class="card-body">
                                                 <h5 class="card-title">Integrantes</h5>
                                                 <div class="d-flex flex-row">
                                                     <div class="w-50">

@@ -118,6 +118,4 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('js/parameters/organization/create.js') }}"></script>
-<script>
-</script>
 @endpush

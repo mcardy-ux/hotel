@@ -95,9 +95,10 @@ class OrganizationController extends Controller
      * @param  \App\Models\parameters\organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function edit(organization $organization)
+    public function edit($id)
     {
-        //
+        $org=organization::findOrFail(\Hashids::decode($id)[0])->get();
+        return view("parameters.organization.edit",['org'=>$org]);
     }
 
     /**
@@ -107,9 +108,22 @@ class OrganizationController extends Controller
      * @param  \App\Models\parameters\organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, organization $organization)
+    public function update(Request $request,  $id)
     {
-        //
+        $org=organization::findOrFail(\Hashids::decode($id)[0]);
+        $org->razonSocial=$request->edit_razon_social;
+        $org->nit=$request->edit_nit;
+        $org->digitoVerificacion=$request->edit_digito_nit;
+        $org->direccion_contacto=$request->edit_direccion_contacto;
+        $org->telefono_contacto=$request->edit_telefono_contacto;
+        $org->email_contacto=$request->edit_email_contacto;
+
+        $stat=$org->save();
+        if($stat){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede editar, Recargue por favor la pagina.']);
+        }
     }
 
     /**
