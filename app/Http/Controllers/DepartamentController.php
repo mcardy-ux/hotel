@@ -84,7 +84,6 @@ class DepartamentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
         $depto=departament::findOrFail($id);
         $depto->nombre=$request->edit_nombre;
         $depto->rel_hotel=$request->edit_hotel;
@@ -95,7 +94,6 @@ class DepartamentController extends Controller
         }else{
             return json_encode(['success' => false, 'data' => 'No se puede editar, Recargue por favor la pagina.']);
         }
-        
     }
 
     /**
