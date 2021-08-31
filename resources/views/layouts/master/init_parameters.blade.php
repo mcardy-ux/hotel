@@ -6,9 +6,9 @@
                 <div class="card mb-4 col-lg-4" >
                     <div id="smartWizardCheck" class="sw-main sw-theme-check">
                         <ul class="card-header nav nav-tabs step-anchor">
-                            <li class="nav-item active"><a href="#checkStep1" class="nav-link">Step 1<br><small>Organización</small></a></li>
-                            <li class="nav-item "><a href="#checkStep2" class="nav-link">Step 2<br><small>Second step description</small></a></li>
-                            <li class="nav-item"><a href="#checkStep3" class="nav-link">Step 3<br><small>Third step description</small></a></li>
+                            <li class="nav-item active"><a href="#checkStep1" class="nav-link">Paso 1<br><small>Organización</small></a></li>
+                            <li class="nav-item "><a href="#checkStep2" class="nav-link">Paso 2<br><small>Hotel y sus parámetros</small></a></li>
+                            <li class="nav-item"><a href="#checkStep3" class="nav-link">Paso 3<br><small>Mercadeo</small></a></li>
                         </ul>
                         <div class="card-body sw-container tab-content" style="min-height: 157.5167px;">
                             <div id="checkStep1" class="tab-pane step-content" >
