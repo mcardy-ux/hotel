@@ -2,8 +2,7 @@
 
 @section('content')
     @php
-        
-        if($isNew==0 || $hasBilling==0 || $hasAccount==0){
+        if($isNew==0 || $hasBilling==0 || $hasAccount==0 || !$hasHotel || !$hasDpto|| !$hasUsers){
         @endphp
         @include('layouts.master.init_parameters')
         @php

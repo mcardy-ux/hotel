@@ -213,4 +213,9 @@ class DataHotelController extends Controller
         $data=data_hotel::getCiiu($id);
         return json_encode(['success' => true,'data'=>$data]);
     }
+
+    public static function ExistenDatos(){
+        $reg=data_hotel::HasHotel();
+        return $reg;
+    }
 }

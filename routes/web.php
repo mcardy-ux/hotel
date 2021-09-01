@@ -44,12 +44,6 @@ Route::get('departament/request/depto_hotel/{id}', [App\Http\Controllers\Departa
 Route::get('user/request/depto_hotel/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDptosByHotel'])->name('ajax.request.dptosbyhotel')->middleware(['auth']);
 
 
-Route::get('/dashboard', function () {
-    
-$isNew=App\Http\Controllers\OrganizationController::ExistenDatos();
-$hasBilling=App\Http\Controllers\BillingResolutionController::ExistenDatos();
-$hasAccount=App\Http\Controllers\BankAccountController::ExistenDatos();
-    return view('dashboard',['isNew' => $isNew,'hasBilling'=>$hasBilling,'hasAccount'=>$hasAccount]);
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

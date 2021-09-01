@@ -44,4 +44,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function Existe_Users()
+    {
+        $reg = user::select('id')
+        ->where("email",'!=','root@admin.com')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

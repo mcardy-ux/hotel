@@ -155,5 +155,8 @@ class DepartamentController extends Controller
         $data=departaments_has_users::GetIntegrantesByDpto($id);
         return json_encode(['success' => true,'data'=>$data]);
     }
-    
+    public static function ExistenDatos(){
+        $reg=departament::Existe_Dptos();
+        return $reg;
+    }
 }

@@ -51,4 +51,15 @@ class departament extends Model
         ->get();
         return $data;
     }
+    public static function Existe_Dptos()
+    {
+        $reg = departament::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

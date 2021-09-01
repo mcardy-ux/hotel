@@ -172,4 +172,9 @@ class UserController extends Controller
         ->rawColumns(['acceso','rol','actions'])
         ->make(true);
     }
+
+    public static function ExistenDatos(){
+        $reg=User::Existe_Users();
+        return $reg; 
+    }
 }
