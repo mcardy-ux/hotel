@@ -23,6 +23,7 @@ Route::resource('locations', App\Http\Controllers\LocationController::class)->mi
 Route::resource('billing', App\Http\Controllers\BillingResolutionController::class)->middleware(['auth']);
 Route::resource('bank_account', App\Http\Controllers\BankAccountController::class)->middleware(['auth']);
 Route::resource('departament', App\Http\Controllers\DepartamentController::class)->middleware(['auth']);
+Route::resource('sectoresHab', App\Http\Controllers\SectoresHabitacionesController::class)->middleware(['auth']);
 
 
 //Ajax para listar las tablas del index de los parametros de configuración
@@ -31,6 +32,11 @@ Route::get('ajax/request/billing', [App\Http\Controllers\BillingResolutionContro
 Route::get('ajax/request/bank', [App\Http\Controllers\BankAccountController::class, 'ajaxRequestBank'])->name('ajax.request.bank_account')->middleware(['auth']);
 Route::get('ajax/request/user', [App\Http\Controllers\UserController::class, 'ajaxRequestUser'])->name('ajax.request.user')->middleware(['auth']);
 Route::get('ajax/request/depto', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDepto'])->name('ajax.request.depto')->middleware(['auth']);
+Route::get('ajax/request/sectores', [App\Http\Controllers\SectoresHabitacionesController::class, 'ajaxRequestSectores'])->name('ajax.request.sectores')->middleware(['auth']);
+
+
+
+
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
 
 

@@ -25,7 +25,7 @@
                             </div>
                             <div id="checkStep2" class="tab-pane step-content" >
                                 <h4 class="pb-2">Configurar Parametros Esenciales</h4>
-                                <div>Para continuar la configuración debe ingresar la infromación correspondiente en los modulos de acontinuación:</div>
+                                <div>Para continuar con la configuración debe acceder a cada modulo y crear los registros requeridos:</div>
                                 <br>
                                 <p class="mb-3">
                                 @if($hasBilling==0)
@@ -38,6 +38,7 @@
                                 </a>
                                 @endif
                                 @if($hasAccount==0)
+                                
                                 <a href="{{route('bank_account.create')}}">
                                     <span class="badge badge-pill badge-outline-theme-2 mb-1">2. Crear Cuenta Bancaria</span>
                                 </a>
