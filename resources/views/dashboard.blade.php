@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @php
-        if(!$ExistenDatosHotel){
-        include('layouts.master.init_parameters');
-       
+   
+        @if(!$ExistenDatosHotel)
         
-        }
-        else{
-        @endphp
+        @include('layouts.master.init_parameters');
+     
+        @else
         <main>
             <div class="container-fluid">
                 <div class="row">
@@ -76,8 +74,7 @@
                 </div>
             </div>
         </main>
-        @php
-        }
-    @endphp
+        @endif
+
     
 @endsection

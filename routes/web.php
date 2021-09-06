@@ -33,6 +33,7 @@ Route::get('ajax/request/bank', [App\Http\Controllers\BankAccountController::cla
 Route::get('ajax/request/user', [App\Http\Controllers\UserController::class, 'ajaxRequestUser'])->name('ajax.request.user')->middleware(['auth']);
 Route::get('ajax/request/depto', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDepto'])->name('ajax.request.depto')->middleware(['auth']);
 Route::get('ajax/request/sectores', [App\Http\Controllers\SectoresHabitacionesController::class, 'ajaxRequestSectores'])->name('ajax.request.sectores')->middleware(['auth']);
+Route::get('ajax/request/tiposHab', [App\Http\Controllers\TipoHabitacionesController::class, 'ajaxRequestTiposHab'])->name('ajax.request.tiposHab')->middleware(['auth']);
 
 
 

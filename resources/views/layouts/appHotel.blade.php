@@ -122,7 +122,7 @@
                 </ul>
             </div>
         </div>
-        @include('layouts.leftmenu')
+        @include('layouts.leftmenu_organization')
     </div>
 
     @yield('content')

@@ -17,7 +17,6 @@ class OrganizationController extends Controller
         $isNew=OrganizationController::ExistenDatos();
         $hasBilling=BillingResolutionController::ExistenDatos();
         $hasAccount=BankAccountController::ExistenDatos();
-
         $reg=organization::Existe_Organizacion();
         if($reg==1){
             $data=organization::all();

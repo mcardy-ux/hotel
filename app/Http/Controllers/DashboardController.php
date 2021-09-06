@@ -13,17 +13,29 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
    public function index(){
-      $listaHotel=$this->mostrarMenuHotel();
-      $listaMercadeo=$this->mostrarMenuMercadeo();
+      $isNew=OrganizationController::ExistenDatos();
+      $hasBilling=BillingResolutionController::ExistenDatos();
+      $hasAccount=BankAccountController::ExistenDatos();
+      $hasHotel=DataHotelController::ExistenDatos();
+      $hasDpto=DepartamentController::ExistenDatos();
+      $hasUsers=UserController::ExistenDatos();
+      
+     
+      
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
         return view('dashboard',[
-           'listaHotel' => $listaHotel,
-           'listaMercadeo'=>$listaMercadeo,
-           'ExistenDatosHotel'=> $ExistenDatosHotel
+           'ExistenDatosHotel'=> $ExistenDatosHotel,
+            'isNew'=>$isNew,
+            'hasBilling'=>$hasBilling,
+            'hasAccount'=>$hasAccount,
+            'hasHotel'=>$hasHotel,
+            'hasDpto'=>$hasDpto,
+            'hasUsers'=>$hasUsers,
+
          ]);
    }
 
-   public function validarExistenDatosHotel(){
+   public static function validarExistenDatosHotel(){
       $isNew=OrganizationController::ExistenDatos();
       $hasBilling=BillingResolutionController::ExistenDatos();
       $hasAccount=BankAccountController::ExistenDatos();
@@ -39,7 +51,7 @@ class DashboardController extends Controller
    }
 
 
-   public function mostrarMenuHotel(){
+   public static function mostrarMenuHotel(){
       $isNew=OrganizationController::ExistenDatos();
       $hasBilling=BillingResolutionController::ExistenDatos();
       $hasAccount=BankAccountController::ExistenDatos();
@@ -85,7 +97,7 @@ class DashboardController extends Controller
       
       return $listaHotel;
    }
-   public function mostrarMenuMercadeo(){
+   public static function mostrarMenuMercadeo(){
          $listaMercadeo="";
       
          $listaMercadeo="<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-organization'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
