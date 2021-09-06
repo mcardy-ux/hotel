@@ -12,4 +12,16 @@ class claseHabitaciones extends Model
         return \Hashids::encode($this->id);
     }
     protected $fillable=['descripcion'];
+
+    public static function Existe_Datos()
+    {
+        $reg = claseHabitaciones::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
    
-        @if(!$ExistenDatosHotel)
+        @if(!$ExistenDatosHotel || !$ExistenDatosMercadeo)
         
         @include('layouts.master.init_parameters');
      

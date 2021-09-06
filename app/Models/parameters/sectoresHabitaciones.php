@@ -14,4 +14,16 @@ class sectoresHabitaciones extends Model
     }
     
         protected $fillable=['descripcion'];
+
+        public static function Existe_Datos()
+    {
+        $reg = sectoresHabitaciones::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

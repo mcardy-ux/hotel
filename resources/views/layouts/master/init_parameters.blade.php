@@ -77,16 +77,40 @@
                             </p>
                             </div>
                             <div id="checkStep3" class="tab-pane step-content">
-                                <h4 class="pb-2">Configurar Datos Hotel</h4>
-                                <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the
-                                    1500s, when an unknown printer took a galley of type and scrambled it to
-                                    make a type specimen book. It has survived not only five centuries, but also
-                                    the leap into electronic typesetting, remaining essentially unchanged. It
-                                    was popularised in the 1960s with the release of Letraset sheets containing
-                                    Lorem Ipsum passages, and more recently with desktop publishing software
-                                    like Aldus PageMaker including versions of Lorem Ipsum. </div>
+                                <h4 class="pb-2">Configurar Parametros mercadeo</h4>
+                                <div>Para continuar con la configuración debe acceder a cada modulo y crear los registros requeridos:</div>
+                                <br>
+                                <p class="mb-3">
+                                    @if($SectoresHab==0  )
+                                    <a href="{{route('sectoresHab.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">1. Crear Sectores de Habitaciones</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('sectoresHab.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Sectores de Habitaciones</span>
+                                    </a>
+                                    @endif
+                                    @if($tiposHab==0)
+                                    <a href="{{route('tiposHab.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">2. Crear Tipos de Habitaciones</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('tiposHab.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Tipos de Habitaciones</span>
+                                    </a>
+                                    @endif
+                                    @if($claseHab==0)
+                                    <a href="{{route('claseHab.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Crear Clase de Habitaciones</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('claseHab.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Clase de Habitaciones</span>
+                                    </a>
+                                    @endif
+                                </p>
                             </div>
+                            
                         </div>
                         
                     </div>

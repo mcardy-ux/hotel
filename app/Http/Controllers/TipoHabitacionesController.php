@@ -118,4 +118,8 @@ class TipoHabitacionesController extends Controller
         ->rawColumns(['actions'])
         ->make(true);
     }
+    public static function ExistenDatos(){
+        $reg=TipoHabitaciones::Existe_TipoHab();
+        return $reg; 
+    }
 }

@@ -7,11 +7,15 @@ use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\DataHotelController;
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TipoHabitacionesController;
+use App\Http\Controllers\SectoresHabitacionesController;
+use App\Http\Controllers\ClaseHabitacionesController;
 
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+   
    public function index(){
       $isNew=OrganizationController::ExistenDatos();
       $hasBilling=BillingResolutionController::ExistenDatos();
@@ -20,18 +24,26 @@ class DashboardController extends Controller
       $hasDpto=DepartamentController::ExistenDatos();
       $hasUsers=UserController::ExistenDatos();
       
-     
-      
+     //Mercadeo
+     $tiposHab=TipoHabitacionesController::ExistenDatos();
+     $SectoresHab=SectoresHabitacionesController::ExistenDatos();
+     $claseHab=ClaseHabitacionesController::ExistenDatos();
+
+     //Validaciones de datos en general
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
+      $ExistenDatosMercadeo=$this->validarExistenDatosMercadeo();
         return view('dashboard',[
            'ExistenDatosHotel'=> $ExistenDatosHotel,
+           'ExistenDatosMercadeo'=>$ExistenDatosMercadeo,
             'isNew'=>$isNew,
             'hasBilling'=>$hasBilling,
             'hasAccount'=>$hasAccount,
             'hasHotel'=>$hasHotel,
             'hasDpto'=>$hasDpto,
             'hasUsers'=>$hasUsers,
-
+            'tiposHab'=>$tiposHab,
+            'SectoresHab'=>$SectoresHab,
+            'claseHab'=>$claseHab,
          ]);
    }
 
@@ -43,6 +55,18 @@ class DashboardController extends Controller
       $hasDpto=DepartamentController::ExistenDatos();
       $hasUsers=UserController::ExistenDatos();
       if($isNew==0 || $hasBilling==0 || $hasAccount==0 || !$hasHotel || !$hasDpto|| !$hasUsers){
+         return false;
+      }else{
+         return true;
+      }
+
+   }
+   public static function validarExistenDatosMercadeo(){
+      //Mercadeo
+     $tiposHab=TipoHabitacionesController::ExistenDatos();
+     $SectoresHab=SectoresHabitacionesController::ExistenDatos();
+     $claseHab=ClaseHabitacionesController::ExistenDatos();
+      if(!$tiposHab || !$SectoresHab || !$claseHab){
          return false;
       }else{
          return true;

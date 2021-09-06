@@ -113,4 +113,8 @@ class ClaseHabitacionesController extends Controller
         ->rawColumns(['actions'])
         ->make(true);
     }
+    public static function ExistenDatos(){
+        $reg=claseHabitaciones::Existe_Datos();
+        return $reg; 
+    }
 }

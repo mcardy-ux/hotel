@@ -14,4 +14,17 @@ class TipoHabitaciones extends Model
         return \Hashids::encode($this->id);
     }
     protected $fillable=['descripcion'];
+
+    public static function Existe_TipoHab()
+    {
+        $reg = TipoHabitaciones::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
+    
 }

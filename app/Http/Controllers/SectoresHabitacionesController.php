@@ -120,5 +120,8 @@ class SectoresHabitacionesController extends Controller
         ->make(true);
     }
 
-
+    public static function ExistenDatos(){
+        $reg=sectoresHabitaciones::Existe_Datos();
+        return $reg; 
+    }
 }
