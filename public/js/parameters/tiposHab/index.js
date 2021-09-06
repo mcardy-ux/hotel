@@ -3,14 +3,14 @@ function show(event){
     let confirmacion=confirm("¿Esta seguro de eliminar? No puede reversar esta accion.");
     if(confirmacion){
         $.ajax({
-            url: $("#_url").val() + '/sectoresHab/' + ID,
+            url: $("#_url").val() + '/tiposHab/' + ID,
             headers: {'X-CSRF-TOKEN': $('#_token').val()},
             type: 'DELETE',
             success: function (response) {
               var json = $.parseJSON(response);
               if(json.success){
-                alert('Sector eliminado exitosamente');
-                location.href=$("#_url").val()+'/sectoresHab';
+                alert('Tipo de Habitación eliminado exitosamente');
+                location.href=$("#_url").val()+'/tiposHab';
                 }else{
                 alert(json.data);
                 }

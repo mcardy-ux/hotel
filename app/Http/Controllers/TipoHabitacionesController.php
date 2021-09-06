@@ -53,16 +53,7 @@ class TipoHabitacionesController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\parameters\TipoHabitaciones  $tipoHabitaciones
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TipoHabitaciones $tipoHabitaciones)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +61,11 @@ class TipoHabitacionesController extends Controller
      * @param  \App\Models\parameters\TipoHabitaciones  $tipoHabitaciones
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoHabitaciones $tipoHabitaciones)
+    public function edit($id)
     {
-        //
+        $data=TipoHabitaciones::where('id',\Hashids::decode($id)[0])->first();
+        return view("parameters.tipoHab.edit",['data'=>$data]);
+    
     }
 
     /**
@@ -82,9 +75,12 @@ class TipoHabitacionesController extends Controller
      * @param  \App\Models\parameters\TipoHabitaciones  $tipoHabitaciones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoHabitaciones $tipoHabitaciones)
+    public function update(Request $request,  $id)
     {
-        //
+        $reg=TipoHabitaciones::findOrFail(\Hashids::decode($id)[0]);
+        $reg->descripcion=$request->edit_descripcion;
+        $reg->save();
+        return json_encode(['success' => true]);
     }
 
     /**
@@ -93,9 +89,15 @@ class TipoHabitacionesController extends Controller
      * @param  \App\Models\parameters\TipoHabitaciones  $tipoHabitaciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoHabitaciones $tipoHabitaciones)
+    public function destroy($id)
     {
-        //
+        $reg = TipoHabitaciones::find(\Hashids::decode($id)[0])->delete();
+
+        if($reg){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
+        }
     }
      //Seccion de Datatables
 
