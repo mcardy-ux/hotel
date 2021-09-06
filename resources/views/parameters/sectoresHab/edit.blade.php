@@ -35,7 +35,7 @@
                                     
                                     <div class="form-group col-md-6">
                                         <label for="edit_descripcion">Descripción del Sector:</label>
-                                        <input type="text" class="form-control"  id="edit_descripcion" name="edit_descripcion" onkeyup="javascript:this.value=this.value.toUpperCase();" value={{$data->descripcion}}>
+                                        <input type="text" class="form-control"  id="edit_descripcion" name="edit_descripcion" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->descripcion}}">
                                     </div>
                                 </div>
                                 <hr>
