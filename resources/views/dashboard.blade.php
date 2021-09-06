@@ -2,11 +2,10 @@
 
 @section('content')
     @php
-        if($isNew==0 || $hasBilling==0 || $hasAccount==0 || !$hasHotel || !$hasDpto|| !$hasUsers){
-        @endphp
-        @include('layouts.master.init_parameters')
-        @php
-        echo $hasBilling;
+        if(!$ExistenDatosHotel){
+        include('layouts.master.init_parameters');
+       
+        
         }
         else{
         @endphp

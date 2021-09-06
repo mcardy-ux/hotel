@@ -24,7 +24,7 @@ Route::resource('billing', App\Http\Controllers\BillingResolutionController::cla
 Route::resource('bank_account', App\Http\Controllers\BankAccountController::class)->middleware(['auth']);
 Route::resource('departament', App\Http\Controllers\DepartamentController::class)->middleware(['auth']);
 Route::resource('sectoresHab', App\Http\Controllers\SectoresHabitacionesController::class)->middleware(['auth']);
-
+Route::resource('tiposHab', App\Http\Controllers\TipoHabitacionesController::class)->middleware(['auth']);
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
