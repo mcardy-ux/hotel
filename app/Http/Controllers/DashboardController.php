@@ -100,8 +100,9 @@ class DashboardController extends Controller
    public static function mostrarMenuMercadeo(){
          $listaMercadeo="";
       
-         $listaMercadeo="<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-organization'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
-         "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-organization'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>";
+         $listaMercadeo="<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+         "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
+         "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
          
       
       return $listaMercadeo;
