@@ -26,6 +26,8 @@ Route::resource('departament', App\Http\Controllers\DepartamentController::class
 Route::resource('sectoresHab', App\Http\Controllers\SectoresHabitacionesController::class)->middleware(['auth']);
 Route::resource('tiposHab', App\Http\Controllers\TipoHabitacionesController::class)->middleware(['auth']);
 Route::resource('claseHab', App\Http\Controllers\ClaseHabitacionesController::class)->middleware(['auth']);
+Route::resource('comp_regimen', App\Http\Controllers\ComponenteRegimenController::class)->middleware(['auth']);
+
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
 Route::get('ajax/request/billing', [App\Http\Controllers\BillingResolutionController::class, 'ajaxRequestBilling'])->name('ajax.request.billing')->middleware(['auth']);
@@ -35,6 +37,7 @@ Route::get('ajax/request/depto', [App\Http\Controllers\DepartamentController::cl
 Route::get('ajax/request/sectores', [App\Http\Controllers\SectoresHabitacionesController::class, 'ajaxRequestSectores'])->name('ajax.request.sectores')->middleware(['auth']);
 Route::get('ajax/request/tiposHab', [App\Http\Controllers\TipoHabitacionesController::class, 'ajaxRequestTiposHab'])->name('ajax.request.tiposHab')->middleware(['auth']);
 Route::get('ajax/request/claseHab', [App\Http\Controllers\ClaseHabitacionesController::class, 'ajaxRequestClasesHab'])->name('ajax.request.claseHab')->middleware(['auth']);
+Route::get('ajax/request/comp_regimen', [App\Http\Controllers\ComponenteRegimenController::class, 'ajaxRequestComp_regimen'])->name('ajax.request.comp_regimen')->middleware(['auth']);
 
 
 

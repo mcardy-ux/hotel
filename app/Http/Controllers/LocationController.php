@@ -28,63 +28,7 @@ class LocationController extends Controller
         return view("parameters.locations.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\parameters\location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function show(location $location)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\parameters\location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(location $location)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\parameters\location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, location $location)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\parameters\location  $location
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(location $location)
-    {
-        //
-    }
-
-
+    
     public function ajaxRequestCities(Request $request){
         $data = location::getListCitiesByDepartament($request->valor);
         return $data;

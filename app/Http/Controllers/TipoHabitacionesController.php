@@ -37,7 +37,7 @@ class TipoHabitacionesController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'descripcion' => 'bail|required|unique:sectores_habitaciones|max:180',
+            'descripcion' => 'bail|required|unique:tipo_habitaciones|max:180',
         ]);
 
         if ($validator->fails()) {

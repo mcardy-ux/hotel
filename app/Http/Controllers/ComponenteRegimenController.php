@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\parameters\claseHabitaciones;
+use App\Models\parameters\componente_regimen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ClaseHabitacionesController extends Controller
+class ComponenteRegimenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ClaseHabitacionesController extends Controller
      */
     public function index()
     {
-        return view('parameters.claseHab.index');
+        return view('parameters.componente_regimen.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class ClaseHabitacionesController extends Controller
      */
     public function create()
     {
-        return view('parameters.claseHab.create');
+        return view('parameters.componente_regimen.create');
     }
 
     /**
@@ -37,7 +37,8 @@ class ClaseHabitacionesController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'descripcion' => 'bail|required|unique:clase_habitaciones|max:180',
+            'codigo' => 'bail|required|unique:componente_regimens|max:180',
+            'nombre' => 'bail|required|max:180',
         ]);
 
         if ($validator->fails()) {
@@ -47,33 +48,35 @@ class ClaseHabitacionesController extends Controller
         // Retrieve the validated input...
         $validated = $validator->validated();
 
-        claseHabitaciones::create($validated);
+        componente_regimen::create($validated);
         return json_encode(['success' => true]);
     }
 
+  
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\parameters\claseHabitaciones  $claseHabitaciones
+     * @param  \App\Models\parameters\componente_regimen  $componente_regimen
      * @return \Illuminate\Http\Response
      */
     public function edit( $id)
     {
-        $data=claseHabitaciones::where('id',\Hashids::decode($id)[0])->first();
-        return view("parameters.claseHab.edit",['data'=>$data]);
+        $data=componente_regimen::where('id',\Hashids::decode($id)[0])->first();
+        return view("parameters.componente_regimen.edit",['data'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\parameters\claseHabitaciones  $claseHabitaciones
+     * @param  \App\Models\parameters\componente_regimen  $componente_regimen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $reg=claseHabitaciones::findOrFail(\Hashids::decode($id)[0]);
-        $reg->descripcion=$request->edit_descripcion;
+        $reg=componente_regimen::findOrFail(\Hashids::decode($id)[0]);
+        $reg->codigo=$request->edit_codigo;
+        $reg->nombre=$request->edit_nombre;
         $reg->save();
         return json_encode(['success' => true]);
     }
@@ -81,12 +84,12 @@ class ClaseHabitacionesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\parameters\claseHabitaciones  $claseHabitaciones
+     * @param  \App\Models\parameters\componente_regimen  $componente_regimen
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        $reg = claseHabitaciones::find(\Hashids::decode($id)[0])->delete();
+        $reg = componente_regimen::find(\Hashids::decode($id)[0])->delete();
 
         if($reg){
             return json_encode(['success' => true]);
@@ -94,8 +97,11 @@ class ClaseHabitacionesController extends Controller
             return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
         }
     }
-    public function ajaxRequestClasesHab(){
-        $query = claseHabitaciones::all();
+
+    
+
+    public function ajaxRequestComp_regimen(){
+        $query = componente_regimen::all();
         return datatables($query)
         
         ->addColumn('actions', function ($query) {
@@ -104,7 +110,7 @@ class ClaseHabitacionesController extends Controller
                     Opciones
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonUser" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                    <a class="dropdown-item" href="'. url('claseHab', [$query->encode_id,'edit']) .'">Editar</a>
+                    <a class="dropdown-item" href="'. url('comp_regimen', [$query->encode_id,'edit']) .'">Editar</a>
                     <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
                 </div>
             </div>';
@@ -114,7 +120,7 @@ class ClaseHabitacionesController extends Controller
         ->make(true);
     }
     public static function ExistenDatos(){
-        $reg=claseHabitaciones::Existe_Datos();
+        $reg=componente_regimen::Existe_Datos();
         return $reg; 
     }
 }
