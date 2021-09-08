@@ -91,7 +91,14 @@
                                                 <div class="d-flex flex-row">
                                                     <div class="w-50">
                                                         <ul class="list-unstyled mb-0" id="lista_integrantes_{{$value->id}}" name="lista_integrantes_{{$value->id}}">
-                                                            
+                                                              {{-- Inicio de codigo de seleccion  --}}
+                                                              <div class="d-flex flex-row align-items-center mb-5">
+                                                                <i class="glyph-icon iconsminds-cursor-select large-icon initial-height"></i>
+                                                            <div class="pl-3 pt-2 pr-2 pb-2">
+                                                                    <p class="list-item-heading mb-1">Seleccione un departamento</p>
+                                                            </div>
+                                                        </div>
+                                                        {{-- Fin de codigo de seleccion  --}}
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -116,8 +123,6 @@
 <script src="{{ asset('js/parameters/departament/index.js') }}"></script>
 <script>
     function verIntegrantes(id,iterador){
-
-        console.log(iterador);
 
         let lista=document.getElementById("lista_integrantes_"+iterador);
         let concat="";
