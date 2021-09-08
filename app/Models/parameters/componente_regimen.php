@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class componente_regimen extends Model
 {
@@ -27,5 +28,12 @@ class componente_regimen extends Model
         }else {
            return true;
         }
+    }
+
+    public static function getcomponentes(){
+        $data=DB::table('componente_regimens')
+        ->select('id','codigo as value','nombre as secvalue')
+        ->get();
+        return $data;
     }
 }

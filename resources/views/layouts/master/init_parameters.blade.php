@@ -108,6 +108,15 @@
                                         <span class="badge badge-pill badge-outline-success mb-1"> Ver Clase de Habitaciones</span>
                                     </a>
                                     @endif
+                                    @if($comp_reg==0)
+                                    <a href="{{route('comp_regimen.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">4. Crear Componentes de Regimen</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('comp_regimen.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Componentes de Regimen</span>
+                                    </a>
+                                    @endif
                                 </p>
                             </div>
                             

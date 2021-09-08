@@ -35,11 +35,11 @@
                                 
                                     <div class="form-group col-md-6">
                                         <label for="codigo">Código del componente:</label>
-                                        <input type="text" class="form-control"  id="codigo" name="codigo" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <input type="text" class="form-control" placeholder="HM" id="codigo" name="codigo" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="nombre">Nombre del componente:</label>
-                                        <input type="text" class="form-control"  id="nombre" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <input type="text" class="form-control" placeholder="Solo Alojamiento" id="nombre" name="nombre" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
                                 <hr>
