@@ -28,7 +28,9 @@ class DashboardController extends Controller
      $tiposHab=TipoHabitacionesController::ExistenDatos();
      $SectoresHab=SectoresHabitacionesController::ExistenDatos();
      $claseHab=ClaseHabitacionesController::ExistenDatos();
+     $comp_reg=ComponenteRegimenController::ExistenDatos();
 
+      
      //Validaciones de datos en general
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
       $ExistenDatosMercadeo=$this->validarExistenDatosMercadeo();
@@ -44,6 +46,7 @@ class DashboardController extends Controller
             'tiposHab'=>$tiposHab,
             'SectoresHab'=>$SectoresHab,
             'claseHab'=>$claseHab,
+            'comp_reg'=>$comp_reg,
          ]);
    }
 
@@ -66,7 +69,8 @@ class DashboardController extends Controller
      $tiposHab=TipoHabitacionesController::ExistenDatos();
      $SectoresHab=SectoresHabitacionesController::ExistenDatos();
      $claseHab=ClaseHabitacionesController::ExistenDatos();
-      if(!$tiposHab || !$SectoresHab || !$claseHab){
+     $comp_reg=ComponenteRegimenController::ExistenDatos();
+      if(!$tiposHab || !$SectoresHab || !$claseHab || !$comp_reg){
          return false;
       }else{
          return true;
@@ -124,7 +128,9 @@ class DashboardController extends Controller
    public static function mostrarMenuMercadeo(){
          $listaMercadeo="";
       
-         $listaMercadeo="<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+         $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
+         "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>".
+         "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
          "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
          "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
          
