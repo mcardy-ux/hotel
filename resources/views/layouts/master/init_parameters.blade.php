@@ -80,7 +80,7 @@
                                 <h4 class="pb-2">Configurar Parametros mercadeo</h4>
                                 <div>Para continuar con la configuración debe acceder a cada modulo y crear los registros requeridos:</div>
                                 <br>
-                                <p class="mb-3">
+                                <p class="mb-3">Habitaciones<br>
                                     @if($SectoresHab==0  )
                                     <a href="{{route('sectoresHab.create')}}">
                                         <span class="badge badge-pill badge-outline-theme-2 mb-1">1. Crear Sectores de Habitaciones</span>
@@ -108,14 +108,27 @@
                                         <span class="badge badge-pill badge-outline-success mb-1"> Ver Clase de Habitaciones</span>
                                     </a>
                                     @endif
+                                    </p>
+                                    <p class="mb-3">Regimenes<br></p>
+                                        <p class="mb-3">
                                     @if($comp_reg==0)
                                     <a href="{{route('comp_regimen.create')}}">
-                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">4. Crear Componentes de Regimen</span>
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">1. Crear Componentes de Regimen</span>
                                     </a>
                                     @else
                                     <a href="{{route('comp_regimen.index')}}">
                                         <span class="badge badge-pill badge-outline-success mb-1"> Ver Componentes de Regimen</span>
                                     </a>
+                                        @if($regimenes==0)
+                                        <a href="{{route('regimens.create')}}">
+                                            <span class="badge badge-pill badge-outline-theme-2 mb-1">2. Crear Regimenes</span>
+                                        </a>
+                                        @else
+                                        <a href="{{route('regimens.index')}}">
+                                            <span class="badge badge-pill badge-outline-success mb-1"> Ver Regimenes</span>
+                                        </a>
+                                    @endif
+
                                     @endif
                                 </p>
                             </div>

@@ -36,6 +36,17 @@ class regimen extends Model
         return $component;
 
     }
+    public static function Existe_Datos()
+    {
+        $reg = regimen::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 
 
 }

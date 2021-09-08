@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TipoHabitacionesController;
 use App\Http\Controllers\SectoresHabitacionesController;
 use App\Http\Controllers\ClaseHabitacionesController;
+use App\Http\Controllers\RegimenController;
 
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class DashboardController extends Controller
      $SectoresHab=SectoresHabitacionesController::ExistenDatos();
      $claseHab=ClaseHabitacionesController::ExistenDatos();
      $comp_reg=ComponenteRegimenController::ExistenDatos();
-
+     $regimenes=RegimenController::ExistenDatos();
       
      //Validaciones de datos en general
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
@@ -47,6 +48,7 @@ class DashboardController extends Controller
             'SectoresHab'=>$SectoresHab,
             'claseHab'=>$claseHab,
             'comp_reg'=>$comp_reg,
+            'regimenes'=>$regimenes,
          ]);
    }
 
@@ -70,7 +72,8 @@ class DashboardController extends Controller
      $SectoresHab=SectoresHabitacionesController::ExistenDatos();
      $claseHab=ClaseHabitacionesController::ExistenDatos();
      $comp_reg=ComponenteRegimenController::ExistenDatos();
-      if(!$tiposHab || !$SectoresHab || !$claseHab || !$comp_reg){
+     $regimenes=RegimenController::ExistenDatos();
+      if(!$tiposHab || !$SectoresHab || !$claseHab || !$comp_reg || !$regimenes){
          return false;
       }else{
          return true;
@@ -126,14 +129,22 @@ class DashboardController extends Controller
       return $listaHotel;
    }
    public static function mostrarMenuMercadeo(){
+         $comp_reg=ComponenteRegimenController::ExistenDatos();
          $listaMercadeo="";
       
-         $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
-         "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>".
-         "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
-         "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
-         "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
-         
+        
+         if(!$comp_reg){
+            $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
+            "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
+         }else{
+            $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
+            "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>".
+            "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
+         }
       
       return $listaMercadeo;
    }

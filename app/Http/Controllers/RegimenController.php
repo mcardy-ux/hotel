@@ -142,4 +142,9 @@ class RegimenController extends Controller
         $data=regimen::getComponentsByRegimen($id);
         return json_encode(['success' => true,'data'=>$data]);
     }
+
+    public static function ExistenDatos(){
+        $reg=regimen::Existe_Datos();
+        return $reg; 
+    }
 }
