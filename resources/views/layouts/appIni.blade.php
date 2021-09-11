@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('css/vendor/smart_wizard.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/dore.light.blueyale.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
+    @stack('styles')
 </head>
 
 <body id="app-container" class="menu-default show-spinner">
