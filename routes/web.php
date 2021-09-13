@@ -28,7 +28,7 @@ Route::resource('tiposHab', App\Http\Controllers\TipoHabitacionesController::cla
 Route::resource('claseHab', App\Http\Controllers\ClaseHabitacionesController::class)->middleware(['auth']);
 Route::resource('comp_regimen', App\Http\Controllers\ComponenteRegimenController::class)->middleware(['auth']);
 Route::resource('regimens', App\Http\Controllers\RegimenController::class)->middleware(['auth']);
-
+Route::resource('temporada', App\Http\Controllers\TemporadaController::class)->middleware(['auth']);
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
@@ -55,6 +55,11 @@ Route::get('data_hotel/request/ciiu/{id}', [App\Http\Controllers\DataHotelContro
 Route::get('departament/request/depto_hotel/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDptos'])->name('ajax.request.dptos')->middleware(['auth']);
 //Ajax para listar los codigos ciiu
 Route::get('user/request/depto_hotel/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestDptosByHotel'])->name('ajax.request.dptosbyhotel')->middleware(['auth']);
+
+//Ajax para agregar temporadas
+Route::post('add_temporada', [App\Http\Controllers\TemporadaController::class,'store'])->middleware(['auth']);
+
+
 
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

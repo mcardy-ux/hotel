@@ -40,6 +40,7 @@ class CreateRegimensTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('regimen_has_components');
         Schema::dropIfExists('regimens');
     }
 }
