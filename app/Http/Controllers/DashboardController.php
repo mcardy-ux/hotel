@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TipoHabitacionesController;
 use App\Http\Controllers\SectoresHabitacionesController;
 use App\Http\Controllers\ClaseHabitacionesController;
+use App\Http\Controllers\HabitacionController;
 use App\Http\Controllers\RegimenController;
 
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ class DashboardController extends Controller
      $tiposHab=TipoHabitacionesController::ExistenDatos();
      $SectoresHab=SectoresHabitacionesController::ExistenDatos();
      $claseHab=ClaseHabitacionesController::ExistenDatos();
+     $habitacions=HabitacionController::ExistenDatos();
      $comp_reg=ComponenteRegimenController::ExistenDatos();
      $regimenes=RegimenController::ExistenDatos();
       
@@ -47,6 +49,7 @@ class DashboardController extends Controller
             'tiposHab'=>$tiposHab,
             'SectoresHab'=>$SectoresHab,
             'claseHab'=>$claseHab,
+            'habitacions'=>$habitacions,
             'comp_reg'=>$comp_reg,
             'regimenes'=>$regimenes,
          ]);
@@ -130,21 +133,33 @@ class DashboardController extends Controller
    }
    public static function mostrarMenuMercadeo(){
          $comp_reg=ComponenteRegimenController::ExistenDatos();
-         $listaMercadeo="";
+         $listaMercadeo="<li><a href='".route('temporada.index')."'><i class='simple-icon-calendar'></i><span class='d-inline-block'>Temporada</span></a></li>";
       
-        
-         if(!$comp_reg){
-            $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
-            "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
-            "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
-            "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
-         }else{
-            $listaMercadeo="<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
-            "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>".
-            "<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+         $tiposHab=TipoHabitacionesController::ExistenDatos();
+         $SectoresHab=SectoresHabitacionesController::ExistenDatos();
+         $claseHab=ClaseHabitacionesController::ExistenDatos();
+         if (!$tiposHab || !$SectoresHab || !$claseHab) {
+            $listaMercadeo= $listaMercadeo."<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
             "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
             "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>";
          }
+         else{
+            $listaMercadeo= $listaMercadeo."<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('claseHab.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Clases de <br>Habitaciones</span></a></li>".
+            "<li><a href='".route('habitacions.index')."'><i class='iconsminds-project'></i><span class='d-inline-block'>Habitaciones</span></a></li>";
+         }
+
+         //Apartado Regimenes
+         if(!$comp_reg){
+            $listaMercadeo=$listaMercadeo."<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>";
+         }else{
+            $listaMercadeo=$listaMercadeo."<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
+            "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>";
+         }
+       
+
+        
       
       return $listaMercadeo;
    }

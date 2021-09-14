@@ -108,6 +108,15 @@
                                         <span class="badge badge-pill badge-outline-success mb-1"> Ver Clase de Habitaciones</span>
                                     </a>
                                     @endif
+                                    @if($SectoresHab>0 && $tiposHab>0 && $claseHab>0 && $habitacions==0)
+                                    <a href="{{route('habitacions.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Crear Habitaciones</span>
+                                    </a>
+                                    @elseif($SectoresHab>0 && $tiposHab>0 && $claseHab>0 && $habitacions>0)
+                                    <a href="{{route('habitacions.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Habitaciones</span>
+                                    </a>
+                                    @endif
                                     </p>
                                     <p class="mb-3">Regimenes<br></p>
                                         <p class="mb-3">
