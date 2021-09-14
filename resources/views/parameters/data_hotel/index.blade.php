@@ -19,7 +19,7 @@
                     <div class="top-right-button-container">
                         <div class="btn-group">
                             <a href="{{url('data_hotel/create')}}" >
-                                    <button type="button" class="btn btn-primary mb-1">Agregar una nuevo Hotel</button>
+                                    <button type="button" class="btn btn-primary mb-1">Agregar un nuevo Hotel</button>
                             </a>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <div class="top-right-button-container">
                                 <div class="btn-group">
                                     <a href="{{url('data_hotel/create')}}" >
-                                            <button type="button" class="btn btn-primary mb-1">Agregar una nuevo Hotel</button>
+                                            <button type="button" class="btn btn-primary mb-1">Agregar un nuevo Hotel</button>
                                     </a>
                                 </div>
                             </div>
