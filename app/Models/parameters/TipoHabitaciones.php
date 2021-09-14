@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class TipoHabitaciones extends Model
 {
@@ -25,6 +26,13 @@ class TipoHabitaciones extends Model
         }else {
            return true;
         }
+    }
+
+    public static function getTipo(){
+        $data=DB::table('tipo_habitaciones')
+        ->select('id','descripcion as value')
+        ->get();
+        return $data;
     }
     
 }

@@ -240,7 +240,7 @@ $(document).ready(function(){
             var file = $('#logo')[0].files[0];
             data.append('logo', file);
 
-            var array_bank= $('#cuenta_bancaria').val()
+            var array_bank= $('#cuenta_bancaria').val();
             data.append('bank_accounts', array_bank);
 
             var other_data = $('#add_data_hotel').serializeArray();

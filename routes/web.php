@@ -26,6 +26,8 @@ Route::resource('departament', App\Http\Controllers\DepartamentController::class
 Route::resource('sectoresHab', App\Http\Controllers\SectoresHabitacionesController::class)->middleware(['auth']);
 Route::resource('tiposHab', App\Http\Controllers\TipoHabitacionesController::class)->middleware(['auth']);
 Route::resource('claseHab', App\Http\Controllers\ClaseHabitacionesController::class)->middleware(['auth']);
+Route::resource('habitacions', App\Http\Controllers\HabitacionController::class)->middleware(['auth']);
+
 Route::resource('comp_regimen', App\Http\Controllers\ComponenteRegimenController::class)->middleware(['auth']);
 Route::resource('regimens', App\Http\Controllers\RegimenController::class)->middleware(['auth']);
 Route::resource('temporada', App\Http\Controllers\TemporadaController::class)->middleware(['auth']);

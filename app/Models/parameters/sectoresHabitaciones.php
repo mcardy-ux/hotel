@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class sectoresHabitaciones extends Model
 {
@@ -26,4 +27,12 @@ class sectoresHabitaciones extends Model
            return true;
         }
     }
+    public static function getSectores(){
+        $data=DB::table('sectores_habitaciones')
+        ->select('id','descripcion as value')
+        ->get();
+        return $data;
+    }
+
+    
 }

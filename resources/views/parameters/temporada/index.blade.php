@@ -204,7 +204,7 @@
                 "newdateEnd":newdateEnd,
             },
             success:function(data) {
-                location.href='/temporada';
+                location.href='/temporadaw';
             }
         });
     }
