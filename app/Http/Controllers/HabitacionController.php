@@ -51,6 +51,7 @@ class HabitacionController extends Controller
         $reg->capacidad_huespedes=$request->capacidad_huespedes;
         $reg->estado=$request->estado;
         $reg->created_by=$request->id_user_create;
+        $reg->sector_hab_id=$request->sector_hab;
         $reg->tipo_hab_id=$request->tipo_hab;
         $reg->hotel_id=$request->hotel;
 
@@ -70,16 +71,7 @@ class HabitacionController extends Controller
        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\habitacion  $habitacion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(habitacion $habitacion)
-    {
-        //
-    }
+ 
 
     /**
      * Show the form for editing the specified resource.
@@ -94,7 +86,11 @@ class HabitacionController extends Controller
         $tipos=TipoHabitaciones::getTipo();
         $sectores=sectoresHabitaciones::getSectores();
         $hotels=data_hotel::getHotels();
-        return view("parameters.habitacions.edit",["data"=>$data,"clases"=>$clases,"tipos"=>$tipos,"sectores"=>$sectores,"hotels"=>$hotels]);
+        $arrayClasesHabitacions=habitacion_has_clases::getClassesByHabitacion(\Hashids::decode($id)[0]);
+
+
+
+        return view("parameters.habitacions.edit",["data"=>$data,"arrayClasesHabitacions"=>$arrayClasesHabitacions,"clases"=>$clases,"tipos"=>$tipos,"sectores"=>$sectores,"hotels"=>$hotels]);
     }
 
     /**
@@ -104,9 +100,35 @@ class HabitacionController extends Controller
      * @param  \App\Models\habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, habitacion $habitacion)
+    public function update(Request $request,$id)
     {
-        //
+        $newId=\Hashids::decode($id)[0];
+        $reg = habitacion::findOrFail($newId);
+        
+        $reg->num_habitacion=$request->data[2]['value'];
+        $reg->capacidad_huespedes=$request->data[3]['value'];
+        $reg->estado=$request->data[6]['value'];
+        $reg->modified_by=$request->data[1]['value'];
+        $reg->sector_hab_id=$request->data[4]['value'];
+        $reg->tipo_hab_id=$request->data[5]['value'];
+        $reg->hotel_id=$request->data[7]['value'];
+        //Edicion de Cuentas Bancarias
+        $EliminarClases=habitacion_has_clases::DropByHabitacion($newId);
+        if ($EliminarClases) {
+            foreach($request->array as $clase_id){
+
+                $claseHabitacion = new habitacion_has_clases();
+                $claseHabitacion->clase_hab_id=$clase_id;
+                $claseHabitacion->habitacions_id=$newId;
+                $claseHabitacion->save();
+            }
+            $reg->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false]);
+       
+
+       
     }
 
     /**
@@ -118,5 +140,9 @@ class HabitacionController extends Controller
     public function destroy(habitacion $habitacion)
     {
         //
+    }
+    public static function ExistenDatos(){
+        $reg=habitacion::HasHabitacions();
+        return $reg;
     }
 }

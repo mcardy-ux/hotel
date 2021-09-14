@@ -30,22 +30,22 @@
                         <div class="card-body">
                             <h5 class="mb-4">Ingresa la información necesaria.</h5>
                             <form role="form" id="edit_data_habitacion" name="edit_data_habitacion" accept-charset="UTF-8">
-                                <input type="hidden" id="_url"  value="{{ url('departament') }}">
-                                <input type="hidden" id="_urlSubmit"  value="{{ url('departament', [$data->id])}}">
+                                <input type="hidden" id="_url"  value="{{ url('habitacions') }}">
+                                <input type="hidden" id="_urlSubmit"  value="{{ url('habitacions', [$data->encode_id])}}">
                                 <input type="hidden" id="_token" name="_token"  value="{{ csrf_token() }}">
                                 <input type="hidden" id="id_user_modify" name="id_user_modify" value="{{ Auth::user()->id }}">
                                
                                
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="num_habitacion">Numero de Habitación:</label>
-                                        <input type="text" class="form-control" id="num_habitacion" name="num_habitacion" value="{{$data->num_habitacion}}"
-                                            aria-describedby="num_habitacion" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <label for="edit_num_habitacion">Numero de Habitación:</label>
+                                        <input type="text" class="form-control" id="edit_num_habitacion" name="edit_num_habitacion" value="{{$data->num_habitacion}}"
+                                            aria-describedby="edit_num_habitacion" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="capacidad_huespedes">Capacidad Huespedes:</label>
-                                        <input type="number" class="form-control" id="capacidad_huespedes" name="capacidad_huespedes" value="{{$data->capacidad_huespedes}}"
-                                        aria-describedby="capacidad_huespedes" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <label for="edit_capacidad_huespedes">Capacidad Huespedes:</label>
+                                        <input type="number" class="form-control" id="edit_capacidad_huespedes" name="edit_capacidad_huespedes" value="{{$data->capacidad_huespedes}}"
+                                        aria-describedby="edit_capacidad_huespedes" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
                                 
@@ -53,14 +53,14 @@
                                 <div class="form-row">
                                     
                                     <div class="form-group col-md-6">
-                                        <label for="sector_hab">Sector de Habitación:</label>
-                                        <select id="sector_hab" name="sector_hab" class="form-control">
+                                        <label for="edit_sector_hab">Sector de Habitación:</label>
+                                        <select id="edit_sector_hab" name="edit_sector_hab" class="form-control">
                                             
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="tipo_hab">Tipo de Habitación:</label>
-                                        <select id="tipo_hab" name="tipo_hab" class="form-control">
+                                        <label for="edit_tipo_hab">Tipo de Habitación:</label>
+                                        <select id="edit_tipo_hab" name="edit_tipo_hab" class="form-control">
                                             
                                         </select>
                                     </div>
@@ -68,29 +68,29 @@
                                 <div class="form-row">
                                     
                                     <div class="form-group col-md-6">
-                                        <label for="estado">Estado de la Habitación:</label>
-                                        <select id="estado" name="estado" class="form-control">
-                                            <option id="habilitada">Habilitada</option>
-                                            <option id="deshabilitada">Deshabilitada</option>
+                                        <label for="edit_estado">Estado de la Habitación:</label>
+                                        <select id="edit_estado" name="edit_estado" class="form-control">
+                                            <option id="habilitada" value="habilitada">Habilitada</option>
+                                            <option id="deshabilitada" value="deshabilitada">Deshabilitada</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="hotel">Hotel:</label>
-                                        <select id="hotel" name="hotel" class="form-control">
+                                        <label for="edit_hotel">Hotel:</label>
+                                        <select id="edit_hotel" name="edit_hotel" class="form-control">
                                             
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="clase_hab">Clases de Habitación:</label>
-                                        <select class="js-clases-multiple" multiple="multiple" style="width: 90%" id="clase_hab" name="clase_hab" >
+                                        <label for="edit_clase_hab">Clases de Habitación:</label>
+                                        <select class="js-clases-multiple" multiple="multiple" style="width: 90%" id="edit_clase_hab" name="edit_clase_hab" >
                                         </select>
                                     </div>
                                     
                                 </div>
                                 <hr>
-                                <button type="submit" class="btn btn-primary mb-0">Agregar</button>
+                                <button type="submit" class="btn btn-primary mb-0">Editar</button>
                                 <a href="{{ route('habitacions.index') }}"> 
                                 <button type="button" class="btn btn-light mb-0">Volver</button>
                                 </a>
@@ -104,33 +104,26 @@
     </main>
     @endsection
     @push('scripts')
-    <script src="{{ asset('js/parameters/habitacions/create.js') }}"></script>
+    <script src="{{ asset('js/parameters/habitacions/edit.js') }}"></script>
     <script>
-        window.addEventListener("load", function() {
-            cargarClases(event);
-            cargarTipos(event);
-            cargarSectores(event);
-            cargarHoteles(event);
-    }, false);
- 
-    //Funcion para cargar los departamentos al campo "select".
+        //Funcion para cargar los departamentos al campo "select".
     function cargarClases() {
-    
+        
         //Inicializamos el array.
         var array = @json($clases);
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("clase_hab", array);
+        addOptions("edit_clase_hab", array);
     }
-     //Funcion para cargar las resoluciones de facturacion.
-     function cargarTipos() {
+    //Funcion para cargar las resoluciones de facturacion.
+    function cargarTipos() {
         //Inicializamos el array.
         var array = @json($tipos);
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("tipo_hab", array);
+        addOptions("edit_tipo_hab", array);
     }
     //Funcion para cargar las resoluciones de facturacion.
     function cargarSectores() {
@@ -139,7 +132,7 @@
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("sector_hab", array);
+        addOptions("edit_sector_hab", array);
     }
 
     function cargarHoteles() {
@@ -148,7 +141,30 @@
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("hotel", array);
+        addOptions("edit_hotel", array);
     }
+       $(document).ready(function(){
+            cargarClases(event);
+            cargarTipos(event);
+            cargarSectores(event);
+            cargarHoteles(event);
+
+
+            let sector_hab_id=@json($data->sector_hab_id);
+            $("#edit_sector_hab").val(sector_hab_id);
+            let tipo_hab_id=@json($data->tipo_hab_id);
+            $("#edit_tipo_hab").val(tipo_hab_id);
+            let estado=@json($data->estado);
+            $("#edit_estado").val(estado);
+            let hotel_id=@json($data->hotel_id);
+            $("#edit_hotel").val(hotel_id);
+
+
+            let clases=@json($arrayClasesHabitacions);
+            $("#edit_clase_hab").val(clases);
+
+        });
+ 
+    
    </script>
     @endpush

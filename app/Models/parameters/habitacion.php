@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class habitacion extends Model
 {
@@ -24,6 +25,17 @@ class habitacion extends Model
         ->get();
         return $data;
     }
-
+    public static function HasHabitacions()
+    {
+        $reg = DB::table('habitacions')
+        ->select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
     
 }
