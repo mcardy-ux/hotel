@@ -137,9 +137,17 @@ class HabitacionController extends Controller
      * @param  \App\Models\habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(habitacion $habitacion)
-    {
-        //
+    public function destroy($id)
+    { 
+        $newId=\Hashids::decode($id)[0];
+        $clases=habitacion_has_clases::where('habitacions_id',$newId)->delete();
+        $reg = habitacion::find($newId)->delete();
+       
+        if($reg && $clases){
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
+        }
     }
     public static function ExistenDatos(){
         $reg=habitacion::HasHabitacions();

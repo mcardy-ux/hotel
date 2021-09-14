@@ -76,6 +76,7 @@
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBank" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
                                                             <a class="dropdown-item" href="{{url('habitacions', [$item->encode_id,'edit']) }}">Editar</a>
+                                                            <a class="dropdown-item" onclick="show(this)" id="{{$item->encode_id}}">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -100,32 +101,6 @@
     </main>
 @endsection
 @push('scripts')
-<script src="{{ asset('js/parameters/departament/index.js') }}"></script>
-<script>
-    function verIntegrantes(id,iterador){
+<script src="{{ asset('js/parameters/habitacions/index.js') }}"></script>
 
-        let lista=document.getElementById("lista_integrantes_"+iterador);
-        let concat="";
-        // RemoveOptions("ciiu");
-        $.ajax({
-            url: $('#index_dpto #_url').val()+"/ajax/request/integrantes/"+id,
-            headers: {'X-CSRF-TOKEN': $('#index_dpto #_token').val()},
-            type: 'GET',
-            cache: false,
-            success: function (response) {
-            var json = $.parseJSON(response);
-            
-            if(json.success){
-                for (let index = 0; index < json.data.length; index++) {
-                    concat=concat+' <li class="mb-1"><span class="log-indicator border-theme-2 align-middle"></span>  '+json.data[index].name+'</li>';
-                }
-                lista.innerHTML=concat;
-            }
-            }
-        });
-
-     
-        
-    }
-</script>
 @endpush

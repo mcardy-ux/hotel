@@ -197,16 +197,7 @@ class DataHotelController extends Controller
        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\parameters\data_hotel  $data_hotel
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(data_hotel $data_hotel)
-    {
-        //
-    }    
+   
     //Inicio Metodos Personalizados
     public function ajaxRequestCiiu($id)
     {  

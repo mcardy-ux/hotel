@@ -50,16 +50,6 @@ class DepartamentController extends Controller
         return json_encode(['success' => true]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\parameters\departament  $departament
-     * @return \Illuminate\Http\Response
-     */
-    public function show(departament $departament)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
