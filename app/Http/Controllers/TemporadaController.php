@@ -39,9 +39,11 @@ class TemporadaController extends Controller
         if ($validator->fails()) {
             return json_encode(['success' => false, 'data' =>$validator->errors()]);
         }
-
-        temporada::dropTemporadaBetween($request->newdateStart);
-        temporada::dropTemporadaBetween($request->newdateEnd);
+        if ($request->codigo != "F") {
+            temporada::dropTemporadaBetween($request->newdateStart);
+            temporada::dropTemporadaBetween($request->newdateEnd);
+        }
+        
         
         $data=new temporada;
         $data->inicio=$request->newdateStart;

@@ -77,7 +77,7 @@ function colorear(data){
       if(data[index].codigo=='A'){let dia=document.getElementById(indexcolor); dia.style.backgroundColor = "#FFF2A8";}
       if(data[index].codigo=='M'){let dia=document.getElementById(indexcolor); dia.style.backgroundColor = "#F9A65C";}
       if(data[index].codigo=='B'){let dia=document.getElementById(indexcolor); dia.style.backgroundColor = "#D1E1E3";}
-      
+      if(data[index].codigo=='F'){let dia=document.getElementById(indexcolor); dia.style.border = "thin solid #000000"; }
     }
   
     

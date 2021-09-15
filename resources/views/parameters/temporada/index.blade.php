@@ -122,7 +122,7 @@
                                         </button>
                                         <div class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(1317px, 38px, 0px);">
                                             <a class="dropdown-item" onclick="agregar()">Agregar Temporada</a>
-                                            <a class="dropdown-item" href="#">Editar Temporada</a>
+                                           
                                         </div>
                                     </div>
                                 </div>
