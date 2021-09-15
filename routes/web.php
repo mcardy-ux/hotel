@@ -31,6 +31,7 @@ Route::resource('habitacions', App\Http\Controllers\HabitacionController::class)
 Route::resource('comp_regimen', App\Http\Controllers\ComponenteRegimenController::class)->middleware(['auth']);
 Route::resource('regimens', App\Http\Controllers\RegimenController::class)->middleware(['auth']);
 Route::get('temporada', [App\Http\Controllers\TemporadaController::class, 'index'] )->name('temporada.index')->middleware(['auth']);
+Route::resource('tarifa', App\Http\Controllers\TarifaController::class)->middleware(['auth']);
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
