@@ -95,48 +95,10 @@ class TarifaController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\parameters\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(tarifa $tarifa)
-    {
-        //
-    }
+   
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\parameters\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(tarifa $tarifa)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\parameters\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, tarifa $tarifa)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\parameters\tarifa  $tarifa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(tarifa $tarifa)
-    {
-        //
+    public static function ExistenDatos(){
+        $reg=tarifa::Existe_Tarifas();
+        return $reg; 
     }
 }
