@@ -28,8 +28,7 @@ class TarifaController extends Controller
             'hotels'=>$hotels,
             'regimens'=>$regimens,
             'clases'=>$clases,
-
-        'data'=>$data
+            'data'=>$data
         ]);
     }
 
@@ -43,12 +42,13 @@ class TarifaController extends Controller
         $hotels=data_hotel::select('id', 'razonComercial', 'logo')->get();
         $regimens=regimen::select('id', 'codigo')->get();
         $clases=claseHabitaciones::select('id', 'descripcion')->get();
-
+        $data=tarifa::select('valorAlojamiento','temporada','relRegimen','relClaseHabitacion','tipo_habitacion')->get();
 
         return view("parameters.tarifa.create", [
         'hotels'=>$hotels,
         'regimens'=>$regimens,
         'clases'=>$clases,
+        'data'=>$data
          ]);
     }
 
