@@ -33,6 +33,7 @@ class DashboardController extends Controller
      $habitacions=HabitacionController::ExistenDatos();
      $comp_reg=ComponenteRegimenController::ExistenDatos();
      $regimenes=RegimenController::ExistenDatos();
+     $tarifas=TarifaController::ExistenDatos();
       
      //Validaciones de datos en general
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
@@ -52,6 +53,7 @@ class DashboardController extends Controller
             'habitacions'=>$habitacions,
             'comp_reg'=>$comp_reg,
             'regimenes'=>$regimenes,
+            'tarifas'=>$tarifas,
          ]);
    }
 
@@ -76,7 +78,8 @@ class DashboardController extends Controller
      $claseHab=ClaseHabitacionesController::ExistenDatos();
      $comp_reg=ComponenteRegimenController::ExistenDatos();
      $regimenes=RegimenController::ExistenDatos();
-      if(!$tiposHab || !$SectoresHab || !$claseHab || !$comp_reg || !$regimenes){
+     $tarifas=TarifaController::ExistenDatos();
+      if(!$tiposHab || !$SectoresHab || !$claseHab || !$comp_reg || !$regimenes || !$tarifas){
          return false;
       }else{
          return true;
@@ -133,11 +136,14 @@ class DashboardController extends Controller
    }
    public static function mostrarMenuMercadeo(){
          $comp_reg=ComponenteRegimenController::ExistenDatos();
+         $regimens=RegimenController::ExistenDatos();
          $listaMercadeo="<li><a href='".route('temporada.index')."'><i class='simple-icon-calendar'></i><span class='d-inline-block'>Temporada</span></a></li>";
       
          $tiposHab=TipoHabitacionesController::ExistenDatos();
          $SectoresHab=SectoresHabitacionesController::ExistenDatos();
          $claseHab=ClaseHabitacionesController::ExistenDatos();
+
+         
          if (!$tiposHab || !$SectoresHab || !$claseHab) {
             $listaMercadeo= $listaMercadeo."<li><a href='".route('sectoresHab.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Sectores de <br>Habitaciones</span></a></li>".
             "<li><a href='".route('tiposHab.index')."'><i class='simple-icon-list'></i><span class='d-inline-block'>Tipos de <br>Habitaciones</span></a></li>".
@@ -156,6 +162,9 @@ class DashboardController extends Controller
          }else{
             $listaMercadeo=$listaMercadeo."<li><a href='".route('comp_regimen.index')."'><i class='glyph-icon iconsminds-indent-first-line'></i><span class='d-inline-block'>Componentes de <br>Regimen</span></a></li>".
             "<li><a href='".route('regimens.index')."'><i class='simple-icon-layers'></i><span class='d-inline-block'>Regimenes</span></a></li>";
+         }
+         if ($tiposHab && $SectoresHab && $claseHab && $regimens) {
+            $listaMercadeo=$listaMercadeo."<li><a href='".route('tarifa.index')."'><i class='glyph-icon iconsminds-coins'></i><span class='d-inline-block'>Tarifas</span></a></li>";
          }
        
 

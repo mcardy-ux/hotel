@@ -117,6 +117,15 @@
                                         <span class="badge badge-pill badge-outline-success mb-1"> Ver Habitaciones</span>
                                     </a>
                                     @endif
+                                    @if ($regimenes>0 && $tiposHab>0 && $claseHab>0 && $tarifas==0)
+                                    <a href="{{route('tarifa.index')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Establecer Tarifas</span>
+                                    </a>
+                                    @elseif($regimenes>0 && $tiposHab>0 && $claseHab>0 && $tarifas>0)
+                                    <a href="{{route('tarifa.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Tarifas</span>
+                                    </a>
+                                    @endif
                                     </p>
                                     <p class="mb-3">Regimenes<br></p>
                                         <p class="mb-3">

@@ -48,11 +48,11 @@
                                                                 <div id="accordion">
 
                                                                     <div class="border">
-                                                                        <button type="button"  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                                        <button type="button"  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                                             Temporada Baja
                                                                         </button>
                                     
-                                                                        <div id="collapseOne" class="collapse" data-parent="#accordion" style="">
+                                                                        <div id="collapseOne" class="collapse show data-parent="#accordion" style="">
                                                                             <div class="row mb-4">
                                                                                 {{-- SECCION ESTANDAR --}}
                                                                                 <div class="col-lg-6 col-md-12 mb-4">
@@ -143,10 +143,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="border">
-                                                                        <button type="button"  class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                                        <button type="button"  class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                                             Temporada Media
                                                                         </button>
-                                                                        <div id="collapseTwo" class="collapse show" data-parent="#accordion" style="">
+                                                                        <div id="collapseTwo" class="collapse" data-parent="#accordion" style="">
                                                                             
                                                                             <div class="row mb-4">
                                                                             {{-- SECCION ESTANDAR - MEDIA --}}
