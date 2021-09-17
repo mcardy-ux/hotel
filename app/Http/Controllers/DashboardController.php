@@ -172,4 +172,10 @@ class DashboardController extends Controller
       
       return $listaMercadeo;
    }
+
+   public static function mostrarMenuParametrosAdicion(){
+      $listaParametros="<li><a href='".route('origenCliente.index')."'><i class='simple-icon-calendar'></i><span class='d-inline-block'>Origen de Clientes</span></a></li>";
+   
+   return $listaParametros;
+   }
 }

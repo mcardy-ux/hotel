@@ -44,7 +44,7 @@
                                             $mes_text = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];  
                                             @endphp
                                                 @for ($i = 0; $i < 12; $i++)
-                                                    <div class="col-md-3 col-sm-6 col-xs-12 mb-3">
+                                                    <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
                                                         <div class="card dashboard-filled-line-chart">
                                                             <div class="card-body ">
                                                                 <div class="float-left float-none-xs">

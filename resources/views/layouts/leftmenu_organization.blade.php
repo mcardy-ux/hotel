@@ -37,6 +37,21 @@
                         </div>
                     </li>
                     @endif
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#collapseParametros" aria-expanded="true"
+                            aria-controls="collapseParametros" class="rotate-arrow-icon opacity-50">
+                            <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Parametros Adicionales</span>
+                        </a>
+                        <div id="collapseParametros" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu">
+                              @php
+                                 $listaParametros=App\Http\Controllers\DashboardController::mostrarMenuParametrosAdicion();
+                                   
+                                       echo $listaParametros ?? '';
+                              @endphp
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

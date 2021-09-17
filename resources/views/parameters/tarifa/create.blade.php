@@ -55,7 +55,7 @@
                                                                         <div id="collapseOne" class="collapse show data-parent="#accordion" style="">
                                                                             <div class="row mb-4">
                                                                                 {{-- SECCION ESTANDAR --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">ESTANDAR</h5>
@@ -98,7 +98,7 @@
                                                                                 </div>
 
                                                                                 {{-- SECCION JUNIOR SUITE --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">JUNIOR SUITE</h5>
@@ -150,7 +150,7 @@
                                                                             
                                                                             <div class="row mb-4">
                                                                             {{-- SECCION ESTANDAR - MEDIA --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">ESTANDAR</h5>
@@ -192,7 +192,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 {{-- SECCION JUNIOR SUITE - MEDIA --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">JUNIOR SUITE</h5>
@@ -243,7 +243,7 @@
                                                                         <div id="collapseThree" class="collapse" data-parent="#accordion">
                                                                             <div class="row mb-4">
                                                                                 {{-- SECCION ESTANDAR - ALTA --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">ESTANDAR</h5>
@@ -285,7 +285,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 {{-- SECCION JUNIOR SUITE - ALTA --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">JUNIOR SUITE</h5>
@@ -336,7 +336,7 @@
                                                                         <div id="collapseFour" class="collapse" data-parent="#accordion">
                                                                             <div class="row mb-4">
                                                                                 {{-- SECCION ESTANDAR - ESPECIAL --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">ESTANDAR</h5>
@@ -378,7 +378,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 {{-- SECCION JUNIOR SUITE - ESPECIAL --}}
-                                                                                <div class="col-lg-6 col-md-12 mb-4">
+                                                                                <div class="col-lg-12 col-md-12 mb-4">
                                                                                     <div class="card">
                                                                                         <div class="card-body">
                                                                                             <h5 class="card-title text-center font-black">JUNIOR SUITE</h5>
