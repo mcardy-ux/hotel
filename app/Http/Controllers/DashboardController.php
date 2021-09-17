@@ -174,7 +174,8 @@ class DashboardController extends Controller
    }
 
    public static function mostrarMenuParametrosAdicion(){
-      $listaParametros="<li><a href='".route('origenCliente.index')."'><i class='simple-icon-calendar'></i><span class='d-inline-block'>Origen de Clientes</span></a></li>";
+      $listaParametros="<li><a href='".route('origenCliente.index')."'><i class='simple-icon-people'></i><span class='d-inline-block'>Origen de Clientes</span></a></li>".
+      "<li><a href='".route('rangoEdades.index')."'><i class='glyph-icon iconsminds-link-2'></i><span class='d-inline-block'>Rango de Edades</span></a></li>";
    
    return $listaParametros;
    }

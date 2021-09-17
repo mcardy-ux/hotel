@@ -32,7 +32,9 @@ Route::resource('comp_regimen', App\Http\Controllers\ComponenteRegimenController
 Route::resource('regimens', App\Http\Controllers\RegimenController::class)->middleware(['auth']);
 Route::get('temporada', [App\Http\Controllers\TemporadaController::class, 'index'] )->name('temporada.index')->middleware(['auth']);
 Route::resource('tarifa', App\Http\Controllers\TarifaController::class)->middleware(['auth']);
+//Recursos para otros parametros
 Route::resource('origenCliente', App\Http\Controllers\OrigenClienteController::class)->middleware(['auth']);
+Route::resource('rangoEdades', App\Http\Controllers\RangoEdadesController::class)->middleware(['auth']);
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
@@ -45,8 +47,7 @@ Route::get('ajax/request/tiposHab', [App\Http\Controllers\TipoHabitacionesContro
 Route::get('ajax/request/claseHab', [App\Http\Controllers\ClaseHabitacionesController::class, 'ajaxRequestClasesHab'])->name('ajax.request.claseHab')->middleware(['auth']);
 Route::get('ajax/request/comp_regimen', [App\Http\Controllers\ComponenteRegimenController::class, 'ajaxRequestComp_regimen'])->name('ajax.request.comp_regimen')->middleware(['auth']);
 Route::get('ajax/request/origenes', [App\Http\Controllers\OrigenClienteController::class, 'ajaxRequestOrigenes'])->name('ajax.request.origenes')->middleware(['auth']);
-
-
+Route::get('ajax/request/rangoEdades', [App\Http\Controllers\RangoEdadesController::class, 'ajaxRequestrangoEdades'])->name('ajax.request.rangoEdades')->middleware(['auth']);
 
 
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
