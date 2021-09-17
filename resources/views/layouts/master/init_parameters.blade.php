@@ -1,9 +1,9 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 bg-transparent border-0">
+            <div class="col-lg-2 col-md-2 bg-transparent border-0">
             </div>
-                <div class="card mb-4 col-lg-4" >
+                <div class="card mb-4 col-lg-8" >
                     <div id="smartWizardCheck" class="sw-main sw-theme-check">
                         <ul class="card-header nav nav-tabs step-anchor">
                             <li class="nav-item active"><a href="#checkStep1" class="nav-link">Paso 1<br><small>Organización</small></a></li>
@@ -155,7 +155,7 @@
                         
                     </div>
                 </div>
-            <div class="col-lg-4 bg-transparent border-0">
+            <div class="col-lg-2 col-md-2 bg-transparent border-0">
             </div>
         </div>
     </div>
