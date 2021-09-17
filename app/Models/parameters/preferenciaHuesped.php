@@ -5,7 +5,7 @@ namespace App\Models\parameters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class origenCliente extends Model
+class preferenciaHuesped extends Model
 {
     use HasFactory;
     protected $fillable = ['codigo', 'descripcion','created_by','modified_by'];
@@ -14,5 +14,4 @@ class origenCliente extends Model
     {
         return \Hashids::encode($this->id);
     }
-
 }
