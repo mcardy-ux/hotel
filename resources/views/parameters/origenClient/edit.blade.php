@@ -51,7 +51,7 @@
                                 
                               
                                 <hr>
-                                <button type="submit" class="btn btn-primary mb-0">Agregar</button>
+                                <button type="submit" class="btn btn-primary mb-0">Editar</button>
                                 <a href="{{ route('origenCliente.index') }}"> 
                                 <button type="button" class="btn btn-light mb-0">Volver</button>
                                 </a>

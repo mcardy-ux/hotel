@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\parameters\preferenciaHuesped;
+use App\Models\parameters\cupoCredito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PreferenciaHuespedController extends Controller
+class CupoCreditoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PreferenciaHuespedController extends Controller
      */
     public function index()
     {
-        return view("parameters.preferenciaHuesped.index");
+        return view("parameters.cupoCredito.index");
     }
 
     /**
@@ -25,7 +25,7 @@ class PreferenciaHuespedController extends Controller
      */
     public function create()
     {
-        return view("parameters.preferenciaHuesped.create");
+        return view("parameters.cupoCredito.create");
     }
 
     /**
@@ -36,9 +36,8 @@ class PreferenciaHuespedController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validator = Validator::make($request->all(), [
-            'codigo' => 'bail|required|unique:preferencia_huespeds|max:180',
+            'codigo' => 'bail|required|unique:cupo_creditos|max:180',
             'descripcion' => 'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
@@ -50,33 +49,32 @@ class PreferenciaHuespedController extends Controller
         // Retrieve the validated input...
         $validated = $validator->validated();
 
-        preferenciaHuesped::create($validated);
+        cupoCredito::create($validated);
         return json_encode(['success' => true]);
     }
 
-  
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\parameters\preferenciaHuesped  $preferenciaHuesped
+     * @param  \App\Models\parameters\cupoCredito  $cupoCredito
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-        $data=preferenciaHuesped::where('id',\Hashids::decode($id)[0])->first();
-        return view("parameters.preferenciaHuesped.edit",['data'=>$data]);
+        $data=cupoCredito::where('id',\Hashids::decode($id)[0])->first();
+        return view("parameters.cupoCredito.edit",['data'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\parameters\preferenciaHuesped  $preferenciaHuesped
+     * @param  \App\Models\parameters\cupoCredito  $cupoCredito
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $reg=preferenciaHuesped::findOrFail(\Hashids::decode($id)[0]);
+        $reg=cupoCredito::findOrFail(\Hashids::decode($id)[0]);
         $reg->codigo=$request->edit_codigo;
         $reg->descripcion=$request->edit_descripcion;
         $reg->modified_by=$request->id_user_modify;
@@ -87,12 +85,12 @@ class PreferenciaHuespedController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\parameters\preferenciaHuesped  $preferenciaHuesped
+     * @param  \App\Models\parameters\cupoCredito  $cupoCredito
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id)
     {
-        $reg = preferenciaHuesped::find(\Hashids::decode($id)[0])->delete();
+        $reg = cupoCredito::find(\Hashids::decode($id)[0])->delete();
 
         if($reg){
             return json_encode(['success' => true]);
@@ -100,8 +98,8 @@ class PreferenciaHuespedController extends Controller
             return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
         }
     }
-    public function ajaxRequestPefrences(){
-        $query = preferenciaHuesped::all();
+    public function ajaxRequestCupos(){
+        $query = cupoCredito::all();
         return datatables($query)
         
         ->addColumn('actions', function ($query) {
@@ -110,7 +108,7 @@ class PreferenciaHuespedController extends Controller
                     Opciones
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonUser" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                    <a class="dropdown-item" href="'. url('prefHuesped', [$query->encode_id,'edit']) .'">Editar</a>
+                    <a class="dropdown-item" href="'. url('cupoCredito', [$query->encode_id,'edit']) .'">Editar</a>
                     <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
                 </div>
             </div>';
