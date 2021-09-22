@@ -40,6 +40,7 @@ Route::resource('cupoCredito', App\Http\Controllers\CupoCreditoController::class
 Route::resource('tipoDocs', App\Http\Controllers\TipoDocumentoController::class)->middleware(['auth']);
 Route::resource('tipoCliente', App\Http\Controllers\TipoClienteController::class)->middleware(['auth']);
 Route::resource('eventos', App\Http\Controllers\EventosController::class)->middleware(['auth']);
+Route::resource('motivoCancel', App\Http\Controllers\MotivoCancelacionController::class)->middleware(['auth']);
 
 
 //Ajax para listar las tablas del index de los parametros de configuración
@@ -59,6 +60,7 @@ Route::get('ajax/request/cupos', [App\Http\Controllers\CupoCreditoController::cl
 Route::get('ajax/request/tipoDocs', [App\Http\Controllers\TipoDocumentoController::class, 'ajaxRequestTipoDocs'])->name('ajax.request.tipoDocs')->middleware(['auth']);
 Route::get('ajax/request/tipoCliente', [App\Http\Controllers\TipoClienteController::class, 'ajaxRequestTipoCliente'])->name('ajax.request.tipoCliente')->middleware(['auth']);
 Route::get('ajax/request/eventos', [App\Http\Controllers\EventosController::class, 'ajaxRequestEventos'])->name('ajax.request.eventos')->middleware(['auth']);
+Route::get('ajax/request/motivoCancel', [App\Http\Controllers\MotivoCancelacionController::class, 'ajaxRequestmotivoCancel'])->name('ajax.request.motivoCancel')->middleware(['auth']);
 
 
 

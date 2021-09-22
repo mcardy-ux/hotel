@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class rangoEdades extends Model
 {
     use HasFactory;
-    protected $fillable = ['codigo', 'descripcion','created_by','rangoInicial','rangoFinal'];
+    protected $fillable = ['codigo', 'descripcion','created_by','modified_by','rangoInicial','rangoFinal'];
 
     public function getEncodeIDAttribute()
     {

@@ -13,6 +13,6 @@ class tipo_documento extends Model
     {
         return \Hashids::encode($this->id);
     }
-    protected $fillable=['codigo','descripcion'];
+    protected $fillable=['codigo','descripcion','created_by','modified_by'];
 
 }
