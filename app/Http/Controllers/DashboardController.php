@@ -181,7 +181,9 @@ class DashboardController extends Controller
       "<li><a href='".route('tipoDocs.index')."'><i class='glyph-icon iconsminds-wallet'></i><span class='d-inline-block'>Tipos de <br> Documentos</span></a></li>".
       "<li><a href='".route('tipoCliente.index')."'><i class='iconsminds-affiliate'></i><span class='d-inline-block'>Tipos de <br> Cliente</span></a></li>".
       "<li><a href='".route('eventos.index')."'><i class='glyph-icon iconsminds-cocktail'></i><span class='d-inline-block'>Eventos</span></a></li>".
-      "<li><a href='".route('motivoCancel.index')."'><i class='glyph-icon iconsminds-arrow-x-left'></i><span class='d-inline-block'>Motivos de <br> Cancelación</span></a></li>";
+      "<li><a href='".route('motivoCancel.index')."'><i class='glyph-icon iconsminds-arrow-x-left'></i><span class='d-inline-block'>Motivos de <br> Cancelación</span></a></li>".
+      "<li><a href='".route('motivoViaje.index')."'><i class='glyph-icon iconsminds-arrow-x-left'></i><span class='d-inline-block'>Motivos de <br> Viaje</span></a></li>";
+
 
    return $listaParametros;
    }
