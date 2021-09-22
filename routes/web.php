@@ -39,6 +39,7 @@ Route::resource('prefHuesped', App\Http\Controllers\PreferenciaHuespedController
 Route::resource('cupoCredito', App\Http\Controllers\CupoCreditoController::class)->middleware(['auth']);
 Route::resource('tipoDocs', App\Http\Controllers\TipoDocumentoController::class)->middleware(['auth']);
 Route::resource('tipoCliente', App\Http\Controllers\TipoClienteController::class)->middleware(['auth']);
+Route::resource('eventos', App\Http\Controllers\EventosController::class)->middleware(['auth']);
 
 
 //Ajax para listar las tablas del index de los parametros de configuración
@@ -57,6 +58,7 @@ Route::get('ajax/request/preferences', [App\Http\Controllers\PreferenciaHuespedC
 Route::get('ajax/request/cupos', [App\Http\Controllers\CupoCreditoController::class, 'ajaxRequestCupos'])->name('ajax.request.cupos')->middleware(['auth']);
 Route::get('ajax/request/tipoDocs', [App\Http\Controllers\TipoDocumentoController::class, 'ajaxRequestTipoDocs'])->name('ajax.request.tipoDocs')->middleware(['auth']);
 Route::get('ajax/request/tipoCliente', [App\Http\Controllers\TipoClienteController::class, 'ajaxRequestTipoCliente'])->name('ajax.request.tipoCliente')->middleware(['auth']);
+Route::get('ajax/request/eventos', [App\Http\Controllers\EventosController::class, 'ajaxRequestEventos'])->name('ajax.request.eventos')->middleware(['auth']);
 
 
 

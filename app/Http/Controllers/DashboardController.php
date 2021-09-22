@@ -178,8 +178,9 @@ class DashboardController extends Controller
       "<li><a href='".route('rangoEdades.index')."'><i class='glyph-icon iconsminds-link-2'></i><span class='d-inline-block'>Rango de Edades</span></a></li>".
       "<li><a href='".route('prefHuesped.index')."'><i class='glyph-icon iconsminds-target-market'></i><span class='d-inline-block'>Preferencias <br> Huespedes</span></a></li>".
       "<li><a href='".route('cupoCredito.index')."'><i class='simple-icon-credit-card'></i><span class='d-inline-block'>Cupos de <br> Credito</span></a></li>".
-      "<li><a href='".route('tipoDocs.index')."'><i class='simple-icon-credit-card'></i><span class='d-inline-block'>Tipos de <br> Documentos</span></a></li>".
-      "<li><a href='".route('tipoCliente.index')."'><i class='simple-icon-credit-card'></i><span class='d-inline-block'>Tipos de <br> Cliente</span></a></li>";
+      "<li><a href='".route('tipoDocs.index')."'><i class='glyph-icon iconsminds-wallet'></i><span class='d-inline-block'>Tipos de <br> Documentos</span></a></li>".
+      "<li><a href='".route('tipoCliente.index')."'><i class='iconsminds-affiliate'></i><span class='d-inline-block'>Tipos de <br> Cliente</span></a></li>".
+      "<li><a href='".route('eventos.index')."'><i class='glyph-icon iconsminds-cocktail'></i><span class='d-inline-block'>Eventos</span></a></li>";
 
    return $listaParametros;
    }
