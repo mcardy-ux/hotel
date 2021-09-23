@@ -166,12 +166,15 @@ class DashboardController extends Controller
          if ($tiposHab && $SectoresHab && $claseHab && $regimens) {
             $listaMercadeo=$listaMercadeo."<li><a href='".route('tarifa.index')."'><i class='glyph-icon iconsminds-coins'></i><span class='d-inline-block'>Tarifas</span></a></li>";
          }
-       
-
-        
-      
       return $listaMercadeo;
    }
+
+   public static function mostrarMenuContable(){
+
+   $listaContable= "<li><a href='".route('planCuentas.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Plan de <br>Cuentas</span></a></li>";
+     
+   return $listaContable;
+}
 
    public static function mostrarMenuParametrosAdicion(){
       $listaParametros="<li><a href='".route('origenCliente.index')."'><i class='simple-icon-people'></i><span class='d-inline-block'>Origen de Clientes</span></a></li>".

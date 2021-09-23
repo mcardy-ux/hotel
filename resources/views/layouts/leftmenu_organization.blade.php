@@ -38,6 +38,21 @@
                     </li>
                     @endif
                     <li>
+                        <a href="#" data-toggle="collapse" data-target="#collapseContable" aria-expanded="true"
+                            aria-controls="collapseContable" class="rotate-arrow-icon opacity-50">
+                            <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Contabilidad</span>
+                        </a>
+                        <div id="collapseContable" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu">
+                              @php
+                                 $listaContable=App\Http\Controllers\DashboardController::mostrarMenuContable();
+                                   
+                                       echo $listaContable ?? '';
+                              @endphp
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
                         <a href="#" data-toggle="collapse" data-target="#collapseParametros" aria-expanded="true"
                             aria-controls="collapseParametros" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Parametros Adicionales</span>
@@ -52,6 +67,7 @@
                             </ul>
                         </div>
                     </li>
+                    
                 </ul>
             </div>
         </div>
