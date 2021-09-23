@@ -44,6 +44,10 @@ Route::resource('motivoCancel', App\Http\Controllers\MotivoCancelacionController
 Route::resource('motivoViaje', App\Http\Controllers\MotivoViajeController::class)->middleware(['auth']);
 Route::resource('voucher', App\Http\Controllers\VoucherController::class)->middleware(['auth']);
 
+//Recursos para contabilidad
+Route::resource('planCuentas', App\Http\Controllers\PlanCuentasController::class)->middleware(['auth']);
+
+
 
 //Ajax para listar las tablas del index de los parametros de configuración
 Route::get('ajax/request/cities', [App\Http\Controllers\LocationController::class, 'ajaxRequestCities'])->name('ajax.request.cities')->middleware(['auth']);
@@ -65,7 +69,7 @@ Route::get('ajax/request/eventos', [App\Http\Controllers\EventosController::clas
 Route::get('ajax/request/motivoCancel', [App\Http\Controllers\MotivoCancelacionController::class, 'ajaxRequestmotivoCancel'])->name('ajax.request.motivoCancel')->middleware(['auth']);
 Route::get('ajax/request/motivoViaje', [App\Http\Controllers\MotivoViajeController::class, 'ajaxRequestmotivoViaje'])->name('ajax.request.motivoViaje')->middleware(['auth']);
 Route::get('ajax/request/voucher', [App\Http\Controllers\VoucherController::class, 'ajaxRequestvoucher'])->name('ajax.request.voucher')->middleware(['auth']);
-
+Route::get('ajax/request/planCuentas', [App\Http\Controllers\PlanCuentasController::class, 'ajaxRequestplanCuentas'])->name('ajax.request.planCuentas')->middleware(['auth']);
 
 
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
