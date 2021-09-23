@@ -93,7 +93,7 @@
             "columns":[
             {"data":"codigo"},
             {"data":"descripcion"},
-            {"data":"consumible_POS"},
+            {"data":"Isconsumible"},
             { "data": "actions",orderable:false, searchable:false },
             ],
         });

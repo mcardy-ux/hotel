@@ -119,7 +119,13 @@ class VoucherController extends Controller
     public function ajaxRequestvoucher(){
         $query = voucher::all();
         return datatables($query)
-        
+        ->addColumn('Isconsumible', function ($query){
+            if ($query->consumible_POS==1) {
+                return "SI";
+            }elseif($query->consumible_POS==0) {
+                return "NO";
+            }
+        })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
                 <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,7 +138,7 @@ class VoucherController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions'])
+        ->rawColumns(['actions','Isconsumible'])
         ->make(true);
     }
 }
