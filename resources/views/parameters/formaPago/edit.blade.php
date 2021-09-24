@@ -71,7 +71,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="puc">PUC:</label>
                                             <select id="edit_puc" name="edit_puc" class="form-control">
-                                                <option value="" selected>SELCECCIONAR</option>
+                                                <option value="" selected>SELECCIONAR</option>
                                             </select>
                                         </div>
                                     </div>

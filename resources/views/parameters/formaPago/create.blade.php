@@ -72,7 +72,7 @@
                                     <div class="form-group col-md-12">
                                         <label for="puc">PUC:</label>
                                         <select id="puc" name="puc" class="form-control">
-                                            <option value="" selected>SELCECCIONAR</option>
+                                            <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
                                 </div>

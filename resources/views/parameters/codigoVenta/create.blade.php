@@ -77,13 +77,13 @@
                                     <div class="form-group col-md-6">
                                         <label for="puc">PUC:</label>
                                         <select id="puc" name="puc" class="form-control">
-                                            <option value="" selected>SELCECCIONAR</option>
+                                            <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="rel_impuesto">Impuesto:</label>
                                         <select id="rel_impuesto" name="rel_impuesto" class="form-control">
-                                            <option value="" selected>SELCECCIONAR</option>
+                                            <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
                                 </div>
@@ -91,13 +91,13 @@
                                     <div class="form-group col-md-6">
                                         <label for="rel_agrupacion">Agrupación:</label>
                                         <select id="rel_agrupacion" name="rel_agrupacion" class="form-control">
-                                            <option value="" selected>SELCECCIONAR</option>
+                                            <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="rel_centro">Centro:</label>
                                         <select id="rel_centro" name="rel_centro" class="form-control">
-                                            <option value="" selected>SELCECCIONAR</option>
+                                            <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
                                 </div>
