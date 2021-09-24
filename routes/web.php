@@ -49,6 +49,7 @@ Route::resource('planCuentas', App\Http\Controllers\PlanCuentasController::class
 Route::resource('formaPago', App\Http\Controllers\FormasPagoController::class)->middleware(['auth']);
 Route::resource('impuestos', App\Http\Controllers\ImpuestosController::class)->middleware(['auth']);
 Route::resource('agrupacionVentas', App\Http\Controllers\AgrupacionVentasController::class)->middleware(['auth']);
+Route::resource('centro', App\Http\Controllers\CentroController::class)->middleware(['auth']);
 
 
 //Ajax para listar las tablas del index de los parametros de configuración
@@ -77,6 +78,7 @@ Route::get('ajax/request/planCuentas', [App\Http\Controllers\PlanCuentasControll
 Route::get('ajax/request/formaPago', [App\Http\Controllers\FormasPagoController::class, 'ajaxRequestformaPago'])->name('ajax.request.formaPago')->middleware(['auth']);
 Route::get('ajax/request/impuestos', [App\Http\Controllers\ImpuestosController::class, 'ajaxRequestimpuestos'])->name('ajax.request.impuestos')->middleware(['auth']);
 Route::get('ajax/request/agrupacionVentas', [App\Http\Controllers\AgrupacionVentasController::class, 'ajaxRequestagrupacionVentas'])->name('ajax.request.agrupacionVentas')->middleware(['auth']);
+Route::get('ajax/request/centro', [App\Http\Controllers\CentroController::class, 'ajaxRequestCentro'])->name('ajax.request.centro')->middleware(['auth']);
 
 
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
