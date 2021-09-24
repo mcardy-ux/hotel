@@ -175,7 +175,9 @@ class DashboardController extends Controller
    $listaContable=$listaContable."<li><a href='".route('formaPago.index')."'><i class='glyph-icon iconsminds-coins-2'></i><span class='d-inline-block'>Formas de <br>Pago</span></a></li>".
    "<li><a href='".route('impuestos.index')."'><i class='glyph-icon iconsminds-line-chart-1'></i><span class='d-inline-block'>Impuestos</span></a></li>".
    "<li><a href='".route('agrupacionVentas.index')."'><i class='glyph-icon iconsminds-books'></i><span class='d-inline-block'>Agrupación de <br> Ventas</span></a></li>".
-   "<li><a href='".route('centro.index')."'><i class='glyph-icon iconsminds-books'></i><span class='d-inline-block'>Centros</span></a></li>";
+   "<li><a href='".route('centro.index')."'><i class='glyph-icon iconsminds-eci-icon'></i><span class='d-inline-block'>Centros</span></a></li>".
+   "<li><a href='".route('codigoVenta.index')."'><i class='glyph-icon iconsminds-eci-icon'></i><span class='d-inline-block'>Codigos de <br> Venta</span></a></li>";
+
 
    return $listaContable;
 }

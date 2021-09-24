@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\parameters\formasPago;
+use App\Models\parameters\codigoVenta;
 use App\Models\parameters\planCuentas;
+use App\Models\parameters\impuestos;
+use App\Models\parameters\centro;
+use App\Models\parameters\agrupacionVentas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class FormasPagoController extends Controller
+class CodigoVentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,7 @@ class FormasPagoController extends Controller
      */
     public function index()
     {
-        return view("parameters.formaPago.index");
+        return view('parameters.codigoVenta.index');
     }
 
     /**
@@ -27,7 +30,15 @@ class FormasPagoController extends Controller
     public function create()
     {
         $puc=planCuentas::getPucs();
-       return view("parameters.formaPago.create",["puc"=>$puc]);
+        $impuestos=impuestos::getImpuestos();
+        $centros=centro::getCentros();
+        $agrupacion=agrupacionVentas::getAgrupacion();
+        return view('parameters.codigoVenta.create',[
+            'puc'=>$puc,
+            'impuestos'=>$impuestos,
+            'centros'=>$centros,
+            'agrupacion'=>$agrupacion
+        ]);
     }
 
     /**
@@ -39,9 +50,12 @@ class FormasPagoController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'estado' => 'bail|required|max:180',
-            'formaPago' => 'bail|required|max:180',
-            'descripcion' => 'bail|required|max:180',
+            'descripcion' => 'bail|required|max:250',
+            'descripcionContable' => 'bail|required|max:250',
+            'puc' => 'bail|required|max:180',
+            'rel_impuesto'=>'bail|required|max:180',
+            'rel_agrupacion'=>'bail|required|max:180',
+            'rel_centro'=>'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
  
@@ -49,11 +63,14 @@ class FormasPagoController extends Controller
             return json_encode(['success' => false, 'data' =>$validator->errors()]);
         }
         else{
-            $res=new formasPago();
-            $res->estado=$request->estado;
-            $res->formaPago=$request->formaPago;
+            $res=new codigoVenta();
             $res->descripcion=$request->descripcion;
+            $res->descripcionContable=$request->descripcionContable;
+            $res->estado=$request->estado;
             $res->rel_puc=$request->puc;
+            $res->rel_impuesto=$request->rel_impuesto;
+            $res->rel_agrupacion=$request->rel_agrupacion;
+            $res->rel_centro=$request->rel_centro;
             $res->created_by=$request->created_by;
             $res->save();
 
@@ -61,33 +78,46 @@ class FormasPagoController extends Controller
         }
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\parameters\formasPago  $formasPago
+     * @param  \App\Models\parameters\codigoVenta  $codigoVenta
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $puc=planCuentas::getPucs();
-        $data=formasPago::where('id',\Hashids::decode($id)[0])->first();
-        return view("parameters.formaPago.edit",['data'=>$data,"puc"=>$puc]);
+        $impuestos=impuestos::getImpuestos();
+        $centros=centro::getCentros();
+        $agrupacion=agrupacionVentas::getAgrupacion();
+        $data=codigoVenta::where('id',\Hashids::decode($id)[0])->first();
+        return view('parameters.codigoVenta.edit',[
+            'data'=>$data,
+            'puc'=>$puc,
+            'impuestos'=>$impuestos,
+            'centros'=>$centros,
+            'agrupacion'=>$agrupacion
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\parameters\formasPago  $formasPago
+     * @param  \App\Models\parameters\codigoVenta  $codigoVenta
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $reg=formasPago::findOrFail(\Hashids::decode($id)[0]);
-        $reg->formaPago=$request->edit_forma;
+        $reg=codigoVenta::findOrFail(\Hashids::decode($id)[0]);
         $reg->descripcion=$request->edit_descripcion;
+        $reg->descripcionContable=$request->edit_descripcionContable;
         $reg->estado=$request->edit_estado;
         $reg->rel_puc=$request->edit_puc;
+        $reg->rel_impuesto=$request->edit_rel_impuesto;
+        $reg->rel_agrupacion=$request->edit_rel_agrupacion;
+        $reg->rel_centro=$request->edit_rel_centro;
         $reg->modified_by=$request->id_user_modify;
         $reg->save();
         return json_encode(['success' => true]);
@@ -96,13 +126,13 @@ class FormasPagoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\parameters\formasPago  $formasPago
+     * @param  \App\Models\parameters\codigoVenta  $codigoVenta
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $reg = formasPago::find(\Hashids::decode($id)[0])->delete();
- 
+        $reg = codigoVenta::find(\Hashids::decode($id)[0])->delete();
+
         if($reg){
             return json_encode(['success' => true]);
         }else{
@@ -110,10 +140,8 @@ class FormasPagoController extends Controller
         }
     }
 
-
-    public function ajaxRequestformaPago(){
-        $query = formasPago::all();
-        
+    public function ajaxRequestcodigoVenta(){
+        $query = codigoVenta::all();
         return datatables($query)
         ->addColumn('estado_button',function ($query){
             if ($query->estado=="activo") {
@@ -125,9 +153,21 @@ class FormasPagoController extends Controller
             }
             
         })
-        ->addColumn('puc',function ($query){
+        ->addColumn('puc_or',function ($query){
             $puc=planCuentas::select('codigoCuenta')->where('id','=',$query->rel_puc)->first();
            return '<strong>'.$puc->codigoCuenta.'</strong>';
+        })
+        ->addColumn('impuesto',function ($query){
+            $impuesto=impuestos::select('nombreImpuesto')->where('id','=',$query->rel_impuesto)->first();
+           return '<strong>'.$impuesto->nombreImpuesto.'</strong>';
+        })
+        ->addColumn('agrupacion',function ($query){
+            $agrupacion=agrupacionVentas::select('descripcion')->where('id','=',$query->rel_agrupacion)->first();
+           return '<strong>'.$agrupacion->descripcion.'</strong>';
+        })
+        ->addColumn('centro',function ($query){
+            $centro=centro::select('nombre')->where('id','=',$query->rel_centro)->first();
+           return '<strong>'.$centro->nombre.'</strong>';
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -135,13 +175,13 @@ class FormasPagoController extends Controller
                     Opciones
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonUser" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                    <a class="dropdown-item" href="'. url('formaPago', [$query->encode_id,'edit']) .'">Editar</a>
+                    <a class="dropdown-item" href="'. url('codigoVenta', [$query->encode_id,'edit']) .'">Editar</a>
                     <a class="dropdown-item" onclick="show(this)" id="'.$query->encode_id.'">Eliminar</a>
                 </div>
             </div>';
         
         })
-        ->rawColumns(['actions','estado_button','puc'])
+        ->rawColumns(['actions','estado_button','puc_or','impuesto','agrupacion','centro'])
         ->make(true);
     }
 }
