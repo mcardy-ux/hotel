@@ -47,6 +47,7 @@ Route::resource('voucher', App\Http\Controllers\VoucherController::class)->middl
 //Recursos para contabilidad
 Route::resource('planCuentas', App\Http\Controllers\PlanCuentasController::class)->middleware(['auth']);
 Route::resource('formaPago', App\Http\Controllers\FormasPagoController::class)->middleware(['auth']);
+Route::resource('impuestos', App\Http\Controllers\ImpuestosController::class)->middleware(['auth']);
 
 
 //Ajax para listar las tablas del index de los parametros de configuración
@@ -73,6 +74,7 @@ Route::get('ajax/request/voucher', [App\Http\Controllers\VoucherController::clas
 //Ajax de listado para modulos de contabilidad
 Route::get('ajax/request/planCuentas', [App\Http\Controllers\PlanCuentasController::class, 'ajaxRequestplanCuentas'])->name('ajax.request.planCuentas')->middleware(['auth']);
 Route::get('ajax/request/formaPago', [App\Http\Controllers\FormasPagoController::class, 'ajaxRequestformaPago'])->name('ajax.request.formaPago')->middleware(['auth']);
+Route::get('ajax/request/impuestos', [App\Http\Controllers\ImpuestosController::class, 'ajaxRequestimpuestos'])->name('ajax.request.impuestos')->middleware(['auth']);
 
 
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
