@@ -22,6 +22,17 @@ function addOptionsConcat(domElement, array) {
   }
 }
 
+let PUC_Costo=  document.getElementById('PUC_Costo');
+PUC_Costo.addEventListener('input',function(){
+if (this.value.length > 10) 
+    this.value = this.value.slice(0,10); 
+})
+
+let PUC_Gasto=  document.getElementById('PUC_Gasto');
+PUC_Gasto.addEventListener('input',function(){
+if (this.value.length > 10) 
+    this.value = this.value.slice(0,10); 
+})
 $(document).ready(function(){
     // Evento que ocurre cuando es cambiado el usuario
     //y se rellena el correo electronico en el campo

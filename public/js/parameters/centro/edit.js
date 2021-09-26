@@ -28,6 +28,17 @@ function RemoveOptions(name) {
 
 $(document).ready(function(){
 
+  let PUC_Costo=  document.getElementById('edit_PUC_Costo');
+  PUC_Costo.addEventListener('input',function(){
+  if (this.value.length > 10) 
+      this.value = this.value.slice(0,10); 
+  })
+  
+  let PUC_Gasto=  document.getElementById('edit_PUC_Gasto');
+  PUC_Gasto.addEventListener('input',function(){
+  if (this.value.length > 10) 
+      this.value = this.value.slice(0,10); 
+  })
     $('#edit_centro').submit(function(event){
         if ($('#edit_nombre').val() === "") {
             alert('Debe ingresar el nombre','Atencion!');
