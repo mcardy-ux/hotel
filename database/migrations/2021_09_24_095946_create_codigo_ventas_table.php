@@ -27,7 +27,7 @@ class CreateCodigoVentasTable extends Migration
             $table->unsignedBigInteger('rel_agrupacion')->nullable();
             $table->foreign('rel_agrupacion')->references('id')->on('agrupacion_ventas');
             $table->unsignedBigInteger('rel_centro')->nullable();
-            $table->foreign('rel_centro')->references('id')->on('plan_cuentas');
+            $table->foreign('rel_centro')->references('id')->on('codigo_ventas');
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');

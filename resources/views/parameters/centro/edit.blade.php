@@ -36,34 +36,30 @@
                                
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
+                                            <label for="edit_codigo">Codigo:</label>
+                                            <input type="text" class="form-control" id="edit_codigo" name="edit_codigo" value="{{$data->codigo}}"
+                                                aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        </div>
+                                        <div class="form-group col-md-6">
                                             <label for="edit_nombre">Nombre del centro:</label>
                                             <input type="text" class="form-control" id="edit_nombre" name="edit_nombre" value="{{$data->nombre}}"
                                                 aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="edit_departamento">Departamento:</label>
-                                            <input type="text" class="form-control" id="edit_departamento" name="edit_departamento" value="{{$data->departamento}}"
-                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="edit_PUC_Costo">PUC Costo:</label>
-                                            <input type="number" class="form-control" id="edit_PUC_Costo" name="edit_PUC_Costo" max="999999999" value="{{$data->PUC_Costo}}"
-                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="edit_PUC_Gasto">PUC Gasto:</label>
-                                            <input type="number" class="form-control" id="edit_PUC_Gasto" name="edit_PUC_Gasto" max="999999999" value="{{$data->PUC_Gasto}}"
-                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="edit_tipo">Tipo:</label>
-                                            <input type="text" class="form-control" id="edit_tipo" name="edit_tipo" value="{{$data->tipo}}"
-                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="edit_puc">PUC:</label>
-                                            <select id="edit_puc" name="edit_puc" class="form-control">
+                                            <select id="edit_departamento" name="edit_departamento" class="form-control">
                                                 <option value="" selected>SELECCIONAR</option>
+    
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="edit_tipo">Tipo:</label>
+                                            <select id="edit_tipo" name="edit_tipo" class="form-control">
+                                                <option value="" selected>SELECCIONAR</option>
+                                                <option value="inventario">Inventario</option>
+                                                <option value="costo">Costo</option>
+                                                <option value="ingreso">Ingreso</option>
+    
                                             </select>
                                         </div>
                                     </div>
@@ -85,24 +81,28 @@
     @push('scripts')
     <script src="{{ asset('js/parameters/centro/edit.js') }}"></script>
     <script>
-    $(function(){
-        let rel_puc = @json($data->rel_puc);
-        $("#edit_puc").val(rel_puc);
-    });
+  
     
     window.addEventListener("load", function() {
-            cargarPuc(event);
+        cargarDptos(event);
     }, false);
  
     //Funcion para cargar los departamentos al campo "select".
-    function cargarPuc() {
+    function cargarDptos() {
     
         //Inicializamos el array.
-        var array = @json($puc);
+        var array = @json($dptos);
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("edit_puc", array);
+        addOptionsConcat("edit_departamento", array);
     }
+    $(function(){
+        let dpto = @json($data->rel_departaments);
+        $("#edit_departamento").val(dpto);
+
+        let tipo = @json($data->tipo);
+        $("#edit_tipo").val(tipo);
+    });
     </script>
     @endpush

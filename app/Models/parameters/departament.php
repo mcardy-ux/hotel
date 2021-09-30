@@ -51,6 +51,14 @@ class departament extends Model
         ->get();
         return $data;
     }
+    public static function getDepartamentsWithHotelById($id){
+        $data=departament::select('departaments.id as id','data_hotels.razonComercial as value','departaments.nombre as secvalue')
+        ->leftJoin('data_hotels','data_hotels.id','=','departaments.rel_hotel')
+        ->orderBy('departaments.rel_hotel')
+        ->where('departaments.id','=',$id)
+        ->get();
+        return $data;
+    }
     public static function Existe_Dptos()
     {
         $reg = departament::select('id')

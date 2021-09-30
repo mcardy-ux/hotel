@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\parameters\centro;
 use App\Models\parameters\planCuentas;
+use App\Models\parameters\departament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,8 +27,8 @@ class CentroController extends Controller
      */
     public function create()
     {
-        $puc=planCuentas::getPucs();
-        return view('parameters.centro.create',['puc'=>$puc]);
+        $dptos=departament::getDepartamentsWithHotel();
+        return view('parameters.centro.create',['dptos'=>$dptos]);
     }
 
     /**
@@ -39,12 +40,10 @@ class CentroController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'codigo' => 'bail|required|max:180',
             'nombre' => 'bail|required|max:180',
             'departamento' => 'bail|required|max:180',
-            'PUC_Costo' => 'bail|required|max:180',
-            'PUC_Gasto' => 'bail|required|max:180',
             'tipo' => 'bail|required|max:180',
-            'puc' => 'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
  
@@ -53,12 +52,10 @@ class CentroController extends Controller
         }
         else{
             $res=new centro();
+            $res->codigo=$request->codigo;
             $res->nombre=$request->nombre;
-            $res->departamento=$request->departamento;
-            $res->PUC_Costo=$request->PUC_Costo;
-            $res->PUC_Gasto=$request->PUC_Gasto;
+            $res->rel_departaments=$request->departamento;
             $res->tipo=$request->tipo;
-            $res->rel_puc=$request->puc;
             $res->created_by=$request->created_by;
             $res->save();
 
@@ -75,9 +72,9 @@ class CentroController extends Controller
      */
     public function edit($id)
     {
-        $puc=planCuentas::getPucs();
+        $dptos=departament::getDepartamentsWithHotel();
         $data=centro::where('id',\Hashids::decode($id)[0])->first();
-        return view("parameters.centro.edit",['data'=>$data,"puc"=>$puc]);
+        return view("parameters.centro.edit",['data'=>$data,"dptos"=>$dptos]);
     }
 
     /**
@@ -90,12 +87,10 @@ class CentroController extends Controller
     public function update(Request $request, $id)
     {
         $reg=centro::findOrFail(\Hashids::decode($id)[0]);
+        $reg->codigo=$request->edit_codigo;
         $reg->nombre=$request->edit_nombre;
-        $reg->departamento=$request->edit_departamento;
-        $reg->PUC_Costo=$request->edit_PUC_Costo;
-        $reg->PUC_Gasto=$request->edit_PUC_Gasto;
+        $reg->rel_departaments=$request->edit_departamento;
         $reg->tipo=$request->edit_tipo;
-        $reg->rel_puc=$request->edit_puc;
         $reg->modified_by=$request->id_user_modify;
         $reg->save();
         return json_encode(['success' => true]);
@@ -121,9 +116,9 @@ class CentroController extends Controller
         $query = centro::all();
         
         return datatables($query)
-        ->addColumn('puc',function ($query){
-            $puc=planCuentas::select('codigoCuenta')->where('id','=',$query->rel_puc)->first();
-           return '<strong>'.$puc->codigoCuenta.'</strong>';
+        ->addColumn('departamento',function ($query){
+            $departamento=departament::getDepartamentsWithHotelById($query->rel_departaments)->first();
+           return '<strong>'.$departamento->secvalue.'</strong> - '.$departamento->value;
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -137,7 +132,11 @@ class CentroController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions','estado_button','puc'])
+        ->addColumn('tipo_coloreado', function ($query) {
+            
+        
+        })
+        ->rawColumns(['actions','estado_button','departamento'])
         ->make(true);
     }
 }

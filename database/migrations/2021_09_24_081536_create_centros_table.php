@@ -15,13 +15,13 @@ class CreateCentrosTable extends Migration
     {
         Schema::create('centros', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
             $table->string('nombre');
-            $table->string('departamento');
-            $table->integer('PUC_Costo');
-            $table->integer('PUC_Gasto');
-            $table->string('tipo');
-            $table->unsignedBigInteger('rel_puc')->nullable();
-            $table->foreign('rel_puc')->references('id')->on('plan_cuentas');
+            $table->unsignedBigInteger('rel_departaments')->nullable();
+            $table->foreign('rel_departaments')->references('id')->on('departaments');
+        
+            
+            $table->enum('tipo',['inventario','costo','ingreso']);
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');

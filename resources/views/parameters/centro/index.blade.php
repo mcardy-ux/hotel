@@ -40,12 +40,10 @@
                              
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">Codigo</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Departamento</th>
-                                        <th scope="col">PUC Costo</th>
-                                        <th scope="col">PUC Gasto</th>
                                         <th scope="col">Tipo</th>
-                                        <th scope="col">PUC</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -94,12 +92,10 @@
               "serverSide": true,
             "ajax": "{{ route('ajax.request.centro') }}",
             "columns":[
+            {"data":"codigo"},
             {"data":"nombre"},
             {"data":"departamento"},
-            {"data":"PUC_Costo"},
-            {"data":"PUC_Gasto"},
             {"data":"tipo"},
-            {"data":"puc"},
             { "data": "actions",orderable:false, searchable:false },
             ],
         });

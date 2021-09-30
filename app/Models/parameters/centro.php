@@ -18,7 +18,7 @@ class centro extends Model
     
     public static function getCentros(){
         $data=DB::table('centros')
-        ->select('id','nombre as value','departamento as secvalue')
+        ->select('id','nombre as value','rel_departaments as secvalue')
         ->get();
         return $data;
     }

@@ -36,7 +36,11 @@
                                
                                
                                 <div class="form-row">
-                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="codigo">Codigo:</label>
+                                        <input type="text" class="form-control" id="codigo" name="codigo"
+                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label for="nombre">Nombre del centro:</label>
                                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -44,28 +48,19 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="departamento">Departamento:</label>
-                                        <input type="text" class="form-control" id="departamento" name="departamento"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="PUC_Costo">PUC Costo:</label>
-                                        <input type="number" class="form-control" id="PUC_Costo" name="PUC_Costo" max="999999999"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="PUC_Gasto">PUC Gasto:</label>
-                                        <input type="number" class="form-control" id="PUC_Gasto" name="PUC_Gasto" max="999999999"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="tipo">Tipo:</label>
-                                        <input type="text" class="form-control" id="tipo" name="tipo"
-                                        aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="puc">PUC:</label>
-                                        <select id="puc" name="puc" class="form-control">
+                                        <select id="departamento" name="departamento" class="form-control">
                                             <option value="" selected>SELECCIONAR</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="tipo">Tipo:</label>
+                                        <select id="tipo" name="tipo" class="form-control">
+                                            <option value="" selected>SELECCIONAR</option>
+                                            <option value="inventario">Inventario</option>
+                                            <option value="costo">Costo</option>
+                                            <option value="ingreso">Ingreso</option>
+
                                         </select>
                                     </div>
                                 </div>
@@ -88,18 +83,18 @@
     <script src="{{ asset('js/parameters/centro/create.js') }}"></script>
     <script>
         window.addEventListener("load", function() {
-            cargarPuc(event);
+            cargarDptos(event);
     }, false);
  
     //Funcion para cargar los departamentos al campo "select".
-    function cargarPuc() {
+    function cargarDptos() {
     
         //Inicializamos el array.
-        var array = @json($puc);
+        var array = @json($dptos);
         //Ordena el array alfabeticamente.
         array.sort();
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("puc", array);
+        addOptionsConcat("departamento", array);
     }
    </script>
     @endpush

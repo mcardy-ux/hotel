@@ -22,23 +22,16 @@ function addOptionsConcat(domElement, array) {
   }
 }
 
-let PUC_Costo=  document.getElementById('PUC_Costo');
-PUC_Costo.addEventListener('input',function(){
-if (this.value.length > 10) 
-    this.value = this.value.slice(0,10); 
-})
-
-let PUC_Gasto=  document.getElementById('PUC_Gasto');
-PUC_Gasto.addEventListener('input',function(){
-if (this.value.length > 10) 
-    this.value = this.value.slice(0,10); 
-})
 $(document).ready(function(){
     // Evento que ocurre cuando es cambiado el usuario
     //y se rellena el correo electronico en el campo
     
     $('#add_centro').submit(function(event){
-
+        if ($('#codigo').val() === "") {
+            alert('Debe ingresar el codigo','Atencion!');
+            $('#codigo').focus();
+            return false;
+        }
         if ($('#nombre').val() === "") {
             alert('Debe ingresar el nombre','Atencion!');
             $('#nombre').focus();
@@ -49,28 +42,11 @@ $(document).ready(function(){
             $('#departamento').focus();
             return false;
         }
-        if ($('#PUC_Costo').val() === "") {
-            alert('Debe ingresar el PUC de Costo','Atencion!');
-            $('#PUC_Costo').focus();
-            return false;
-        }
-        if ($('#PUC_Gasto').val() === "") {
-            alert('Debe ingresar el PUC de Gasto','Atencion!');
-            $('#PUC_Gasto').focus();
-            return false;
-        }
         if ($('#tipo').val() === "") {
             alert('Debe ingresar el tipo','Atencion!');
             $('#tipo').focus();
             return false;
         }
-        if ($('#puc').val() === "") {
-            alert('Debe seleccionar el puc','Atencion!');
-            $('#puc').focus();
-            return false;
-        }
-
-
         if ($('#id_user_create').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;
