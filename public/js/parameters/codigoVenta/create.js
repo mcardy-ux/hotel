@@ -58,11 +58,6 @@ $(document).ready(function(){
             return false;
         }
 
-        if ($('#rel_centro').val() === "") {
-            alert('Debe seleccionar el centro','Atencion!');
-            $('#rel_centro').focus();
-            return false;
-        }
 
         if ($('#id_user_create').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');

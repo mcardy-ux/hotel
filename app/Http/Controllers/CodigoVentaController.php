@@ -55,7 +55,6 @@ class CodigoVentaController extends Controller
             'puc' => 'bail|required|max:180',
             'rel_impuesto'=>'bail|required|max:180',
             'rel_agrupacion'=>'bail|required|max:180',
-            'rel_centro'=>'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
  
@@ -166,8 +165,13 @@ class CodigoVentaController extends Controller
            return '<strong>'.$agrupacion->descripcion.'</strong>';
         })
         ->addColumn('centro',function ($query){
-            $centro=centro::select('nombre')->where('id','=',$query->rel_centro)->first();
-           return '<strong>'.$centro->nombre.'</strong>';
+            if($query->rel_centro!="" || $query->rel_centro!=null){
+                $centro=centro::select('nombre')->where('id','=',$query->rel_centro)->first();
+                return '<strong>'.$centro->nombre.'</strong>';
+            }else{
+                return '<strong> - </strong>';
+            }
+            
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
