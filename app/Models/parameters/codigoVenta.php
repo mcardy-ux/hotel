@@ -13,4 +13,16 @@ class codigoVenta extends Model
     {
         return \Hashids::encode($this->id);
     }
+
+    public static function Existe_Datos()
+    {
+        $reg = codigoVenta::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

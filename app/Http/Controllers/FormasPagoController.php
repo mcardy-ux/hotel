@@ -144,4 +144,9 @@ class FormasPagoController extends Controller
         ->rawColumns(['actions','estado_button','puc'])
         ->make(true);
     }
+
+    public static function ExistenDatos(){
+        $reg=formasPago::Existe_Datos();
+        return $reg; 
+    }
 }

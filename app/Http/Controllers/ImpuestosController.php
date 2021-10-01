@@ -134,5 +134,10 @@ class ImpuestosController extends Controller
         ->rawColumns(['actions','puc'])
         ->make(true);
     }
+
+    public static function ExistenDatos(){
+        $reg=impuestos::Existe_Datos();
+        return $reg; 
+    }
 }
 

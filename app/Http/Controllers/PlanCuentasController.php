@@ -128,4 +128,10 @@ class PlanCuentasController extends Controller
         ->rawColumns(['actions'])
         ->make(true);
     }
+
+
+    public static function ExistenDatos(){
+        $reg=planCuentas::Existe_Datos();
+        return $reg; 
+    }
 }

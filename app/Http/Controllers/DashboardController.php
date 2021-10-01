@@ -38,6 +38,16 @@ class DashboardController extends Controller
      //Validaciones de datos en general
       $ExistenDatosHotel=$this->validarExistenDatosHotel();
       $ExistenDatosMercadeo=$this->validarExistenDatosMercadeo();
+
+
+      //Validaciones Contabilidad
+      $ExistenAgrupaciones=AgrupacionVentasController::ExistenDatos();
+      $ExistenCentros=CentroController::ExistenDatos();
+      $ExistenFormasPago=FormasPagoController::ExistenDatos();
+      $ExistenImpuestos=ImpuestosController::ExistenDatos();
+      $ExistenCodigosVenta=CodigoVentaController::ExistenDatos();
+      $ExistenPlanCuentas=PlanCuentasController::ExistenDatos();
+
         return view('dashboard',[
            'ExistenDatosHotel'=> $ExistenDatosHotel,
            'ExistenDatosMercadeo'=>$ExistenDatosMercadeo,
@@ -54,6 +64,12 @@ class DashboardController extends Controller
             'comp_reg'=>$comp_reg,
             'regimenes'=>$regimenes,
             'tarifas'=>$tarifas,
+            'ExistenAgrupaciones'=>$ExistenAgrupaciones,
+            'ExistenCentros'=>$ExistenCentros,
+            'ExistenFormasPago'=>$ExistenFormasPago,
+            'ExistenImpuestos'=>$ExistenImpuestos,
+            'ExistenCodigosVenta'=>$ExistenCodigosVenta,
+            'ExistenPlanCuentas'=>$ExistenPlanCuentas,
          ]);
    }
 
@@ -171,13 +187,12 @@ class DashboardController extends Controller
 
    public static function mostrarMenuContable(){
 
-   $listaContable= "<li><a href='".route('centro.index')."'><i class='glyph-icon iconsminds-eci-icon'></i><span class='d-inline-block'>Centros</span></a></li>".
-   "<li><a href='".route('planCuentas.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Plan de <br>Cuentas</span></a></li>".
+   $listaContable= "<li><a href='".route('agrupacionVentas.index')."'><i class='glyph-icon iconsminds-books'></i><span class='d-inline-block'>Agrupación de <br> Ventas</span></a></li>".
+   "<li><a href='".route('centro.index')."'><i class='glyph-icon iconsminds-eci-icon'></i><span class='d-inline-block'>Centros</span></a></li>".
    "<li><a href='".route('formaPago.index')."'><i class='glyph-icon iconsminds-coins-2'></i><span class='d-inline-block'>Formas de <br>Pago</span></a></li>".
    "<li><a href='".route('impuestos.index')."'><i class='glyph-icon iconsminds-line-chart-1'></i><span class='d-inline-block'>Impuestos</span></a></li>".
-   "<li><a href='".route('agrupacionVentas.index')."'><i class='glyph-icon iconsminds-books'></i><span class='d-inline-block'>Agrupación de <br> Ventas</span></a></li>".
-   
-   "<li><a href='".route('codigoVenta.index')."'><i class='glyph-icon iconsminds-calendar-1'></i><span class='d-inline-block'>Codigos de <br> Venta</span></a></li>";
+   "<li><a href='".route('codigoVenta.index')."'><i class='glyph-icon iconsminds-calendar-1'></i><span class='d-inline-block'>Codigos de <br> Venta</span></a></li>".
+   "<li><a href='".route('planCuentas.index')."'><i class='simple-icon-directions'></i><span class='d-inline-block'>Plan de <br>Cuentas</span></a></li>";
 
 
    return $listaContable;

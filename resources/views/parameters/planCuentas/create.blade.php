@@ -51,26 +51,41 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="centroInventario">Centro de Inventario:</label>
-                                        <input type="number" class="form-control" id="centroInventario" name="centroInventario"  min="1" max="9999"
+                                        <input type="number" class="form-control" id="centroInventario" name="centroInventario"  min="1" max="9999" disabled
                                             aria-describedby="razonHelp" >
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="centroCosto">Centro de Costo:</label>
-                                        <input type="number" class="form-control" id="centroCosto" name="centroCosto" min="1" max="9999"
+                                        <input type="number" class="form-control" id="centroCosto" name="centroCosto" min="1" max="9999" disabled
                                         aria-describedby="razonHelp" >
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="centroVenta">Centro de Ingreso:</label>
-                                        <input type="number" class="form-control" id="centroVenta" name="centroVenta" min="1" max="9999"
+                                        <input type="number" class="form-control" id="centroVenta" name="centroVenta" min="1" max="9999" disabled
                                         aria-describedby="razonHelp" >
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
+
+                                    <div class="form-group col-md-2">
+                                        <label for="edit_estado">¿Aplica Tercero?:</label>
+                                        <select id="edit_estado" name="edit_estado" class="form-control" >
+                                            <option value="" selected="">SELECCIONAR</option>
+                                            <option value="si">SI</option>
+                                            <option value="no">NO</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-10">
                                         <label for="terceros">Terceros:</label>
-                                        <input type="text" class="form-control" id="terceros" name="terceros"
-                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                        <select id="terceros" name="terceros" class="form-control" disabled>
+                                            <option value="" selected="">SELECCIONAR</option>
+                                            <option value="clientes">Clientes</option>
+                                            <option value="proveedores">Proveedores</option>
+                                            <option value="empleado">Empleado</option>
+
+                                        </select>
+                                        
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-0">Agregar</button>
@@ -88,5 +103,31 @@
     @endsection
     @push('scripts')
     <script src="{{ asset('js/parameters/planCuentas/create.js') }}"></script>
-    
+    <script>
+
+        let centroInventario = document.getElementById("centroInventario");
+        let centroCosto = document.getElementById("centroCosto");
+        let centroVenta = document.getElementById("centroVenta");
+
+        let tercero = document.getElementById("terceros");
+        $(document).ready(function(){
+            $("#codigoCuenta").keyup(function(){
+                let valor=$(this).val();
+                let num_inciales=valor.substr(0,2);
+                    console.log(num_inciales);
+                num_inciales==="14" ? centroInventario.disabled=false :centroInventario.disabled=true;
+                num_inciales==="61" ? centroCosto.disabled=false :centroCosto.disabled=true;
+                num_inciales==="41" ? centroVenta.disabled=false :centroVenta.disabled=true;
+               
+            });
+
+            $("#edit_estado").change(function(){
+                let valor=$(this).val();
+               
+                valor==="si" ? tercero.disabled=false :tercero.disabled=true;
+               
+            });
+
+        });
+        </script>
     @endpush

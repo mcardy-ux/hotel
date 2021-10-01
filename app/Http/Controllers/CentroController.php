@@ -139,4 +139,9 @@ class CentroController extends Controller
         ->rawColumns(['actions','estado_button','departamento'])
         ->make(true);
     }
+
+    public static function ExistenDatos(){
+        $reg=centro::Existe_Datos();
+        return $reg; 
+    }
 }

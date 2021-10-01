@@ -23,4 +23,16 @@ class centro extends Model
         return $data;
     }
 
+    public static function Existe_Datos()
+    {
+        $reg = centro::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
+
 }

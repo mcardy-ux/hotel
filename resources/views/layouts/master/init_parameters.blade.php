@@ -9,6 +9,7 @@
                             <li class="nav-item active"><a href="#checkStep1" class="nav-link">Paso 1<br><small>Organización</small></a></li>
                             <li class="nav-item "><a href="#checkStep2" class="nav-link">Paso 2<br><small>Hotel y sus parámetros</small></a></li>
                             <li class="nav-item"><a href="#checkStep3" class="nav-link">Paso 3<br><small>Mercadeo</small></a></li>
+                            <li class="nav-item"><a href="#checkStep4" class="nav-link">Paso 4<br><small>Contabilidad</small></a></li>
                         </ul>
                         <div class="card-body sw-container tab-content" style="min-height: 157.5167px;">
                             <div id="checkStep1" class="tab-pane step-content" >
@@ -150,7 +151,67 @@
                                     @endif
                                 </p>
                             </div>
-                            
+
+                            <div id="checkStep4" class="tab-pane step-content">
+                                <h4 class="pb-2">Configurar Parametros Contabilidad</h4>
+                                <div>Para continuar con la configuración debe acceder a cada modulo y crear los registros requeridos:</div>
+                                <br>
+                                    @if($ExistenAgrupaciones==0  )
+                                    <a href="{{route('agrupacionVentas.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">1. Crear Agrupación de Ventas</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('agrupacionVentas.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Agrupación de Ventas</span>
+                                    </a>
+                                    @endif
+                                    @if($ExistenCentros==0)
+                                    <a href="{{route('centro.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">2. Crear Centros de costo</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('centro.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Centros de costo</span>
+                                    </a>
+                                    @endif
+                                    @if($ExistenFormasPago==0)
+                                    <a href="{{route('formaPago.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Crear Formas de pago</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('formaPago.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Formas de Pago</span>
+                                    </a>
+                                    @endif
+                                    @if($ExistenImpuestos==0)
+                                    <a href="{{route('impuestos.create')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Crear Impuestos</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('impuestos.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Impuestos</span>
+                                    </a>
+                                    @endif
+                                    @if ($ExistenCodigosVenta==0)
+                                    <a href="{{route('codigoVenta.index')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Establecer Codigos de Ventas</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('codigoVenta.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Codigos de Ventas</span>
+                                    </a>
+                                    @endif
+                                    @if ($ExistenPlanCuentas==0)
+                                    <a href="{{route('planCuentas.index')}}">
+                                        <span class="badge badge-pill badge-outline-theme-2 mb-1">3. Establecer Plan de Cuentas</span>
+                                    </a>
+                                    @else
+                                    <a href="{{route('planCuentas.index')}}">
+                                        <span class="badge badge-pill badge-outline-success mb-1"> Ver Plan de Cuentas</span>
+                                    </a>
+                                    @endif
+                                   
+                            </div>
                         </div>
                         
                     </div>

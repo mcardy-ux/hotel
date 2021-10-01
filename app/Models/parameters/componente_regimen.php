@@ -18,7 +18,7 @@ class componente_regimen extends Model
         protected $fillable=['codigo','nombre'];
 
     
-        public static function Existe_Datos()
+    public static function Existe_Datos()
     {
         $reg = componente_regimen::select('id')
         ->count();

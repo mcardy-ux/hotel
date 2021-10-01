@@ -188,4 +188,9 @@ class CodigoVentaController extends Controller
         ->rawColumns(['actions','estado_button','puc_or','impuesto','agrupacion','centro'])
         ->make(true);
     }
+
+    public static function ExistenDatos(){
+        $reg=codigoVenta::Existe_Datos();
+        return $reg; 
+    }
 }

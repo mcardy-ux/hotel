@@ -14,4 +14,16 @@ class formasPago extends Model
         return \Hashids::encode($this->id);
     }
     protected $fillable=['formaPago','descripcion','estado','rel_puc','created_by','modified_by'];
+
+    public static function Existe_Datos()
+    {
+        $reg = formasPago::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

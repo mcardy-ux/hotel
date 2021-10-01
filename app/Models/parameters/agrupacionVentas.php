@@ -22,4 +22,16 @@ class agrupacionVentas extends Model
         ->get();
         return $data;
     }
+
+    public static function Existe_Datos()
+    {
+        $reg = agrupacionVentas::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }

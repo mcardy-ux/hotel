@@ -22,4 +22,16 @@ class planCuentas extends Model
         ->get();
         return $data;
     }
+
+    public static function Existe_Datos()
+    {
+        $reg = planCuentas::select('id')
+        ->count();
+        
+        if ($reg==0) {
+           return false;
+        }else {
+           return true;
+        }
+    }
 }
