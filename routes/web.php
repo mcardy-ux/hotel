@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 Route::resource('user', App\Http\Controllers\UserController::class)->middleware(['auth']);
 Route::resource('organization', App\Http\Controllers\OrganizationController::class)->middleware(['auth']);
 Route::resource('data_hotel', App\Http\Controllers\DataHotelController::class)->middleware(['auth']);
@@ -102,6 +104,6 @@ Route::post('add_temporada', [App\Http\Controllers\TemporadaController::class,'s
 
 
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dash_settings', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dash_settings');
 
 require __DIR__.'/auth.php';

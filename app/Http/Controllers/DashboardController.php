@@ -48,7 +48,7 @@ class DashboardController extends Controller
       $ExistenCodigosVenta=CodigoVentaController::ExistenDatos();
       $ExistenPlanCuentas=PlanCuentasController::ExistenDatos();
 
-        return view('dashboard',[
+        return view('dashboard_settings',[
            'ExistenDatosHotel'=> $ExistenDatosHotel,
            'ExistenDatosMercadeo'=>$ExistenDatosMercadeo,
             'isNew'=>$isNew,
