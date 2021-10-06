@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\parameters\planCuentas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\parameters\planCuenta_has_centros;
+use PhpParser\Node\Stmt\Else_;
 
 class PlanCuentasController extends Controller
 {
@@ -39,10 +41,6 @@ class PlanCuentasController extends Controller
         $validator = Validator::make($request->all(), [
             'codigoCuenta' => 'bail|required|unique:plan_cuentas|max:180',
             'nombreCuenta' => 'bail|required|max:180',
-            'centroInventario' => 'bail|required|max:6',
-            'centroCosto' => 'bail|required|max:6',
-            'centroVenta' => 'bail|required|max:6',
-            'terceros' => 'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
         if ($validator->fails()) {
@@ -51,11 +49,49 @@ class PlanCuentasController extends Controller
             $reg = new planCuentas();
             $reg->codigoCuenta=$request->codigoCuenta;
             $reg->nombreCuenta=$request->nombreCuenta;
-            $reg->centroInventario=$request->centroInventario;
-            $reg->centroCosto=$request->centroCosto;
-            $reg->centroVenta=$request->centroVenta;
             $reg->terceros=$request->terceros;
+            $reg->created_by=$request->id_user_create;
             $reg->save();
+
+            //Creacion de centro de inventario
+            $centro_Inventario=$request->centro_Inventario;
+            if ($centro_Inventario != null) {
+                $array = explode(',', $centro_Inventario);
+                foreach($array as $centro_inv_id){
+
+                    $planCuenta_has_centros = new planCuenta_has_centros();
+                    $planCuenta_has_centros->planCuenta_id=$reg->id;
+                    $planCuenta_has_centros->centro_id=$centro_inv_id;
+                    $planCuenta_has_centros->save();
+                }
+            }
+
+            //Creacion de centro de inventario
+            $centro_Costo=$request->centro_Costo;
+            if ($centro_Costo != null) {
+                $array = explode(',', $centro_Costo);
+                foreach($array as $centro_costo_id){
+
+                    $planCuenta_has_centros = new planCuenta_has_centros();
+                    $planCuenta_has_centros->planCuenta_id=$reg->id;
+                    $planCuenta_has_centros->centro_id=$centro_costo_id;
+                    $planCuenta_has_centros->save();
+                }
+            }
+
+            //Creacion de centro de inventario
+            $centro_Venta=$request->centro_Venta;
+            if ($centro_Venta != null) {
+                $array = explode(',', $centro_Venta);
+                foreach($array as $centro_venta_id){
+
+                    $planCuenta_has_centros = new planCuenta_has_centros();
+                    $planCuenta_has_centros->planCuenta_id=$reg->id;
+                    $planCuenta_has_centros->centro_id=$centro_venta_id;
+                    $planCuenta_has_centros->save();
+                }
+            }
+            
             return json_encode(['success' => true]);
         }
     }
@@ -69,7 +105,13 @@ class PlanCuentasController extends Controller
     public function edit($id)
     {
         $data=planCuentas::where('id',\Hashids::decode($id)[0])->first();
-        return view("parameters.planCuentas.edit",['data'=>$data]);
+        $planWithCentros=planCuentas::getCentrosExplicitId(\Hashids::decode($id)[0]);
+
+        $centros=array();
+        foreach ($planWithCentros as $key ) {
+            array_push($centros,$key->centro_id);
+        }
+        return view("parameters.planCuentas.edit",['data'=>$data,'centros'=>$centros]);
     }
 
     /**
@@ -84,11 +126,50 @@ class PlanCuentasController extends Controller
         $reg=planCuentas::findOrFail(\Hashids::decode($id)[0]);
         $reg->codigoCuenta=$request->edit_codigoCuenta;
         $reg->nombreCuenta=$request->edit_nombreCuenta;
-        $reg->centroInventario=$request->edit_centroInventario;
-        $reg->centroCosto=$request->edit_centroCosto;
-        $reg->centroVenta=$request->edit_centroVenta;
         $reg->terceros=$request->edit_terceros;
         $reg->modified_by=$request->id_user_modify;
+        
+        planCuenta_has_centros::DropByPlan(\Hashids::decode($id)[0]);
+        
+        //Creacion de centro de inventario
+        $centro_Inventario=$request->edit_centroInventario;
+        if ($centro_Inventario != null) {
+            $array = explode(',', $centro_Inventario);
+            foreach($array as $centro_inv_id){
+
+                $planCuenta_has_centros = new planCuenta_has_centros();
+                $planCuenta_has_centros->planCuenta_id=$reg->id;
+                $planCuenta_has_centros->centro_id=$centro_inv_id;
+                $planCuenta_has_centros->save();
+            }
+        }
+
+        //Creacion de centro de inventario
+        $centro_Costo=$request->edit_centroCosto;
+        if ($centro_Costo != null) {
+            $array = explode(',', $centro_Costo);
+            foreach($array as $centro_costo_id){
+
+                $planCuenta_has_centros = new planCuenta_has_centros();
+                $planCuenta_has_centros->planCuenta_id=$reg->id;
+                $planCuenta_has_centros->centro_id=$centro_costo_id;
+                $planCuenta_has_centros->save();
+            }
+        }
+
+        //Creacion de centro de inventario
+        $centro_Venta=$request->edit_centroVenta;
+        if ($centro_Venta != null) {
+            $array = explode(',', $centro_Venta);
+            foreach($array as $centro_venta_id){
+
+                $planCuenta_has_centros = new planCuenta_has_centros();
+                $planCuenta_has_centros->planCuenta_id=$reg->id;
+                $planCuenta_has_centros->centro_id=$centro_venta_id;
+                $planCuenta_has_centros->save();
+            }
+        }
+
         $reg->save();
         return json_encode(['success' => true]);
     }
@@ -101,9 +182,10 @@ class PlanCuentasController extends Controller
      */
     public function destroy($id)
     {
+        $plan_centros = planCuenta_has_centros::DropByPlan(\Hashids::decode($id)[0]);
         $reg = planCuentas::find(\Hashids::decode($id)[0])->delete();
-
-        if($reg){
+    
+        if($reg && $plan_centros){
             return json_encode(['success' => true]);
         }else{
             return json_encode(['success' => false, 'data' => 'No se puede eliminar, hace parte de otro modulo.']);
@@ -112,7 +194,22 @@ class PlanCuentasController extends Controller
     public function ajaxRequestplanCuentas(){
         $query = planCuentas::all();
         return datatables($query)
+        ->addColumn('centros', function ($query) {
+            return '
+            
+            <a onclick="viewCentros(this)" id="'.$query->encode_id.'">
+            <span class="badge badge-pill badge-outline-success mb-1"> Ver</span>
+             </a>
+            ';
         
+        })
+        ->addColumn('tereceros_valid', function ($query) {
+            if($query->terceros==null){
+                return 'NO APLICA';
+            }else{
+                return $query->terceros;
+            }
+        })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
                 <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,7 +222,7 @@ class PlanCuentasController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions'])
+        ->rawColumns(['actions','centros','tereceros_valid'])
         ->make(true);
     }
 
@@ -133,5 +230,10 @@ class PlanCuentasController extends Controller
     public static function ExistenDatos(){
         $reg=planCuentas::Existe_Datos();
         return $reg; 
+    }
+
+    public static function getCentros($id){
+        $reg=planCuentas::getCentros(\Hashids::decode($id)[0]);
+        return json_encode(['success' => true,'data'=>$reg]);
     }
 }

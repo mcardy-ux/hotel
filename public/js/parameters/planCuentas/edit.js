@@ -1,23 +1,35 @@
 
+//Funcion para agregar opciones a un <select>.
+function addOptions(domElement, array) {
+  var selector = document.getElementsByName(domElement)[0];
+  //Recorremos el array.
+  for (var i=0;i<array.length;i++) {
+      var opcion = document.createElement("option");
+      opcion.value = array[i].id;
+      opcion.text = array[i].value;
+      selector.add(opcion);
+  }
+}
+
+//Funcion para agregar opciones a un <select>.
+function addOptionsConcat(domElement, array) {
+  var selector = document.getElementsByName(domElement)[0];
+  //Recorremos el array.
+  for (var i=0;i<array.length;i++) {
+      var opcion = document.createElement("option");
+      opcion.value = array[i].id;
+      opcion.text = array[i].value+" - "+array[i].secvalue;
+      selector.add(opcion);
+  }
+}
+//Funcion Comun para vaciar selects
+function RemoveOptions(name) {
+  $("#"+name).empty();
+}
+
 $(document).ready(function(){
 
-  let centroInventario=  document.getElementById('edit_centroInventario');
-  centroInventario.addEventListener('input',function(){
-  if (this.value.length > 4) 
-      this.value = this.value.slice(0,4); 
-  })
-
-  let centroCosto=  document.getElementById('edit_centroCosto');
-  centroCosto.addEventListener('input',function(){
-  if (this.value.length > 4) 
-      this.value = this.value.slice(0,4); 
-  })
-  let centroVenta=  document.getElementById('edit_centroVenta');
-  centroVenta.addEventListener('input',function(){
-  if (this.value.length > 4) 
-      this.value = this.value.slice(0,4); 
-  })
-
+  $('.inputs_centro').select2();
 
     $('#edit_planCuentas').submit(function(event){
 
@@ -29,27 +41,6 @@ $(document).ready(function(){
         if ($('#edit_nombreCuenta').val() === "") {
             alert('Debe ingresar el nombre de cuenta','Atencion!');
             $('#edit_nombreCuenta').focus();
-            return false;
-        }
-        if ($('#edit_centroInventario').val() === "") {
-            alert('Debe ingresar el centro de inventario','Atencion!');
-            $('#edit_centroInventario').focus();
-            return false;
-        }
-        if ($('#edit_centroCosto').val() === "") {
-            alert('Debe ingresar el centro de costo','Atencion!');
-            $('#edit_centroCosto').focus();
-            return false;
-        }
-        if ($('#edit_centroVenta').val() === "") {
-            alert('Debe ingresar el centro de ingreso','Atencion!');
-            $('#edit_centroVenta').focus();
-            return false;
-        }
-
-        if ($('#edit_terceros').val() === "") {
-            alert('Debe ingresar el tercero','Atencion!');
-            $('#edit_terceros').focus();
             return false;
         }
         if ($('#id_user_modify').val() === '') {

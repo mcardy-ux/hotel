@@ -3,6 +3,21 @@
 
 @section('content')
 <main>
+    <div class="modal fade bd-example-modal-lg" id="modal_centros" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Centros Asociados</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <div id="modal_content_centros"></div>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -42,10 +57,8 @@
                                     <tr>
                                         <th scope="col">Codigo</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">Centro de Inventario</th>
-                                        <th scope="col">Centro de Costo</th>
-                                        <th scope="col">Centro de Ingreso</th>
                                         <th scope="col">Terceros</th>
+                                        <th scope="col">Centros</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -96,10 +109,8 @@
             "columns":[
             {"data":"codigoCuenta"},
             {"data":"nombreCuenta"},
-            {"data":"centroInventario"},
-            {"data":"centroCosto"},
-            {"data":"centroVenta"},
-            {"data":"terceros"},
+            {"data":"tereceros_valid"},
+            {"data":"centros"},
             { "data": "actions",orderable:false, searchable:false },
             ],
         });

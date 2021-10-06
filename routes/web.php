@@ -85,6 +85,7 @@ Route::get('ajax/request/codigoVenta', [App\Http\Controllers\CodigoVentaControll
 
 Route::get('ajax/request/integrantes/{id}', [App\Http\Controllers\DepartamentController::class, 'ajaxRequestIntegrantes'])->name('ajax.request.integrantes')->middleware(['auth']);
 Route::get('ajax/request/components_regimen/{id}', [App\Http\Controllers\RegimenController::class, 'ajaxRequestComponents'])->name('ajax.request.components')->middleware(['auth']);
+Route::get('ajax/request/getCentros/{id}', [App\Http\Controllers\PlanCuentasController::class, 'getCentros'])->name('ajax.request.getCentros')->middleware(['auth']);
 
 //Ajax para listar los depratamentos y ciudades
 Route::get('data_hotel/request/departaments/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestDepartaments'])->name('ajax.request.departaments')->middleware(['auth']);

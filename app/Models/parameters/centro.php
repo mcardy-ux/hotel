@@ -14,7 +14,7 @@ class centro extends Model
     {
         return \Hashids::encode($this->id);
     }
-    protected $fillable=['nombre','departamento','PUC_Costo','PUC_Gasto','tipo','rel_puc','created_by','modified_by'];
+    protected $fillable=['codigo','nombre','rel_departaments','tipo','created_by','modified_by'];
     
     public static function getCentros(){
         $data=DB::table('centros')
@@ -35,4 +35,32 @@ class centro extends Model
         }
     }
 
+    public static function getIngresos()
+    {
+        $reg = DB::table('centros')
+        ->select('id','codigo as value','nombre as secvalue')
+        ->where('tipo','=','ingreso')
+        ->get();
+        
+        return $reg;
+    }
+
+    public static function getCosto()
+    {
+        $reg = DB::table('centros')
+        ->select('id','codigo as value','nombre as secvalue')
+        ->where('tipo','=','costo')
+        ->get();
+        
+        return $reg;
+    }
+    public static function getVenta()
+    {
+        $reg = DB::table('centros')
+        ->select('id','codigo as value','nombre as secvalue')
+        ->where('tipo','=','inventario')
+        ->get();
+        
+        return $reg;
+    }
 }

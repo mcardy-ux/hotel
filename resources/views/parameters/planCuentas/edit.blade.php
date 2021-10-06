@@ -51,26 +51,38 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label for="edit_centroInventario">Centro de Inventario:</label>
-                                            <input type="number" class="form-control" id="edit_centroInventario" name="edit_centroInventario"  min="1" max="9999" value="{{$data->centroInventario}}"
-                                                aria-describedby="razonHelp" >
+                                            <select id="edit_centroInventario" name="edit_centroInventario" class="custom-select inputs_centro" multiple="multiple" disabled>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="edit_centroCosto">Centro de Costo:</label>
-                                            <input type="number" class="form-control" id="edit_centroCosto" name="edit_centroCosto" min="1" max="9999" value="{{$data->centroCosto}}"
-                                            aria-describedby="razonHelp" >
+                                            <select id="edit_centroCosto" name="edit_centroCosto" class="custom-select inputs_centro" multiple="multiple" disabled></select>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="edit_centroVenta">Centro de Ingreso:</label>
-                                            <input type="number" class="form-control" id="edit_centroVenta" name="edit_centroVenta" min="1" max="9999" value="{{$data->centroVenta}}"
-                                            aria-describedby="razonHelp" >
+                                            <label for="edit_centroVenta">Centro de Ingreso:s</label>
+                                            <select id="edit_centroVenta" name="edit_centroVenta" class="custom-select inputs_centro" multiple="multiple" disabled></select>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-2">
+                                            <label for="edit_estado">¿Aplica Tercero?:</label>
+                                            <select id="edit_estado" name="edit_estado" class="form-control" >
+                                                <option value="" selected="">SELECCIONAR</option>
+                                                <option value="si">SI</option>
+                                                <option value="no">NO</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-10">
                                             <label for="edit_terceros">Terceros:</label>
-                                            <input type="text" class="form-control" id="edit_terceros" name="edit_terceros" value="{{$data->terceros}}"
-                                                aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                            <select id="edit_terceros" name="edit_terceros" class="form-control" disabled>
+                                                <option value="" selected="">SELECCIONAR</option>
+                                                <option value="clientes">Clientes</option>
+                                                <option value="proveedores">Proveedores</option>
+                                                <option value="empleado">Empleado</option>
+    
+                                            </select>
+                                            
                                         </div>
                                     </div>
 
@@ -89,5 +101,108 @@
     @endsection
     @push('scripts')
     <script src="{{ asset('js/parameters/planCuentas/edit.js') }}"></script>
-    
+    <script>
+        window.addEventListener("load", function() {
+            cargarCentros();
+        }, false);
+        function cargarCentros() {
+
+            $.ajax({
+                url: "{{ route('api.centro_venta.list') }}",
+                success: function(result){
+                    result.sort();
+
+                    //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("edit_centroInventario", result);
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('api.centro_costo.list') }}",
+                success: function(result){
+                    result.sort();
+                    //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("edit_centroCosto", result);
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('api.centro_ingreso.list') }}",
+                success: function(result){
+                    result.sort();
+                    //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("edit_centroVenta", result);
+                }
+            });
+
+        }
+       
+        
+
+
+        $(document).ready(function(){
+            
+            let centroInventario = document.getElementById("edit_centroInventario");
+            let centroCosto = document.getElementById("edit_centroCosto");
+            let centroVenta = document.getElementById("edit_centroVenta");
+            let tercero = document.getElementById("edit_terceros");
+
+            function restablecer(centro) {
+                centro.disabled=true;
+                $("#edit_centroInventario").val(null).trigger("change"); 
+                $("#edit_centroCosto").val(null).trigger("change"); 
+                $("#edit_centroVenta").val(null).trigger("change");
+            }
+            $("#edit_codigoCuenta").keyup(function(){
+                let valor=$(this).val();
+                let num_inciales=valor.substr(0,2);
+                num_inciales==="14" ? centroInventario.disabled=false : restablecer(centroInventario);
+                num_inciales==="61" ? centroCosto.disabled=false :restablecer(centroCosto);
+                num_inciales==="41" ? centroVenta.disabled=false :restablecer(centroVenta);
+               
+            });
+
+            $("#edit_estado").change(function(){
+                let valor=$(this).val();
+               
+                valor==="si" ? tercero.disabled=false :tercero.disabled=true;
+               
+            });
+
+            // Carga Inicial
+
+            function rellenar(centro,num) {
+                    centro.disabled=false;
+                    let centro_selwer=@json($centros);
+                    if(num===14){
+                            $("#edit_centroInventario").val(centro_selwer).trigger("change");
+                    }
+                    if (num===61) {
+                            $("#edit_centroCosto").val(centro_selwer).trigger("change");
+                            
+                    }
+                    if (num===41) {
+                            $('#edit_centroVenta').val(centro_selwer).trigger("change");
+                            
+                    } 
+                    
+                }
+                let valor= $("#edit_codigoCuenta").val();
+                let num_inciales=valor.substr(0,2);
+                num_inciales==="14" ? rellenar(centroInventario,14) : centroInventario.disabled=true;
+                num_inciales==="61" ? rellenar(centroCosto,61):centroCosto.disabled=true;
+                num_inciales==="41" ? rellenar(centroVenta,41):centroVenta.disabled=true;
+
+                let terceros=@json($data->terceros);
+                if(terceros!=null){
+                    $("#edit_estado").val("si");
+                    document.getElementById("edit_terceros").disabled=false;
+                    $("#edit_terceros").val(terceros);
+                }else{
+                    $("#edit_estado").val("no");
+                    document.getElementById("edit_terceros").disabled=true;
+                }
+           
+        });
+        </script>
     @endpush

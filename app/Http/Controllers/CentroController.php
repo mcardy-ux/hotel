@@ -144,4 +144,19 @@ class CentroController extends Controller
         $reg=centro::Existe_Datos();
         return $reg; 
     }
+
+    public static function getCentroIngreso(){
+        $query = centro::getIngresos();
+        return $query;
+    }
+
+    public static function getCentroCosto(){
+        $query = centro::getCosto();
+        return $query;
+    }
+
+    public static function getCentroVenta(){
+        $query = centro::getVenta();
+        return $query;
+    }
 }

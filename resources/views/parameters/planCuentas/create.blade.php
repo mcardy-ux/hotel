@@ -51,23 +51,20 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="centroInventario">Centro de Inventario:</label>
-                                        <input type="number" class="form-control" id="centroInventario" name="centroInventario"  min="1" max="9999" disabled
-                                            aria-describedby="razonHelp" >
+                                        <select id="centroInventario" name="centroInventario" class="custom-select inputs_centro" multiple="multiple" disabled>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="centroCosto">Centro de Costo:</label>
-                                        <input type="number" class="form-control" id="centroCosto" name="centroCosto" min="1" max="9999" disabled
-                                        aria-describedby="razonHelp" >
+                                        <select id="centroCosto" name="centroCosto" class="custom-select inputs_centro" multiple="multiple" disabled></select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="centroVenta">Centro de Ingreso:</label>
-                                        <input type="number" class="form-control" id="centroVenta" name="centroVenta" min="1" max="9999" disabled
-                                        aria-describedby="razonHelp" >
+                                        <label for="centroVenta">Centro de Ingreso:s</label>
+                                        <select id="centroVenta" name="centroVenta" class="custom-select inputs_centro" multiple="multiple" disabled></select>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="form-row">
-
                                     <div class="form-group col-md-2">
                                         <label for="edit_estado">¿Aplica Tercero?:</label>
                                         <select id="edit_estado" name="edit_estado" class="form-control" >
@@ -104,20 +101,57 @@
     @push('scripts')
     <script src="{{ asset('js/parameters/planCuentas/create.js') }}"></script>
     <script>
+        window.addEventListener("load", function() {
+            cargarCentros();
+        }, false);
+       function cargarCentros() {
+            $.ajax({
+                url: "{{ route('api.centro_venta.list') }}",
+                success: function(result){
+                    console.log(result);
+                     //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("centroInventario", result);
+                }
+            });
 
+            $.ajax({
+                url: "{{ route('api.centro_costo.list') }}",
+                success: function(result2){
+                    //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("centroCosto", result2);
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('api.centro_ingreso.list') }}",
+                success: function(result3){
+                    //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+                    addOptionsConcat("centroVenta", result3);
+                }
+            });
+            return false;
+        }
+      
+        $(document).ready(function(){
+        
         let centroInventario = document.getElementById("centroInventario");
         let centroCosto = document.getElementById("centroCosto");
         let centroVenta = document.getElementById("centroVenta");
 
         let tercero = document.getElementById("terceros");
-        $(document).ready(function(){
+
+            function restablecer(centro) {
+                centro.disabled=true;
+                $("#centroInventario").val(null).trigger("change"); 
+                $("#centroCosto").val(null).trigger("change"); 
+                $("#centroVenta").val(null).trigger("change");
+            }
             $("#codigoCuenta").keyup(function(){
                 let valor=$(this).val();
                 let num_inciales=valor.substr(0,2);
-                    console.log(num_inciales);
-                num_inciales==="14" ? centroInventario.disabled=false :centroInventario.disabled=true;
-                num_inciales==="61" ? centroCosto.disabled=false :centroCosto.disabled=true;
-                num_inciales==="41" ? centroVenta.disabled=false :centroVenta.disabled=true;
+                num_inciales==="14" ? centroInventario.disabled=false : restablecer(centroInventario);
+                num_inciales==="61" ? centroCosto.disabled=false :restablecer(centroCosto);
+                num_inciales==="41" ? centroVenta.disabled=false :restablecer(centroVenta);
                
             });
 

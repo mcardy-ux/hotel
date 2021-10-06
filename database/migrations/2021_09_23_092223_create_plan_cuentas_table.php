@@ -17,10 +17,7 @@ class CreatePlanCuentasTable extends Migration
             $table->id();
             $table->string('codigoCuenta');
             $table->string('nombreCuenta');
-            $table->smallInteger('centroInventario');
-            $table->smallInteger('centroCosto');
-            $table->smallInteger('centroVenta');
-            $table->string('terceros');
+            $table->string('terceros')->nullable();
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');

@@ -5,6 +5,7 @@ namespace App\Models\parameters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\parameters\planCuenta_has_centros;
 
 class planCuentas extends Model
 {
@@ -33,5 +34,23 @@ class planCuentas extends Model
         }else {
            return true;
         }
+    }
+    public static function getCentros($id){
+
+        $data=planCuenta_has_centros::select('centros.id as id','centros.codigo as value','centros.nombre as secvalue')
+        ->leftJoin('centros','centros.id','=','planCuenta_has_centros.centro_id')
+        ->where('planCuenta_has_centros.planCuenta_id','=',$id)
+        ->get();
+        return $data;
+    
+    }
+
+    public static function getCentrosExplicitId($id){
+
+        $data=planCuenta_has_centros::select('centro_id')
+        ->where('planCuenta_id','=',$id)
+        ->get();
+        return $data;
+    
     }
 }

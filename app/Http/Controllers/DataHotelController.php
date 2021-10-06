@@ -94,7 +94,7 @@ class DataHotelController extends Controller
             $reg->logo=$filename;
         } 
         else {
-            $registro->path_file = 'NO';
+            $reg->path_file = 'NO';
         }
        $reg->save();
 

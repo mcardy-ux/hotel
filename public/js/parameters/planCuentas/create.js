@@ -1,28 +1,38 @@
 
+//Funcion para agregar opciones a un <select>.
+function addOptions(domElement, array) {
+  var selector = document.getElementsByName(domElement)[0];
+  //Recorremos el array.
+  for (var i=0;i<array.length;i++) {
+      var opcion = document.createElement("option");
+      opcion.value = array[i].id;
+      opcion.text = array[i].value;
+      selector.add(opcion);
+  }
+}
+
+//Funcion para agregar opciones a un <select>.
+function addOptionsConcat(domElement, array) {
+  var selector = document.getElementsByName(domElement)[0];
+  //Recorremos el array.
+  for (var i=0;i<array.length;i++) {
+      var opcion = document.createElement("option");
+      opcion.value = array[i].id;
+      opcion.text = array[i].value+" - "+array[i].secvalue;
+      selector.add(opcion);
+  }
+}
+//Funcion Comun para vaciar selects
+function RemoveOptions(name) {
+  $("#"+name).empty();
+}
+
 $(document).ready(function(){
-
-    let centroInventario=  document.getElementById('centroInventario');
-    centroInventario.addEventListener('input',function(){
-    if (this.value.length > 4) 
-        this.value = this.value.slice(0,4); 
-    })
-
-    let centroCosto=  document.getElementById('centroCosto');
-    centroCosto.addEventListener('input',function(){
-    if (this.value.length > 4) 
-        this.value = this.value.slice(0,4); 
-    })
-    let centroVenta=  document.getElementById('centroVenta');
-    centroVenta.addEventListener('input',function(){
-    if (this.value.length > 4) 
-        this.value = this.value.slice(0,4); 
-    })
-
 
     // Evento que ocurre cuando es cambiado el usuario
     //y se rellena el correo electronico en el campo
     
-
+    $('.inputs_centro').select2();
     $('#add_planCuentas').submit(function(event){
 
         if ($('#codigoCuenta').val() === "") {
@@ -35,28 +45,11 @@ $(document).ready(function(){
             $('#nombreCuenta').focus();
             return false;
         }
-        if ($('#centroInventario').val() === "") {
-            alert('Debe ingresar el centro de inventario','Atencion!');
-            $('#centroInventario').focus();
-            return false;
-        }
-        if ($('#centroCosto').val() === "") {
-            alert('Debe ingresar el centro de costo','Atencion!');
-            $('#centroCosto').focus();
-            return false;
-        }
-        if ($('#centroVenta').val() === "") {
-            alert('Debe ingresar el centro de ingreso','Atencion!');
-            $('#centroVenta').focus();
-            return false;
-        }
-
-        if ($('#terceros').val() === "") {
-            alert('Debe ingresar el tercero','Atencion!');
-            $('#terceros').focus();
-            return false;
-        }
-
+        if ($('#edit_estado').val() === "") {
+          alert('Debe seleccionar si aplica tercero','Atencion!');
+          $('#edit_estado').focus();
+          return false;
+      }
         if ($('#id_user_create').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;
@@ -65,13 +58,31 @@ $(document).ready(function(){
         let confirmacion=confirm("¿Esta seguro de agregar esta información?");
           if(confirmacion){
 
-            var data = $('#add_planCuentas').serialize();
+
+            var data = new FormData();
+            
+            var array_centro_Inventario= $('#centroInventario').val();
+            data.append('centro_Inventario', array_centro_Inventario);
+
+            var array_centroCosto= $('#centroCosto').val();
+            data.append('centro_Costo', array_centroCosto);
+
+            var array_centroVenta= $('#centroVenta').val();
+            data.append('centro_Venta', array_centroVenta);
+
+
+            var other_data = $('#add_planCuentas').serializeArray();
+            $.each(other_data,function(key,input){
+                data.append(input.name,input.value);
+            });
+
             $.ajax({
               url: $('#add_planCuentas #_url').val(),
               headers: {'X-CSRF-TOKEN': $('#add_planCuentas #_token').val()},
               type: 'POST',
-              cache: false,
               data: data,
+              processData: false,
+              contentType: false,
               success: function (response) {
                 var json = $.parseJSON(response);
                 if(json.success){
