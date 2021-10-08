@@ -177,5 +177,13 @@ class data_hotel extends Model
            return true;
         }
     }
-    
+
+    public static function CountHotel()
+    {
+        $reg = DB::table('data_hotels')
+        ->select('id')
+        ->count();
+        
+        return $reg;
+    }
 }

@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row">
                    
-                    <div class="col-lg-12 col-xl-6">
+                    <div class="col-lg-12 col-xl-9">
                         <div class="icon-cards-row">
                             <div class="glide dashboard-numbers glide--ltr glide--slider glide--swipeable">
                                 <div class="glide__track" data-glide-el="track">
@@ -81,32 +81,32 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-lg-12 mb-4">
+                    <div class="col-xl-3 col-lg-12 mb-4">
                         <div class="row">
                             <div class="col-xl-12 col-lg-4">
-                                <div class="card mb-4 progress-banner">
-                                    <div class="card-body justify-content-between d-flex flex-row align-items-center">
-                                        <div>
-                                            <a href="{{route('dash_settings')}}"><i class="iconsminds-digital-drawing mr-2 text-white align-text-bottom d-inline-block"></i></a> 
+                                <a href="{{route('dash_settings')}}">
+                                    <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#639ad1 ,#e0c4fc )">
+                                        <div class="card-body justify-content-between d-flex flex-row align-items-center">
                                             <div>
-                                                <p class="lead text-white">Configurar Parametros</p>
+                                                <i class="iconsminds-digital-drawing mr-2 text-white align-text-bottom d-inline-block"></i>
+                                                <div>
+                                                    <p class="lead text-white">Configurar Parametros</p>
+                                                    <p class="text-small text-white">Administración total del hotel.</p>
+                                                </div>
                                             </div>
-                                        </div>
-    
-                                        <div>
-                                           
+                                        
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-xl-12 col-lg-4">
-                                <div class="card mb-4 progress-banner">
+                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top, #fb83a7,#fdd29e)">
                                     <div class="card-body justify-content-between d-flex flex-row align-items-center">
                                         <div>
                                             <i class="iconsminds-male mr-2 text-white align-text-bottom d-inline-block"></i>
                                             <div>
-                                                <p class="lead text-white">4 Orders</p>
-                                                <p class="text-small text-white">On approval process</p>
+                                                <p class="lead text-white">Datos Basicos</p>
+                                                <p class="text-small text-white">Puedes administrar huespedes, compañias o agencias.</p>
                                             </div>
                                         </div>
                                         <div>
@@ -116,13 +116,13 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-lg-4">
-                                <div class="card mb-4 progress-banner">
+                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#60606b,#acacb3)">
                                     <a href="#" class="card-body justify-content-between d-flex flex-row align-items-center">
                                         <div>
                                             <i class="iconsminds-bell mr-2 text-white align-text-bottom d-inline-block"></i>
                                             <div>
-                                                <p class="lead text-white">8 Alerts</p>
-                                                <p class="text-small text-white">Waiting for notice</p>
+                                                <p class="lead text-white">Reservas</p>
+                                                <p class="text-small text-white">Puedes gestionar reservas, forecast y grupos.</p>
                                             </div>
                                         </div>
                                         <div>

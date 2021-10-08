@@ -30,4 +30,17 @@ class location extends Model
         ->first();
         return $data;
     }
+    public static function getPaises(){
+        $data=DB::table('country')
+        ->select('id','pais as value')
+        ->get();
+        return $data;
+    }
+    public static function getListCitiesByEstado($id){
+        $data=DB::table('city')
+        ->select('id','municipio as value')
+        ->where('estado','=',$id)
+        ->get();
+        return $data;
+    }
 }

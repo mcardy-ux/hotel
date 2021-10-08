@@ -41,4 +41,10 @@ class LocationController extends Controller
         $data=location::getListCitiesByDepartament($id);
         return json_encode(['success' => true,'data'=>$data]);
     }
+
+
+    public function ajaxRequestCitiesByEstado($id){
+        $data = location::getListCitiesByEstado($id);
+        return $data;
+    }
 }

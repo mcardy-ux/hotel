@@ -214,4 +214,15 @@ class DashboardController extends Controller
 
    return $listaParametros;
    }
+
+
+   public static function mostrarDatosGenrales(){
+      $listaDatosGenerales="<li><a href='".route('huespedes.index')."'><i class='simple-icon-people'></i><span class='d-inline-block'>Huespedes</span></a></li>";
+
+      return $listaDatosGenerales;
+   }
+   
+
+
+
 }

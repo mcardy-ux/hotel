@@ -26,8 +26,8 @@ class CreateLocationsTable extends Migration
         Schema::create('city', function (Blueprint $table) {
             $table->id();
             $table->string('municipio');
-            $table->boolean('estado');
-            $table->unsignedBigInteger('departamento_id');
+            $table->unsignedBigInteger('estado');
+            $table->unsignedBigInteger('departamento_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departament');
         });
     }

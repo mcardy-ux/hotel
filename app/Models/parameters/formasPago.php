@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class formasPago extends Model
 {
@@ -25,5 +26,12 @@ class formasPago extends Model
         }else {
            return true;
         }
+    }
+    public static function getFormaPago(){
+        $data=DB::table('formas_pagos')
+        ->select('id','formaPago as value','descripcion as secvalue')
+        ->where('estado','=','activo')
+        ->get();
+        return $data;
     }
 }

@@ -1,7 +1,9 @@
 
 <div class="sub-menu">
             <div class="scroll">
-                
+                 {{-- ****
+                    Lista para Parametros de hotel  
+                    ****--}}
                 <ul class="list-unstyled" data-link="layouts" id="layouts">
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="true"
@@ -67,6 +69,29 @@
                             </ul>
                         </div>
                     </li>
+                    
+                </ul>
+                
+                {{-- ****
+                    Lista para Datos  
+                    ****--}}
+                
+                <ul class="list-unstyled" data-link="datos" id="datos">
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="true"
+                            aria-controls="collapseHotel" class="rotate-arrow-icon opacity-50">
+                            <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Datos Generales</span>
+                        </a>
+                        <div id="collapseHotel" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu">
+                              @php
+                               $listaDatos=App\Http\Controllers\DashboardController::mostrarDatosGenrales();
+                               echo $listaDatos ?? '';
+                              @endphp
+                            </ul>
+                        </div>
+                    </li>
+                   
                     
                 </ul>
             </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\parameters\componente_regimen;
 use App\Models\parameters\regimen_has_components;
-
+use Illuminate\Support\Facades\DB;
 class regimen extends Model
 {
     use HasFactory;
@@ -16,7 +16,12 @@ class regimen extends Model
         return \Hashids::encode($this->id);
     }
 
-
+    public static function getRegimenes(){
+        $data=DB::table('regimens')
+        ->select('id','codigo as value','descripcion as secvalue')
+        ->get();
+        return $data;
+    }
     public static function getComponentsByRegimen($id){
         $data=componente_regimen::select('componente_regimens.id as id','componente_regimens.codigo as value','componente_regimens.nombre as secvalue')
         ->leftJoin('regimen_has_components','regimen_has_components.component_id','=','componente_regimens.id')
