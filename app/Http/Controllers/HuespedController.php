@@ -113,9 +113,28 @@ class HuespedController extends Controller
      * @param  \App\Models\front\huesped  $huesped
      * @return \Illuminate\Http\Response
      */
-    public function edit(huesped $huesped)
+    public function edit($id)
     {
-        //
+        $data=huesped::where('id',\Hashids::decode($id)[0])->first();
+        $avaliable_hotels=data_hotel::getHotels();
+        $count_Hotel=data_hotel::CountHotel();
+        //Selects
+        $tipo_docs=tipo_documento::getTipoDocumentos();
+        $tipoCliente=tipoCliente::getTipoCliente();
+        $regimenes=regimen::getRegimenes();
+        $formaPago=formasPago::getFormaPago();
+        $paises=location::getPaises();
+
+        return view('datos.huesped.edit',[
+            'data'=>$data,
+            'avaliable_hotels'=>$avaliable_hotels,
+            'count_Hotel'=> $count_Hotel,
+            'tipo_docs'=>$tipo_docs, 
+            'tipoCliente'=>$tipoCliente,
+            'regimenes'=>$regimenes,
+            'formaPago'=>$formaPago,
+            'paises'=>$paises        
+        ]);
     }
 
     /**
@@ -125,9 +144,31 @@ class HuespedController extends Controller
      * @param  \App\Models\front\huesped  $huesped
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, huesped $huesped)
+    public function update(Request $request, $id)
     {
-        //
+        $reg=huesped::findOrFail(\Hashids::decode($id)[0]);
+        $reg->numero_doc=$request->edit_numero_doc;
+        $reg->tipo_doc=$request->edit_tipo_doc;
+        $reg->lugar_exp=$request->edit_lugar_exp;
+        $reg->ciudad_exp=$request->edit_ciudad_exp;
+        $reg->fecha_nacimiento=date("Y-m-d", strtotime($request->edit_fecha_nacimiento));
+        $reg->primer_nombre=$request->edit_primer_nombre;
+        $reg->segundo_nombre=$request->edit_segundo_nombre;
+        $reg->primer_apellido=$request->edit_primer_apellido;
+        $reg->segundo_apellido=$request->edit_segundo_apellido;
+        $reg->genero=$request->edit_genero;
+        $reg->direccion=$request->edit_direccion;
+        $reg->nacionalidad=$request->edit_nacionalidad;
+        $reg->ciudad=$request->edit_ciudad;
+        $reg->telefono=$request->edit_telefono;
+        $reg->celular=$request->edit_celular;
+        $reg->email=$request->edit_email;
+        $reg->tipo_huesped=$request->edit_tipo_huesped;
+        $reg->tarifa=$request->edit_tarifa;
+        $reg->forma_pago=$request->edit_forma_pago;
+        $reg->rel_hotel=$request->rel_hotel;
+        $reg->save();
+        return json_encode(['success' => true]);
     }
 
     /**
@@ -145,10 +186,15 @@ class HuespedController extends Controller
         $query = huesped::all();
         return datatables($query)
         ->addColumn('documento',function ($query){
-           return $query->tipo_doc.' - '.$query->numero_doc;
+            $tipo_doc=tipo_documento::getDocumentosById($query->tipo_doc);
+           return $tipo_doc->codigo.' - '.$query->numero_doc;
         })
         ->addColumn('nombre_completo',function ($query){
             return $query->primer_nombre.' '.$query->segundo_nombre.' '.$query->primer_apellido.' '.$query->segundo_apellido;
+        })
+        ->addColumn('nacion',function ($query){
+            $nacion=location::getPaisById($query->nacionalidad);
+            return $nacion->pais;
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -162,7 +208,7 @@ class HuespedController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions','estado_button','puc_or','impuesto','agrupacion','centro'])
+        ->rawColumns(['actions','documento','nombre_completo','nacion'])
         ->make(true);
     }
     

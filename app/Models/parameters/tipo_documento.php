@@ -21,4 +21,11 @@ class tipo_documento extends Model
         ->get();
         return $data;
     }
+    public static function getDocumentosById($id){
+        $data=DB::table('tipo_documentos')
+        ->select('codigo')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
 }

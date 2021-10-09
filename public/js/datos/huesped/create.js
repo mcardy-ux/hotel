@@ -122,7 +122,6 @@ $('#add_huesped').submit(function(event){
     if(confirmacion){
 
         var data = $('#add_huesped').serialize();
-        console.log(data);
        
 
         $.ajax({

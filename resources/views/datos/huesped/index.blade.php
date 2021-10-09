@@ -12,6 +12,7 @@
                             <li class="breadcrumb-item">
                                 <a href="/dashboard">Dashboard</a>
                             </li>
+                            <li class="breadcrumb-item active" aria-current="page">Listado</li>
                         </ol>
                     </nav>
                     <div class="separator mb-5"></div>
@@ -73,14 +74,12 @@
                                                  
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th scope="col">nombre_completo</th>
-                                                            <th scope="col">documento</th>
-                                                                <th scope="col">nacionalidad</th>
-                                                                <th scope="col">ciudad</th>
-                                                                <th scope="col">genero</th>
-                                                                <th scope="col">celular</th>
-                                                                <th scope="col">email</th>
-                                                                <th scope="col">fecha_nacimiento</th>
+                                                            <th scope="col">Nombre Completo</th>
+                                                            <th scope="col">Documento</th>
+                                                                <th scope="col">Nacionalidad</th>
+                                                                <th scope="col">Genero</th>
+                                                                <th scope="col">Celular</th>
+                                                                <th scope="col">Email</th>
                                                             <th scope="col"></th>
                                                         </tr>
                                                     </thead>
@@ -168,12 +167,10 @@ $('#listado_huespeds').DataTable({
     "columns":[
     {"data":"nombre_completo"},
     {"data":"documento"},
-    {"data":"nacionalidad"},
-    {"data":"ciudad"},
+    {"data":"nacion"},
     {"data":"genero"},
     {"data":"celular"},
     {"data":"email"},
-    {"data":"fecha_nacimiento"},
     { "data": "actions",orderable:false, searchable:false },
     ],
 });

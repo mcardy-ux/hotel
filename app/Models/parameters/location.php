@@ -43,4 +43,11 @@ class location extends Model
         ->get();
         return $data;
     }
+    public static function getPaisById($id){
+        $data=DB::table('country')
+        ->select('pais')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
 }
