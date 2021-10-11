@@ -97,23 +97,23 @@
 
                                 <div class="form-row">
                                      <div class="form-group col-md-3">
-                                        <label for="primer_nombre">Primer Nombre
+                                        <label for="primer_nombre">Primer Nombre <span style="color:red">*</span>
                                         </label>
                                         <input type="text" class="form-control" id="primer_nombre" name="primer_nombre"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="segundo_nombre">Segundo Nombre:</label>
+                                        <label for="segundo_nombre">Segundo Nombre </label>
                                         <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="primer_apellido">Primer Apellido:</label>
+                                        <label for="primer_apellido">Primer Apellido <span style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="primer_apellido" name="primer_apellido"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="segundo_apellido">Segundo Apellido:</label>
+                                        <label for="segundo_apellido">Segundo Apellido </label>
                                         <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
@@ -121,7 +121,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="genero">Genero:</label>
+                                        <label for="genero">Genero <span style="color:red">*</span></label>
                                         <select id="genero" name="genero" class="form-control">
                                             <option value="">SELECCIONAR</option>
                                             <option value="masculino">masculino</option>
@@ -130,7 +130,7 @@
                                     </div>
                                     
                                     <div class="form-group col-md-8">
-                                        <label for="direccion">Dirección:</label>
+                                        <label for="direccion">Dirección <span style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="direccion" name="direccion"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
@@ -138,8 +138,25 @@
 
 
                                 <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                       <label for="telefono">Telefono <span style="color:red">*</span></label>
+                                       <input type="text" class="form-control" id="telefono" name="telefono"
+                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                   </div>
+                                   <div class="form-group col-md-4">
+                                       <label for="celular">Celular</label>
+                                       <input type="text" class="form-control" id="celular" name="celular"
+                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                   </div>
+                                   <div class="form-group col-md-4">
+                                       <label for="email">Email <span style="color:red">*</span></label>
+                                       <input type="text" class="form-control" id="email" name="email"
+                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                   </div>
+                               </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="nacionalidad">nacionalidad</label>
+                                        <label for="nacionalidad">Nacionalidad</label>
                                         <select id="nacionalidad" name="nacionalidad" class="form-control">
                                             <option value="">SELECCIONAR</option>  
                                         </select>
@@ -153,23 +170,6 @@
                                 </div>
 
 
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                       <label for="telefono">Telefono</label>
-                                       <input type="text" class="form-control" id="telefono" name="telefono"
-                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                   </div>
-                                   <div class="form-group col-md-4">
-                                       <label for="celular">Celular</label>
-                                       <input type="text" class="form-control" id="celular" name="celular"
-                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                   </div>
-                                   <div class="form-group col-md-4">
-                                       <label for="email">Email</label>
-                                       <input type="text" class="form-control" id="email" name="email"
-                                           aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                   </div>
-                               </div>
 
                                <div class="form-row">
                                 <div class="form-group col-md-6">

@@ -32,37 +32,13 @@ $(document).ready(function(){
     
  
 $('#add_huesped').submit(function(event){
-    if ($('#tipo_doc').val() === '') {
-        alert('Debe sleccionar el tipo de documento','Atencion!');
-        $('#tipo_doc').focus();
-        return false;
-    }
-    if ($('#numero_doc').val() === '') {
-        alert('Debe ingresar el documento','Atencion!');
-        $('#numero_doc').focus();
-        return false;
-    }
-    if ($('#lugar_exp').val() === '') {
-        alert('Debe seleccionar el lugar de expedición','Atencion!');
-        $('#lugar_exp').focus();
-        return false;
-    }
-    if ($('#ciudad_exp').val() === '') {
-        alert('Debe seleccionar la ciudad de expedición','Atencion!');
-        $('#ciudad_exp').focus();
-        return false;
-    }
-    if ($('#fecha_nacimiento').val() === '') {
-        alert('Debe ingresar la fecha de nacimiento','Atencion!');
-        $('#fecha_nacimiento').focus();
-        return false;
-    }
+ 
     if ($('#primer_nombre').val() === '') {
         alert('Debe ingresar el primer nombre','Atencion!');
         $('#primer_nombre').focus();
         return false;
     }
-    if ( $('#primer_apellido').val() === "") {
+    if ($('#primer_apellido').val() === '') {
         alert('Debe ingresar el primer apellido','Atencion!');
         $('#primer_apellido').focus();
         return false;
@@ -77,19 +53,9 @@ $('#add_huesped').submit(function(event){
         $('#direccion').focus();
         return false;
     }
-    if ( $('#nacionalidad').val() === "") {
-        alert('Debe seleccionar la nación','Atencion!');
-        $('#nacionalidad').focus();
-        return false;
-    }
-    if ( $('#ciudad').val() === "") {
-        alert('Debe seleccionar la ciudad','Atencion!');
-        $('#ciudad').focus();
-        return false;
-    }
-    if ( $('#celular').val() === "") {
-        alert('Debe ingresar el celular','Atencion!');
-        $('#celular').focus();
+    if ( $('#telefono').val() === "") {
+        alert('Debe ingresar el telefono','Atencion!');
+        $('#telefono').focus();
         return false;
     }
     if ( $('#email').val() === "") {
