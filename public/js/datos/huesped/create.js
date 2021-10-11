@@ -26,13 +26,52 @@ function RemoveOptions(name) {
    $("#"+name).empty();
 }
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+
 
 $(document).ready(function(){
-    
+
+    // validacion para el selector de registro del documento
+    $("#validacion_registro").change(function(){
+    let opcion=$(this).val();
+
+    if(opcion==="true"){
+        $('#registro_sistema').css("display","none");
+        $('#registro_documento').css("display","block");
+        $('#id_registro').val("");
+    }if(opcion==="false"){
+        $('#registro_sistema').css("display","block");
+        let id_reg=getRandomInt(1,999999999);
+        $('#registro_sistema').text("ID: "+id_reg).addClass("lead color-theme-1 mb-2");
+        $('#id_registro').val(id_reg);
+        $('#registro_documento').css("display","none");
+    }
+});
     
  
 $('#add_huesped').submit(function(event){
  
+    if ($('#validacion_registro').val() === 'false') {
+        if ($('#id_registro').val() === '') {
+            alert('No se encuentra el ID, por favor recargue la pagina.','Atencion!');
+            return false;
+        }
+    }
+    if ($('#validacion_registro').val() === 'true') {
+        if ($('#tipo_doc').val() === '') {
+            alert('Debe seleccionar el tipo de documento','Atencion!');
+            $('#tipo_doc').focus();
+            return false;
+        }
+        if ($('#numero_doc').val() === '') {
+            alert('Debe ingresar el numero del documento','Atencion!');
+            $('#numero_doc').focus();
+            return false;
+        }
+    }
     if ($('#primer_nombre').val() === '') {
         alert('Debe ingresar el primer nombre','Atencion!');
         $('#primer_nombre').focus();

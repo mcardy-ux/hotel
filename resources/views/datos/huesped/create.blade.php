@@ -63,19 +63,35 @@
                             <input type="hidden" id="_url" value="{{ url('huespedes') }}">
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="rel_hotel" name="rel_hotel" >
-                               
+                                <input type="hidden" id="id_registro" name="id_registro" >
+
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                       <label for="tipo_doc">Tipo de Documento</label>
-                                       <select id="tipo_doc" name="tipo_doc" class="form-control">
+                                    <div class="form-group col-md-4">
+                                       <label for="validacion_registro">Registro con documento de Identidad</label>
+                                       <select id="validacion_registro" name="validacion_registro" class="form-control">
                                             <option value="">SELECCIONAR</option>
+                                            <option value="true">SI</option>
+                                            <option value="false">NO</option>
                                         </select>
                                    </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="numero_doc">Numero de documento:</label>
-                                       <input type="number" class="form-control" min="1" id="numero_doc" name="numero_doc">
-                                   </div>
+                                   <div class="form-group col-md-6" style="display: none;text-align:right" id="registro_sistema">
+                                    <p id="num_sistema"></p>                  
+                                    </div>
+                                   
                                </div>
+                               <div class="form-row" style="display: none;" id="registro_documento">
+                                    <div class="form-group 6" >
+                                    <label for="tipo_doc">Tipo de Documento</label>
+                                    <select id="tipo_doc" name="tipo_doc" class="form-control">
+                                            <option value="">SELECCIONAR</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group 6" >
+                                    <label for="numero_doc">Numero de documento:</label>
+                                    <input type="number" class="form-control" min="1" id="numero_doc" name="numero_doc">
+                                </div>
+                            </div>
+                                
                                <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="lugar_exp">Lugar de Expedición</label>
@@ -226,7 +242,6 @@
         //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
         addOptions("avaliable_hotels", array);
     }
-
     function cargarTipoDocs() {
     
         //Inicializamos el array.
@@ -240,7 +255,6 @@
         addOptionsConcat("tipo_doc", tipo_docs);
         }
     }
-
     function cargarTipoCliente() {
         //Inicializamos el array.
         var tipoCliente = @json($tipoCliente);
@@ -253,7 +267,6 @@
         addOptionsConcat("tipo_huesped", tipoCliente);
         }
     }
-
     function cargarTarifa() {
         //Inicializamos el array.
         var regimenes = @json($regimenes);
@@ -300,35 +313,35 @@
         addOptions(options, data);
         }
     }
-    
-        $("#lugar_exp").change(function(){
-            let num=$(this).val();
-            RemoveOptions("ciudad_exp");
-            $.ajax({
-                url: $('#add_huesped #_url').val()+"/request/citiesEstado/"+num,
-                headers: {'X-CSRF-TOKEN': $('#add_huesped #_token').val()},
-                type: 'GET',
-                cache: false,
-                success: function (response) {
-                    cargarCiudades(response,"ciudad_exp");
-                }
-            });
+    $("#lugar_exp").change(function(){
+        let num=$(this).val();
+        RemoveOptions("ciudad_exp");
+        $.ajax({
+            url: $('#add_huesped #_url').val()+"/request/citiesEstado/"+num,
+            headers: {'X-CSRF-TOKEN': $('#add_huesped #_token').val()},
+            type: 'GET',
+            cache: false,
+            success: function (response) {
+                cargarCiudades(response,"ciudad_exp");
+            }
         });
- 
-        $("#nacionalidad").change(function(){
-            let num=$(this).val();
-            RemoveOptions("ciudad");
-            $.ajax({
-                url: $('#add_huesped #_url').val()+"/request/citiesEstado/"+num,
-                headers: {'X-CSRF-TOKEN': $('#add_huesped #_token').val()},
-                type: 'GET',
-                cache: false,
-                success: function (response) {
-                    cargarCiudades(response,"ciudad");
-                }
-            });
+    });
+
+    $("#nacionalidad").change(function(){
+        let num=$(this).val();
+        RemoveOptions("ciudad");
+        $.ajax({
+            url: $('#add_huesped #_url').val()+"/request/citiesEstado/"+num,
+            headers: {'X-CSRF-TOKEN': $('#add_huesped #_token').val()},
+            type: 'GET',
+            cache: false,
+            success: function (response) {
+                cargarCiudades(response,"ciudad");
+            }
         });
- 
+    });
+
+  
 
     let cantHoteles=@json($count_Hotel);
     let razon_hotel=@json($avaliable_hotels);
@@ -340,5 +353,6 @@
     }else{
         cargarHoteles(event);
     }
+    
     </script>
 @endpush
