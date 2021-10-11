@@ -15,18 +15,20 @@ class CreateHuespedsTable extends Migration
     {
         Schema::create('huespeds', function (Blueprint $table) {
             $table->id();
+            $table->boolean('validacion_registro');
+            $table->integer('id_registro')->nullable();
             $table->unsignedBigInteger('tipo_doc')->nullable();
             $table->foreign('tipo_doc')->references('id')->on('tipo_documentos');
-            $table->string('numero_doc');
+            $table->string('numero_doc')->nullable();
             $table->unsignedBigInteger('lugar_exp')->nullable();
             $table->foreign('lugar_exp')->references('id')->on('country');
             $table->unsignedBigInteger('ciudad_exp')->nullable();
             $table->foreign('ciudad_exp')->references('id')->on('city');
 
             $table->string('primer_nombre');
-            $table->string('segundo_nombre');
+            $table->string('segundo_nombre')->nullable();
             $table->string('primer_apellido');
-            $table->string('segundo_apellido');
+            $table->string('segundo_apellido')->nullable();
             $table->enum('genero',['masculino','femenino']);
             $table->string('direccion');
             
@@ -36,9 +38,9 @@ class CreateHuespedsTable extends Migration
             $table->foreign('ciudad')->references('id')->on('city');
 
             $table->string('telefono');
-            $table->string('celular');
+            $table->string('celular')->nullable();
             $table->string('email');
-            $table->dateTime('fecha_nacimiento');
+            $table->dateTime('fecha_nacimiento')->nullable();
             
             $table->unsignedBigInteger('tipo_huesped')->nullable();
             $table->foreign('tipo_huesped')->references('id')->on('tipo_clientes');

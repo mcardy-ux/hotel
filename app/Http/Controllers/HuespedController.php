@@ -59,30 +59,56 @@ class HuespedController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if ($request->validacion_registro=="true") {
+            $validator = Validator::make($request->all(), [
+                'validacion_registro'=>'bail|required|max:180',
+                'numero_doc' => 'bail|required|unique:huespeds|max:180',
+                'tipo_doc'=>'bail|required|max:180',
+                'lugar_exp'=>'bail|nullable|max:180',
+                'ciudad_exp'=>'bail|nullable|max:180',
+                'fecha_nacimiento'=>'bail|nullable|max:180',
+                'primer_nombre' => 'bail|required|max:250',
+                'segundo_nombre' => 'bail|nullable|max:250',
+                'primer_apellido' => 'bail|required|max:250',
+                'segundo_apellido' => 'bail|nullable|max:250',
+                'genero' => 'bail|required|max:180',
+                'direccion' => 'bail|required|max:180',
+                'telefono' => 'bail|required|max:180',
+                'celular'=>'bail|nullable|max:180',
+                'email' => 'bail|required|max:180',
+                'nacionalidad' => 'bail|nullable|max:180',
+                'ciudad' => 'bail|nullable|max:180',
+                'tipo_huesped' => 'bail|required|max:180',
+                'tarifa' => 'bail|required|max:180',
+                'forma_pago' => 'bail|required|max:180',
+                'rel_hotel' => 'bail|required|max:180',
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'validacion_registro'=>'bail|required|max:180',
+                'id_registro' => 'bail|required|unique:huespeds|max:180',
+                'lugar_exp'=>'bail|nullable|max:180',
+                'ciudad_exp'=>'bail|nullable|max:180',
+                'fecha_nacimiento'=>'bail|nullable|max:180',
+                'primer_nombre' => 'bail|required|max:250',
+                'segundo_nombre' => 'bail|nullable|max:250',
+                'primer_apellido' => 'bail|required|max:250',
+                'segundo_apellido' => 'bail|nullable|max:250',
+                'genero' => 'bail|required|max:180',
+                'direccion' => 'bail|required|max:180',
+                'telefono' => 'bail|required|max:180',
+                'celular'=>'bail|nullable|max:180',
+                'email' => 'bail|required|max:180',
+                'nacionalidad' => 'bail|nullable|max:180',
+                'ciudad' => 'bail|nullable|max:180',
+                'tipo_huesped' => 'bail|required|max:180',
+                'tarifa' => 'bail|required|max:180',
+                'forma_pago' => 'bail|required|max:180',
+                'rel_hotel' => 'bail|required|max:180',
+            ]);
+        }
 
-        $validator = Validator::make($request->all(), [
-            'numero_doc' => 'bail|required|unique:huespeds|max:180',
-            'tipo_doc' => 'bail|required|max:180',
-            'lugar_exp' => 'bail|required|max:180',
-            'ciudad_exp' => 'bail|required|max:190',
-            'fecha_nacimiento' => 'bail|required|max:180',
-            'primer_nombre' => 'bail|required|max:250',
-            'segundo_nombre' => 'bail|nullable|max:250', 
-            'primer_apellido' => 'bail|required|max:250',
-            'segundo_apellido' => 'bail|nullable|max:250',
-            'genero' => 'bail|required|max:180',
-            'direccion' => 'bail|nullable|max:180',
-            'nacionalidad' => 'bail|required|max:180',
-            'ciudad' => 'bail|required|max:180',
-            'telefono' => 'bail|nullable|max:180',
-            'celular' => 'bail|nullable|max:180',
-            'email' => 'bail|nullable|max:180',
-            'tipo_huesped' => 'bail|required|max:180',
-            'tarifa' => 'bail|required|max:180',
-            'forma_pago' => 'bail|required|max:180',
-            'rel_hotel' => 'bail|required|max:180',
-        ]);
+       
 
         if ($validator->fails()) {
             return json_encode(['success' => false, 'data' =>$validator->errors()]);
@@ -91,7 +117,12 @@ class HuespedController extends Controller
         // Retrieve the validated input...
         $validated = $validator->validated();
         $validated["fecha_nacimiento"]=date("Y-m-d", strtotime($request->fecha_nacimiento));
-      
+        if ($request->validacion_registro=="true") {
+            $validated["validacion_registro"]=true;
+        }
+        if ($request->validacion_registro=="false") {
+            $validated["validacion_registro"]=false;
+        }
         huesped::create($validated);
         return json_encode(['success' => true]);
     }
@@ -186,15 +217,23 @@ class HuespedController extends Controller
         $query = huesped::all();
         return datatables($query)
         ->addColumn('documento',function ($query){
-            $tipo_doc=tipo_documento::getDocumentosById($query->tipo_doc);
-           return $tipo_doc->codigo.' - '.$query->numero_doc;
+            if($query->validacion_registro){
+                $tipo_doc=tipo_documento::getDocumentosById($query->tipo_doc);
+                return $tipo_doc->codigo.' - '.$query->numero_doc;
+            }else{
+                return 'ID - '.$query->id_registro;
+            }
+           
         })
         ->addColumn('nombre_completo',function ($query){
             return $query->primer_nombre.' '.$query->segundo_nombre.' '.$query->primer_apellido.' '.$query->segundo_apellido;
         })
-        ->addColumn('nacion',function ($query){
-            $nacion=location::getPaisById($query->nacionalidad);
-            return $nacion->pais;
+        ->addColumn('porcentaje_datos', function ($query) {
+            $numero=huesped::getPorcentajeDatosCompletados($query->id);
+            return '<div class="card-body d-flex justify-content-between align-items-center">
+            <div role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="'.$numero.'" data-show-percent="true">
+        </div>';
+        
         })
         ->addColumn('actions', function ($query) {
             return '<div class="dropdown d-inline-block">
@@ -208,7 +247,7 @@ class HuespedController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions','documento','nombre_completo','nacion'])
+        ->rawColumns(['actions','documento','nombre_completo','porcentaje_datos'])
         ->make(true);
     }
     

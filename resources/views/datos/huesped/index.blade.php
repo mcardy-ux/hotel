@@ -76,11 +76,11 @@
                                                         <tr>
                                                             <th scope="col">Nombre Completo</th>
                                                             <th scope="col">Documento</th>
-                                                                <th scope="col">Nacionalidad</th>
                                                                 <th scope="col">Genero</th>
                                                                 <th scope="col">Celular</th>
                                                                 <th scope="col">Email</th>
-                                                            <th scope="col"></th>
+                                                                <th scope="col">Porcentaje de Datos Completados</th>
+                                                                <th scope="col"></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody >
@@ -167,10 +167,11 @@ $('#listado_huespeds').DataTable({
     "columns":[
     {"data":"nombre_completo"},
     {"data":"documento"},
-    {"data":"nacion"},
     {"data":"genero"},
     {"data":"celular"},
+    
     {"data":"email"},
+    {"data":"porcentaje_datos"},
     { "data": "actions",orderable:false, searchable:false },
     ],
 });
