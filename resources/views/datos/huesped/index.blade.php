@@ -62,7 +62,7 @@
                             <br>
                             <br>
                             <form role="form" id="list_huespedes" name="list_huespedes" accept-charset="UTF-8" enctype="multipart/form-data">
-                            <input type="hidden" id="_url" value="{{ url('organization') }}">
+                            <input type="hidden" id="_url" value="{{ url('huespedes') }}">
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="rel_hotel" name="rel_hotel"  >
                                 <div class="row mb-12">

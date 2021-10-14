@@ -22,6 +22,13 @@ class regimen extends Model
         ->get();
         return $data;
     }
+    public static function getRegimenesById($id){
+        $data=DB::table('regimens')
+        ->select('descripcion as value')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
     public static function getComponentsByRegimen($id){
         $data=componente_regimen::select('componente_regimens.id as id','componente_regimens.codigo as value','componente_regimens.nombre as secvalue')
         ->leftJoin('regimen_has_components','regimen_has_components.component_id','=','componente_regimens.id')
