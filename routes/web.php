@@ -118,8 +118,9 @@ Route::get('/dashboard', function () {
 //**** */
 Route::get('huespedes/request/citiesEstado/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestCitiesByEstado'])->name('ajax.request.citiesByEstado')->middleware(['auth']);
 // Ajax para listar los huespedes
-Route::get('ajax/request/huespedes', [App\Http\Controllers\HuespedController::class, 'ajaxRequestHuespedes'])->name('ajax.request.huespedes')->middleware(['auth']);
+Route::get('ajax/request/huespedes/{id}', [App\Http\Controllers\HuespedController::class, 'ajaxRequestHuespedes'])->name('ajax.request.huespedes')->middleware(['auth']);
 
+Route::get('ajax/request/huespedes', function(){return false;})->name('ajax.ruta.huespedes')->middleware(['auth']);
 
 //****** */
 //FIN DE PARAMETROS DE DATOS GENERALES

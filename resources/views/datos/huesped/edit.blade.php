@@ -23,32 +23,7 @@
             </div>
             <br>
 
-           @if($count_Hotel>1)
-            <div class="row mb-4" id="card_sel_hotel">
-                <div class="row mb-12">
-                    <div class="col-lg-12 col-md-12 mb-4">
-                        <p>A continuación debe escoger el hotel que dese agregar el huesped.</p>
-                    </div>
-                </div>
-                <div class="col-md-12 col-sm-12 col-lg-12 col-12 mb-4">
-                    <div class="card ">
-                        <div class="card-body">
-                            <div class="text-center">
-                            <i class="iconsminds-hotel large-icon"></i>
-                                <p class="list-item-heading mb-1">  Hoteles Disponibles</p>
-                                <div class="form-group" style="text-align:center;">
-                                    <select class="custom-select col-sm-3" id="edit_avaliable_hotels" name="edit_avaliable_hotels" style="text-align:center;" required="">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" id="independiente" name="independiente" value="independiente">Escoger</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            <div class="row" id="card_edit_huespedes" style="display:none;">
+        
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -200,8 +175,6 @@
                     </div>
 
                 </div>
-            </div>
-
         </div>
     </main>
 @endsection
@@ -362,8 +335,7 @@
     let cantHoteles=@json($count_Hotel);
     let razon_hotel=@json($avaliable_hotels);
     if(cantHoteles==1){
-        let components= document.getElementById('card_edit_huespedes');
-        components.style.display="block";
+      
         $("#rel_hotel").val(razon_hotel[0].id);
         $("#razon_social_hotel").val(razon_hotel[0].value);
     }else{

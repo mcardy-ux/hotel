@@ -20,24 +20,25 @@
             </div>
             <br>
            
-            <div class="row mb-4" id="card_sel_hotel">
-                <div class="row mb-12">
+            <div class="row" id="card_sel_hotel">
+                <div class="col-12">
                     <div class="col-lg-12 col-md-12 mb-4">
                         <p>A continuación debe escoger el hotel que dese agregar el huesped.</p>
                     </div>
-                </div>
-                <div class="col-md-12 col-sm-12 col-lg-12 col-12 mb-4">
-                    <div class="card ">
-                        <div class="card-body">
-                            <div class="text-center">
-                            <i class="iconsminds-hotel large-icon"></i>
-                                <p class="list-item-heading mb-1">  Hoteles Disponibles</p>
-                                <div class="form-group" style="text-align:center;">
-                                    <select class="custom-select col-sm-3" id="avaliable_hotels" name="avaliable_hotels" style="text-align:center;" required="">
-                                        <option value=""></option>
-                                    </select>
+               
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12 mb-4">
+                        <div class="card ">
+                            <div class="card-body">
+                                <div class="text-center">
+                                <i class="iconsminds-hotel large-icon"></i>
+                                    <p class="list-item-heading mb-1">  Hoteles Disponibles</p>
+                                    <div class="form-group" style="text-align:center;">
+                                        <select class="custom-select col-sm-3" id="avaliable_hotels" name="avaliable_hotels" style="text-align:center;" required="">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                        <button type="button" class="btn btn-sm btn-outline-primary" id="selectHotel" name="selectHotel">Escoger</button>
                                 </div>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" id="independiente" name="independiente" value="independiente">Escoger</button>
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                                 </div>
                             </div>
                             <h5 class="mb-4">Ingresa la información necesaria.</h5>
-                            
+                            <br>
                             <br>
                             <form role="form" id="list_huespedes" name="list_huespedes" accept-charset="UTF-8" enctype="multipart/form-data">
                             <input type="hidden" id="_url" value="{{ url('organization') }}">
@@ -118,63 +119,74 @@
         addOptions("avaliable_hotels", array);
     }
 
-    let cantHoteles=@json($count_Hotel);
-    let razon_hotel=@json($avaliable_hotels);
-    console.log(cantHoteles,razon_hotel);
-    if(cantHoteles==1){
-        let huespedes= document.getElementById('card_huespedes');
-        huespedes.style.display="block";
-        let hotel= document.getElementById('card_sel_hotel');
-        hotel.style.display="none";
-        $("#rel_hotel").val(razon_hotel[0].id);
-        $("#razon_social_hotel").val(razon_hotel[0].value);
-    }else{
-        let hotel= document.getElementById('card_sel_hotel');
-        hotel.style.display="block";
-        let huespedes= document.getElementById('card_huespedes');
-        huespedes.style.display="none";
-        cargarHoteles(event);
-    }
+   
 
     $(document).ready(function(){
+        let cantHoteles=@json($count_Hotel);
+        let razon_hotel=@json($avaliable_hotels);
+        if(cantHoteles===1){
+            $('#card_sel_hotel').hide();
+            $('#card_huespedes').show();
+            $("#rel_hotel").val(razon_hotel[0].id);
+            $("#razon_social_hotel").val(razon_hotel[0].value);
+            cargarHuespedes(razon_hotel[0].id);
+        }else{
+            $('#card_sel_hotel').show();
+            $('#card_huespedes').hide();
+        }
 
-$('#listado_huespeds').DataTable({
-    "language": {
-      "decimal": "",
-      "emptyTable": "No hay información",
-      "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-      "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-      "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-      "infoPostFix": "",
-      "thousands": ",",
-      "lengthMenu": "Mostrar _MENU_ Entradas",
-      "loadingRecords": "Cargando...",
-      "processing": "Procesando...",
-      "search": "Buscar:",
-      "zeroRecords": "Sin resultados encontrados",
-      
-      "paginate": {
-          "first": "Primero",
-          "last": "Ultimo",
-          "next": "Siguiente",
-          "previous": "Anterior"
-      }},
-      "order": [[ 0, "desc" ]],
-      "processing": true,
-      "responsive": true,
-      "serverSide": true,
-    "ajax": "{{ route('ajax.request.huespedes') }}",
-    "columns":[
-    {"data":"nombre_completo"},
-    {"data":"documento"},
-    {"data":"genero"},
-    {"data":"celular"},
-    
-    {"data":"email"},
-    {"data":"porcentaje_datos"},
-    { "data": "actions",orderable:false, searchable:false },
-    ],
-});
+        $("#selectHotel").click(function(){
+            let razon_hoteles=@json($avaliable_hotels);
+            let idHotel=$("#avaliable_hotels").val();
+            let razonHotel=razon_hotel[idHotel-1].value;
+            $('#card_sel_hotel').hide();
+            $('#card_huespedes').show();
+            cargarHuespedes(idHotel);
+            $("#rel_hotel").val(idHotel);
+            $("#razon_social_hotel").val(razonHotel);
+        });
+
+        function cargarHuespedes(idRazon){
+            console.log(idRazon);
+            let a="{{ route('ajax.ruta.huespedes')}}/"+idRazon;
+            console.log(a);
+            let table=$('#listado_huespeds').DataTable({
+                "language": {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                "order": [[ 0, "desc" ]],
+                "processing": true,
+                "responsive": true,
+                "serverSide": true,
+                "ajax": a,
+                "columns":[
+                {"data":"nombre_completo"},
+                {"data":"documento"},
+                {"data":"genero"},
+                {"data":"celular"},
+                {"data":"email"},
+                {"data":"porcentaje_datos"},
+                { "data": "actions",orderable:false, searchable:false },
+                ],
+            });
+        }
 });
 </script>
 @endpush
