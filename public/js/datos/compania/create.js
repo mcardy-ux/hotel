@@ -100,11 +100,6 @@ $('#add_compania').submit(function(event){
         $('#forma_pago').focus();
         return false;
     }
-    if ( $('#rel_hotel').val() === "") {
-        alert('Recargue la pagina, no existe relacion del hotel','Atencion!');
-        $('#rel_hotel').focus();
-        return false;
-    }
 
     let confirmacion=confirm("¿Esta seguro de agregar esta información?");
     if(confirmacion){

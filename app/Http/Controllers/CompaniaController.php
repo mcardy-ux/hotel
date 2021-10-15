@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\parameters\regimen;
 use App\Models\parameters\formasPago;
 use App\Models\parameters\location;
+use App\Models\parameters\data_hotel;
 use App\Models\front\compania;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -96,11 +97,13 @@ class CompaniaController extends Controller
     $formaPago=formasPago::getFormaPago();
     $paises=location::getPaises();
     $data=compania::where('id',\Hashids::decode($id)[0])->first();
+    $tipoCiuu=data_hotel::getCiiuWithId($data->ciiuActividad);
     return view('datos.compania.edit',[
         'regimenes'=>$regimenes,
         'formaPago'=>$formaPago,
         'paises'=>$paises,
-        'data'=>$data
+        'tipoCiuu'=>$tipoCiuu,
+        'data'=>$data,
     ]);
    }
 
@@ -111,9 +114,25 @@ class CompaniaController extends Controller
     * @param  \App\Models\compania  $compania
     * @return \Illuminate\Http\Response
     */
-   public function update(Request $request, compania $compania)
+   public function update(Request $request,  $id)
    {
-       //
+       $reg=compania::findOrFail(\Hashids::decode($id)[0]);
+       $reg->nit=$request->edit_nit;
+       $reg->digitoVerificacion=$request->edit_digitoVerificacion;
+       $reg->razonSocial=$request->edit_razonSocial;
+       $reg->tipoRegimen=$request->edit_tipoRegimen;
+       $reg->ciiuActividad=$request->edit_ciiuActividad;
+       $reg->direccion=$request->edit_direccion;
+       $reg->pais=$request->edit_pais;
+       $reg->ciudad=$request->edit_ciudad;
+       $reg->telefono=$request->edit_telefono;
+       $reg->celular=$request->edit_celular;
+       $reg->email=$request->edit_email;
+       $reg->paginaWeb=$request->edit_paginaWeb;
+       $reg->tarifa=$request->edit_tarifa;
+       $reg->forma_pago=$request->edit_forma_pago;
+       $reg->save();
+       return json_encode(['success' => true]);
    }
 
    /**

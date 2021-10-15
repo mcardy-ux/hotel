@@ -27,9 +27,6 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="top-right-button-container">
-                                <input type="button" class="btn btn-primary mb-1" id="razon_social_hotel" disabled="" />
-                            </div>
                             <h5 class="mb-4">Ingresa la información necesaria del Huesped.</h5>
                             
                             <br>
@@ -37,7 +34,6 @@
                             <input type="hidden" id="_url"  value="{{ url('compania', [$data->encode_id])}}">
                             <input type="hidden" id="_urlStatic"  value="{{ url('compania')}}">
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" id="rel_hotel" name="rel_hotel" >
                                
                             <div class="form-row">
                                 <div class="form-group col-md-6" >
@@ -236,6 +232,23 @@
         $("#edit_ciudad").val(ciudad).change();
         }
         // Genero
+        let tipo_ciiu=@json($tipoCiuu["id_categoria"]);
+        $("#edit_tipo_ciiu").val(tipo_ciiu);
+        let ciiu=@json($tipoCiuu["data"]);
+        RemoveOptions("edit_ciiuActividad");
+        $.ajax({
+            url: $('#edit_compania #_urlStatic').val()+"/request/ciiu/"+tipo_ciiu,
+            headers: {'X-CSRF-TOKEN': $('#edit_compania #_token').val()},
+            type: 'GET',
+            cache: false,
+            success: function (response) {
+                var json = $.parseJSON(response);
+                if(json.success){
+                    addOptionsConcat("edit_ciiuActividad",json.data);
+                    $("#edit_ciiuActividad").val(ciiu);
+                }
+            }
+        });
    
         let tarifa=@json($data->tarifa);
         $("#edit_tarifa").val(tarifa);
@@ -245,7 +258,7 @@
     }
     
     
-        $("#pais").change(function(){
+        $("#edit_pais").change(function(){
             let num=$(this).val();
             RemoveOptions("edit_ciudad");
             $.ajax({
