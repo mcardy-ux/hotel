@@ -1,9 +1,17 @@
 
 <div class="sub-menu">
+
             <div class="scroll">
                  {{-- ****
                     Lista para Parametros de hotel  
                     ****--}}
+                    <ul class="list-unstyled" data-link="layouts" style="display: block;">
+                        <li>
+                            <a href="{{route('dash_settings')}}">
+                                <i class="simple-icon-check"></i> <span class="d-inline-block">Visor General</span>
+                            </a>
+                        </li>
+                        </ul>
                 <ul class="list-unstyled" data-link="layouts" id="layouts" style="display: block;">
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="false"
