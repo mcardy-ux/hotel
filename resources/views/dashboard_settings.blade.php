@@ -1,15 +1,6 @@
 
 @extends('layouts.app')
 
-@section('content')
-   
-        @if(!$ExistenDatosHotel || !$ExistenDatosMercadeo)
-        
-        @include('layouts.master.init_parameters');
-     
-        @else
-        
-        @endif
-
-    
+@section('content')  
+ @include('layouts.master.init_parameters');  
 @endsection

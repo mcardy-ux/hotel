@@ -24,7 +24,7 @@
             <br>
 
            @if($count_Hotel>1)
-            <div class="row mb-4" id="card_huesped">
+            <div class="row mb-4" id="card_sel_hotel">
                 <div class="row mb-12">
                     <div class="col-lg-12 col-md-12 mb-4">
                         <p>A continuación debe escoger el hotel que dese agregar el huesped.</p>
@@ -41,7 +41,7 @@
                                         <option value=""></option>
                                     </select>
                                 </div>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" id="independiente" name="independiente" value="independiente">Escoger</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" id="selectHotel" name="selectHotel" >Escoger</button>
                             </div>
                         </div>
                     </div>
@@ -341,18 +341,31 @@
         });
     });
 
-  
+    $(document).ready(function(){
 
     let cantHoteles=@json($count_Hotel);
     let razon_hotel=@json($avaliable_hotels);
     if(cantHoteles==1){
-        let components= document.getElementById('card_add_huespedes');
-        components.style.display="block";
+        $('#card_sel_hotel').hide();
+        $('#card_add_huespedes').show();
         $("#rel_hotel").val(razon_hotel[0].id);
         $("#razon_social_hotel").val(razon_hotel[0].value);
     }else{
+        $('#card_sel_hotel').show();
+            $('#card_add_huespedes').hide();
         cargarHoteles(event);
     }
-    
+
+    $("#selectHotel").click(function(){
+            let razon_hoteles=@json($avaliable_hotels);
+            let idHotel=$("#avaliable_hotels").val();
+            let razonHotel=razon_hotel[idHotel-1].value;
+            $('#card_sel_hotel').hide();
+            $('#card_add_huespedes').show();
+            $("#rel_hotel").val(idHotel);
+            $("#razon_social_hotel").val(razonHotel);
+    });
+
+    });
     </script>
 @endpush

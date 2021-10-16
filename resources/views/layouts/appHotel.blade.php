@@ -118,6 +118,9 @@
                         <a href="#layouts">
                             <i class="iconsminds-digital-drawing"></i> Parametrización
                         </a>
+                        <a href="#datos">
+                            <i class="iconsminds-profile"></i> Datos
+                        </a>
                     </li>
                 </ul>
             </div>

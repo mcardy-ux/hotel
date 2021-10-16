@@ -1,18 +1,17 @@
 
 <div class="sub-menu">
 
-            <div class="scroll">
+        <div class="scroll">
                  {{-- ****
                     Lista para Parametros de hotel  
                     ****--}}
-                    <ul class="list-unstyled" data-link="layouts" style="display: block;">
-                        <li>
-                            <a href="{{route('dash_settings')}}">
-                                <i class="simple-icon-check"></i> <span class="d-inline-block">Visor General</span>
-                            </a>
-                        </li>
-                        </ul>
+                       
                 <ul class="list-unstyled" data-link="layouts" id="layouts" style="display: block;">
+                    <li>
+                        <a href="{{route('dash_settings')}}">
+                            <i class="simple-icon-check"></i> <span class="d-inline-block">Visor General</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="false"
                             aria-controls="collapseHotel" class="rotate-arrow-icon opacity-50">
@@ -86,11 +85,11 @@
                 
                 <ul class="list-unstyled" data-link="datos" id="datos">
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="false"
-                            aria-controls="collapseHotel" class="rotate-arrow-icon opacity-50">
+                        <a href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="false"
+                            aria-controls="collapseData" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Datos Generales</span>
                         </a>
-                        <div id="collapseHotel" class="collapse">
+                        <div id="collapseData" class="collapse">
                             <ul class="list-unstyled inner-level-menu" style="display: none;">
                               @php
                                $listaDatos=App\Http\Controllers\DashboardController::mostrarDatosGenrales();
@@ -99,8 +98,6 @@
                             </ul>
                         </div>
                     </li>
-                   
-                    
                 </ul>
             </div>
         </div>
