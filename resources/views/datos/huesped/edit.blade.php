@@ -28,7 +28,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="top-right-button-container">
-                                <input type="button" class="btn btn-primary mb-1" id="razon_social_hotel" disabled="" />
+                                <input type="button" class="btn btn-primary mb-1" id="id_huesped" disabled="" />
                             </div>
                             <h5 class="mb-4">Ingresa la información necesaria del Huesped.</h5>
                             
@@ -37,6 +37,7 @@
                             <input type="hidden" id="_url"  value="{{ url('huespedes', [$data->encode_id])}}">
                             <input type="hidden" id="_urlStatic"  value="{{ url('huespedes')}}">
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" id="edit_validacion" name="edit_validacion" >
                             <input type="hidden" id="rel_hotel" name="rel_hotel" >
                                
                                 <div class="form-row">
@@ -275,6 +276,12 @@
     }
 
     function cargarDatosEstablecidos(){
+        let validacion = @json($data->validacion_registro);
+        $("#edit_validacion").val(validacion);
+        if(validacion==0){
+            let id_huesped=@json($data->id_registro);
+            $("#id_huesped").val("ID: "+id_huesped);
+        }
         let tipo_doc=@json($data->tipo_doc);
         $("#edit_tipo_doc").val(tipo_doc);
         // lugar expedicion
