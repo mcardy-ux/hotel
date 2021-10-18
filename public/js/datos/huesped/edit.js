@@ -43,21 +43,6 @@ $('#edit_huesped').submit(function(event){
         }
     }
     
-    if ($('#edit_lugar_exp').val() === '') {
-        alert('Debe seleccionar el lugar de expedición','Atencion!');
-        $('#edit_lugar_exp').focus();
-        return false;
-    }
-    if ($('#edit_ciudad_exp').val() === '') {
-        alert('Debe seleccionar la ciudad de expedición','Atencion!');
-        $('#edit_ciudad_exp').focus();
-        return false;
-    }
-    if ($('#edit_fecha_nacimiento').val() === '') {
-        alert('Debe ingresar la fecha de nacimiento','Atencion!');
-        $('#edit_fecha_nacimiento').focus();
-        return false;
-    }
     if ($('#edit_primer_nombre').val() === '') {
         alert('Debe ingresar el primer nombre','Atencion!');
         $('#edit_primer_nombre').focus();
@@ -78,19 +63,9 @@ $('#edit_huesped').submit(function(event){
         $('#edit_direccion').focus();
         return false;
     }
-    if ( $('#edit_nacionalidad').val() === "") {
-        alert('Debe seleccionar la nación','Atencion!');
-        $('#edit_nacionalidad').focus();
-        return false;
-    }
-    if ( $('#edit_ciudad').val() === "") {
-        alert('Debe seleccionar la ciudad','Atencion!');
-        $('#edit_ciudad').focus();
-        return false;
-    }
-    if ( $('#edit_celular').val() === "") {
-        alert('Debe ingresar el celular','Atencion!');
-        $('#edit_celular').focus();
+    if ( $('#edit_telefono').val() === "") {
+        alert('Debe ingresar el telefono','Atencion!');
+        $('#edit_telefono').focus();
         return false;
     }
     if ( $('#edit_email').val() === "") {

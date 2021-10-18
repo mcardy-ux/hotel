@@ -75,7 +75,7 @@
 
                                 <div class="form-row">
                                      <div class="form-group col-md-3">
-                                        <label for="edit_primer_nombre">Primer Nombre</label>
+                                        <label for="edit_primer_nombre">Primer Nombre <span style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="edit_primer_nombre" name="edit_primer_nombre"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->primer_nombre}}">
                                     </div>
@@ -85,7 +85,7 @@
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->segundo_nombre}}">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="edit_primer_apellido">Primer Apellido:</label>
+                                        <label for="edit_primer_apellido">Primer Apellido <span style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="edit_primer_apellido" name="edit_primer_apellido"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->primer_apellido}}">
                                     </div>
@@ -98,7 +98,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="edit_genero">Genero:</label>
+                                        <label for="edit_genero">Genero <span style="color:red">*</span></label>
                                         <select id="edit_genero" name="edit_genero" class="form-control">
                                             <option value="">SELECCIONAR</option>
                                             <option value="masculino">masculino</option>
@@ -107,7 +107,7 @@
                                     </div>
                                     
                                     <div class="form-group col-md-8">
-                                        <label for="edit_direccion">Dirección:</label>
+                                        <label for="edit_direccion">Dirección <span style="color:red">*</span></label>
                                         <input type="text" class="form-control" id="edit_direccion" name="edit_direccion"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->direccion}}">
                                     </div>
@@ -132,7 +132,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                       <label for="edit_telefono">Telefono</label>
+                                       <label for="edit_telefono">Telefono <span style="color:red">*</span></label>
                                        <input type="text" class="form-control" id="edit_telefono" name="edit_telefono"
                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->telefono}}">
                                    </div>
@@ -142,7 +142,7 @@
                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->celular}}">
                                    </div>
                                    <div class="form-group col-md-4">
-                                       <label for="edit_email">Email</label>
+                                       <label for="edit_email">Email <span style="color:red">*</span></label>
                                        <input type="text" class="form-control" id="edit_email" name="edit_email"
                                            aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{$data->email}}">
                                    </div>
