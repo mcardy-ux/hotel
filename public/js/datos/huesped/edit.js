@@ -30,16 +30,19 @@ function RemoveOptions(name) {
 $(document).ready(function(){
     
 $('#edit_huesped').submit(function(event){
-    if ($('#edit_tipo_doc').val() === '') {
-        alert('Debe sleccionar el tipo de documento','Atencion!');
-        $('#edit_tipo_doc').focus();
-        return false;
+    if($('#edit_validacion').val()==1){
+        if ($('#edit_tipo_doc').val() === '') {
+            alert('Debe sleccionar el tipo de documento','Atencion!');
+            $('#edit_tipo_doc').focus();
+            return false;
+        }
+        if ($('#edit_numero_doc').val() === '') {
+            alert('Debe ingresar el documento','Atencion!');
+            $('#edit_numero_doc').focus();
+            return false;
+        }
     }
-    if ($('#edit_numero_doc').val() === '') {
-        alert('Debe ingresar el documento','Atencion!');
-        $('#edit_numero_doc').focus();
-        return false;
-    }
+    
     if ($('#edit_lugar_exp').val() === '') {
         alert('Debe seleccionar el lugar de expedición','Atencion!');
         $('#edit_lugar_exp').focus();
@@ -113,6 +116,11 @@ $('#edit_huesped').submit(function(event){
     if ( $('#rel_hotel').val() === "") {
         alert('Recargue la pagina, no existe relacion del hotel','Atencion!');
         $('#rel_hotel').focus();
+        return false;
+    }
+    if ( $('#edit_validacion').val() === "") {
+        alert('Recargue la pagina, no existe relacion de identificación','Atencion!');
+        $('#edit_validacion').focus();
         return false;
     }
 

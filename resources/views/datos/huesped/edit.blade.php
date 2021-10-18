@@ -29,6 +29,7 @@
                         <div class="card-body">
                             <div class="top-right-button-container">
                                 <input type="button" class="btn btn-primary mb-1" id="id_huesped" disabled="" />
+                                <input type="button" class="btn btn-primary mb-1" id="razon_social_hotel" disabled="" />
                             </div>
                             <h5 class="mb-4">Ingresa la información necesaria del Huesped.</h5>
                             
@@ -38,6 +39,7 @@
                             <input type="hidden" id="_urlStatic"  value="{{ url('huespedes')}}">
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
                             <input type="hidden" id="edit_validacion" name="edit_validacion" >
+                            <input type="hidden" id="data_id_huesped" name="data_id_huesped" >
                             <input type="hidden" id="rel_hotel" name="rel_hotel" >
                                
                                 <div class="form-row">
@@ -191,16 +193,7 @@
             cargarDatosEstablecidos();
     }, false);
  
-    //Funcion para cargar los hoteles al campo "select".
-    function cargarHoteles() {
-    
-        //Inicializamos el array.
-        var array = @json($avaliable_hotels);
-        //Ordena el array alfabeticamente.
-        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
-        addOptions("edit_avaliable_hotels", array);
-    }
-
+  
     function cargarTipoDocs() {
     
         //Inicializamos el array.
@@ -281,7 +274,16 @@
         if(validacion==0){
             let id_huesped=@json($data->id_registro);
             $("#id_huesped").val("ID: "+id_huesped);
+            $("#data_id_huesped").val(id_huesped);
         }
+        else{
+            $("#id_huesped").val("ID: N/A");
+            $("#data_id_huesped").val(null);
+        }
+//MODI
+        $("#rel_hotel").val(@json($data->rel_hotel));
+        $("#razon_social_hotel").val(@json($razonById->value));
+
         let tipo_doc=@json($data->tipo_doc);
         $("#edit_tipo_doc").val(tipo_doc);
         // lugar expedicion
@@ -339,14 +341,6 @@
         });
  
 
-    let cantHoteles=@json($count_Hotel);
-    let razon_hotel=@json($avaliable_hotels);
-    if(cantHoteles==1){
-      
-        $("#rel_hotel").val(razon_hotel[0].id);
-        $("#razon_social_hotel").val(razon_hotel[0].value);
-    }else{
-        cargarHoteles(event);
-    }
+  
     </script>
 @endpush

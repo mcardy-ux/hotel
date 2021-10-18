@@ -19,6 +19,13 @@ class data_hotel extends Model
         ->get();
         return $data;
     }
+    public static function getRazonByID($id){
+        $data=DB::table('data_hotels')
+        ->select('razonComercial as value')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
     public static function getResolutions(){
         $data=DB::table('billing_resolutions')
         ->select('id','numResolucion as value','fechaResolucion as secvalue')

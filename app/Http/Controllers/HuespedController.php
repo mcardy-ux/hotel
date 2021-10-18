@@ -147,8 +147,7 @@ class HuespedController extends Controller
     public function edit($id)
     {
         $data=huesped::where('id',\Hashids::decode($id)[0])->first();
-        $avaliable_hotels=data_hotel::getHotels();
-        $count_Hotel=data_hotel::CountHotel();
+        $razonById=data_hotel::getRazonByID($data->rel_hotel);
         //Selects
         $tipo_docs=tipo_documento::getTipoDocumentos();
         $tipoCliente=tipoCliente::getTipoCliente();
@@ -158,13 +157,12 @@ class HuespedController extends Controller
 
         return view('datos.huesped.edit',[
             'data'=>$data,
-            'avaliable_hotels'=>$avaliable_hotels,
-            'count_Hotel'=> $count_Hotel,
             'tipo_docs'=>$tipo_docs, 
             'tipoCliente'=>$tipoCliente,
             'regimenes'=>$regimenes,
             'formaPago'=>$formaPago,
-            'paises'=>$paises        
+            'paises'=>$paises,
+            'razonById'=>$razonById
         ]);
     }
 
@@ -178,8 +176,14 @@ class HuespedController extends Controller
     public function update(Request $request, $id)
     {
         $reg=huesped::findOrFail(\Hashids::decode($id)[0]);
-        $reg->numero_doc=$request->edit_numero_doc;
-        $reg->tipo_doc=$request->edit_tipo_doc;
+        $numDoc=$request->edit_numero_doc;
+        $tipoDoc=$request->edit_tipo_doc;
+        if($numDoc!=null && $tipoDoc!=null){
+            $reg->numero_doc=$numDoc;
+            $reg->tipo_doc=$tipoDoc;
+            $reg->validacion_registro=true;
+            $reg->id_registro=null;
+        }
         $reg->lugar_exp=$request->edit_lugar_exp;
         $reg->ciudad_exp=$request->edit_ciudad_exp;
         $reg->fecha_nacimiento=date("Y-m-d", strtotime($request->edit_fecha_nacimiento));
