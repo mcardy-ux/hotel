@@ -58,8 +58,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <h5 class="mb-4">Ingresa la información necesaria.</h5>
-                            <br>
+                            <h5 class="mb-4">Información Basica</h5>                            <br>
                             <br>
                             <form role="form" id="list_huespedes" name="list_huespedes" accept-charset="UTF-8" enctype="multipart/form-data">
                             <input type="hidden" id="_url" value="{{ url('huespedes') }}">
@@ -171,7 +170,7 @@
                         "previous": "Anterior"
                     }
                 },
-                "order": [[ 0, "desc" ]],
+                "order": [[ 0, "asc" ]],
                 "processing": true,
                 "responsive": true,
                 "serverSide": true,
