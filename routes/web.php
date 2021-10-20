@@ -118,6 +118,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('compania', App\Http\Controllers\CompaniaController::class)->middleware(['auth']);
 Route::resource('huespedes', App\Http\Controllers\HuespedController::class)->middleware(['auth']);
+Route::resource('agencias', App\Http\Controllers\AgenciasController::class)->middleware(['auth']);
 
 
 Route::get('huespedes/request/citiesEstado/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestCitiesByEstado'])->name('ajax.request.citiesByEstado')->middleware(['auth']);
@@ -126,6 +127,8 @@ Route::get('ajax/request/huespedes/{id}', [App\Http\Controllers\HuespedControlle
 Route::get('ajax/request/huespedes', function(){return false;})->name('ajax.ruta.huespedes')->middleware(['auth']);
 // Ajax para listar las compañias
 Route::get('ajax/request/companias', [App\Http\Controllers\CompaniaController::class, 'ajaxRequestCompanias'])->name('ajax.request.companias')->middleware(['auth']);
+Route::get('ajax/request/agencias', [App\Http\Controllers\AgenciasController::class, 'ajaxRequestAgencias'])->name('ajax.request.agencias')->middleware(['auth']);
+
 Route::get('compania/request/citiesEstado/{id}', [App\Http\Controllers\LocationController::class, 'ajaxRequestCitiesByEstado'])->middleware(['auth']);
  //Ajax para listar los codigos ciiu
  Route::get('compania/request/ciiu/{id}', [App\Http\Controllers\DataHotelController::class, 'ajaxRequestCiiu'])->middleware(['auth']);
