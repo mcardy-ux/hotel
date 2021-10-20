@@ -31,8 +31,7 @@
                                 </a>
                             </div>
                         </div>
-                        <h5 class="mb-4">Ingresa la información necesaria.</h5>
-                        <br>
+                        <h5 class="mb-4">Información Basica</h5>                        <br>
                         <br>
                         <form role="form" id="list_compania" name="list_compania" accept-charset="UTF-8" enctype="multipart/form-data">
                         <input type="hidden" id="_url" value="{{ url('compania') }}">
@@ -99,7 +98,7 @@
                         "previous": "Anterior"
                     }
                 },
-                "order": [[ 0, "desc" ]],
+                "order": [[ 0, "asc" ]],
                 "processing": true,
                 "responsive": true,
                 "serverSide": true,
