@@ -6,8 +6,65 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
-                   
-                    <div class="col-lg-12 col-xl-9">
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 mb-4">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <a href="{{route('dash_settings')}}">
+                                    <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#639ad1 ,#e0c4fc )">
+                                        <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                            <div><i class="iconsminds-digital-drawing mr-2 text-white align-text-bottom d-inline-block"></i><p class="lead text-white">Configurar Parametros</p></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <a href="{{route('huespedes.index')}}">
+                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top, #fb83a7,#fdd29e)">
+                                    <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                        <div><i class="iconsminds-male mr-2 text-white align-text-bottom d-inline-block"></i><p class="lead text-white">Huespedes</p></div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <a href="{{route('compania.index')}}">
+                                    <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#7fd163 ,#fcf7c4 )">
+                                        <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                            <div><i class="iconsminds-power-station mr-2 text-white align-text-bottom d-inline-block"></i><p class="lead text-white">Compañias</p></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <a href="{{route('agencias.index')}}">
+                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top, #fbb783,#fdf29e)">
+                                    <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                        <div><i class="iconsminds-city-hall mr-2 text-white align-text-bottom d-inline-block"></i><p class="lead text-white">Agencias</p></div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-6 col-sm-6">
+                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#60606b,#acacb3)">
+                                    <a href="#" class="card-body justify-content-between d-flex flex-row align-items-center">
+                                        <div>
+                                            <i class="iconsminds-bell mr-2 text-white align-text-bottom d-inline-block"></i>
+                                            <div>
+                                                <p class="lead text-white">Reservas</p>
+                                                <p class="text-small text-white">Puedes gestionar reservas, forecast y grupos.</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-8">
                         <div class="icon-cards-row">
                             <div class="glide dashboard-numbers glide--ltr glide--slider glide--swipeable">
                                 <div class="glide__track" data-glide-el="track">
@@ -81,58 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-lg-12 mb-4">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-4">
-                                <a href="{{route('dash_settings')}}">
-                                    <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#639ad1 ,#e0c4fc )">
-                                        <div class="card-body justify-content-between d-flex flex-row align-items-center">
-                                            <div>
-                                                <i class="iconsminds-digital-drawing mr-2 text-white align-text-bottom d-inline-block"></i>
-                                                <div>
-                                                    <p class="lead text-white">Configurar Parametros</p>
-                                                    <p class="text-small text-white">Administración total del hotel.</p>
-                                                </div>
-                                            </div>
-                                        
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-xl-12 col-lg-4">
-                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top, #fb83a7,#fdd29e)">
-                                    <div class="card-body justify-content-between d-flex flex-row align-items-center">
-                                        <div>
-                                            <i class="iconsminds-male mr-2 text-white align-text-bottom d-inline-block"></i>
-                                            <div>
-                                                <p class="lead text-white">Datos Basicos</p>
-                                                <p class="text-small text-white">Puedes administrar huespedes, compañias o agencias.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-lg-4">
-                                <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#60606b,#acacb3)">
-                                    <a href="#" class="card-body justify-content-between d-flex flex-row align-items-center">
-                                        <div>
-                                            <i class="iconsminds-bell mr-2 text-white align-text-bottom d-inline-block"></i>
-                                            <div>
-                                                <p class="lead text-white">Reservas</p>
-                                                <p class="text-small text-white">Puedes gestionar reservas, forecast y grupos.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </main>

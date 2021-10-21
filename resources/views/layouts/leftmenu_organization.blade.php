@@ -83,14 +83,14 @@
                     Lista para Datos  
                     ****--}}
                 
-                <ul class="list-unstyled" data-link="datos" id="datos">
+                <ul class="list-unstyled" data-link="datos" id="datos" style="display: block;">
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="false"
+                        <a href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="true"
                             aria-controls="collapseData" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Datos Generales</span>
                         </a>
-                        <div id="collapseData" class="collapse">
-                            <ul class="list-unstyled inner-level-menu" style="display: none;">
+                        <div id="collapseData" class="collapse show" >
+                            <ul class="list-unstyled inner-level-menu" >
                               @php
                                $listaDatos=App\Http\Controllers\DashboardController::mostrarDatosGenrales();
                                echo $listaDatos ?? '';
