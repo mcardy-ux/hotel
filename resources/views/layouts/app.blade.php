@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datepicker3.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-tagsinput.css')}}" />
     <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}" />
-    
+    <link rel="stylesheet" href="{{asset('css/vendor/dropzone.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/vendor/smart_wizard.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/dore.light.blueyale.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
@@ -152,7 +152,7 @@
     <script src="{{asset('js/vendor/jquery.validate/additional-methods.min.js')}}" style="opacity: 1;"></script>
     <script src="{{asset('js/vendor/bootstrap-tagsinput.min.js')}}" style="opacity: 1;"></script>
     <script src="{{asset('js/vendor/jquery.smartWizard.min.js')}}" style="opacity: 1;"></script>
-    
+    <script src="{{asset('js/vendor/dropzone.min.js')}}" style="opacity: 1;"></script>
     
 
     <script src="{{asset('js/dore.script.js')}}" style="opacity: 1;"></script>
