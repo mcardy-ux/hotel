@@ -22,4 +22,11 @@ class tipoCliente extends Model
         ->get();
         return $data;
     }
+    public static function getTipoClienteById($id){
+        $data=DB::table('tipo_clientes')
+        ->select('id','codigo as value','descripcion as secvalue')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
 }
