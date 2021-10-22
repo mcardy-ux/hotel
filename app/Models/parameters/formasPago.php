@@ -34,4 +34,11 @@ class formasPago extends Model
         ->get();
         return $data;
     }
+    public static function getFormaPagoById($id){
+        $data=DB::table('formas_pagos')
+        ->select('formaPago as value','descripcion as secvalue')
+        ->where('id','=',$id)
+        ->first();
+        return $data;
+    }
 }
