@@ -136,15 +136,25 @@ class HuespedController extends Controller
     public function show( $id)
     {
         $data=huesped::where('id',\Hashids::decode($id)[0])->first();
+        $razon_hotel=data_hotel::getRazonByID($data->rel_hotel);
         $lugar_exp=location::getLugar($data->lugar_exp,$data->ciudad_exp);
         $nacionalidad=location::getLugar($data->nacionalidad,$data->ciudad);
         $tipo_documento=tipo_documento::getDocumentosById($data->tipo_doc);
+        $tipo_huesped=tipoCliente::getTipoClienteById($data->tipo_huesped);
+        $tarifa=regimen::getRegimenesById($data->tarifa);
+        $forma_pago=formasPago::getFormaPagoById($data->forma_pago);
+
         return view('datos.huesped.show',[
             'data'=>$data,
             'lugar_exp'=>$lugar_exp,
             'nacionalidad'=>$nacionalidad,
-            'tipo_documento'=>$tipo_documento
+            'tipo_documento'=>$tipo_documento,
+            'razon_hotel'=>$razon_hotel,
+            'tipo_huesped'=>$tipo_huesped,
+            'tarifa'=>$tarifa,
+            'forma_pago'=>$forma_pago,
         ]);
+
     }
 
     /**
@@ -156,6 +166,7 @@ class HuespedController extends Controller
     public function edit($id)
     {
         $data=huesped::where('id',\Hashids::decode($id)[0])->first();
+        $razon_hotel=
         $razonById=data_hotel::getRazonByID($data->rel_hotel);
         //Selects
         $tipo_docs=tipo_documento::getTipoDocumentos();
