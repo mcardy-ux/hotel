@@ -50,4 +50,20 @@ class location extends Model
         ->first();
         return $data;
     }
+    public static function getLugar($pais,$ciudad){
+        if(isset($pais,$ciudad)){
+            $pais=DB::table('country')
+            ->select('pais as valuePais')
+            ->where('id','=',$pais)
+            ->first();
+            $ciudad=DB::table('city')
+            ->select('municipio as valueCiudad')
+            ->where('id','=',$ciudad)
+            ->first();
+            $data=$ciudad->valueCiudad." - ".$pais->valuePais;
+            return $data;
+        }
+        return null;
+       
+    } 
 }

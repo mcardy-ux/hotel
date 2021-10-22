@@ -133,9 +133,18 @@ class HuespedController extends Controller
      * @param  \App\Models\front\huesped  $huesped
      * @return \Illuminate\Http\Response
      */
-    public function show(huesped $huesped)
+    public function show( $id)
     {
-        //
+        $data=huesped::where('id',\Hashids::decode($id)[0])->first();
+        $lugar_exp=location::getLugar($data->lugar_exp,$data->ciudad_exp);
+        $nacionalidad=location::getLugar($data->nacionalidad,$data->ciudad);
+        $tipo_documento=tipo_documento::getDocumentosById($data->tipo_doc);
+        return view('datos.huesped.show',[
+            'data'=>$data,
+            'lugar_exp'=>$lugar_exp,
+            'nacionalidad'=>$nacionalidad,
+            'tipo_documento'=>$tipo_documento
+        ]);
     }
 
     /**
@@ -231,7 +240,9 @@ class HuespedController extends Controller
            
         })
         ->addColumn('nombre_completo',function ($query){
-            return $query->primer_nombre.' '.$query->segundo_nombre.' '.$query->primer_apellido.' '.$query->segundo_apellido;
+            return "<a href='".route('huespedes.show', [$query->encode_id])."'>".
+            "<span class='badge badge-pill badge-theme-1 '>".$query->primer_nombre.' '.$query->segundo_nombre.' '.$query->primer_apellido.' '.$query->segundo_apellido."</span></a>";
+  
         })
         ->addColumn('porcentaje_datos', function ($query) {
             $numero=huesped::getPorcentajeDatosCompletados($query->id);
@@ -248,10 +259,7 @@ class HuespedController extends Controller
             if($numero>90&&$numero<95){$dataofshet=29;};
             if($numero>95&&$numero<=100){$dataofshet=0;};
             return '<div role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="'.$numero.'" data-show-percent="true">
-            <svg viewBox="0 0 100 100" style="display: block; width: 100%;"><path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#d7d7d7" stroke-width="4" 
-            fill-opacity="0"></path><path d="M 50,50 m 0,-48 a 48,48 0 1 1 0,96 a 48,48 0 1 1 0,-96" stroke="#922c88" 
-            stroke-width="4" fill-opacity="0" style="stroke-dasharray: 301.635px, 301.635px; stroke-dashoffset: '.$dataofshet.'px;">
-            </path></svg><div class="progressbar-text" style="position: absolute; left: 50%; top: 50%; padding: 0px; margin: 0px; transform: translate(-50%, -50%); color: rgb(146, 44, 136);">'.$numero.'%</div></div>';
+            <div class="progressbar-text" style="position: absolute; left: 50%; top: 50%; padding: 0px; margin: 0px; transform: translate(-50%, -50%); color: rgb(146, 44, 136);">'.$numero.'%</div></div>';
         
         })
         ->addColumn('actions', function ($query) {
