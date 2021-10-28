@@ -57,7 +57,7 @@
                                                     <div class="card-body pt-5 pb-5 d-flex flex-lg-column flex-md-row flex-sm-row flex-column">
                                                         <div class="price-top-part">
                                                             <i class="iconsminds-male large-icon"></i>
-                                                            <h5 class="mb-0 font-weight-semibold color-theme-1 mb-4">{{$data->primer_nombre." ".$data->segundo_nombre." ".$data->primer_apellido." ".$data->segundo_apellido}}</h5>
+                                                            <h5 class="font-weight-semibold color-theme-1 mb-4">{{$data->primer_nombre." ".$data->segundo_nombre." ".$data->primer_apellido." ".$data->segundo_apellido}}</h5>
                                                          
                                                                 <p class="mb-3">
                                                                     <span class="badge badge-pill badge-outline-theme-2 mb-1">Genero: {{$data->genero}}</span>
