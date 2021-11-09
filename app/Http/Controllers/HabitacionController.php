@@ -87,7 +87,7 @@ class HabitacionController extends Controller
         $sectores=sectoresHabitaciones::getSectores();
         $hotels=data_hotel::getHotels();
         $arrayClasesHabitacions=habitacion_has_clases::getClassesByHabitacion(\Hashids::decode($id)[0]);
-
+        
 
 
         return view("parameters.habitacions.edit",["data"=>$data,"arrayClasesHabitacions"=>$arrayClasesHabitacions,"clases"=>$clases,"tipos"=>$tipos,"sectores"=>$sectores,"hotels"=>$hotels]);
