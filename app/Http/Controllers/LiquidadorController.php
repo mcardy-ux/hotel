@@ -14,7 +14,7 @@ class LiquidadorController extends Controller
      */
     public function index()
     {
-        //
+       return view("datos.liquidador.index");
     }
 
     /**

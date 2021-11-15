@@ -15,6 +15,13 @@ class CreateLiquidadorsTable extends Migration
     {
         Schema::create('liquidadors', function (Blueprint $table) {
             $table->id();
+            $table->integer("num_liquidacion");
+            $table->integer("rel_plan");
+            $table->string("numero_reserva");
+            $table->integer("encargado_reserva");
+            $table->json("habitaciones");
+            $table->json("huespedes");
+            $table->json("cargos");
             $table->timestamps();
         });
     }
