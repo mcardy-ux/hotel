@@ -83,7 +83,7 @@
                                                                                                                     <div class="input-group-prepend">
                                                                                                                         <span class="input-group-text">$</span>
                                                                                                                     </div>
-                                                                                                                    <input type="number" id="baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                    <input type="number" id="hotel_{{$value->id}}_baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" >
                                                                                                                     
                                                                                                                 </div>
                                                                                                             </td>
@@ -126,7 +126,7 @@
                                                                                                                 <div class="input-group-prepend">
                                                                                                                     <span class="input-group-text">$</span>
                                                                                                                 </div>
-                                                                                                                <input type="number" id="baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                <input type="number" id="hotel_{{$value->id}}_baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" >
                                                                                                                 
                                                                                                             </div>
                                                                                                         </td>
@@ -178,7 +178,7 @@
                                                                                                                     <div class="input-group-prepend">
                                                                                                                         <span class="input-group-text">$</span>
                                                                                                                     </div>
-                                                                                                                    <input type="number" id="media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                    <input type="number" id="hotel_{{$value->id}}_media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0">
                                                                                                                     
                                                                                                                 </div>
                                                                                                             </td>
@@ -220,7 +220,7 @@
                                                                                                                 <div class="input-group-prepend">
                                                                                                                     <span class="input-group-text">$</span>
                                                                                                                 </div>
-                                                                                                                <input type="number" id="media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                <input type="number" id="hotel_{{$value->id}}_media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" >
                                                                                                                 
                                                                                                             </div>
                                                                                                         </td>
@@ -271,7 +271,7 @@
                                                                                                                     <div class="input-group-prepend">
                                                                                                                         <span class="input-group-text">$</span>
                                                                                                                     </div>
-                                                                                                                    <input type="number" id="alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                    <input type="number" id="hotel_{{$value->id}}_alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0">
                                                                                                                     
                                                                                                                 </div>
                                                                                                             </td>
@@ -313,7 +313,7 @@
                                                                                                                 <div class="input-group-prepend">
                                                                                                                     <span class="input-group-text">$</span>
                                                                                                                 </div>
-                                                                                                                <input type="number" id="alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                <input type="number" id="hotel_{{$value->id}}_alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" >
                                                                                                                 
                                                                                                             </div>
                                                                                                         </td>
@@ -364,7 +364,7 @@
                                                                                                                     <div class="input-group-prepend">
                                                                                                                         <span class="input-group-text">$</span>
                                                                                                                     </div>
-                                                                                                                    <input type="number" id="especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0"   value="0">
+                                                                                                                    <input type="number" id="hotel_{{$value->id}}_especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0">
                                                                                                                     
                                                                                                                 </div>
                                                                                                             </td>
@@ -406,7 +406,7 @@
                                                                                                                 <div class="input-group-prepend">
                                                                                                                     <span class="input-group-text">$</span>
                                                                                                                 </div>
-                                                                                                                <input type="number" id="especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" max="10000000"   value="0">
+                                                                                                                <input type="number" id="hotel_{{$value->id}}_especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" name="hotel_{{$value->id}}_especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}" class="form-control" min="0" >
                                                                                                                 
                                                                                                             </div>
                                                                                                         </td>
@@ -462,7 +462,8 @@
     
     array.forEach( function(valor, array) {
         let temporada=valor.temporada.toLowerCase();
-        let puntero =temporada+"_"+valor.tipo_habitacion+"_clase_"+valor.relClaseHabitacion+"_reg_"+valor.relRegimen;
+        let puntero ="hotel_"+valor.rel_hotel+"_"+temporada+"_"+valor.tipo_habitacion+"_clase_"+valor.relClaseHabitacion+"_reg_"+valor.relRegimen;
+        console.log(puntero);
         document.getElementById(puntero).value=valor.valorAlojamiento;
     });
     

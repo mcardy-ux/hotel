@@ -79,7 +79,7 @@
                                                                                                 
                                                                                                 
                                                                                                 @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                                <td id="baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                                <td id="hotel_{{$value->id}}_baja_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                                 @endfor
                                                                                                 
                                                                                             </tr>
@@ -112,7 +112,7 @@
                                                                                             
                                                                                             
                                                                                             @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                            <td id="baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                            <td id="hotel_{{$value->id}}_baja_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                             @endfor
                                                                                             
                                                                                         </tr>
@@ -155,7 +155,7 @@
                                                                                                 
                                                                                                 
                                                                                                 @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                                <td id="media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                                <td id="hotel_{{$value->id}}_media_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                                 @endfor
                                                                                                 
                                                                                             </tr>
@@ -188,7 +188,7 @@
                                                                                             
                                                                                             
                                                                                             @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                            <td id="media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                            <td id="hotel_{{$value->id}}_media_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                             @endfor
                                                                                             
                                                                                         </tr>
@@ -230,7 +230,7 @@
                                                                                                 
                                                                                                 
                                                                                                 @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                                <td id="alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                                <td id="hotel_{{$value->id}}_alta_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                                 @endfor
                                                                                                 
                                                                                             </tr>
@@ -263,7 +263,7 @@
                                                                                             
                                                                                             
                                                                                             @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                            <td id="alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                            <td id="hotel_{{$value->id}}_alta_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                             @endfor
                                                                                             
                                                                                         </tr>
@@ -305,7 +305,7 @@
                                                                                                 
                                                                                                 
                                                                                                 @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                                <td id="especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                                <td id="hotel_{{$value->id}}_especial_estandar_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                                 @endfor
                                                                                                 
                                                                                             </tr>
@@ -338,7 +338,7 @@
                                                                                             
                                                                                             
                                                                                             @for ($i = 1; $i <= $regimens->count(); $i++)
-                                                                                            <td id="especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
+                                                                                            <td id="hotel_{{$value->id}}_especial_jrsuite_clase_{{$itemClase->id}}_reg_{{$i}}">-</td>
                                                                                             @endfor
                                                                                             
                                                                                         </tr>
@@ -382,7 +382,7 @@ let mask=
 
 array.forEach( function(valor, array) {
     let temporada=valor.temporada.toLowerCase();
-    let puntero =temporada+"_"+valor.tipo_habitacion+"_clase_"+valor.relClaseHabitacion+"_reg_"+valor.relRegimen;
+    let puntero ="hotel_"+valor.rel_hotel+"_"+temporada+"_"+valor.tipo_habitacion+"_clase_"+valor.relClaseHabitacion+"_reg_"+valor.relRegimen;
     document.getElementById(puntero).innerHTML=valor.valorAlojamiento;
 });
 
