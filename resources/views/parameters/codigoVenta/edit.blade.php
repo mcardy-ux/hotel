@@ -100,6 +100,12 @@
                                                 <option value="" >SELECCIONAR</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="edit_hotel_id">Hotel:</label>
+                                            <select id="edit_hotel_id" name="edit_hotel_id" class="form-control">
+                                               
+                                            </select>
+                                        </div>
                                     </div>
                                     <hr>
 
@@ -125,9 +131,17 @@
             cargarImpuestos(event);
             cargarCentros(event);
             cargarAgrupacion(event);
+            cargarHoteles(event);
         }, false);
     
-       
+        function cargarHoteles() {
+            //Inicializamos el array.
+            var array = @json($hotels);
+            //Ordena el array alfabeticamente.
+            array.sort();
+            //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+            addOptions("edit_hotel_id", array);
+        }
         //Funcion para cargar los departamentos al campo "select".
         function cargarPuc() {
     
@@ -179,6 +193,9 @@
         
         let rela_centro = @json($data->rel_centro);
         $("#edit_rel_centro").val(rela_centro);
+
+        let rela_hotel = @json($data->rel_hotel);
+        $("#edit_hotel_id").val(rela_hotel);
          });
         
 

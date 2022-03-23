@@ -15,8 +15,8 @@ class CreateTarifasTable extends Migration
     {
         Schema::create('tarifas', function (Blueprint $table) {
             $table->id();
-            $table->double("valorAlojamiento");
-            $table->enum("temporada",['baja','media','alta','especial']);
+            $table->double("valorAlojamiento")->nullable();
+            $table->enum("temporada", ['baja', 'media', 'alta', 'especial']);
             //Inicio de codigo foraneo
             $table->unsignedBigInteger('relRegimen');
             $table->foreign('relRegimen')->references('id')->on('regimens');
@@ -25,6 +25,9 @@ class CreateTarifasTable extends Migration
             $table->foreign('relClaseHabitacion')->references('id')->on('clase_habitaciones');
 
             $table->string("tipo_habitacion");
+
+            $table->unsignedBigInteger('rel_hotel');
+            $table->foreign('rel_hotel')->references('id')->on('data_hotels');
 
             //Info de modificacion o creacion 
             $table->unsignedBigInteger('created_by')->nullable();

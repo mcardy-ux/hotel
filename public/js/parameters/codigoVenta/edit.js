@@ -33,31 +33,35 @@ $(document).ready(function(){
     $('#edit_codigoVenta').submit(function(event){
 
       if ($('#edit_descripcion').val() === "") {
-        alert('Debe ingresar la descripción','Atencion!');
+        alert('Debe ingresar la descripción','Atención!');
         $('#edit_descripcion').focus();
         return false;
     }
     if ($('#edit_descripcionContable').val() === "") {
-        alert('Debe ingresar la descripción contable','Atencion!');
+        alert('Debe ingresar la descripción contable','Atención!');
         $('#edit_descripcionContable').focus();
         return false;
     }
     if ($('#edit_puc').val() === "") {
-        alert('Debe seleccionar el puc','Atencion!');
+        alert('Debe seleccionar el puc','Atención!');
         $('#edit_puc').focus();
         return false;
     }
     if ($('#edit_rel_impuesto').val() === "") {
-        alert('Debe seleccionar el impuesto','Atencion!');
+        alert('Debe seleccionar el impuesto','Atención!');
         $('#edit_rel_impuesto').focus();
         return false;
     }
     if ($('#edit_rel_agrupacion').val() === "") {
-        alert('Debe seleccionar la agrupación','Atencion!');
+        alert('Debe seleccionar la agrupación','Atención!');
         $('#edit_rel_agrupacion').focus();
         return false;
     }
-
+    if ($('#edit_hotel_id').val() === "") {
+      alert('Debe seleccionar el hotel','Atención!');
+      $('#edit_hotel_id').focus();
+      return false;
+  }
 
         if ($('#id_user_modify').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');

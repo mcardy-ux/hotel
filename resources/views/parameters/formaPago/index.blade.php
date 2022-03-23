@@ -43,6 +43,7 @@
                                         <th scope="col">Forma de Pago</th>
                                         <th scope="col">Descripcion</th>
                                         <th scope="col">PUC</th>
+                                        <th scope="col">Hotel</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col"></th>
                                     </tr>
@@ -95,6 +96,7 @@
             {"data":"formaPago"},
             {"data":"descripcion"},
             {"data":"puc"},
+            {"data":"hotel"},
             {"data":"estado_button"},
             { "data": "actions",orderable:false, searchable:false },
             ],

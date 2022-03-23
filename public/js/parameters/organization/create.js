@@ -7,7 +7,7 @@ $(document).ready(function(){
     vaciarInputs();
 
 $('#independiente').click(function(){
-    let confirmacion=confirm("¿Esta seguro de la opcion seleccionada, no puede reversar la congfiguración?");
+    let confirmacion=confirm("¿Esta seguro de la opcion seleccionada, no puede reversar la configuración?");
         if(confirmacion){
             OcultarCard();
             MostrarRegistro();
@@ -16,7 +16,7 @@ $('#independiente').click(function(){
         }
 });
 $('#multihotel').click(function(){
-    let confirmacion=confirm("¿Esta seguro de la opcion seleccionada, no puede reversar la congfiguración?");
+    let confirmacion=confirm("¿Esta seguro de la opcion seleccionada, no puede reversar la configuración?");
     if(confirmacion){
         OcultarCard();
         MostrarRegistro();

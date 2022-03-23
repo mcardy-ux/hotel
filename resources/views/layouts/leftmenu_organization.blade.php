@@ -13,11 +13,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="false"
+                        <a href="#" data-toggle="collapse" data-target="#collapseHotel" aria-expanded="true"
                             aria-controls="collapseHotel" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Hotel</span>
                         </a>
-                        <div id="collapseHotel" class="collapse">
+                        <div id="collapseHotel" class="collapse show">
                             <ul class="list-unstyled inner-level-menu" style="display: none;">
                               @php
                                $listaHotel=App\Http\Controllers\DashboardController::mostrarMenuHotel();
@@ -31,12 +31,12 @@
                     @endphp 
                     @if($ExistenDatosHotel)
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseMercadeo" aria-expanded="false"
+                        <a href="#" data-toggle="collapse" data-target="#collapseMercadeo" aria-expanded="true"
                             aria-controls="collapseMercadeo" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Mercadeo</span>
                         </a>
-                        <div id="collapseMercadeo" class="collapse">
-                            <ul class="list-unstyled inner-level-menu" style="display: none;">
+                        <div id="collapseMercadeo" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu" style="display: block;">
                               @php
                                  $listaMercadeo=App\Http\Controllers\DashboardController::mostrarMenuMercadeo();
                                    
@@ -47,12 +47,12 @@
                     </li>
                     @endif
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseContable" aria-expanded="false"
+                        <a href="#" data-toggle="collapse" data-target="#collapseContable" aria-expanded="true"
                             aria-controls="collapseContable" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Contabilidad</span>
                         </a>
-                        <div id="collapseContable" class="collapse">
-                            <ul class="list-unstyled inner-level-menu" style="display: none;">
+                        <div id="collapseContable" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu" style="display: block;">
                               @php
                                  $listaContable=App\Http\Controllers\DashboardController::mostrarMenuContable();
                                    
@@ -62,12 +62,12 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#collapseParametros" aria-expanded="false"
+                        <a href="#" data-toggle="collapse" data-target="#collapseParametros" aria-expanded="true"
                             aria-controls="collapseParametros" class="rotate-arrow-icon opacity-50">
                             <i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Parametros Adicionales</span>
                         </a>
-                        <div id="collapseParametros" class="collapse">
-                            <ul class="list-unstyled inner-level-menu" style="display: none;">
+                        <div id="collapseParametros" class="collapse show">
+                            <ul class="list-unstyled inner-level-menu" style="display: block;">
                               @php
                                  $listaParametros=App\Http\Controllers\DashboardController::mostrarMenuParametrosAdicion();
                                    

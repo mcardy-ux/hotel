@@ -25,8 +25,9 @@
                                 <div class="card">
                                     <div class="card-body pt-5 pb-5 d-flex flex-lg-column flex-md-row flex-sm-row flex-column">
                                         <div class="price-top-part">
-                                        <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:75px;height:75px; object-fit: cover;">
-                                        
+                                            <div style="margin: 0 auto;text-align: left; width:175px;height:75px;">
+                                            <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:175px;height:75px; object-fit: contain;">
+                                            </div>
                                         <h5 class="mb-0 font-weight-semibold color-theme-1 mb-4">{{$value->razonSocial}}</h5>
                                         </div>
                                         <div class="pl-3 pr-3 pt-3 pb-0 d-flex price-feature-list flex-column flex-grow-1">
@@ -55,7 +56,8 @@
                                             </ul>
                                             <div class="text-center">
                                                 <a href="{{url('organization', [$value->encode_id,'edit']) }}" class="btn btn-link btn-empty btn-lg">Editar <i class="simple-icon-arrow-right"></i></a>
-                                                <a href="{{url('dash_settings').'#checkStep2'}}" class="btn btn-link btn-empty btn-lg">Volver <i class="simple-icon-arrow-right"></i></a>
+                                                <a href="{{ route('dash_settings') }}#checkStep2"> 
+                                                    <button type="button" class="btn btn-link btn-empty btn-lg">Siguiente Configuración <i class="simple-icon-arrow-right"></i></button></a>
                                             </div>
                                         </div>
                                     </div>

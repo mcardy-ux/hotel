@@ -13,12 +13,7 @@ class regimen_has_components extends Model
     public $table = 'regimen_has_components';
 
     public static function DropByRegimen($id){
-        $reg = DB::table('regimen_has_components')->where('regimens_id', '=', $id)->delete();
-        if($reg){
-            return true;
-        }else{
-            return false;
-        }
+        DB::table('regimen_has_components')->where('regimens_id', '=', $id)->delete();
     }
     
 }

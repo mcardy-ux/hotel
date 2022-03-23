@@ -13,26 +13,24 @@ class sectoresHabitaciones extends Model
     {
         return \Hashids::encode($this->id);
     }
-    
-        protected $fillable=['descripcion'];
 
-        public static function Existe_Datos()
+    protected $fillable = ['descripcion', 'hotel_id'];
+
+    public static function Existe_Datos()
     {
         $reg = sectoresHabitaciones::select('id')
-        ->count();
-        
-        if ($reg==0) {
-           return false;
-        }else {
-           return true;
+            ->count();
+
+        if ($reg == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
-    public static function getSectores(){
-        $data=DB::table('sectores_habitaciones')
-        ->select('id','descripcion as value')
-        ->get();
+    public static function getSectores()
+    {
+        $data = sectoresHabitaciones::select('id', 'descripcion as value', 'hotel_id as secvalue')
+            ->get();
         return $data;
     }
-
-    
 }

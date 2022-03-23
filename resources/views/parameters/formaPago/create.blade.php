@@ -69,10 +69,15 @@
                                         <input type="text" class="form-control" id="descripcion" name="descripcion"
                                         aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         <label for="puc">PUC:</label>
                                         <select id="puc" name="puc" class="form-control">
                                             <option value="" selected>SELECCIONAR</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="rel_hotel">Hotel:</label>
+                                        <select id="rel_hotel" name="rel_hotel" class="form-control">
                                         </select>
                                     </div>
                                 </div>
@@ -96,8 +101,18 @@
     <script>
         window.addEventListener("load", function() {
             cargarPuc(event);
+            cargarHoteles(event);
     }, false);
  
+    function cargarHoteles() {
+        //Inicializamos el array.
+        var array = @json($hotels);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("rel_hotel", array);
+    }
+
     //Funcion para cargar los departamentos al campo "select".
     function cargarPuc() {
     

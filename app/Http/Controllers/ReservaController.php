@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\front\liquidador;
+use App\Models\front\reserva;
 use Illuminate\Http\Request;
 
-class LiquidadorController extends Controller
+class ReservaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class LiquidadorController extends Controller
      */
     public function index()
     {
-       return view("datos.liquidador.index");
+        return view('datos.reserva.dashboard');
     }
 
     /**
@@ -41,10 +41,10 @@ class LiquidadorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\front\liquidador  $liquidador
+     * @param  \App\Models\front\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function show(liquidador $liquidador)
+    public function show(reserva $reserva)
     {
         //
     }
@@ -52,10 +52,10 @@ class LiquidadorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\front\liquidador  $liquidador
+     * @param  \App\Models\front\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function edit(liquidador $liquidador)
+    public function edit(reserva $reserva)
     {
         //
     }
@@ -64,10 +64,10 @@ class LiquidadorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\front\liquidador  $liquidador
+     * @param  \App\Models\front\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, liquidador $liquidador)
+    public function update(Request $request, reserva $reserva)
     {
         //
     }
@@ -75,10 +75,10 @@ class LiquidadorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\front\liquidador  $liquidador
+     * @param  \App\Models\front\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(liquidador $liquidador)
+    public function destroy(reserva $reserva)
     {
         //
     }

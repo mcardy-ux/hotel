@@ -47,7 +47,7 @@
 
                             <div class="col-xl-12 col-lg-6 col-sm-6">
                                 <div class="card mb-4 progress-banner" style="background-image: linear-gradient(to right top,#60606b,#acacb3)">
-                                    <a href="#" class="card-body justify-content-between d-flex flex-row align-items-center">
+                                    <a href="{{route('reserva.index')}}" class="card-body justify-content-between d-flex flex-row align-items-center">
                                         <div>
                                             <i class="iconsminds-bell mr-2 text-white align-text-bottom d-inline-block"></i>
                                             <div>

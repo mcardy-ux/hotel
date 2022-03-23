@@ -7,6 +7,7 @@ use App\Models\parameters\planCuentas;
 use App\Models\parameters\impuestos;
 use App\Models\parameters\centro;
 use App\Models\parameters\agrupacionVentas;
+use App\Models\parameters\data_hotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +20,7 @@ class CodigoVentaController extends Controller
      */
     public function index()
     {
+        $hotels = data_hotel::select('id', 'razonComercial', 'logo')->get();
         return view('parameters.codigoVenta.index');
     }
 
@@ -33,11 +35,13 @@ class CodigoVentaController extends Controller
         $impuestos=impuestos::getImpuestos();
         $centros=centro::getCentros();
         $agrupacion=agrupacionVentas::getAgrupacion();
+        $hotels = data_hotel::getHotels();
         return view('parameters.codigoVenta.create',[
             'puc'=>$puc,
             'impuestos'=>$impuestos,
             'centros'=>$centros,
-            'agrupacion'=>$agrupacion
+            'agrupacion'=>$agrupacion,
+            'hotels' => $hotels
         ]);
     }
 
@@ -55,6 +59,7 @@ class CodigoVentaController extends Controller
             'puc' => 'bail|required|max:180',
             'rel_impuesto'=>'bail|required|max:180',
             'rel_agrupacion'=>'bail|required|max:180',
+            'hotel_id'=>'bail|required|max:180',
             'created_by' => 'bail|required|max:10',
         ]);
  
@@ -70,6 +75,7 @@ class CodigoVentaController extends Controller
             $res->rel_impuesto=$request->rel_impuesto;
             $res->rel_agrupacion=$request->rel_agrupacion;
             $res->rel_centro=$request->rel_centro;
+            $res->rel_hotel=$request->hotel_id;
             $res->created_by=$request->created_by;
             $res->save();
 
@@ -91,12 +97,14 @@ class CodigoVentaController extends Controller
         $centros=centro::getCentros();
         $agrupacion=agrupacionVentas::getAgrupacion();
         $data=codigoVenta::where('id',\Hashids::decode($id)[0])->first();
+        $hotels = data_hotel::getHotels();
         return view('parameters.codigoVenta.edit',[
             'data'=>$data,
             'puc'=>$puc,
             'impuestos'=>$impuestos,
             'centros'=>$centros,
-            'agrupacion'=>$agrupacion
+            'agrupacion'=>$agrupacion,
+            'hotels' => $hotels
         ]);
     }
 
@@ -117,6 +125,7 @@ class CodigoVentaController extends Controller
         $reg->rel_impuesto=$request->edit_rel_impuesto;
         $reg->rel_agrupacion=$request->edit_rel_agrupacion;
         $reg->rel_centro=$request->edit_rel_centro;
+        $reg->rel_hotel=$request->edit_hotel_id;
         $reg->modified_by=$request->id_user_modify;
         $reg->save();
         return json_encode(['success' => true]);
@@ -185,7 +194,11 @@ class CodigoVentaController extends Controller
             </div>';
         
         })
-        ->rawColumns(['actions','estado_button','puc_or','impuesto','agrupacion','centro'])
+        ->addColumn('hotel',function($query){
+            $razon=data_hotel::getRazonByID($query->rel_hotel);
+            return $razon->value;
+        })
+        ->rawColumns(['actions','estado_button','puc_or','impuesto','agrupacion','centro','hotel'])
         ->make(true);
     }
 

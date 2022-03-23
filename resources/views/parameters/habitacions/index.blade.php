@@ -17,7 +17,7 @@
                     <div class="top-right-button-container">
                         <div class="btn-group">
                             <a href="{{url('habitacions/create')}}" >
-                                    <button type="button" class="btn btn-primary mb-1">Agregar un nuevo departamento</button>
+                                    <button type="button" class="btn btn-primary mb-1">Agregar un nueva Habitación</button>
                             </a>
                         </div>
                     </div>
@@ -40,7 +40,9 @@
 
                                 <div class=" d-flex flex-row mb-3">
                                     <a class="d-flex"  href="#">
-                                        <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:75px;height:75px; object-fit: cover;">
+                                        <div style="margin: 0 auto;text-align: left; width:175px;height:75px;">
+                                            <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:175px;height:75px; object-fit: contain;">
+                                            </div>
                                     </a>
                                     <div class="pl-2 d-flex flex-grow-1 min-width-zero">
                                         <div class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">

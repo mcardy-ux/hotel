@@ -146,9 +146,7 @@
         });
 
         function cargarHuespedes(idRazon){
-            console.log(idRazon);
             let a="{{ route('ajax.ruta.huespedes')}}/"+idRazon;
-            console.log(a);
             let table=$('#listado_huespeds').DataTable({
                 "language": {
                 "decimal": "",

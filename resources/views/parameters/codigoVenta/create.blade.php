@@ -100,6 +100,12 @@
                                             <option value="" selected>SELECCIONAR</option>
                                         </select>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="hotel_id">Hotel:</label>
+                                        <select id="hotel_id" name="hotel_id" class="form-control">
+                                            <option value="" selected>SELECCIONAR</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-primary mb-0">Agregar</button>
@@ -123,7 +129,18 @@
         cargarImpuestos(event);
         cargarCentros(event);
         cargarAgrupacion(event);
+        cargarHoteles(event);
+
     }, false);
+
+    function cargarHoteles() {
+        //Inicializamos el array.
+        var array = @json($hotels);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("hotel_id", array);
+    }
 
     //Funcion para cargar los departamentos al campo "select".
     function cargarPuc() {

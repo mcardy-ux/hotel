@@ -48,6 +48,11 @@ $(document).ready(function(){
             $('#puc').focus();
             return false;
         }
+        if ($('#rel_hotel').val() === "") {
+          alert('Debe seleccionar el hotel','Atencion!');
+          $('#rel_hotel').focus();
+          return false;
+        }
         if ($('#id_user_create').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;

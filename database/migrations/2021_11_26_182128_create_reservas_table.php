@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectoresHabitacionesTable extends Migration
+class CreateReservasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSectoresHabitacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sectores_habitaciones', function (Blueprint $table) {
+        Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->string("descripcion");
-            $table->unsignedBigInteger('hotel_id')->nullable();
-            $table->foreign('hotel_id')->references('id')->on('data_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateSectoresHabitacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectores_habitaciones');
+        Schema::dropIfExists('reservas');
     }
 }

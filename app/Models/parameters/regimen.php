@@ -60,5 +60,18 @@ class regimen extends Model
         }
     }
 
+    public static function searchByCode($value){
+        $data=DB::table('regimens')
+        ->where('codigo','like',"%{$value}%")
+        ->get();
+        return $data;
+    }
+    public static function searchByDesc($value){
+        $data=DB::table('regimens')
+        ->where('descripcion','like',"%{$value}%")
+        ->get();
+        return $data;
+    }
+
 
 }

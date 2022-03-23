@@ -14,25 +14,33 @@ class TipoHabitaciones extends Model
     {
         return \Hashids::encode($this->id);
     }
-    protected $fillable=['descripcion'];
+    protected $fillable = ['descripcion'];
 
     public static function Existe_TipoHab()
     {
         $reg = TipoHabitaciones::select('id')
-        ->count();
-        
-        if ($reg==0) {
-           return false;
-        }else {
-           return true;
+            ->count();
+
+        if ($reg == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 
-    public static function getTipo(){
-        $data=DB::table('tipo_habitaciones')
-        ->select('id','descripcion as value')
-        ->get();
+    public static function getTipo()
+    {
+        $data = DB::table('tipo_habitaciones')
+            ->select('id', 'descripcion as value')
+            ->get();
         return $data;
     }
-    
+    public static function getHabitacionById($id)
+    {
+        $data = DB::table('tipo_habitaciones')
+            ->select('descripcion')
+            ->where('id', '=', $id)
+            ->first();
+        return $data->descripcion;
+    }
 }

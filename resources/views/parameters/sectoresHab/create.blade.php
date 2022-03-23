@@ -38,6 +38,12 @@
                                         <label for="descripcion">Descripción del Sector:</label>
                                         <input type="text" class="form-control"  id="descripcion" name="descripcion" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="hotel_id">Hotel:</label>
+                                        <select id="hotel_id" name="hotel_id" class="form-control">
+                                            
+                                        </select>
+                                    </div>
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-primary mb-0">Agregar</button>
@@ -55,4 +61,19 @@
     @endsection
     @push('scripts')
     <script src="{{ asset('js/parameters/sectoresHab/create.js') }}"></script>
+    <script>
+        window.addEventListener("load", function() {
+            cargarHoteles(event);
+    }, false);
+    
+    function cargarHoteles() {
+        //Inicializamos el array.
+        var array = @json($hotels);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("hotel_id", array);
+    }
+    </script>
+
     @endpush

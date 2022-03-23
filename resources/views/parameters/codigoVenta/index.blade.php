@@ -18,7 +18,7 @@
                     <div class="top-right-button-container">
                         <div class="btn-group">
                             <a href="{{url('codigoVenta/create')}}" >
-                                    <button type="button" class="btn btn-primary mb-1">Agregar un nuevo plan de cuentas</button>
+                                    <button type="button" class="btn btn-primary mb-1">Agregar un nuevo codigo de ventas</button>
                             </a>
                         </div>
                     </div>
@@ -46,6 +46,7 @@
                                         <th scope="col">Impuesto</th>
                                         <th scope="col">Agrupación</th>
                                         <th scope="col">Centro</th>
+                                        <th scope="col">Hotel</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col"></th>
                                     </tr>
@@ -101,6 +102,7 @@
             {"data":"impuesto"},
             {"data":"agrupacion"},
             {"data":"centro"},
+            {"data":"hotel"},
             {"data":"estado_button"},
             { "data": "actions",orderable:false, searchable:false },
             ],

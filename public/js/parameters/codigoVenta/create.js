@@ -58,6 +58,11 @@ $(document).ready(function(){
             return false;
         }
 
+        if ($('#hotel_id').val() === "") {
+          alert('Debe seleccionar el hotel','Atencion!');
+          $('#hotel_id').focus();
+          return false;
+      }
 
         if ($('#id_user_create').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');

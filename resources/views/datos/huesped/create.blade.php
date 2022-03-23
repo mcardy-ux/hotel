@@ -58,8 +58,7 @@
                             <h5 class="mb-4">Ingresa la información necesaria del Huesped.</h5>
                             
                             <br>
-                            <form role="form" id="add_huesped" name="add_huesped" 
-                            >
+                            <form role="form" id="add_huesped" name="add_huesped" >
                             <input type="hidden" id="_url" value="{{ url('huespedes') }}">
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="rel_hotel" name="rel_hotel" >
@@ -81,16 +80,16 @@
                                </div>
                                <div class="form-row" style="display: none;" id="registro_documento">
                                     <div class="form-group 6" >
-                                    <label for="tipo_doc">Tipo de Documento</label>
-                                    <select id="tipo_doc" name="tipo_doc" class="form-control">
-                                            <option value="">SELECCIONAR</option>
+                                        <label for="tipo_doc">Tipo de Documento</label>
+                                        <select id="tipo_doc" name="tipo_doc" class="form-control">
+                                                <option value="">SELECCIONAR</option>
                                         </select>
                                     </div>
                                     <div class="form-group 6" >
-                                    <label for="numero_doc">Numero de documento:</label>
-                                    <input type="number" class="form-control" min="1" id="numero_doc" name="numero_doc">
+                                        <label for="numero_doc">Numero de documento:</label>
+                                        <input type="number" class="form-control" min="1" id="numero_doc" name="numero_doc">
+                                    </div>
                                 </div>
-                            </div>
                                 
                                <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -112,7 +111,7 @@
                                 </div>
 
                                 <div class="form-row">
-                                     <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3">
                                         <label for="primer_nombre">Primer Nombre <span style="color:red">*</span>
                                         </label>
                                         <input type="text" class="form-control" id="primer_nombre" name="primer_nombre"

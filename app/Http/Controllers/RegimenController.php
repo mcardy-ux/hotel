@@ -81,10 +81,12 @@ class RegimenController extends Controller
      */
     public function edit( $id)
     {
+        
         $data=regimen::findOrFail(\Hashids::decode($id)[0]);
         
         $componentsOfRegimen=regimen::getComponentsByRegimenArray(\Hashids::decode($id)[0]);
         $components=componente_regimen::getcomponentes();
+
         return view('parameters.regimens.edit',['data'=>$data,'componentsOfRegimen'=>$componentsOfRegimen,'components'=>$components]);
     }
 
@@ -102,9 +104,9 @@ class RegimenController extends Controller
         $reg->codigo=$request->data[2]['value'];
         $reg->descripcion=$request->data[3]['value'];
         $reg->modified_by=$request->data[1]['value'];
-
-        $EliminarComponentes=regimen_has_components::DropByRegimen($idNew);
-        if ($EliminarComponentes) {
+       
+        regimen_has_components::DropByRegimen($idNew);
+        
             foreach($request->array as $component_id){
 
                 $componentRegimen = new regimen_has_components();
@@ -114,9 +116,6 @@ class RegimenController extends Controller
             }
             $reg->save();
             return json_encode(['success' => true]);
-        }
-        return json_encode(['success' => false]);
-       
     }
 
     /**

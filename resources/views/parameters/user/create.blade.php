@@ -1,4 +1,4 @@
-@extends('layouts.appIni')
+@extends('layouts.appEdit')
 
 @section('content')
 <main>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appEdit')
 
 @section('content')
 <main>
@@ -28,7 +28,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="mb-4">En esta sección podras crear una nueva cuenta bancaria.</h5>
-                            <form role="form" id="add_bank_account" name="add_billing" >
+                            <form role="form" id="add_bank_account" name="add_billing" accept-charset="UTF-8" >
                                 <input type="hidden" id="_url" value="{{ url('bank_account') }}">
                                 <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" id="id_user_create" name="id_user_create" value="{{ Auth::user()->id }}">

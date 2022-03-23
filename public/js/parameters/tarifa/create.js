@@ -2,7 +2,7 @@ $(document).ready(function(){
     
 
     $('#add_tarifas').submit(function(event){
-        let confirmacion=confirm("¿Esta seguro de agregar esta información?");
+        let confirmacion=confirm("¿Esta seguro de modificar esta información?");
         if(confirmacion){
 
             var fields = $( "#add_tarifas").serializeArray();

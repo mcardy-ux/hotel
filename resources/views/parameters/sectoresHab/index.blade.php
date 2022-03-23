@@ -28,68 +28,73 @@
                     </form>
                 </div>
             </div>
-            <div class="row mb-12">
-                <div class="col-lg-12 col-md-12 mb-4">         
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Listado</h5>
+
+            @php
+            $iterador=1;
+            @endphp
+            @foreach($hotels as $value)
+       
+                <div class="row" id="card_lista_integrantes_{{$value->id}}" name="card_lista_integrantes_{{$value->id}}">
+                    <div class="col-12 col-md-12 col-xl-12">
+                        <div class="card mb-4">
+                            <div class="card-body" >
+
+                                <div class=" d-flex flex-row mb-3">
+                                    <a class="d-flex"  href="#">
+                                        <div style="margin: 0 auto;text-align: left; width:175px;height:75px;">
+                                            <img src="{{asset('storage/logos/'.$value->logo)}}" alt="Imagen" class="list-thumbnail responsive border-0" style="width:175px;height:75px; object-fit: contain;">
+                                            </div>
+                                    </a>
+                                    <div class="pl-2 d-flex flex-grow-1 min-width-zero">
+                                        <div class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
+                                            <p class="list-item-heading mb-0 truncate">{{$value->razonComercial}}</p>                                                  
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row">
+                    
+                                    <div class="col-md-12 col-lg-12 mb-12">
+                                        @foreach ($info as $item)
+                                        @if($item->secvalue==$value->id)
+                                                <div class="card-body d-flex justify-content-between align-items-center">
+                                                            
+                                                    <p class="list-item-heading mb-2"><strong>Descripcion del Sector:</strong></p>
+                                                    <p class="text-muted list-item-heading">{{$item->value}}</p>
+                                                    
+                                                    <div class="dropdown d-inline-block">
+                                                        <button class="btn btn-outline-primary dropdown-toggle mb-1" type="button" id="dropdownMenuButtonBank" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Opciones
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBank" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                                                            <a class="dropdown-item" href="{{url('sectoresHab', [$item->encode_id,'edit']) }}">Editar</a>
+                                                            <a class="dropdown-item" onclick="show(this)" id="{{$item->encode_id}}">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                      
+                                                @endif
+                                            @endforeach
+                                    </div>
+                                    
                             
-                            <table id=SectoresHab class=”display”>
-                             
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Descripcion del Sector</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                   
-                                </tbody>
-                            </table>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                @php
+                $iterador=$iterador+1;
+                @endphp
+            @endforeach
+
+           
         </div>
     </main>
 @endsection
 @push('scripts')
 <script src="{{ asset('js/parameters/sectoresHab/index.js') }}"></script>
 
-<script>
-$(document).ready(function(){
 
-    $('#SectoresHab').DataTable({
-        "language": {
-          "decimal": "",
-          "emptyTable": "No hay información",
-          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-          "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-          "infoPostFix": "",
-          "thousands": ",",
-          "lengthMenu": "Mostrar _MENU_ Entradas",
-          "loadingRecords": "Cargando...",
-          "processing": "Procesando...",
-          "search": "Buscar:",
-          "zeroRecords": "Sin resultados encontrados",
-          
-          "paginate": {
-              "first": "Primero",
-              "last": "Ultimo",
-              "next": "Siguiente",
-              "previous": "Anterior"
-          }},
-          "order": [[ 0, "asc" ]],
-          "processing": true,
-          "responsive": true,
-          "serverSide": true,
-        "ajax": "{{ route('ajax.request.sectores') }}",
-        "columns":[
-        {"data":"descripcion"},
-        { "data": "actions",orderable:false, searchable:false },
-        ],
-    });
-});
-</script>
 @endpush

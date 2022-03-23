@@ -6,6 +6,7 @@ use App\Models\parameters\tarifa;
 use App\Models\parameters\data_hotel;
 use App\Models\parameters\regimen;
 use App\Models\parameters\claseHabitaciones;
+use App\Models\parameters\TipoHabitaciones;
 use Illuminate\Http\Request;
 
 class TarifaController extends Controller
@@ -20,7 +21,7 @@ class TarifaController extends Controller
         $hotels=data_hotel::select('id', 'razonComercial', 'logo')->get();
         $regimens=regimen::select('id', 'codigo')->get();
         $clases=claseHabitaciones::select('id', 'descripcion')->get();
-
+        $tipo_habs=TipoHabitaciones::select('id','descripcion')->get();
 
         $data=tarifa::select('valorAlojamiento','temporada','relRegimen','relClaseHabitacion','tipo_habitacion','rel_hotel')->get();
         
@@ -28,7 +29,8 @@ class TarifaController extends Controller
             'hotels'=>$hotels,
             'regimens'=>$regimens,
             'clases'=>$clases,
-            'data'=>$data
+            'data'=>$data,
+            'tipo_habs'=>$tipo_habs
         ]);
     }
 
@@ -43,12 +45,14 @@ class TarifaController extends Controller
         $regimens=regimen::select('id', 'codigo')->get();
         $clases=claseHabitaciones::select('id', 'descripcion')->get();
         $data=tarifa::select('valorAlojamiento','temporada','relRegimen','relClaseHabitacion','tipo_habitacion','rel_hotel')->get();
+        $tipo_habs=TipoHabitaciones::select('id','descripcion')->get();
 
         return view("parameters.tarifa.create", [
         'hotels'=>$hotels,
         'regimens'=>$regimens,
         'clases'=>$clases,
-        'data'=>$data
+        'data'=>$data,
+        'tipo_habs'=>$tipo_habs
          ]);
     }
 
@@ -61,19 +65,24 @@ class TarifaController extends Controller
      */
 
     public static function ingresarRegistro($temporada,$tipo,$clases,$regimens,$request,$hotel){
-        for ($contadorHotel=1; $contadorHotel <= $hotel->count(); $contadorHotel++) {
-            for ($contadorClase=1; $contadorClase <= $clases->count(); $contadorClase++) {
-                for ($contadorRegimens=1; $contadorRegimens <= $regimens->count(); $contadorRegimens++) {
-                    $registro="hotel_".$contadorHotel."_".$temporada."_".$tipo."_clase_".$contadorClase."_reg_".$contadorRegimens;
-                    $valor=$request->$registro;
-                    $tarifa= new tarifa();
-                    $tarifa->valorAlojamiento=$valor;
-                    $tarifa->temporada=$temporada;
-                    $tarifa->relRegimen=$contadorRegimens;
-                    $tarifa->relClaseHabitacion=$contadorClase;
-                    $tarifa->tipo_habitacion=$tipo;
-                    $tarifa->rel_hotel=$contadorHotel;
-                    $tarifa->save();
+     
+        foreach ($hotel as $reg_hotel) {
+            foreach ($tipo as $reg_tipo) {
+                foreach ($clases as $reg_clase) {
+                    foreach ($regimens as $reg_regimen) {
+                        $tipo_habitacion_converted=str_replace(' ','_',$reg_tipo->descripcion);
+                        $registro="hotel_".$reg_hotel->id."_".$temporada."_".$tipo_habitacion_converted."_clase_".$reg_clase->id."_reg_".$reg_regimen->id;
+                    
+                        $valor=$request->$registro;
+                        $tarifa= new tarifa();
+                        $tarifa->valorAlojamiento=$valor;
+                        $tarifa->temporada=$temporada;
+                        $tarifa->relRegimen=$reg_regimen->id;
+                        $tarifa->relClaseHabitacion=$reg_clase->id;
+                        $tarifa->tipo_habitacion=$tipo_habitacion_converted;
+                        $tarifa->rel_hotel=$reg_hotel->id;
+                        $tarifa->save();
+                    }
                 }
             }
         }
@@ -84,15 +93,17 @@ class TarifaController extends Controller
             $hotel=data_hotel::select('id', 'razonComercial')->get();
             $clases=claseHabitaciones::select('id', 'descripcion')->get();
             $regimens=regimen::select('id', 'codigo')->get();
+
+            $tipo_habs=TipoHabitaciones::select('id','descripcion')->get();
+
+            
+                $this::ingresarRegistro("baja",$tipo_habs,$clases,$regimens,$request,$hotel);
+                $this::ingresarRegistro("media",$tipo_habs,$clases,$regimens,$request,$hotel);
+                $this::ingresarRegistro("alta",$tipo_habs,$clases,$regimens,$request,$hotel);
+                $this::ingresarRegistro("especial",$tipo_habs,$clases,$regimens,$request,$hotel);
+            
             // Inicio Guardad temporada baja - clase estandar
-            $this::ingresarRegistro("baja","estandar",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("baja","jrsuite",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("media","estandar",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("media","jrsuite",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("alta","estandar",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("alta","jrsuite",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("especial","estandar",$clases,$regimens,$request,$hotel);
-            $this::ingresarRegistro("especial","jrsuite",$clases,$regimens,$request,$hotel);
+            
             return json_encode(['success' => true]);
         
     }

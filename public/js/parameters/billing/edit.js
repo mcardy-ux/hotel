@@ -30,7 +30,7 @@ $(document).ready(function(){
           let AnioVencResolucion=fechaResolucion.getFullYear()+2;
           fechaResolucion.setFullYear(AnioVencResolucion);
           if (new Date(fechaResolucion)<=Date.now()) {
-            alert('La fecha de resolucion ya esta vencida, Es de dos años el vencimiento!');
+            alert('Resolución vencida, no puede superar 18 meses la expedición del acto');
             return false;
           }
         //Inicio de confirmacion

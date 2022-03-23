@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#add_bank_account').submit(function(event){
-        if ($('#banco').val() === '') {
+          if ($('#banco').val() === '') {
             alert('Debe ingresar el nombre del banco','Atencion!');
             $('#banco').focus();
             return false;
@@ -24,28 +24,31 @@ $(document).ready(function(){
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;
           }
+          
 
-          let confirmacion=confirm("¿Esta seguro de agregar esta información?");
-          if(confirmacion){
-            var data = $('#add_bank_account').serialize();
-            $.ajax({
-              url: $('#add_bank_account #_url').val(),
-              headers: {'X-CSRF-TOKEN': $('#add_bank_account #_token').val()},
-              type: 'POST',
-              cache: false,
-              data: data,
-              success: function (response) {
-                var json = $.parseJSON(response);
-                if(json.success){
-                  alert('Cuenta Bancaria ingresada exitosamente');
-                  location.href=$('#add_bank_account #_url').val();
-                }else{
-                  alert(json.data);
-                }
-              }
-           });
-          }
+          let confirmacion_add=confirm("¿Esta seguro de agregar esta información?");
+          if(confirmacion_add){
+                var data = $('#add_bank_account').serialize();
+                $.ajax({
+                    url: $('#add_bank_account #_url').val(),
+                    headers: {'X-CSRF-TOKEN': $('#add_bank_account #_token').val()},
+                    type: 'POST',
+                    cache: false,
+                    data: data,
+                    success: function (response) {
+                        let json = $.parseJSON(response);
+                        if(json.success){
+                        alert('Cuenta Bancaria ingresada exitosamente');
+                        location.href='/bank_account';
+                        }else{
+                        alert(json.data);
+                        }
+                    }
+                });
+            }
           
          return false;
+
+  
     });
 });

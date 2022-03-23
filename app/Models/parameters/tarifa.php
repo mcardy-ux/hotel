@@ -4,6 +4,7 @@ namespace App\Models\parameters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class tarifa extends Model
 {
@@ -18,5 +19,8 @@ class tarifa extends Model
         }else {
            return true;
         }
+    }
+    public static function drop(){
+        DB::table('tarifas')->truncate();
     }
 }

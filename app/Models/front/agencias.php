@@ -4,6 +4,7 @@ namespace App\Models\front;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class agencias extends Model
 {
@@ -30,4 +31,17 @@ class agencias extends Model
     {
         return \Hashids::encode($this->id);
     }
+    public static function searchById($value){
+        $data=DB::table('agencias')
+        ->where('nit','like',"%{$value}%")
+        ->get();
+        return $data;
+    }
+    public static function searchByName($value){
+        $data=DB::table('agencias')
+        ->where('nombre','like',"%{$value}%")
+        ->get();
+        return $data;
+    }
+
 }

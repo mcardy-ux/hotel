@@ -68,10 +68,15 @@
                                             <input type="text" class="form-control" id="edit_descripcion" name="edit_descripcion" value="{{$data->descripcion}}"
                                             aria-describedby="razonHelp" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-6">
                                             <label for="puc">PUC:</label>
                                             <select id="edit_puc" name="edit_puc" class="form-control">
                                                 <option value="" selected>SELECCIONAR</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="edit_rel_hotel">Hotel:</label>
+                                            <select id="edit_rel_hotel" name="edit_rel_hotel" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -106,12 +111,24 @@
         }
         let rel_puc = @json($data->rel_puc);
         $("#edit_puc").val(rel_puc);
+        
     });
     
     window.addEventListener("load", function() {
             cargarPuc(event);
+            cargarHoteles();
     }, false);
  
+    function cargarHoteles() {
+        //Inicializamos el array.
+        var array = @json($hotels);
+        //Ordena el array alfabeticamente.
+        array.sort();
+        //Pasamos a la funcion addOptions(el ID del select, las provincias cargadas en el array).
+        addOptions("edit_rel_hotel", array);
+        let rel_hotel = @json($data->rel_hotel);
+        $("#edit_rel_hotel").val(rel_hotel);
+    }
     //Funcion para cargar los departamentos al campo "select".
     function cargarPuc() {
     

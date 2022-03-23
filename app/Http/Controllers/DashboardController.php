@@ -220,7 +220,7 @@ class DashboardController extends Controller
       $listaDatosGenerales="<li><a href='".route('huespedes.index')."'><i class='simple-icon-people'></i><span class='d-inline-block'>Huespedes</span></a></li>".
       "<li><a href='".route('compania.index')."'><i class='iconsminds-power-station'></i><span class='d-inline-block'>Compañias</span></a></li>".
       "<li><a href='".route('agencias.index')."'><i class='iconsminds-city-hall'></i><span class='d-inline-block'>Agencias</span></a></li>".
-      "<li><a href='".route('agencias.index')."'><i class='glyph-icon iconsminds-down-1'></i><span class='d-inline-block'>Liquidador de Planes</span></a></li>";
+      "<li><a href='".route('reserva.index')."'><i class='glyph-icon iconsminds-down-1'></i><span class='d-inline-block'>Reservas</span></a></li>";
 
       return $listaDatosGenerales;
    }

@@ -50,6 +50,11 @@ $(document).ready(function(){
             $('#edit_puc').focus();
             return false;
         }
+        if ($('#edit_rel_hotel').val() === "") {
+          alert('Debe seleccionar el hotel','Atencion!');
+          $('#edit_rel_hotel').focus();
+          return false;
+        }
         if ($('#id_user_modify').val() === '') {
             alert('El identificador del usuario no existe, Por favor recargue la pagina!');
             return false;
